@@ -131,6 +131,7 @@ function Store({ user, onLogout }) {
   const [sort, setSort] = useState('default')
   const [shown, setShown] = useState(BATCH)
   const [idx, setIdx] = useState(0)
+  const [selected, setSelected] = useState(null)
   const heroRef = useRef(null)
   const endRef = useRef(null)
 
@@ -230,6 +231,12 @@ function Store({ user, onLogout }) {
     io.observe(el)
     return () => io.disconnect()
   }, [status, filtered.length])
+
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && setSelected(null)
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [])
 
   const scrollToProducts = () => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })
 
@@ -460,18 +467,17 @@ function Store({ user, onLogout }) {
             ) : (
               <section className="grid">
                 {visible.map((p) => (
-                  <article className="card" key={p.id}>
+                  <article
+                    className="card"
+                    key={p.id}
+                    role="button"
+                    tabIndex={0}
+                    onClick={() => setSelected(p)}
+                    onKeyDown={(e) => e.key === 'Enter' && setSelected(p)}
+                  >
                     {p.image && <img src={p.image} alt="" loading="lazy" />}
                     {p.salesText && <span className="badge">{p.salesText}</span>}
-                    <h3 className="card-title">
-                      {p.url ? (
-                        <a href={p.url} target="_blank" rel="noreferrer">
-                          {p.title}
-                        </a>
-                      ) : (
-                        p.title
-                      )}
-                    </h3>
+                    <h3 className="card-title">{p.title}</h3>
                     <span className="card-category">{p.category}</span>
                     <div className="card-foot">
                       <span className="price">
@@ -496,6 +502,32 @@ function Store({ user, onLogout }) {
           </>
         )}
       </main>
+
+      {selected && (
+        <div className="modal-bg" onClick={() => setSelected(null)}>
+          <div className="modal" role="dialog" aria-modal="true" aria-label={selected.title} onClick={(e) => e.stopPropagation()}>
+            <button className="modal-close" onClick={() => setSelected(null)} aria-label="Close">
+              ×
+            </button>
+            {selected.image && <img src={selected.image} alt={selected.title} />}
+            <div className="modal-info">
+              {selected.salesText && <span className="badge">{selected.salesText}</span>}
+              <h2>{selected.title}</h2>
+              <p className="card-category">{selected.category}</p>
+              <p className="price">
+                {selected.priceText ?? '–'}
+                {selected.originalText && <s>{selected.originalText}</s>}
+              </p>
+              {selected.rating != null && (
+                <p className="rating">
+                  {selected.rating}
+                  {selected.reviews != null && ` · ${formatNumber(selected.reviews)} reviews`}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </>
   )
 }
