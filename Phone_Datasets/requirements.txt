@@ -1,0 +1,15 @@
+pandas
+numpy
+pyarrow
+pyyaml
+python-dotenv
+scikit-learn
+sentence-transformers
+faiss-cpu
+chromadb
+jupyter
+ipykernel
+kaggle
+huggingface_hub
+tqdm
+pytest
