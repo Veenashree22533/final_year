@@ -23,7 +23,7 @@ const FIELDS = {
   price: [/^(discounted_?|current_?|sale_?)?price$/i, /price/i],
   rating: [/^(product_?)?rating$/i, /rating|stars/i],
   reviews: [/review|rating_?count|num_?ratings/i],
-  sales: [/bought|sales|sold/i],
+  sales: [/bought|sales|sold|purchase/i],
   image: [/image|img|thumbnail|photo/i],
   url: [/url|link/i],
 }
@@ -302,7 +302,7 @@ function Store({ user, onLogout }) {
           image: get(row, 'image'),
           url: get(row, 'url'),
         }))
-        setMissing(Object.keys(FIELDS).filter((f) => !cols[f]))
+        setMissing(['title', 'category', 'price', 'image'].filter((f) => !cols[f]))
         setRows(products)
         setStatus(products.length ? 'ready' : 'empty')
       },
@@ -388,7 +388,7 @@ function Store({ user, onLogout }) {
       const v = filtered.map((r) => r[key]).filter((x) => x != null)
       return v.length ? v.reduce((a, b) => a + b, 0) / v.length : null
     }
-    return { avgRating: avg('rating'), avgPrice: avg('price') }
+    return { avgRating: avg('rating') }
   }, [filtered])
 
   // Load more products as the person scrolls toward the bottom.
@@ -606,10 +606,6 @@ function Store({ user, onLogout }) {
               <div className="stat">
                 <div className="stat-value">{formatNumber(stats.avgRating)}</div>
                 <div className="stat-label">Average rating</div>
-              </div>
-              <div className="stat">
-                <div className="stat-value">{money(stats.avgPrice)}</div>
-                <div className="stat-label">Average price</div>
               </div>
               <div className="stat">
                 <div className="stat-value">{categories.length}</div>
