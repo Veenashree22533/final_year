@@ -46,6 +46,22 @@ flowchart TD
     K --> L[React.js Frontend]
     L --> M[Follow-up Query]
     M --> B
+
+    classDef input fill:#E3F2FD,stroke:#1E88E5,stroke-width:2px,color:#0D47A1;
+    classDef intent fill:#E8F5E9,stroke:#43A047,stroke-width:2px,color:#1B5E20;
+    classDef retrieval fill:#F3E5F5,stroke:#8E24AA,stroke-width:2px,color:#4A148C;
+    classDef data fill:#FFF3E0,stroke:#FB8C00,stroke-width:2px,color:#E65100;
+    classDef rag fill:#FFFDE7,stroke:#FDD835,stroke-width:2px,color:#5D5200;
+    classDef llm fill:#FCE4EC,stroke:#D81B60,stroke-width:2px,color:#880E4F;
+    classDef output fill:#E0F7FA,stroke:#00ACC1,stroke-width:2px,color:#006064;
+
+    class A input;
+    class B,H intent;
+    class C,D,E retrieval;
+    class F,G data;
+    class I rag;
+    class J llm;
+    class K,L,M output;
 ```
 
 ### Component Responsibilities
@@ -139,6 +155,16 @@ flowchart LR
     B[Retrieved Product Metadata] --> C
     C --> D[Gemini LLM]
     D --> E[Recommendation + Explanation]
+
+    classDef input fill:#E3F2FD,stroke:#1E88E5,stroke-width:2px,color:#0D47A1;
+    classDef context fill:#FFF8E1,stroke:#FFB300,stroke-width:2px,color:#6D4C00;
+    classDef llm fill:#FCE4EC,stroke:#D81B60,stroke-width:2px,color:#880E4F;
+    classDef output fill:#E8F5E9,stroke:#43A047,stroke-width:2px,color:#1B5E20;
+
+    class A,B input;
+    class C context;
+    class D llm;
+    class E output;
 ```
 
 RAG helps ground the generated response in retrieved product information. It can reduce unsupported claims, but it does not guarantee that every generated statement is correct.
