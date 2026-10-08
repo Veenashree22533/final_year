@@ -1,0 +1,10 @@
+﻿.env
+.venv/
+__pycache__/
+node_modules/
+.ipynb_checkpoints/
+**/data/raw/
+**/data/interim/
+**/data/images/
+**/models/
+**/vectorstore/

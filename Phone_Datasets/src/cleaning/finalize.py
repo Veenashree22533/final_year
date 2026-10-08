@@ -2,7 +2,7 @@
 
 df = pd.read_csv("data/processed/phones_merged.csv")
 
-tab = df["base_model"].str.contains(r"\bpad\b|matepad|magicpad|\btab\b", case=False, regex=True)
+tab = df["base_model"].str.contains(r"pad|\btab\b", case=False, regex=True)
 print("tablets dropped:", tab.sum())
 df = df[~tab].copy()
 
