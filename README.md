@@ -2,329 +2,384 @@ ConvoShop
 
 A Retrieval-Augmented Generation Framework for Intent-Driven E-Commerce Product Advisory
 
-ConvoShop is an intelligent conversational e-commerce product advisory system that helps users find and compare products using natural-language queries. Instead of relying only on traditional keyword-based filters, the system understands user intent, retrieves semantically relevant products, verifies product information, and uses a Large Language Model to provide grounded, ranked, and explainable recommendations.
+ConvoShop is a conversational e-commerce product advisory system for
+mobile phones. It accepts natural-language requirements, retrieves
+relevant phone products using semantic search, fetches structured
+product metadata, and uses Retrieval-Augmented Generation (RAG) with a
+Gemini model to generate a conversational recommendation.
 
-📖 Project Overview
+1. Project Overview
 
-ConvoShop addresses the limitations of conventional e-commerce search systems, where users often need to manually specify multiple filters such as category, budget, features, and intended use.
+Users can describe what they need without manually selecting multiple
+filters.
 
-The system allows users to describe their requirements naturally, such as:
+Example
 
-> "I need a laptop for video editing under ₹80,000 with good battery life."
+> I need a phone with a good camera and battery life under ₹30,000.
 
-ConvoShop processes this query by identifying the user's requirements, generating semantic embeddings, retrieving relevant products using vector similarity search, obtaining complete product metadata, and using Retrieval-Augmented Generation (RAG) to generate a grounded recommendation.
+The system processes the requirement, retrieves relevant phone
+candidates, obtains their structured metadata, and generates a
+recommendation using the retrieved information as context.
 
-The system combines:
 
-- Intent Understanding
-- Requirement Decomposition
-- Sentence Transformer Embeddings
-- Pinecone Semantic Retrieval
-- MongoDB Atlas Product Metadata
-- Retrieval-Augmented Generation (RAG)
-- Gemini 1.5 Flash
-- Explainable Product Recommendation
-- Conversational Interaction
+2. Objectives
 
-🎯 Objectives
+-   Understand mobile-phone requirements expressed in natural language.
+-   Extract requirements such as category, features, budget, and use
+    case.
+-   Retrieve semantically relevant phone products.
+-   Retrieve structured product metadata for candidate products.
+-   Ground LLM responses using retrieved product information.
+-   Provide conversational product recommendations.
+-   Support follow-up queries when session context is available.
 
-1. Understand natural-language e-commerce queries.
-2. Decompose user requirements into meaningful attributes such as category, features, budget, and use case.
-3. Retrieve semantically relevant products rather than relying only on keyword matching.
-4. Combine vector retrieval with complete product metadata.
-5. Use RAG to provide grounded product recommendations.
-6. Rank products according to the user's requirements.
-7. Provide explanations for why recommended products are suitable.
-8. Support conversational and multi-turn product discovery.
+3. System Architecture
 
-⚙️ How It Works
-
-The ConvoShop pipeline follows these major stages:
-
-```text
-User Query
-     ↓
-Intent Understanding
-     ↓
-Requirement Decomposition
-     ↓
-Sentence Transformer Embedding
-     ↓
-Pinecone Semantic Retrieval
-     ↓
-MongoDB Atlas Product Metadata
-     ↓
-RAG Context Fusion
-     ↓
-Gemini 1.5 Flash
-     ↓
-Product Ranking & Explanation
-     ↓
-Conversational Recommendation
+``` mermaid
+flowchart TD
+    A[User Query] --> B[Intent / Requirement Understanding]
+    B --> C[Sentence Transformer]
+    C --> D[Pinecone Semantic Retrieval]
+    D --> E[Relevant Phone Candidates]
+    E --> F[MongoDB Atlas]
+    F --> G[Structured Product Metadata]
+    B --> H[User Requirements]
+    G --> I[RAG Context]
+    H --> I
+    I --> J[Gemini LLM]
+    J --> K[Recommendation + Explanation]
+    K --> L[React.js Frontend]
+    L --> M[Follow-up Query]
+    M --> B
 ```
 
-1. Intent Understanding
+Component Responsibilities
 
-The user's natural-language query is analyzed to identify the actual shopping requirement.
+  -----------------------------------------------------------------------
+  Component                           Responsibility
+  ----------------------------------- -----------------------------------
+  React.js                            Conversational frontend
 
-Important attributes may include:
+  FastAPI                             Backend/API orchestration
 
-- Product category
-- Desired features
-- Budget
-- Intended use
-- Other contextual requirements
+  Intent / Requirement Understanding  Converts the user request into
+                                      retrieval requirements
 
-2. Semantic Embedding
+  Sentence Transformer                Creates semantic embeddings
 
-The processed query is converted into a dense vector representation using a Sentence Transformer model.
+  Pinecone                            Semantic vector retrieval
 
-This allows the system to capture the semantic meaning of the query rather than depending only on exact keyword matches.
+  MongoDB Atlas                       Stores and retrieves structured
+                                      product metadata
 
-3. Semantic Retrieval with Pinecone
+  RAG                                 Supplies retrieved product
+                                      information as LLM context
 
-The generated embedding is sent to Pinecone for Approximate Nearest Neighbor (ANN) semantic retrieval.
+  Gemini                              Generates the final recommendation
+                                      and explanation
+  -----------------------------------------------------------------------
 
-Pinecone identifies products that are semantically similar to the user's requirements.
+4. Dataset
 
-4. Product Metadata Retrieval
+The current project uses a cleaned mobile-phone product dataset
+containing **279 records**.
 
-The relevant product information is retrieved from MongoDB Atlas.
+The README refers to the information as **structured product metadata**.
+It does not claim that the data is verified, live, or includes
+availability/review information unless those fields are actually present
+in the repository schema.
 
-MongoDB provides the detailed product metadata required for the recommendation process.
+Data source:Public dataset used for the project. Add the exact
+Kaggle/Hugging Face dataset name, URL, and license here after checking
+the repository files.
 
-5. Retrieval-Augmented Generation
+5. Retrieval Pipeline
 
-The retrieved product information is combined with the user's requirements to create grounded context for the language model.
+Step 1 --- Requirement Understanding
 
-This allows the system to generate recommendations based on retrieved product information rather than relying only on the model's internal knowledge.
+A natural-language request is converted into useful requirements.
 
-6. Recommendation and Ranking
+For example:
 
-Gemini 1.5 Flash evaluates the retrieved products against the user's requirements and generates ranked recommendations.
-
-The system can explain why a particular product is suitable for the user's needs.
-
-🧠 Why RAG?
-
-A standalone Large Language Model may generate recommendations based on its learned knowledge, which can result in unsupported or hallucinated information.
-
-ConvoShop uses Retrieval-Augmented Generation to ground the recommendation process using retrieved product information.
-
-```text
-User Requirement
-       +
-Retrieved Product Information
-       ↓
-     RAG
-       ↓
-Grounded LLM Reasoning
-       ↓
-Ranked Recommendation
+``` text
+Category  → Mobile Phone
+Budget    → ₹30,000
+Features  → Camera + Battery Life
 ```
 
-RAG therefore helps improve the relevance and grounding of the generated recommendations, although it does not completely eliminate the possibility of hallucination.
+The exact implementation of this decomposition should match the backend
+code.
 
-🗄️ Technology Stack
+Step 2 --- Semantic Embedding
 
-Frontend
+The processed requirement is converted into a vector representation
+using the project's Sentence Transformer model.
 
-- React.js
+Step 3 --- Pinecone Retrieval
 
-Backend
+The query embedding is used for semantic similarity search in Pinecone
+to retrieve relevant phone candidates.
 
-- FastAPI
+Semantic similarity alone does **not** guarantee an exact numeric
+constraint such as `Price < ₹30,000`.
 
-Semantic Retrieval
+If the application applies a separate price metadata filter, that filter
+should be documented from the actual implementation.
 
-- Sentence Transformers
-- Pinecone
-- Approximate Nearest Neighbor (ANN) Search
+Step 4 --- MongoDB Retrieval
 
-Database
+MongoDB Atlas is used to retrieve the structured product metadata
+associated with the selected candidates.
 
-- MongoDB Atlas
-
-Generative AI
-
-- Gemini 1.5 Flash
-
-Architecture
-
-- Retrieval-Augmented Generation (RAG)
-- Intent Understanding
-- Semantic Search
-- Explainable Recommendation
-
-✨ Key Features
-
-🔍 Natural Language Product Search
-
-Users can describe what they want in normal conversational language instead of manually selecting multiple filters.
-
-🧩 Intent-Based Requirement Understanding
-
-The system decomposes the user's request into relevant requirements such as product category, budget, features, and use case.
-
-🧠 Semantic Product Retrieval
-
-Sentence Transformer embeddings and Pinecone semantic search retrieve products based on meaning and contextual similarity.
-
-📊 Product Ranking
-
-Retrieved products are evaluated against the user's requirements and ranked accordingly.
-
-💡 Explainable Recommendations
-
-The system provides reasoning behind its recommendations instead of simply displaying product names.
-
-🛡️ Grounded Recommendations
-
-RAG uses retrieved product information as context for the language model, helping keep recommendations grounded in available product data.
-
-💬 Conversational Interaction
-
-The system supports conversational product discovery and follow-up queries through session-based interaction.
-
-🏗️ System Architecture
-
-```text
-┌─────────────────────────────┐
-│       React.js Frontend     │
-│  Conversational Interface   │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│        FastAPI Backend      │
-│    Request Orchestration    │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│     Intent Understanding    │
-│ Requirement Decomposition   │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│   Sentence Transformer      │
-│      Query Embedding        │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│          Pinecone           │
-│ Semantic / ANN Retrieval    │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│       MongoDB Atlas         │
-│   Product Metadata Store    │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│        RAG Context          │
-│          Fusion             │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│      Gemini 1.5 Flash       │
-│ Reasoning & Recommendation  │
-└──────────────┬──────────────┘
-               │
-               ↓
-┌─────────────────────────────┐
-│ Ranked & Explainable Output │
-└─────────────────────────────┘
-```
-
-🔄 Example
-
-User Query
-
-```text
-I need a laptop for video editing under ₹80,000 with good battery life.
-```
-
-Processing
-
-```text
-Category  → Laptop
-Budget    → ₹80,000
-Use Case  → Video Editing
-Feature   → Good Battery Life
-```
-
-The system then generates a semantic representation of the requirement, searches Pinecone for relevant products, retrieves detailed information from MongoDB Atlas, and provides the retrieved context to Gemini 1.5 Flash.
-
-Output
-
-The user receives ranked product recommendations together with explanations describing why the products match the stated requirements.
-
-🔑 Why Pinecone + MongoDB?
-
-The two databases serve different purposes.
-
-Pinecone is responsible for semantic vector retrieval. It helps identify products that are relevant to the meaning of the user's query.
-
-MongoDB Atlas stores and retrieves the complete product metadata required to provide detailed and grounded recommendations.
-
-```text
+``` text
 Pinecone
    ↓
-Find relevant products
+Relevant product candidates
 
 MongoDB Atlas
    ↓
-Get complete product information
+Structured product metadata
 ```
 
-Using both allows ConvoShop to combine efficient semantic retrieval with detailed product information.
+6. Retrieval-Augmented Generation
 
-🚀 Advantages
+ConvoShop supplies retrieved product information to the LLM as context.
 
-- Natural-language interaction
-- Intent-driven product discovery
-- Semantic rather than purely keyword-based retrieval
-- Context-aware recommendations
-- Product ranking
-- Explainable recommendations
-- Grounded LLM generation
-- Conversational interaction
-- Combination of vector search and structured product metadata
+``` mermaid
+flowchart LR
+    A[User Requirements] --> C[RAG Context]
+    B[Retrieved Product Metadata] --> C
+    C --> D[Gemini LLM]
+    D --> E[Recommendation + Explanation]
+```
 
-🔮 Future Scope
+RAG helps ground the generated response in retrieved product
+information. It reduces the risk of unsupported claims but does not
+guarantee that every generated statement is correct.
 
-The system can be further extended with:
+7. Recommendation Generation
 
-- Larger and more diverse product datasets
-- Improved intent classification and requirement extraction
-- More advanced ranking techniques
-- Additional product categories
-- User preference learning
-- Personalized recommendations
-- Real-time product availability and pricing
-- Additional conversational memory capabilities
-- More extensive evaluation using real-world user queries
+The Gemini model receives the user requirements together with the
+retrieved product context and generates the final conversational
+response.
 
-📌 Conclusion
+The README treats **recommendation and explanation as one LLM stage**.
+It does not claim a separate ranking engine unless such a module exists
+in the code.
 
-ConvoShop demonstrates how semantic retrieval and Large Language Models can be combined to create an intent-driven e-commerce product advisory system.
+8. Example Interaction
 
-By integrating **intent understanding, Sentence Transformer embeddings, Pinecone semantic retrieval, MongoDB Atlas, Retrieval-Augmented Generation, and Gemini 1.5 Flash**, the system moves beyond conventional product filtering toward conversational, grounded, ranked, and explainable product recommendations.
+**User**
 
-👥 Project
+> I need a phone with a good camera and battery life under ₹30,000.
 
-ConvoShop: A Retrieval-Augmented Generation Framework for Intent-Driven E-Commerce Product Advisory
+**System interpretation**
 
-Developed as an academic final-year project.
+``` text
+Product Category → Mobile Phone
+Budget           → ₹30,000
+Required Features → Camera + Battery Life
+```
 
----
+**Retrieval**
 
-## 📄 License
+``` text
+Requirements
+     ↓
+Sentence Transformer
+     ↓
+Pinecone
+     ↓
+Phone Candidates
+     ↓
+MongoDB
+     ↓
+Structured Product Metadata
+```
 
-This project is developed for academic and educational purposes.
+**Generation**
+
+``` text
+User Requirements + Retrieved Metadata
+                 ↓
+             RAG Context
+                 ↓
+             Gemini LLM
+                 ↓
+        Recommendation + Explanation
+```
+
+9. Conversational Follow-up
+
+When session context is implemented, users can continue a conversation
+without repeating the complete requirement.
+
+``` text
+User: Recommend a phone under ₹30,000 with a good camera.
+
+System: [Recommendations]
+
+User: Which one has the best battery?
+
+System: [Follow-up response]
+```
+
+The exact mechanism used to store and reuse conversation context should
+be documented according to the backend implementation.
+
+10. Technology Stack
+
+-   **Frontend:** React.js
+-   **Backend:** FastAPI
+-   **Embeddings:** Sentence Transformer
+-   **Vector Search:** Pinecone
+-   **Database:** MongoDB Atlas
+-   **Generative AI:** Gemini model used by the backend
+-   **Architecture:** Retrieval-Augmented Generation (RAG)
+
+Gemini model
+
+The project report refers to **Gemini 1.5 Flash**. Before publishing the
+final README, verify the exact Gemini model string in the backend code
+and replace the generic wording above with that exact model name.
+
+11. Repository Structure
+
+Keep this section synchronized with the actual repository:
+
+``` text
+final_year/
+├── Frontend/
+│   └── my-react-app/
+├── Phone_Datasets/
+├── Backend/
+│   └── ...
+└── README.md
+```
+
+12. Setup
+
+Prerequisites
+
+-   Python 3.x
+-   Node.js and npm
+-   MongoDB Atlas configuration
+-   Pinecone configuration
+-   Gemini API access
+
+Clone
+
+``` bash
+git clone <YOUR-REPOSITORY-URL>
+cd final_year
+```
+
+Backend
+
+``` powershell
+cd Backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+Frontend
+
+``` bash
+cd Frontend/my-react-app
+npm install
+npm run dev
+```
+
+Environment Variables
+
+Never commit API keys or passwords to GitHub.
+
+Use the exact variable names defined by the project code. They may
+include values such as:
+
+``` text
+MONGODB_URI
+PINECONE_API_KEY
+PINECONE_INDEX
+GEMINI_API_KEY
+```
+
+13. Evaluation
+
+The README does not claim quantitative improvements such as Precision@K,
+Recall@K, or reduced hallucination rates unless those experiments have
+actually been performed.
+
+Useful evaluation measures for the project include:
+
+-   Retrieval relevance
+-   Precision@K
+-   Recall@K
+-   Budget-constraint accuracy
+-   Recommendation quality
+-   Comparison with keyword-based search
+-   Comparison with a standalone LLM
+-   User evaluation
+
+14. Limitations
+
+-   Semantic similarity alone does not guarantee exact numeric
+    constraints such as price.
+-   Recommendation quality depends on the coverage and quality of the
+    product dataset.
+-   Products absent from the knowledge base cannot be recommended.
+-   LLM-generated explanations can still contain errors.
+-   Results depend on the retrieval configuration, metadata, and model
+    used by the application.
+
+15. Future Scope
+
+-   Improve requirement and intent extraction.
+-   Add robust numeric and metadata filtering.
+-   Improve retrieval and re-ranking.
+-   Expand the product dataset.
+-   Add additional product categories.
+-   Add real-time product information where appropriate.
+-   Evaluate retrieval and recommendation quality using standard
+    metrics.
+-   Compare against keyword search and a standalone LLM baseline.
+-   Improve conversational memory.
+
+16. Conclusion
+
+ConvoShop combines natural-language requirement understanding, semantic
+product retrieval, structured product metadata, Retrieval-Augmented
+Generation, and LLM reasoning for conversational mobile-phone
+recommendations.
+
+The core workflow is:
+
+``` text
+Understand the requirement
+        ↓
+Retrieve relevant phones
+        ↓
+Fetch structured product metadata
+        ↓
+Ground the LLM with retrieved context
+        ↓
+Generate the recommendation
+```
+
+Project
+
+**ConvoShop: A Retrieval-Augmented Generation Framework for
+Intent-Driven E-Commerce Product Advisory**
+
+Academic final-year project.
+
+Team and Guide
+
+Add the project team members and project guide here.
+
+License
+
+No open-source license is claimed unless a `LICENSE` file is included in
+the repository. If the project is intended for public reuse, add an
+appropriate license file.
