@@ -338,24 +338,6 @@ npm install
 npm run dev
 ```
 
-### Environment variables
-
-Never commit API keys, passwords, or other secrets to GitHub.
-
-The repository should provide an `.env.example` file containing variable names but no secret values. Configure the corresponding values in a local `.env` file.
-
-Required variables include:
-
-```text
-MONGODB_URI
-MONGODB_DB
-PINECONE_API_KEY
-PINECONE_INDEX
-GEMINI_API_KEY
-```
-
-Use the exact names from the backend configuration if they differ from the names above.
-
 ## 13. Evaluation
 
 The README does not claim quantitative improvements unless those experiments have actually been performed.
