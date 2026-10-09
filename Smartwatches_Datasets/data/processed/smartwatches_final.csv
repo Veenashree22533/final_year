@@ -1,0 +1,831 @@
+﻿watch_id,brand,model_name,category,price_inr,original_price_inr,discount_pct,rating,rating_count,display_type,display_size_in,battery_days,touchscreen,bluetooth,strap_material,dial_shape,strap_color,legacy,image_url,has_image,source
+1,Amazfit,Bip 3 Pro with 1.69 inch Large Color Display Built-in GPS,smartwatch,4499.0,5999.0,25.0,4.1,333.0,,1.7,,True,True,Silicon,Square,Beige,False,,False,kaggle_arnabchaki
+2,Amazfit,Bip Lite,smartwatch,7200.0,14999.0,52.0,4.0,6.0,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+3,Amazfit,Bip U,smartwatch,2999.0,5999.0,50.0,3.8,15.0,,1.4,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+4,Amazfit,Bip U pro 1.43 HD display GLONASS GPS & AI assistant,smartwatch,4999.0,6999.0,28.6,4.1,4694.0,,1.4,,True,True,Silicon,Rectangle,Pink,False,,False,kaggle_arnabchaki
+5,Amazfit,GTR 2 (New version)1.39HD AMOLEDBluetooth callingupto 10 days battery life,smartwatch,7499.0,16999.0,55.9,4.3,11520.0,,1.4,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+6,Amazfit,GTR 2e,smartwatch,8999.0,13999.0,35.7,4.3,578.0,,1.4,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+7,Amazfit,GTR 3 1.3 HD AMOLED with Always on Display and powerful Zepp OS,smartwatch,13999.0,18999.0,26.3,4.1,918.0,,1.4,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+8,Amazfit,GTR 3 Pro,smartwatch,18999.0,25999.0,26.9,4.2,115.0,,1.4,,True,True,Silicon,Circle,Brown,False,,False,kaggle_arnabchaki
+9,Amazfit,GTR 4 1.43AMOLED display Bluetooth calling & 6 satellite GPS positioning system,smartwatch,16999.0,23999.0,29.2,4.3,575.0,,1.4,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+10,Amazfit,"GTS 3 1,75 HD AMOLED with advanced GPS and 150+ sports modes",smartwatch,13999.0,18999.0,26.3,4.1,306.0,,1.8,,True,True,Silicon,Square,Misty Rose,False,,False,kaggle_arnabchaki
+11,Amazfit,GTS 4 Alexa Built-in Fitness Tracker Calling 1.75'' HD Display SpO2 Waterproof,smartwatch,19999.0,23999.0,16.7,4.3,,,1.8,,True,True,Silicon,Rectangle,White,False,,False,kaggle_arnabchaki
+12,Amazfit,"GTS2 Mini with 1.55"" AMOLED Display Built-in Alexa",smartwatch,6999.0,9999.0,30.0,3.7,81.0,,1.6,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+13,Amazfit,"Pop 2 with Ultra-large 1.78 inch HD AMOLED Display, BT Calling, SpO2",smartwatch,3999.0,5999.0,33.3,4.2,3130.0,,1.8,,True,True,Silicon,Square,Pink,False,,False,kaggle_arnabchaki
+14,Amazfit,T rex Pro 1.3HD AMOLED with advanced GPS & 10ATM water resistance,smartwatch,9999.0,17999.0,44.4,4.5,5265.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+15,Ambrane,FitShot Curl,smartwatch,2368.0,4499.0,47.4,3.5,301.0,,,,,True,,,,False,,False,kaggle_arnabchaki
+16,Ambrane,FitShot Sphere,smartwatch,2199.0,4999.0,56.0,3.9,256.0,,,,True,True,,,,False,,False,kaggle_arnabchaki
+17,Ambrane,Flex,smartwatch,1499.0,3799.0,60.5,4.2,1804.0,,1.7,,True,True,Silicon,Square,Green,False,,False,kaggle_arnabchaki
+18,Ambrane,Flex 1.69inch Lucid display and SPO2,smartwatch,1799.0,3799.0,52.6,4.2,8003.0,,1.7,,True,True,Silicon,Square,Pink,False,,False,kaggle_arnabchaki
+19,Ambrane,Pulse,smartwatch,1999.0,5999.0,66.7,3.9,1099.0,,1.3,,True,True,Synthetic,Rectangle,Black,False,,False,kaggle_arnabchaki
+20,Ambrane,Surge 1.28 Curved Display with complete Health Tracking,smartwatch,2299.0,3999.0,42.5,4.1,2475.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+21,Ambrane,"Wise Eon Max with 2.01'' Lucid display, BT Calling, with customisable watch face",smartwatch,1799.0,5999.0,70.0,4.2,453.0,,2.0,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+22,Ambrane,"Wise Eon Pro1.85"" lucid display with BT calling",smartwatch,1499.0,5299.0,71.7,4.2,8574.0,,1.9,,True,True,Silicon,Square,Red,False,,False,kaggle_arnabchaki
+23,Ambrane,"Wise Glaze with 1.78"" Amoled display, BT Calling,SPO2 , Heart Rate Monitor",smartwatch,2499.0,5999.0,58.3,4.3,7767.0,,1.8,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+24,Ambrane,Wise-Eon 1.69Lucid Display bluetooth calling function & 7 days battery life,smartwatch,1299.0,4999.0,74.0,4.2,60292.0,,1.7,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+25,Ambrane,"Wise-roam 1.28"" Full HD display,bluetooth calling and complete health tracking",smartwatch,1599.0,5999.0,73.3,4.2,25108.0,,1.3,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+26,Apple,2 - 42 mm Silver Aluminium Case,smartwatch,34900.0,34900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+27,Apple,38 mm Space Black Stainless Steel Case,smartwatch,48900.0,48900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+28,Apple,38 mm Stainless Steel Stainless Steel Case with Modern Buckle,smartwatch,64900.0,64900.0,0.0,4.3,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+29,Apple,42 mm Black Stainless Steel Case with Link Bracelet,smartwatch,79900.0,79900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+30,Apple,42 mm Space Gray Aluminium,smartwatch,29900.0,29900.0,0.0,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+31,Apple,42 mm Stainless Steel Case,smartwatch,60900.0,60900.0,0.0,4.5,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+32,Apple,42 mm White Ceramic Case with Cloud Sport,smartwatch,114900.0,114900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Nylon,,,True,,False,kaggle_devsubhash
+33,Apple,8 mm Stainless Steel Case,smartwatch,56900.0,56900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+34,Apple,Apple Watch SE,smartwatch,29900.0,,0.0,4.6,5502.0,,1.6,,True,True,Silicon,Rectangle,White,False,,False,kaggle_arnabchaki
+35,Apple,Nike Series 5 GPS + Cellular 44 mm,smartwatch,52900.0,52900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Silicone,,,False,,False,kaggle_devsubhash
+36,Apple,Nike+ - 38 mm Space Gray Aluminium Case,smartwatch,31600.0,31600.0,0.0,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+37,Apple,Nike+ GPS - 42 mm Space Gray Aluminium Case,smartwatch,32380.0,32380.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+38,Apple,SE 40 mm Space Grey Aluminium Case,smartwatch,27400.0,29900.0,8.4,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+39,Apple,SE 44 mm Gold Aluminium Case,smartwatch,30400.0,32900.0,7.6,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+40,Apple,SE 44 mm Space Grey Aluminium Case,smartwatch,30400.0,32900.0,7.6,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+41,Apple,SE GPS + Cellular 40 mm Aluminium Case,smartwatch,33900.0,33900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+42,Apple,SE GPS + Cellular 40 mm Gold Aluminium Case,smartwatch,31400.0,33900.0,7.4,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+43,Apple,SE GPS + Cellular 40 mm Gold Aluminium Case,smartwatch,67900.0,73900.0,8.1,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+44,Apple,SE GPS + Cellular 40 mm Silver Aluminium Case,smartwatch,31400.0,33900.0,7.4,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+45,Apple,SE GPS + Cellular 40 mm Space Grey Aluminium Case,smartwatch,31400.0,33900.0,7.4,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+46,Apple,SE GPS + Cellular 44 mm Aluminium Case,smartwatch,36900.0,36900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+47,Apple,SE GPS + Cellular 44 mm Gold Aluminium Case,smartwatch,43900.0,43900.0,0.0,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+48,Apple,SE GPS + Cellular 44 mm Gold Aluminium Case,smartwatch,33900.0,36900.0,8.1,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+49,Apple,SE GPS + Cellular 44 mm Silver Aluminium Case,smartwatch,33900.0,36900.0,8.1,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+50,Apple,SE GPS + Cellular 44 mm Space Grey Aluminium Case,smartwatch,33900.0,36900.0,8.1,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+51,Apple,SE GPS 40 mm Aluminium Case,smartwatch,29900.0,29900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+52,Apple,SE GPS 44 mm Aluminium Case,smartwatch,32900.0,32900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+53,Apple,Series 1 - 38 mm Silver Aluminium Case,smartwatch,21900.0,21900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+54,Apple,Series 1 - 42 mm Gold Aluminium Case,smartwatch,25900.0,25900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+55,Apple,Series 2 - 38 mm Stainless Steel Case,smartwatch,56900.0,56900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+56,Apple,Series 2 - 42 mm Space Black Stainless Steel Case,smartwatch,50400.0,50400.0,0.0,4.7,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+57,Apple,Series 2 - 42 mm Stainless Steel Case,smartwatch,50400.0,50400.0,0.0,4.7,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+58,Apple,Series 3 GPS + Cellular- 42 mm Gray Ceramic Case,smartwatch,122090.0,122090.0,0.0,4.6,,OLED Retina Display,,1.0,,,Nylon,,,True,,False,kaggle_devsubhash
+59,Apple,Series 3 GPS + Cellular- 42 mm White Ceramic Case,smartwatch,122090.0,122090.0,0.0,4.6,,OLED Retina Display,,1.0,,,Nylon,,,True,,False,kaggle_devsubhash
+60,Apple,Series 3 GPS - 38 mm Space Grey Aluminium Case,smartwatch,16900.0,20900.0,19.1,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+61,Apple,Series 3 GPS - 42 mm Space Grey Aluminium Case,smartwatch,18900.0,23900.0,20.9,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+62,Apple,Series 5 GPS + Cellular 40 mm Space Black Stainless Steel Case,smartwatch,69900.0,69900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+63,Apple,Series 5 GPS + Cellular 40 mm Space Grey Aluminium Case,smartwatch,39990.0,49900.0,19.9,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+64,Apple,Series 5 GPS + Cellular 40 mm Stainless Steel Case,smartwatch,65900.0,65900.0,0.0,3.4,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+65,Apple,Series 5 GPS + Cellular 44 mm Gold Aluminium Case,smartwatch,52900.0,52900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+66,Apple,Series 5 GPS + Cellular 44 mm Gold Stainless Steel Case,smartwatch,73900.0,73900.0,0.0,4.2,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+67,Apple,Series 5 GPS + Cellular 44 mm Gold Stainless Steel Case,smartwatch,69900.0,69900.0,0.0,4.2,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+68,Apple,Series 5 GPS + Cellular 44 mm Space Black Stainless Steel Case,smartwatch,69900.0,69900.0,0.0,4.2,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+69,Apple,Series 5 GPS + Cellular 44 mm Space Grey Aluminium Case,smartwatch,52900.0,52900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+70,Apple,Series 5 GPS + Cellular 44 mm Stainless Steel Case,smartwatch,73900.0,73900.0,0.0,4.2,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+71,Apple,Series 5 GPS 40 mm Silver Aluminium Case,smartwatch,40900.0,40900.0,0.0,4.7,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+72,Apple,Series 6 GPS + Cellular 40 mm Blue Aluminium Case,smartwatch,45690.0,49900.0,8.4,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+73,Apple,Series 6 GPS + Cellular 40 mm Gold Aluminium Case,smartwatch,45690.0,49900.0,8.4,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+74,Apple,Series 6 GPS + Cellular 40 mm Gold Stainless Steel Case,smartwatch,69900.0,69900.0,0.0,4.5,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+75,Apple,Series 6 GPS + Cellular 40 mm Gold Stainless Steel Case,smartwatch,67900.0,73900.0,8.1,4.5,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+76,Apple,Series 6 GPS + Cellular 40 mm Graphite Stainless Steel Case,smartwatch,67900.0,73900.0,8.1,4.5,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+77,Apple,Series 6 GPS + Cellular 40 mm Red Aluminium Case,smartwatch,45690.0,49900.0,8.4,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+78,Apple,Series 6 GPS + Cellular 40 mm Silver Aluminium Case,smartwatch,45690.0,49900.0,8.4,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+79,Apple,Series 6 GPS + Cellular 40 mm Space Grey Aluminium Case,smartwatch,69900.0,69900.0,0.0,4.2,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+80,Apple,Series 6 GPS + Cellular 40 mm Space Grey Aluminium Case,smartwatch,45690.0,49900.0,8.4,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+81,Apple,Series 6 GPS + Cellular 44 mm Blue Aluminium Case,smartwatch,48490.0,52900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+82,Apple,Series 6 GPS + Cellular 44 mm Graphite Stainless Steel Case,smartwatch,67900.0,73900.0,8.1,4.5,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+83,Apple,Series 6 GPS + Cellular 44 mm Red Aluminium Case,smartwatch,48490.0,52900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+84,Apple,Series 6 GPS + Cellular 44 mm Silver Aluminium Case,smartwatch,48490.0,52900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+85,Apple,Series 6 GPS + Cellular 44 mm Silver Stainless Steel Case,smartwatch,77900.0,77900.0,0.0,4.5,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+86,Apple,Series 6 GPS + Cellular 44 mm Space Grey Aluminium Case,smartwatch,48490.0,52900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+87,Apple,Series 6 GPS 40 mm Blue Aluminium Case,smartwatch,37490.0,40900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+88,Apple,Series 6 GPS 40 mm Gold Aluminium Case,smartwatch,37490.0,40900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+89,Apple,Series 6 GPS 40 mm Silver Aluminium Case,smartwatch,37490.0,40900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+90,Apple,Series 6 GPS 40 mm Space Grey Aluminium Case,smartwatch,37490.0,40900.0,8.3,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+91,Apple,Series 6 GPS 44 mm Blue Aluminium Case,smartwatch,43900.0,43900.0,0.0,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+92,Apple,Series 6 GPS 44 mm Red Aluminium Case,smartwatch,40190.0,43900.0,8.5,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+93,Apple,Series 6 GPS 44 mm Silver Aluminium Case,smartwatch,43900.0,43900.0,0.0,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+94,Apple,Series 6 GPS 44 mm Space Grey Aluminium Case,smartwatch,40190.0,43900.0,8.5,4.5,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+95,Apple,Series 7 GPS + Cellular 41 mm Aluminium,smartwatch,50900.0,50900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+96,Apple,"Series 7 GPS + Cellular, 41 mm Stainless Steel",smartwatch,73900.0,73900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+97,Apple,"Series 7 GPS + Cellular, 45 mm Aluminium",smartwatch,53900.0,53900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+98,Apple,"Series 7 GPS + Cellular, 45 mm Stainless Steel",smartwatch,73900.0,73900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+99,Apple,"Series 7 GPS + Cellular, 45 mm Stainless Steel",smartwatch,77900.0,77900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+100,Apple,Series 7 GPS 41 mm Aluminium Case,smartwatch,41900.0,41900.0,0.0,5.0,,OLED Retina Display,,1.0,,,Aluminium,,,False,,False,kaggle_devsubhash
+101,Apple,Series 7 GPS 45 mm,smartwatch,44900.0,44900.0,0.0,5.0,,OLED Retina Display,,1.0,,,Silicone,,,False,,False,kaggle_devsubhash
+102,Apple,Sport 42 mm Space Grey Aluminium Case,smartwatch,29900.0,29900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Aluminium,,,True,,False,kaggle_devsubhash
+103,Apple,"Watch SE (GPS, 40mm) - Gold Aluminium Case with Starlight Sport Band - Regular",smartwatch,29900.0,,0.0,4.6,5502.0,,1.6,,True,True,Silicon,Rectangle,Gold,False,,False,kaggle_arnabchaki
+104,Apple,"Watch SE (GPS, 44mm) - Gold Aluminium Case with Starlight Sport Band - Regular",smartwatch,32900.0,,0.0,4.6,5502.0,,1.7,,True,True,Silicon,Rectangle,Gold,False,,False,kaggle_arnabchaki
+105,Apple,"Watch SE (GPS, 44mm) - Space Grey Aluminium Case with Midnight Sport Band",smartwatch,32899.0,32900.0,0.0,4.6,5502.0,,1.7,,True,True,Silicon,Rectangle,Grey,False,,False,kaggle_arnabchaki
+106,Apple,Watch SE GPS (2nd Gen),smartwatch,29650.0,29900.0,0.8,4.5,154.0,,1.6,,True,True,Silicon,Rectangle,Midnight,False,,False,kaggle_arnabchaki
+107,Apple,Watch SE GPS + Cellular,smartwatch,33900.0,,0.0,4.6,3440.0,,1.6,,True,True,Silicon,Rectangle,Pink,False,,False,kaggle_arnabchaki
+108,Apple,Watch SE GPS + Cellular (2nd Gen),smartwatch,37900.0,,0.0,4.4,65.0,,1.7,,True,True,Silicon,Rectangle,Starlight Sport,False,,False,kaggle_arnabchaki
+109,Apple,"Watch SE(GPS, 40mm) - Silver Aluminium Case with Abyss Blue Sport Band - Regular",smartwatch,29900.0,,0.0,4.6,5502.0,,1.6,,True,True,Silicon,Rectangle,Silver,False,,False,kaggle_arnabchaki
+110,Apple,"Watch Series 3 (GPS, 42mm) - Silver Aluminium Case with White Sport Band",smartwatch,22900.0,23900.0,4.2,4.6,55800.0,,1.7,,True,True,Silicon,Rectangle,White,False,,False,kaggle_arnabchaki
+111,Apple,"Watch Series 3 (GPS, 42mm) - Space Grey Aluminium Case with Black Sport Band",smartwatch,23349.0,23900.0,2.3,4.6,55800.0,,1.7,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+112,Apple,Watch Series 6 GPS,smartwatch,40900.0,,0.0,4.5,1720.0,,1.6,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+113,Apple,Watch Series 6 GPS + Cellular,smartwatch,49900.0,,0.0,4.5,1349.0,,1.6,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+114,Apple,Watch Series 8 GPS,smartwatch,48900.0,,0.0,4.3,158.0,,1.8,,True,True,Silicon,Rectangle,Starlight Sport,False,,False,kaggle_arnabchaki
+115,Apple,Watch Series 8 GPS + Cellular,smartwatch,55900.0,,0.0,4.5,132.0,,1.6,,True,True,Silicon,Rectangle,Starlight Sport,False,,False,kaggle_arnabchaki
+116,Apple,"Watch Series7 (GPS + Cellular, 41mm)Blue Aluminium Case-Abyss Blue Sport Band",smartwatch,49666.0,50900.0,2.4,4.5,1519.0,,1.6,,True,True,Aluminium,Rectangle,Blue,False,,False,kaggle_arnabchaki
+117,Apple,"Watch Series7 (GPS + Cellular, 45mm)Blue Aluminium Case-Abyss Blue Sport Band",smartwatch,53900.0,,0.0,4.5,1519.0,,1.8,,True,True,Aluminium,Rectangle,Blue,False,,False,kaggle_arnabchaki
+118,Apple,Watch Series7 (GPS+Cellular-45mm)Green Aluminium Case-Clover Sport Band,smartwatch,53900.0,,0.0,4.5,1519.0,,1.8,,True,True,Aluminium,Rectangle,Green,False,,False,kaggle_arnabchaki
+119,Apple,"Watch Series7 (GPS, 41mm) - Blue Aluminium Case with Abyss Blue Sport Band",smartwatch,41900.0,,0.0,4.6,2847.0,,1.6,,True,True,Aluminium,Rectangle,Blue,False,,False,kaggle_arnabchaki
+120,Apple,"Watch Series7 (GPS, 41mm) - Green Aluminium Case with Clover Sport Band",smartwatch,41900.0,,0.0,4.6,2847.0,,1.6,,True,True,Aluminium,Rectangle,Green,False,,False,kaggle_arnabchaki
+121,Apple,"Watch Series7 (GPS, 41mm) - Midnight Aluminium Case with Midnight Sport Band",smartwatch,41900.0,,0.0,4.6,2847.0,,1.6,,True,True,Aluminium,Rectangle,Black,False,,False,kaggle_arnabchaki
+122,Apple,"Watch Series7 (GPS, 41mm) - Starlight Aluminium Case with Starlight Sport Band",smartwatch,41900.0,,0.0,4.6,2847.0,,1.6,,True,True,Aluminium,Rectangle,White,False,,False,kaggle_arnabchaki
+123,Apple,"Watch Series7 (GPS, 45mm) - Blue Aluminium Case with Abyss Blue Sport Band",smartwatch,44900.0,,0.0,4.6,2847.0,,1.8,,True,True,Aluminium,Rectangle,Blue,False,,False,kaggle_arnabchaki
+124,Apple,"Watch Series7 (GPS, 45mm) - Green Aluminium Case with Clover Sport Band",smartwatch,44730.0,44900.0,0.4,4.6,2847.0,,1.8,,True,True,Aluminium,Rectangle,Green,False,,False,kaggle_arnabchaki
+125,Apple,Watch Series7 (GPS-45mm) (PRODUCT)RED Aluminium Case-(PRODUCT)RED Sport Band,smartwatch,44900.0,,0.0,4.6,2847.0,,1.8,,True,True,Aluminium,Rectangle,Red,False,,False,kaggle_arnabchaki
+126,Apple,"Watch Series7(GPS+Cellular, 41mm)-Gold Stainless Steel Case-Gold Milanese Loop",smartwatch,73900.0,,0.0,4.5,1519.0,,1.6,,True,True,Stainless Steel,Rectangle,Gold,False,,False,kaggle_arnabchaki
+127,Apple,Watch Ultra GPS + Cellular,smartwatch,89900.0,,0.0,4.7,51.0,,1.9,,True,True,Fabric,Rectangle,Orange Alpine,False,,False,kaggle_arnabchaki
+128,Apple,series 2 - 38 mm Stainless Steel Case,smartwatch,64900.0,64900.0,0.0,4.6,,OLED Retina Display,,1.0,,,Stainless Steel,,,True,,False,kaggle_devsubhash
+129,Crossbeats,Ace,smartwatch,2999.0,9999.0,70.0,3.9,,IPS Display,,15.0,,,Silicone,,,False,,False,kaggle_devsubhash
+130,Crossbeats,Grit,smartwatch,2999.0,9999.0,70.0,4.3,674.0,,1.8,,True,True,,,,False,,False,kaggle_arnabchaki
+131,Crossbeats,Ignite,smartwatch,2799.0,7999.0,65.0,3.9,,IPS Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+132,Crossbeats,Ignite Pro,smartwatch,2999.0,9999.0,70.0,4.2,,IPS Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+133,Crossbeats,Ignite S3,smartwatch,3999.0,9999.0,60.0,3.9,,IPS Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+134,Crossbeats,Infinti 2.0,smartwatch,5999.0,14999.0,60.0,4.3,996.0,,1.4,,True,True,,,,False,,False,kaggle_arnabchaki
+135,Crossbeats,Orbit,smartwatch,3799.0,9999.0,62.0,3.7,,IPS Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+136,Crossbeats,Orbit - Special Edition,smartwatch,4190.0,9999.0,58.1,3.9,,IPS Display,,10.0,,,Leather,,,False,,False,kaggle_devsubhash
+137,Crossbeats,Orbit Sport,smartwatch,3799.0,9999.0,62.0,4.1,,IPS Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+138,Crossbeats,S4 Max,smartwatch,3999.0,7999.0,50.0,3.9,3856.0,,1.9,,True,True,,,,False,,False,kaggle_arnabchaki
+139,Crossbeats,Trak,smartwatch,3999.0,9999.0,60.0,3.8,,IPS Display,,15.0,,,Silicone,,,False,,False,kaggle_devsubhash
+140,Dizo,D TALK SMART WATCH (SILVER GREY),smartwatch,3999.0,5999.0,33.3,4.2,42860.0,,1.8,,True,True,Silicon,Rectangle,Grey,False,,False,kaggle_arnabchaki
+141,Dizo,"D Talk DW 32051 Smart Watch with Up to 7 Day Battery Life, Classic Black",smartwatch,3999.0,5999.0,33.3,4.2,42860.0,,1.8,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+142,Dizo,R TALK SMARTWATCH Amoled Display with Calling10 Days Battery(SilverGrey)FreeSize,smartwatch,5999.0,6999.0,14.3,4.2,13.0,,1.3,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+143,Dizo,"R Talk, Amoled Display with Calling & 10 days battery",smartwatch,5999.0,6999.0,14.3,4.2,13.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+144,Dizo,"WATCH D PRO WITH CALLING,D1 CHIPSET,OS,1.85 INCH DISPLAY",smartwatch,2699.0,5999.0,55.0,3.3,222.0,,1.9,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+145,Dizo,WATCH D ULTRA 1.78 AMOLED WITH CALLING,smartwatch,3299.0,6999.0,52.9,3.9,345.0,,1.8,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+146,Dizo,Watch 2,smartwatch,1699.0,3999.0,57.5,4.2,110067.0,,1.7,,True,True,Silicon,Rectangle,Pink,False,,False,kaggle_arnabchaki
+147,Dizo,Watch 2 Sports i,smartwatch,2499.0,3999.0,37.5,3.6,70.0,,1.7,,True,True,Plastic,Square,Black,False,,False,kaggle_arnabchaki
+148,Dizo,"Watch 2 sports (by realme techlife) 1.69"" Bright screen with 110+ sports modes",smartwatch,1199.0,3499.0,65.7,4.2,62964.0,,1.7,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+149,Dizo,Watch D 1.8 inch Dynamic display with 550nits brightness,smartwatch,1799.0,4999.0,64.0,4.2,34953.0,,1.8,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+150,Dizo,"Watch D Plus with 1.85inch,550nits display&14 day battery",smartwatch,1999.0,4999.0,60.0,4.1,717.0,,1.9,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+151,Dizo,"Watch D Sharp 1.75"" with High Res (320*390) Display (By realme techLife)",smartwatch,1299.0,5499.0,76.4,4.0,1598.0,,1.8,,True,True,Silicon,Rectangle,Grey,False,,False,kaggle_arnabchaki
+152,Dizo,Watch D Talk 1.8 display with calling&7 day battery (by realme Techlife),smartwatch,3499.0,5999.0,41.7,4.2,1785.0,,1.8,,True,True,Silicon,Rectangle,Grey,False,,False,kaggle_arnabchaki
+153,Dizo,"Watch D2 with 1.91 inch super big display ,BT Calling (by realme TechLife)",smartwatch,1999.0,5999.0,66.7,4.1,561.0,,1.9,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+154,Dizo,Watch Pro,smartwatch,2799.0,3999.0,30.0,4.1,7586.0,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+155,Dizo,Watch R AMOLED with 45 mm Dial Size (by realme techLife),smartwatch,3299.0,5999.0,45.0,4.0,28926.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+156,Dizo,"Watch R Talk Go, 1.39 inch, 550nits display, 10 day battery (by realme TechLife)",smartwatch,3999.0,6999.0,42.9,4.1,663.0,,1.4,,True,True,Silicon,Circle,Blue,False,,False,kaggle_arnabchaki
+157,Dizo,"Watch R Talk, Amoled Display with Calling & 10 days battery",smartwatch,4499.0,6999.0,35.7,4.2,6385.0,,1.3,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+158,Dizo,Watch S 1.57 Bright touch screen with rectangular display and 110+ sports modes,smartwatch,1999.0,3999.0,50.0,3.9,3492.0,,1.6,,True,True,Silicon,Rectangle,Pink,False,,False,kaggle_arnabchaki
+159,Dizo,Watch 2,smartwatch,2699.0,3999.0,32.5,4.3,,LCD Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+160,Dizo,Watch Pro,smartwatch,3799.0,5999.0,36.7,4.2,,LCD Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+161,Fastrack,Reflex 2.0,smartwatch,1395.0,1995.0,30.1,4.1,,TFT-LCD Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+162,Fastrack,Reflex 3.0,smartwatch,2200.0,2995.0,26.5,4.1,,TFT-LCD Display,,4.0,,,Silicone,,,False,,False,kaggle_devsubhash
+163,Fastrack,Reflex 3.0,smartwatch,2495.0,2995.0,16.7,3.8,,TFT-LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+164,Fastrack,Reflex Beat,smartwatch,1645.0,2195.0,25.1,4.0,,TFT-LCD Display,,4.0,,,Silicone,,,False,,False,kaggle_devsubhash
+165,Fire-Boltt,AI-BT Calling,smartwatch,4499.0,9999.0,55.0,3.7,,HD Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+166,Fire-Boltt,Almighty,smartwatch,4999.0,14999.0,66.7,4.1,,AMOLED Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+167,Fire-Boltt,BSW003,smartwatch,1899.0,8999.0,78.9,4.0,15543.0,,1.3,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+168,Fire-Boltt,BSW004,smartwatch,4800.0,9999.0,52.0,,,LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+169,Fire-Boltt,BSW005,smartwatch,3499.0,11999.0,70.8,4.1,44170.0,,1.9,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+170,Fire-Boltt,BSW019,smartwatch,6499.0,12999.0,50.0,2.5,,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+171,Fire-Boltt,BSW024,smartwatch,1999.0,7999.0,75.0,4.1,33012.0,,1.7,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+172,Fire-Boltt,BSW024,smartwatch,1794.0,7999.0,77.6,4.1,33012.0,,1.7,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+173,Fire-Boltt,BSW030,smartwatch,1299.0,7999.0,83.8,4.2,25784.0,,1.7,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+174,Fire-Boltt,BSW037,smartwatch,1399.0,11999.0,88.3,4.1,1519.0,,1.8,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+175,Fire-Boltt,BSW042,smartwatch,1799.0,9999.0,82.0,4.2,33415.0,,1.3,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+176,Fire-Boltt,BSW043,smartwatch,2499.0,9999.0,75.0,4.2,23302.0,,1.8,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+177,Fire-Boltt,BSW046,smartwatch,3799.0,16999.0,77.7,4.3,20788.0,,1.8,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+178,Fire-Boltt,BSW049,smartwatch,1799.0,2199.0,18.2,4.3,39274.0,,1.3,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+179,Fire-Boltt,BSW053,smartwatch,1799.0,19999.0,91.0,4.3,13244.0,,1.8,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+180,Fire-Boltt,BSW070,smartwatch,2499.0,11999.0,79.2,4.1,1990.0,,1.9,,True,True,,,,False,,False,kaggle_arnabchaki
+181,Fire-Boltt,BSW072,smartwatch,2499.0,9999.0,75.0,4.1,2571.0,,2.0,,True,True,,,,False,,False,kaggle_arnabchaki
+182,Fire-Boltt,BSW073,smartwatch,2499.0,18999.0,86.8,4.2,11.0,,1.9,,True,True,,,,False,,False,kaggle_arnabchaki
+183,Fire-Boltt,BSW100,smartwatch,1799.0,11999.0,85.0,4.3,39274.0,,1.4,,True,True,,,,False,,False,kaggle_arnabchaki
+184,Fire-Boltt,DAZZLE PLUS,smartwatch,2399.0,11999.0,80.0,2.5,6022.0,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+185,Fire-Boltt,HULK BLUETOOTH CALLING,smartwatch,4599.0,17999.0,74.4,2.5,11.0,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+186,Fire-Boltt,Max,smartwatch,4499.0,12999.0,65.4,4.0,,AMOLED Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+187,Fire-Boltt,Mercury,smartwatch,2999.0,7999.0,62.5,4.0,,HD Display,,8.0,,,Silicone,,,False,,False,kaggle_devsubhash
+188,Fire-Boltt,Mercury,smartwatch,2499.0,7999.0,68.8,4.0,,HD Display,,8.0,,,Silicone,,,False,,False,kaggle_devsubhash
+189,Fire-Boltt,NINJA 2 MAX,smartwatch,2499.0,5999.0,58.3,2.5,,,1.5,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+190,Fire-Boltt,NINJA PRO,smartwatch,2699.0,4999.0,46.0,2.5,33.0,,1.3,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+191,Fire-Boltt,NINJA PRO MAX,smartwatch,2299.0,5999.0,61.7,2.5,201.0,,1.6,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+192,Fire-Boltt,Ninja Pro,smartwatch,1999.0,4999.0,60.0,4.0,,HD Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+193,Fire-Boltt,Ninja touch to Wake,smartwatch,1899.0,4999.0,62.0,3.9,,HD Display,,5.0,,,Silicone,,,False,,False,kaggle_devsubhash
+194,Fire-Boltt,RING 2,smartwatch,3299.0,9999.0,67.0,2.5,5.0,,1.7,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+195,Fire-Boltt,RING 3,smartwatch,3927.0,9999.0,60.7,2.5,,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+196,Fire-Boltt,SpO2 Full Touch,smartwatch,2999.0,5999.0,50.0,4.0,,HD Display,,8.0,,,Silicone,,,False,,False,kaggle_devsubhash
+197,Fire-Boltt,"SpO2 Full Touch 1.4 inch Smart Watch with Blood Oxygen, Fitness (Black)",smartwatch,1999.0,5999.0,66.7,3.7,,,,,True,True,Rubber,Square,Black,False,,False,kaggle_arnabchaki
+198,Fire-Boltt,Spin,smartwatch,5846.0,5999.0,2.6,2.4,,TFT-LCD Display,,5.0,,,Silicone,,,False,,False,kaggle_devsubhash
+199,Fire-Boltt,Talk Bluetooth,smartwatch,3499.0,9999.0,65.0,4.1,,HD Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+200,Fire-Boltt,Ultron,smartwatch,3999.0,10999.0,63.6,4.1,,AMOLED Display,,5.0,,,Silicone,,,False,,False,kaggle_devsubhash
+201,Fire-Boltt,beast pro,smartwatch,3799.0,9999.0,62.0,3.7,,,,,True,True,Rubber,Square,Black,False,,False,kaggle_arnabchaki
+202,Fire-Boltt,beast pro,smartwatch,3499.0,9999.0,65.0,4.8,4.0,,,,True,True,Rubber,Square,Silver,False,,False,kaggle_arnabchaki
+203,Fire-Boltt,beast pro,smartwatch,3700.0,9999.0,63.0,,,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+204,Fire-Boltt,bsw001,smartwatch,3599.0,5999.0,40.0,5.0,3.0,,1.4,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+205,Fire-Boltt,bsw002,smartwatch,4599.0,7999.0,42.5,2.5,,,1.7,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+206,Fire-Boltt,bsw003,smartwatch,5999.0,8999.0,33.3,2.5,,,1.3,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+207,Fire-Boltt,bsw005,smartwatch,5599.0,9999.0,44.0,2.5,,,1.7,,True,True,Silicon,Square,White,False,,False,kaggle_arnabchaki
+208,Fire-Boltt,bsw011,smartwatch,2899.0,4999.0,42.0,2.5,,,1.3,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+209,Fire-Boltt,bsw016,smartwatch,3999.0,9999.0,60.0,3.7,3.0,,1.7,,True,True,Silicon,Square,Pink,False,,False,kaggle_arnabchaki
+210,Fire-Boltt,bsw017,smartwatch,5599.0,9999.0,44.0,2.5,,,1.3,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+211,Fire-Boltt,bsw020,smartwatch,6999.0,15999.0,56.3,2.6,,,1.4,,True,True,Silicon,Circle,Brown,False,,False,kaggle_arnabchaki
+212,Fire-Boltt,bsw360,smartwatch,3999.0,9999.0,60.0,3.7,,,,,True,True,Rubber,Circle,Blue,False,,False,kaggle_arnabchaki
+213,Fire-Boltt,call 2,smartwatch,3000.0,7999.0,62.5,,,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+214,Fire-Boltt,call 2,smartwatch,3200.0,7999.0,60.0,,,,,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+215,Fire-Boltt,ninja 2 max,smartwatch,2298.0,5999.0,61.7,3.6,5.0,,,,True,True,Rubber,Square,Black,False,,False,kaggle_arnabchaki
+216,Fire-Boltt,ninja calling,smartwatch,2799.0,7999.0,65.0,4.2,5.0,,,,True,True,Rubber,Square,Black,False,,False,kaggle_arnabchaki
+217,Fire-Boltt,ring,smartwatch,3599.0,9999.0,64.0,3.7,,,,,True,True,Rubber,Square,Blue,False,,False,kaggle_arnabchaki
+218,Fire-Boltt,ring,smartwatch,3449.0,9999.0,65.5,3.8,83.0,,,,True,True,Rubber,Square,Black,False,,False,kaggle_arnabchaki
+219,Fire-Boltt,ring,smartwatch,3999.0,9999.0,60.0,3.1,8.0,,,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+220,Fire-Boltt,starcross,smartwatch,3699.0,11999.0,69.2,2.5,,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+221,Fire-Boltt,starcross,smartwatch,3899.0,11999.0,67.5,2.5,,,1.8,,True,True,Silicon,Square,Green,False,,False,kaggle_arnabchaki
+222,Fire-Boltt,tamish,smartwatch,5998.0,9999.0,40.0,2.5,,,1.3,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+223,Fire-Boltt,wonder,smartwatch,3299.0,11999.0,72.5,2.5,,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+224,Fitbit,Blaze,smartwatch,19999.0,,0.0,4.2,1583.0,,1.3,,True,True,Rubber,Contemporary,Black,True,,False,kaggle_arnabchaki
+225,Fitbit,Blaze,smartwatch,22999.0,22999.0,0.0,4.2,,LCD Display,,7.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+226,Fitbit,Blaze,smartwatch,17999.0,19999.0,10.0,4.2,,LCD Display,,7.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+227,Fitbit,Charge 5,smartwatch,14999.0,,0.0,4.7,,,1.0,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+228,Fitbit,Fitbit Versa 4 Fitness Watch (Black / Graphite Aluminium)6-Month Membership,smartwatch,20499.0,,0.0,4.7,,,,,True,True,Rubber,Curved,Black,False,,False,kaggle_arnabchaki
+229,Fitbit,Fitbit Versa 4 Fitness Watch (Pink Sand / Copper Rose Aluminium) 6Membership,smartwatch,20499.0,,0.0,4.7,114.0,,,,True,True,Silicon,Curved,Pink,False,,False,kaggle_arnabchaki
+230,Fitbit,Fitbit Versa 4 Fitness Watch (Waterfall Blue / Platinum Aluminium) Membership,smartwatch,20499.0,,0.0,4.7,,,,,True,True,Rubber,Curved,Blue,False,,False,kaggle_arnabchaki
+231,Fitbit,FitbitInspire 3 Health & Fitness Tracker (Lilac Bliss / Black,smartwatch,8999.0,,0.0,4.7,,,,,True,False,Rubber,Rectangle,Passion Pink,False,,False,kaggle_arnabchaki
+232,Fitbit,Inspire 3,smartwatch,8999.0,,0.0,4.7,,,,,True,True,Silicon,Rectangle,Morning Glow,False,,False,kaggle_arnabchaki
+233,Fitbit,Ionic,smartwatch,26499.0,,0.0,4.1,367.0,,1.3,,True,True,Rubber,Square,Grey,True,,False,kaggle_arnabchaki
+234,Fitbit,Ionic,smartwatch,22499.0,24999.0,10.0,4.1,,LCD Display,,7.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+235,Fitbit,Ionic,smartwatch,18999.0,24999.0,24.0,4.1,,LCD Display,,7.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+236,Fitbit,Sense,smartwatch,20999.0,22999.0,8.7,4.2,547.0,,1.6,,True,True,Rubber,Curved,Black,False,,False,kaggle_arnabchaki
+237,Fitbit,Sense,smartwatch,21499.0,22999.0,6.5,4.2,,AMOLED Display,,7.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+238,Fitbit,Sense 2,smartwatch,24999.0,,0.0,4.7,,,1.5,,True,True,Silicon,Square,White Platinum,False,,False,kaggle_arnabchaki
+239,Fitbit,Surge,smartwatch,24990.0,,0.0,3.9,188.0,,1.3,,True,True,Rubber,Square,Blue,True,,False,kaggle_arnabchaki
+240,Fitbit,Surge,smartwatch,9999.0,19990.0,50.0,3.8,,LCD Display,,7.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+241,Fitbit,Surge,smartwatch,19990.0,19990.0,0.0,3.8,,LCD Display,,7.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+242,Fitbit,Versa,smartwatch,20590.0,21499.0,4.2,4.1,4475.0,,1.3,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+243,Fitbit,Versa,smartwatch,16124.0,19999.0,19.4,4.1,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+244,Fitbit,Versa,smartwatch,17895.0,21499.0,16.8,4.2,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+245,Fitbit,Versa,smartwatch,16990.0,23499.0,27.7,4.1,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+246,Fitbit,Versa 2,smartwatch,11699.0,14999.0,22.0,4.3,3999.0,,1.3,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+247,Fitbit,Versa 2,smartwatch,13499.0,21999.0,38.6,4.3,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+248,Fitbit,Versa 2,smartwatch,11999.0,14999.0,20.0,4.3,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+249,Fitbit,Versa 2 Special Edition,smartwatch,15499.0,23999.0,35.4,4.5,92.0,,,,True,True,Fabric,Square,Multicolor,False,,False,kaggle_arnabchaki
+250,Fitbit,Versa 3,smartwatch,17699.0,18999.0,6.8,4.3,455.0,,,,True,True,Rubber,Curved,Black,False,,False,kaggle_arnabchaki
+251,Fitbit,Versa 3,smartwatch,17999.0,18999.0,5.3,4.3,,AMOLED Display,,7.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+252,Fitbit,Versa 4,smartwatch,20499.0,,0.0,4.7,114.0,,1.5,,True,True,Silicon,Square,Beet Juice,False,,False,kaggle_arnabchaki
+253,Fitbit,Versa Lite Edition,smartwatch,16999.0,,0.0,4.2,426.0,,1.0,,True,True,Silicon,Square,Purple,False,,False,kaggle_arnabchaki
+254,Fitbit,Versa Lite Edition,smartwatch,14399.0,15999.0,10.0,4.2,,AMOLED Display,,7.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+255,Fitbit,Versa Special Edition,smartwatch,8999.0,23499.0,61.7,4.1,4475.0,,1.3,,True,True,Fabric,Square,Charcoal,False,,False,kaggle_arnabchaki
+256,Fitbit,Versa Special Edition,smartwatch,10365.0,23499.0,55.9,4.1,,AMOLED Display,,7.0,,,Fabric,,,False,,False,kaggle_devsubhash
+257,Fitbit,fitbit charge 5 black,smartwatch,14999.0,,0.0,4.7,6.0,,,,True,False,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+258,Fitbit,fitbit charge 5 blue,smartwatch,14999.0,,0.0,4.7,5.0,,1.3,,True,False,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+259,Fitbit,versa,smartwatch,21499.0,21499.0,0.0,4.1,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+260,Fossil,4th Gen Explorist HR,smartwatch,10998.0,21995.0,50.0,3.9,5182.0,,1.8,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+261,Fossil,4th Gen Venture HR,smartwatch,13195.0,21995.0,40.0,3.9,510.0,,1.6,,True,True,Stainless Steel,Circle,Gold,False,,False,kaggle_arnabchaki
+262,Fossil,4th Gen Venture HR,smartwatch,10997.0,21995.0,50.0,3.9,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+263,Fossil,4th Gen Venture HR,smartwatch,17596.0,21995.0,20.0,3.9,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+264,Fossil,5th Gen Julianna,smartwatch,15995.0,22995.0,30.4,4.6,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+265,Fossil,Barstow Hybrid,smartwatch,8995.0,11995.0,25.0,4.6,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+266,Fossil,Cameron Hybrid,smartwatch,8995.0,13495.0,33.3,4.6,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+267,Fossil,Cameron Hybrid Smartwatch,smartwatch,13495.0,13495.0,0.0,4.6,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+268,Fossil,Carlie,smartwatch,11995.0,11995.0,0.0,4.8,,AMOLED Display,,10.0,,,Leather,,,False,,False,kaggle_devsubhash
+269,Fossil,Carlie Hybrid,smartwatch,13495.0,13495.0,0.0,4.6,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+270,Fossil,Carlie Hybrid,smartwatch,6995.0,11995.0,41.7,4.6,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+271,Fossil,Carlie Hybrid,smartwatch,8995.0,13495.0,33.3,4.6,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+272,Fossil,Charter Hybrid HR,smartwatch,13196.0,16495.0,20.0,3.9,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+273,Fossil,Charter Hybrid HR,smartwatch,14021.0,16495.0,15.0,3.9,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+274,Fossil,Charter Hybrid HR,smartwatch,12396.0,14995.0,17.3,3.9,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+275,Fossil,Charter Hybrid HR Smartwatch,smartwatch,14995.0,,0.0,3.9,41.0,,1.2,,False,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+276,Fossil,Collider Hybrid,smartwatch,14995.0,14995.0,0.0,4.0,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+277,Fossil,Collider Hybrid,smartwatch,16495.0,16495.0,0.0,4.0,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+278,Fossil,Collider Hybrid HR,smartwatch,16495.0,,0.0,4.1,123.0,,1.1,,False,True,Stainless Steel,Circle,Grey,False,,False,kaggle_arnabchaki
+279,Fossil,Commuter,smartwatch,11995.0,,0.0,4.3,4.0,,1.7,,False,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+280,Fossil,Commuter Hybrid,smartwatch,8995.0,11995.0,25.0,4.6,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+281,Fossil,Eleanor Hybrid,smartwatch,6995.0,11995.0,41.7,4.6,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+282,Fossil,FB-01 Hybrid,smartwatch,8995.0,13495.0,33.3,3.9,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+283,Fossil,FB-01 Hybrid HR,smartwatch,9995.0,16495.0,39.4,3.8,144.0,,1.1,,True,True,Stainless Steel,Circle,Black,False,,False,kaggle_arnabchaki
+284,Fossil,FB-01 Hybrid HR,smartwatch,14021.0,16495.0,15.0,4.0,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+285,Fossil,FB-01 Hybrid HR,smartwatch,12396.0,14995.0,17.3,4.0,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+286,Fossil,FTW1134 Q Hybrid,smartwatch,11995.0,11995.0,0.0,4.6,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+287,Fossil,FTW1136 Q Hybrid,smartwatch,11995.0,11995.0,0.0,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+288,Fossil,FTW1140 Q Hybrid,smartwatch,6995.0,13995.0,50.0,3.8,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+289,Fossil,FTW1140 Q Hybrid Watch,smartwatch,13995.0,,0.0,3.8,4.0,,,,False,True,Stainless Steel,Circle,Blue,False,,False,kaggle_arnabchaki
+290,Fossil,FTW1141 Q Hybrid,smartwatch,6995.0,11995.0,41.7,4.6,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+291,Fossil,FTW1142 Q Hybrid,smartwatch,9796.0,13995.0,30.0,3.7,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+292,Fossil,FTW1144 Q Hybrid,smartwatch,8995.0,13995.0,35.7,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+293,Fossil,FTW1145 Q Hybrid,smartwatch,6995.0,13995.0,50.0,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+294,Fossil,FTW1146 Q Hybrid,smartwatch,11995.0,11995.0,0.0,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+295,Fossil,FTW1151 Hybrid,smartwatch,8995.0,11995.0,25.0,4.3,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+296,Fossil,FTW1154 Hybrid,smartwatch,8995.0,12995.0,30.8,4.3,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+297,Fossil,FTW1159 Hybrid,smartwatch,8995.0,12995.0,30.8,5.0,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+298,Fossil,FTW1161 Hybrid,smartwatch,8995.0,14495.0,37.9,4.3,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+299,Fossil,FTW20013 Q,smartwatch,21495.0,21495.0,0.0,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+300,Fossil,FTW2114 Q,smartwatch,18995.0,18995.0,0.0,4.6,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+301,Fossil,FTW2115 Q Watch,smartwatch,18995.0,18995.0,0.0,4.6,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+302,Fossil,FTW2120SET Q,smartwatch,23995.0,23995.0,0.0,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+303,Fossil,FTW4003,smartwatch,19995.0,19995.0,0.0,3.1,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+304,Fossil,FTW4003 Smart Watch,smartwatch,19995.0,,0.0,3.1,28.0,,1.4,,True,True,Leather,Circle,Brown,False,,False,kaggle_arnabchaki
+305,Fossil,FTW4010 Gold HR,smartwatch,15995.0,15995.0,0.0,4.8,,AMOLED Display,,6.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+306,Fossil,FTW5003 Hybrid,smartwatch,12995.0,12995.0,0.0,4.6,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+307,Fossil,FTW5011 Hybrid,smartwatch,8995.0,14495.0,37.9,4.8,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+308,Fossil,FTW5012 Hybrid,smartwatch,9097.0,12995.0,30.0,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+309,Fossil,FTW5015 Hybrid,smartwatch,6995.0,14495.0,51.7,3.0,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+310,Fossil,FTW5016 Hybrid,smartwatch,6995.0,14495.0,51.7,4.6,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+311,Fossil,FTW5017 Hybrid,smartwatch,14495.0,14495.0,0.0,4.6,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+312,Fossil,FTW5018 Hybrid,smartwatch,11596.0,14495.0,20.0,4.5,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+313,Fossil,FTW6001,smartwatch,21995.0,21995.0,0.0,4.2,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+314,Fossil,FTW6005,smartwatch,19995.0,19995.0,0.0,3.8,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+315,Fossil,FTW6006 Gold HR,smartwatch,21995.0,21995.0,0.0,3.7,,AMOLED Display,,6.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+316,Fossil,FTW6007,smartwatch,19995.0,19995.0,0.0,4.1,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+317,Fossil,FTW6009 Black HR,smartwatch,13995.0,13995.0,0.0,4.1,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+318,Fossil,FTW6010 Pink HR,smartwatch,15995.0,15995.0,0.0,4.4,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+319,Fossil,Fb-01 Hybrid Smartwatch Hr,smartwatch,9995.0,14995.0,33.3,3.9,57.0,,1.1,,False,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+320,Fossil,Garrett,smartwatch,8995.0,11995.0,25.0,3.7,,AMOLED Display,,1.0,,,Leather,,,False,,False,kaggle_devsubhash
+321,Fossil,Garrett HR,smartwatch,15289.0,22995.0,33.5,4.0,470.0,,1.3,,True,True,Stainless Steel,Circle,Silver,False,,False,kaggle_arnabchaki
+322,Fossil,Garrett HR,smartwatch,15995.0,22995.0,30.4,4.1,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+323,Fossil,Garrett HR,smartwatch,14995.0,22995.0,34.8,4.1,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+324,Fossil,Garrett Hybrid,smartwatch,6995.0,11995.0,41.7,3.7,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+325,Fossil,Garrett Hybrid,smartwatch,11995.0,11995.0,0.0,3.7,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+326,Fossil,Garrett Hybrid,smartwatch,10496.0,14995.0,30.0,3.7,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+327,Fossil,Gen 3 Q Explorist,smartwatch,15034.0,15034.0,0.0,4.3,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+328,Fossil,Gen 3 Q Explorist,smartwatch,15749.0,19995.0,21.2,4.1,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+329,Fossil,Gen 3 Q Explorist,smartwatch,3999.0,19995.0,80.0,4.2,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+330,Fossil,Gen 3 Q Explorist,smartwatch,21995.0,21995.0,0.0,4.4,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+331,Fossil,Gen 3 Q Venture,smartwatch,15396.0,21995.0,30.0,4.3,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+332,Fossil,Gen 3 Q Venture,smartwatch,19995.0,19995.0,0.0,4.3,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+333,Fossil,Gen 5 Carlyle HR,smartwatch,14995.0,22995.0,34.8,4.2,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+334,Fossil,Gen 5 Carlyle HR,smartwatch,15995.0,22995.0,30.4,4.2,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+335,Fossil,Gen 5 Garrett HR,smartwatch,15995.0,22995.0,30.4,4.1,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+336,Fossil,Gen 5 Garrett HR,smartwatch,14995.0,22995.0,34.8,4.1,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+337,Fossil,Gen 5 Julianna HR,smartwatch,18495.0,18495.0,0.0,3.8,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+338,Fossil,Gen 5 Julianna HR,smartwatch,18995.0,22995.0,17.4,4.3,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+339,Fossil,Gen 5 Julianna HR,smartwatch,15995.0,22995.0,30.4,4.3,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+340,Fossil,Gen 5 Julianna HR,smartwatch,14995.0,22995.0,34.8,4.3,,AMOLED Display,,2.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+341,Fossil,Gen 5E,smartwatch,18495.0,,0.0,3.8,172.0,,1.7,,True,True,Stainless Steel,Circle,Black,False,,False,kaggle_arnabchaki
+342,Fossil,Gen 6,smartwatch,23995.0,,0.0,4.2,343.0,,1.3,,True,True,Silicon,Circle,Purple,False,,False,kaggle_arnabchaki
+343,Fossil,Jacqueline,smartwatch,13495.0,,0.0,4.7,,,1.3,,False,True,Stainless Steel,Circle,Black,False,,False,kaggle_arnabchaki
+344,Fossil,Jacqueline Hybrid,smartwatch,10796.0,13495.0,20.0,4.0,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+345,Fossil,Jacqueline Hybrid,smartwatch,8995.0,13495.0,33.3,4.0,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+346,Fossil,Jacqueline Hybrid,smartwatch,11995.0,11995.0,0.0,4.6,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+347,Fossil,Jacqueline Hybrid,smartwatch,13495.0,13495.0,0.0,4.6,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+348,Fossil,Jacqueline Hybrid,smartwatch,6995.0,11995.0,41.7,4.6,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+349,Fossil,Julianna HR,smartwatch,9198.0,22995.0,60.0,4.3,283.0,,1.3,,True,True,Leather,Circle,Beige,False,,False,kaggle_arnabchaki
+350,Fossil,Latitude Hybrid HR,smartwatch,13196.0,16495.0,20.0,4.3,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+351,Fossil,Latitude Hybrid HR,smartwatch,12396.0,14995.0,17.3,4.3,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+352,Fossil,Machine Hybrid,smartwatch,11995.0,11995.0,0.0,4.6,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+353,Fossil,Marshall,smartwatch,18995.0,18995.0,0.0,4.0,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+354,Fossil,Marshall,smartwatch,19995.0,19995.0,0.0,4.1,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+355,Fossil,Neely,smartwatch,13495.0,,0.0,4.7,3.0,,1.3,,False,True,Stainless Steel,Circle,Blue,False,,False,kaggle_arnabchaki
+356,Fossil,Neely,smartwatch,8995.0,13495.0,33.3,4.7,,AMOLED Display,,1.0,,,Leather,,,False,,False,kaggle_devsubhash
+357,Fossil,Neutra Hybrid,smartwatch,13495.0,13495.0,0.0,5.0,,AMOLED Display,,12.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+358,Fossil,Neutra Hybrid,smartwatch,11995.0,11995.0,0.0,5.0,,AMOLED Display,,12.0,,,Leather,,,False,,False,kaggle_devsubhash
+359,Fossil,Neutra Hybrid HR,smartwatch,16495.0,,0.0,4.7,,,1.1,,False,True,Stainless Steel,Circle,Silver,False,,False,kaggle_arnabchaki
+360,Fossil,Q ACTIVIST,smartwatch,6995.0,6995.0,0.0,3.0,,AMOLED Display,,1.0,,,leather,,,False,,False,kaggle_devsubhash
+361,Fossil,Q Annette,smartwatch,6995.0,13495.0,48.2,4.6,,AMOLED Display,,1.0,,,Leather,,,False,,False,kaggle_devsubhash
+362,Fossil,Q Control,smartwatch,15995.0,15995.0,0.0,4.3,,AMOLED Display,,1.0,,,Silicone,,,False,,False,kaggle_devsubhash
+363,Fossil,Q Explorist,smartwatch,19995.0,,0.0,4.4,69.0,,1.7,,True,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+364,Fossil,Q Founder,smartwatch,19995.0,19995.0,0.0,4.2,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+365,Fossil,Q Founder 2.0,smartwatch,19995.0,19995.0,0.0,4.2,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+366,Fossil,Q Founder 2.0,smartwatch,11397.0,18995.0,40.0,4.1,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+367,Fossil,Q GRANT,smartwatch,6995.0,6995.0,0.0,4.6,,AMOLED Display,,7.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+368,Fossil,Q Jacqueline,smartwatch,13495.0,,0.0,4.4,11.0,,1.3,,False,True,Stainless Steel,Circle,Silver,False,,False,kaggle_arnabchaki
+369,Fossil,Q Jacqueline,smartwatch,8995.0,13495.0,33.3,4.4,,AMOLED Display,,1.0,,,Silicone,,,False,,False,kaggle_devsubhash
+370,Fossil,Q MACHINE,smartwatch,6995.0,6995.0,0.0,4.6,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+371,Fossil,Q Machine,smartwatch,10796.0,13495.0,20.0,4.6,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+372,Fossil,Q Neely,smartwatch,6995.0,12995.0,46.2,4.6,,AMOLED Display,,2.0,,,Leather,,,False,,False,kaggle_devsubhash
+373,Fossil,Q Venture,smartwatch,19999.0,21995.0,9.1,3.8,53.0,,1.7,,True,True,Stainless Steel,Circle,Silver,False,,False,kaggle_arnabchaki
+374,Fossil,Q Venture,smartwatch,15995.0,15995.0,0.0,4.6,,AMOLED Display,,1.0,,,Leather,,,False,,False,kaggle_devsubhash
+375,Fossil,Q Venture,smartwatch,4399.0,21995.0,80.0,3.8,,AMOLED Display,,1.0,,,Leather,,,False,,False,kaggle_devsubhash
+376,Fossil,Q Wander,smartwatch,19995.0,19995.0,0.0,4.0,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+377,Fossil,Q Wander,smartwatch,3799.0,18995.0,80.0,4.0,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+378,Fossil,Q Wander,smartwatch,11997.0,19995.0,40.0,4.1,,AMOLED Display,,1.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+379,Fossil,Rose Gold HR,smartwatch,21995.0,21995.0,0.0,2.8,,AMOLED Display,,3.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+380,Fossil,Rose Gold Smart,smartwatch,21995.0,21995.0,0.0,4.6,,AMOLED Display,,3.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+381,Fossil,Sadie Hybrid,smartwatch,8995.0,13495.0,33.3,4.0,,AMOLED Display,,10.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+382,Fossil,Sloan HR,smartwatch,21995.0,21995.0,0.0,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+383,Fossil,Sloan HR,smartwatch,24495.0,24495.0,0.0,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+384,Fossil,Sport,smartwatch,17995.0,17995.0,0.0,3.9,,AMOLED Display,,2.0,,,Silicone,,,False,,False,kaggle_devsubhash
+385,Fossil,Sport 41,smartwatch,17995.0,,0.0,4.0,599.0,,1.2,,True,True,Silicon,Circle,Blue,False,,False,kaggle_arnabchaki
+386,Fossil,Sport 41,smartwatch,9995.0,17995.0,44.5,4.0,,AMOLED Display,,2.0,,,Silicone,,,False,,False,kaggle_devsubhash
+387,Fossil,Sport 43,smartwatch,9995.0,17995.0,44.5,4.0,1532.0,,1.2,,True,True,Silicon,Circle,Blue,False,,False,kaggle_arnabchaki
+388,Fossil,Sport Smartwatch,smartwatch,17995.0,,0.0,3.9,46.0,,1.2,,True,True,Silicon,Circle,Multicolor,False,,False,kaggle_arnabchaki
+389,Fossil,The Carlyle HR,smartwatch,14995.0,22995.0,34.8,4.0,4483.0,,1.3,,True,True,Stainless Steel,Circle,Grey,False,,False,kaggle_arnabchaki
+390,Fossil,The Carlyle HR,smartwatch,25995.0,25995.0,0.0,4.2,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+391,Fossil,Wander RG,smartwatch,18995.0,,0.0,4.0,102.0,,,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+392,Garmin,Approach S12,smartwatch,18990.0,20990.0,9.5,4.0,,OLED Display,,12.0,,,Silicone,,,False,,False,kaggle_devsubhash
+393,Garmin,Approach S20,smartwatch,15990.0,19990.0,20.0,4.1,,OLED Display,,12.0,,,Silicone,,,False,,False,kaggle_devsubhash
+394,Garmin,Approach S62,smartwatch,49990.0,51990.0,3.8,4.7,,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+395,Garmin,Approach S62,smartwatch,46990.0,51990.0,9.6,4.1,,OLED Display,,12.0,,,Silicone,,,False,,False,kaggle_devsubhash
+396,Garmin,"Epix Gen 2, Sapphire, Up to 16 days Battery, AMOLED Display, Real Time Stamina",smartwatch,98990.0,,0.0,4.7,6022.0,,,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+397,Garmin,"Epix Gen 2, Up to 16 days Battery, AMOLED Display, Real Time Stamina",smartwatch,89490.0,89990.0,0.6,4.7,6022.0,,,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+398,Garmin,FORERUNNER 745 Magma Red,smartwatch,46990.0,51990.0,9.6,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+399,Garmin,FORRUNNER 235,smartwatch,22990.0,22990.0,0.0,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+400,Garmin,Fenix,smartwatch,54990.0,54990.0,0.0,,,AMOLED Display,,30.0,,,Leather,,,False,,False,kaggle_devsubhash
+401,Garmin,Fenix 5,smartwatch,47990.0,52990.0,9.4,,,AMOLED Display,,30.0,,,Silicone,,,False,,False,kaggle_devsubhash
+402,Garmin,Fenix 5S Frost Blue,smartwatch,39990.0,53190.0,24.8,,,AMOLED Display,,30.0,,,Silicone,,,False,,False,kaggle_devsubhash
+403,Garmin,Fenix 5S Plus,smartwatch,49990.0,53190.0,6.0,,,AMOLED Display,,30.0,,,Silicone,,,False,,False,kaggle_devsubhash
+404,Garmin,Fenix 5X,smartwatch,58490.0,58490.0,0.0,,,OLED Display,,30.0,,,Silicone,,,False,,False,kaggle_devsubhash
+405,Garmin,Fenix 5X Plus,smartwatch,59990.0,79990.0,25.0,,,AMOLED Display,,30.0,,,Silicone,,,False,,False,kaggle_devsubhash
+406,Garmin,Fenix 5s,smartwatch,34990.0,49990.0,30.0,,,AMOLED Display,,30.0,,,Silicone,,,False,,False,kaggle_devsubhash
+407,Garmin,Fenix 5s,smartwatch,54990.0,54990.0,0.0,,,AMOLED Display,,30.0,,,Silicone,,,False,,False,kaggle_devsubhash
+408,Garmin,Fenix 6,smartwatch,74990.0,82990.0,9.6,,,OLED Display,,30.0,,,Leather,,,False,,False,kaggle_devsubhash
+409,Garmin,Fenix 6,smartwatch,77990.0,86690.0,10.0,,,OLED Display,,45.0,,,Nylon,,,False,,False,kaggle_devsubhash
+410,Garmin,Fenix 6,smartwatch,76990.0,86690.0,11.2,,,LED Display,,30.0,,,Nylon,,,False,,False,kaggle_devsubhash
+411,Garmin,Fenix 6 Pro Solar,smartwatch,72990.0,88490.0,17.5,,,AMOLED Display,,45.0,,,Nylon,,,False,,False,kaggle_devsubhash
+412,Garmin,Fenix 6 Pro Solar,smartwatch,84490.0,88490.0,4.5,,,AMOLED Display,,45.0,,,Nylon,,,False,,False,kaggle_devsubhash
+413,Garmin,"Fenix 6 Sapphire Carbon Gray DLC, Wrist-Based Heart Rate and Pulse OX, Sensors",smartwatch,76990.0,96390.0,20.1,4.7,7.0,,1.3,,True,True,Silicon,Circle,Silver,False,,False,kaggle_arnabchaki
+414,Garmin,Fenix 6 Sapphire Gray DLC,smartwatch,74990.0,82990.0,9.6,,,AMOLED Display,,30.0,,,Leather,,,False,,False,kaggle_devsubhash
+415,Garmin,Fenix 6 Sapphire Titanium,smartwatch,81990.0,96690.0,15.2,,,AMOLED Display,,45.0,,,Leather ,,,False,,False,kaggle_devsubhash
+416,Garmin,Fenix 6S,smartwatch,70990.0,84090.0,15.6,,,LED Display,,30.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+417,Garmin,Fenix 6S,smartwatch,77990.0,86690.0,10.0,,,AMOLED Display,,45.0,,,Nylon,,,False,,False,kaggle_devsubhash
+418,Garmin,"Fenix 6S Sapphire, Premium GPS Watch, Music, Pace Guidance and Pulse Ox Sensors",smartwatch,64990.0,82990.0,21.7,4.7,,,1.2,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+419,Garmin,Fenix 6X,smartwatch,79990.0,88490.0,9.6,,,AMOLED Display,,45.0,,,Nylon,,,False,,False,kaggle_devsubhash
+420,Garmin,Fenix 6X,smartwatch,86990.0,96390.0,9.8,,,OLED Display,,45.0,,,Leather,,,False,,False,kaggle_devsubhash
+421,Garmin,Fenix 6X Solar,smartwatch,105990.0,119490.0,11.3,,,AMOLED Display,,45.0,,,Leather,,,False,,False,kaggle_devsubhash
+422,Garmin,"Fenix 7 Multisport GPS Watch, Upto 18 Days Battery, Climbpro, Stamina, HRV",smartwatch,67490.0,67990.0,0.7,4.7,6022.0,,,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+423,Garmin,"Fenix 7 Solar Multisport Watch, PacePro Technology, ClimbPro, Stamina Tracking",smartwatch,89490.0,93990.0,4.8,4.7,,,,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+424,Garmin,"Fenix 7X Sapphire Solar, Up to 28 days/37 days with solar*, Built in Flashlight",smartwatch,139990.0,,0.0,4.7,6022.0,,,,True,True,Stainless Steel,Circle,Silver,False,,False,kaggle_arnabchaki
+425,Garmin,Forerunner,smartwatch,27990.0,27990.0,0.0,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+426,Garmin,Forerunner,smartwatch,29990.0,29990.0,0.0,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+427,Garmin,Forerunner,smartwatch,16990.0,16990.0,0.0,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+428,Garmin,Forerunner,smartwatch,44990.0,44990.0,0.0,,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+429,Garmin,Forerunner 235,smartwatch,24990.0,31197.0,19.9,4.7,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+430,Garmin,Forerunner 235,smartwatch,18990.0,22990.0,17.4,4.7,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+431,Garmin,Forerunner 235,smartwatch,21999.0,27790.0,20.8,4.7,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+432,Garmin,Forerunner 235 Activity Tracker,smartwatch,22990.0,22990.0,0.0,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+433,Garmin,Forerunner 245,smartwatch,24990.0,31490.0,20.6,4.6,,LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+434,Garmin,Forerunner 245 Music,smartwatch,30000.0,36490.0,17.8,4.2,,LED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+435,Garmin,Forerunner 245 Music,smartwatch,33490.0,34990.0,4.3,4.2,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+436,Garmin,Forerunner 245 Music Japan Edition,smartwatch,29990.0,36490.0,17.8,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+437,Garmin,"Forerunner 245 Music, GPS Running Smartwatch, Advanced Running Dynamics",smartwatch,24990.0,36490.0,31.5,4.4,43.0,,1.2,,False,True,Silicon,Circle,Red,False,,False,kaggle_arnabchaki
+438,Garmin,"Forerunner 255, GPS Running Smartwatch, Advanced Insights, HRV Status",smartwatch,39490.0,,0.0,5.0,6.0,,1.3,,False,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+439,Garmin,Forerunner 35,smartwatch,16990.0,16990.0,0.0,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+440,Garmin,Forerunner 45,smartwatch,14990.0,20990.0,28.6,4.4,,OLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+441,Garmin,Forerunner 55,smartwatch,20990.0,20990.0,0.0,,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+442,Garmin,"Forerunner 55, GPS Smartwatch, upto 2 Weeks of Battery Life, PacePro Technology",smartwatch,20990.0,,0.0,4.2,61.0,,1.0,,False,True,Silicon,Circle,Blue,False,,False,kaggle_arnabchaki
+443,Garmin,Forerunner 735XT,smartwatch,39990.0,39990.0,0.0,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+444,Garmin,Forerunner 745 Black,smartwatch,46990.0,51990.0,9.6,5.0,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+445,Garmin,Forerunner 745 Whitestone,smartwatch,46990.0,51990.0,9.6,,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+446,Garmin,"Forerunner 745, GPS Multisport Watch, Training Stats, Advanced Running Dynamics",smartwatch,34990.0,51990.0,32.7,4.3,6.0,,1.2,,False,True,Silicon,Circle,Red,False,,False,kaggle_arnabchaki
+447,Garmin,Forerunner 935,smartwatch,42990.0,42990.0,0.0,4.7,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+448,Garmin,Forerunner 935,smartwatch,33742.0,48990.0,31.1,4.7,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+449,Garmin,Forerunner 935,smartwatch,39990.0,48790.0,18.0,4.7,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+450,Garmin,Forerunner 945,smartwatch,56490.0,62490.0,9.6,4.2,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+451,Garmin,"Forerunner 945, Premium GPS Running/Triathlon Smartwatch with Music",smartwatch,46990.0,62490.0,24.8,4.1,10.0,,1.9,,False,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+452,Garmin,"Forerunner 955 Solar charging upto 20 days, HRV & Stamina Status, Triathlon",smartwatch,67490.0,,0.0,4.7,,,1.3,,False,True,Silicon,Circle,White,False,,False,kaggle_arnabchaki
+453,Garmin,Forerunner Fitness Notifier,smartwatch,15990.0,16743.0,4.5,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+454,Garmin,Forerunner15 Heart,smartwatch,12999.0,14499.0,10.3,4.7,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+455,Garmin,Garmin Instinct HR,smartwatch,34990.0,41490.0,15.7,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+456,Garmin,Garmin Instinct HR,smartwatch,20990.0,28490.0,26.3,3.7,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+457,Garmin,Garmin Instinct Solar Tactical,smartwatch,46990.0,51990.0,9.6,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+458,Garmin,Garmin Instinct Solar Tactical,smartwatch,42990.0,47490.0,9.5,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+459,Garmin,Garmin Instinct Tactical,smartwatch,19990.0,31490.0,36.5,4.7,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+460,Garmin,HR GPS Smart,smartwatch,15999.0,20000.0,20.0,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+461,Garmin,HRM-Swim,smartwatch,8990.0,8990.0,0.0,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+462,Garmin,Hybrid,smartwatch,15911.0,21335.0,25.4,,,LED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+463,Garmin,Hybrid 3,smartwatch,19990.0,25990.0,23.1,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+464,Garmin,Instinct,smartwatch,19990.0,28490.0,29.8,4.4,,LED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+465,Garmin,Instinct,smartwatch,25249.0,26990.0,6.5,4.4,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+466,Garmin,"Instinct 2 Solar, Battery Up to 28 days/Unlimited with solar*, Tracback Routing",smartwatch,44990.0,46990.0,4.3,4.0,6.0,,0.9,,False,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+467,Garmin,"Instinct 2 Solar, Rugged Outdoor SmartWatch, Multi GNSS, Tracback Routing",smartwatch,44990.0,50490.0,10.9,4.0,6.0,,0.9,,False,True,Silicon,Circle,Blue,False,,False,kaggle_arnabchaki
+468,Garmin,"Instinct 2 Solar, Tactical Rugged SmartWatch, Multi GNSS, Tracback Routing",smartwatch,50490.0,55990.0,9.8,4.7,109.0,,0.9,,False,True,Silicon,Circle,Brown,False,,False,kaggle_arnabchaki
+469,Garmin,"Instinct 2, Battery Upto 28 days, Tracback Routing, Multi GNSS, Health Snapshot",smartwatch,33490.0,36990.0,9.5,4.6,5.0,,0.9,,False,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+470,Garmin,"Instinct 2, Rugged Outdoor Watch with GPS, Built for All Elements, Multi-GNSS",smartwatch,39490.0,44990.0,12.2,4.7,109.0,,0.9,,False,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+471,Garmin,"Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout",smartwatch,44990.0,50490.0,10.9,4.7,,,,,False,True,Silicon,Circle,Green,False,,False,kaggle_arnabchaki
+472,Garmin,"Instinct 2S, Battery Upto 21 days, Health Snapshot, SPO2, HIIT workout, VO2 Max",smartwatch,33490.0,39490.0,15.2,4.7,109.0,,,,False,False,Silicon,Circle,Red,False,,False,kaggle_arnabchaki
+473,Garmin,"Instinct Esports Edition, Broadcast stress level & HR to PC gaming streams*",smartwatch,22990.0,31490.0,27.0,4.1,20.0,,0.9,,False,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+474,Garmin,Instinct Solar Camo Edition,smartwatch,47490.0,47490.0,0.0,4.7,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+475,Garmin,Instinct Solar Tidal,smartwatch,34990.0,41490.0,15.7,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+476,Garmin,Lily,smartwatch,18990.0,20990.0,9.5,3.3,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+477,Garmin,Lily,smartwatch,23490.0,25990.0,9.6,3.3,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+478,Garmin,Rubber 35,smartwatch,16990.0,16990.0,0.0,2.0,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+479,Garmin,Running GPS 935,smartwatch,42990.0,42990.0,0.0,,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+480,Garmin,Swim 2,smartwatch,20990.0,26990.0,22.2,,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+481,Garmin,VIVOACTIVE 4S,smartwatch,34990.0,34990.0,0.0,,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+482,Garmin,VIVOMOVE 3S Navy,smartwatch,19990.0,25990.0,23.1,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+483,Garmin,VIVOMOVE LUXE,smartwatch,35990.0,47490.0,24.2,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+484,Garmin,Venu,smartwatch,31990.0,39990.0,20.0,4.0,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+485,Garmin,Venu,smartwatch,32990.0,39990.0,17.5,4.0,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+486,Garmin,Venu 2,smartwatch,41990.0,41990.0,0.0,4.7,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+487,Garmin,"Venu 2 Plus, AMOLED Display, Built in Speaker & MIC, Upto 9 Days Battery, SPO2",smartwatch,46990.0,,0.0,4.5,8.0,,1.3,,True,True,Silicon,Circle,White,False,,False,kaggle_arnabchaki
+488,Garmin,"Venu 2, GPS Smartwatch, AMOLED Display, Upto 11 Days Battery, SPO2 & Music",smartwatch,39490.0,41990.0,6.0,4.8,6.0,,,,True,True,Silicon,Circle,Blue,False,,False,kaggle_arnabchaki
+489,Garmin,Venu 2S,smartwatch,37990.0,37990.0,0.0,4.2,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+490,Garmin,"Venu 2S, GPS Smartwatch, AMOLED Display, Upto 11 Days Battery, SPO2 & Music",smartwatch,39490.0,44990.0,12.2,4.7,109.0,,,,True,True,Silicon,Circle,White,False,,False,kaggle_arnabchaki
+491,Garmin,Venu Sq,smartwatch,15990.0,20990.0,23.8,4.2,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+492,Garmin,Venu Sq - Music Edition,smartwatch,20990.0,25990.0,19.2,4.3,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+493,Garmin,"Venu Sq 2 Music, AMOLED, Mindful Breathing, Upto 11 Days Battery",smartwatch,33490.0,,0.0,4.7,,,1.4,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+494,Garmin,"Venu Sq 2, AMOLED, Mindful Breathing, Upto 11 Days of Battery",smartwatch,27990.0,,0.0,5.0,3.0,,1.4,,True,True,Rubber,Square,Grey,False,,False,kaggle_arnabchaki
+495,Garmin,"Venu Sq Music, Smartwatch, Advanced Sleep Monitoring, Upto 6 Days Battery, SPO2",smartwatch,20990.0,25990.0,19.2,3.4,7.0,,1.3,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+496,Garmin,"Venu Sq, Smartwatch, Advanced Sleep Monitoring, Upto 6 Days of Battery, SPO2",smartwatch,16990.0,20990.0,19.1,4.4,90.0,,1.3,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+497,Garmin,"Venu, GPS Smartwatch with Music, Body Energy Monitoring, Animated Workouts",smartwatch,27990.0,39990.0,30.0,3.7,10.0,,1.2,,True,True,Silicon,Circle,Blue,False,,False,kaggle_arnabchaki
+498,Garmin,Vivoactive,smartwatch,27990.0,27990.0,0.0,4.8,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+499,Garmin,Vivoactive 3 Element,smartwatch,14990.0,16990.0,11.8,3.0,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+500,Garmin,Vivoactive 3 Element Cerise,smartwatch,14990.0,16990.0,11.8,,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+501,Garmin,Vivoactive 3 Music,smartwatch,23990.0,29290.0,18.1,3.6,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+502,Garmin,Vivoactive 3 Music,smartwatch,26990.0,26990.0,0.0,3.6,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+503,Garmin,Vivoactive 3 Music,smartwatch,19144.0,26990.0,29.1,3.6,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+504,Garmin,Vivoactive 3 element,smartwatch,13578.0,24990.0,45.7,3.6,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+505,Garmin,Vivoactive 3 element,smartwatch,22990.0,29990.0,23.3,3.6,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+506,Garmin,Vivoactive 3 element,smartwatch,16990.0,16990.0,0.0,3.6,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+507,Garmin,Vivoactive 4,smartwatch,28990.0,34990.0,17.1,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+508,Garmin,Vivoactive HR,smartwatch,21990.0,21990.0,0.0,3.5,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+509,Garmin,Vivomove,smartwatch,31990.0,36790.0,13.0,3.3,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+510,Garmin,Vivomove 3,smartwatch,19990.0,25990.0,23.1,,,OLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+511,Garmin,Vivomove 3S,smartwatch,19990.0,25990.0,23.1,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+512,Garmin,Vivomove HR,smartwatch,16990.0,17990.0,5.6,3.6,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+513,Garmin,Vivomove HR,smartwatch,12990.0,19990.0,35.0,3.7,,LED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+514,Garmin,Vivomove Luxe,smartwatch,39990.0,52990.0,24.5,,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+515,Garmin,Vivomove Sports,smartwatch,20490.0,,0.0,5.0,3.0,,,,False,True,Silicon,Circle,Brown,False,,False,kaggle_arnabchaki
+516,Garmin,Vivomove Style,smartwatch,26990.0,31490.0,14.3,3.3,,AMOLED Display,,14.0,,,Nylon,,,False,,False,kaggle_devsubhash
+517,Garmin,Vivosmart 4,smartwatch,12150.0,13490.0,9.9,3.9,,OLED Display,,5.0,,,Silicone,,,False,,False,kaggle_devsubhash
+518,Garmin,vivoactive 4S 40mm,smartwatch,28990.0,34990.0,17.1,5.0,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+519,Gizmore,910,smartwatch,3299.0,5999.0,45.0,4.0,102.0,,1.3,,True,True,Plastic,,,False,,False,kaggle_arnabchaki
+520,Gizmore,"Blaze Max 1.85"" BT Calling Edge to Edge Display, Voice Assistance, Bluetooth",smartwatch,1999.0,5999.0,66.7,4.0,1178.0,,1.9,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+521,Gizmore,GIZFIT 908 Pro_Black,smartwatch,1599.0,5999.0,73.3,4.3,37.0,,1.7,,True,True,,,,False,,False,kaggle_arnabchaki
+522,Gizmore,GIZFIT BLAZE X 1.85 Inch Ultra HD Display | 600 NITS | BT Calling Smartwatch,smartwatch,2399.0,5499.0,56.4,5.0,3.0,,1.9,,True,True,Silicon,Square,Burgundy,False,,False,kaggle_arnabchaki
+523,Gizmore,GizFIt Vogue 1.95 Always On 600 NITS HD Display Bluetooth Calling,smartwatch,6999.0,,0.0,4.7,,,1.9,,True,True,Silicon,Square,Orange,False,,False,kaggle_arnabchaki
+524,Gizmore,GizFit 902,smartwatch,1799.0,2999.0,40.0,3.8,645.0,,1.0,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+525,Gizmore,GizFit BLAZE BT Calling Smartwatch | 1.69 Inch IPS Curved 500 NITS Display,smartwatch,1299.0,5499.0,76.4,3.8,3137.0,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+526,Gizmore,GizFit CLOUD 1.85 IPS Large Display | AI Voice Assistant | Bluetooth Calling,smartwatch,1199.0,4499.0,73.3,4.7,,,1.8,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+527,Gizmore,GizFit GLOW AMOLED with 3.4 Cm | ALWAYS-ON | 550 NITS Brightness | BT Calling,smartwatch,2799.0,8999.0,68.9,4.0,1994.0,,1.4,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+528,Gizmore,GizFit GLOW LUXE AMOLED with 3.35 Cm Display | 500 NITS| Bluetooth Calling,smartwatch,3499.0,8999.0,61.1,3.7,475.0,,1.3,,True,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+529,Gizmore,GizFit ORBIT BT Calling with 1.32 Inch Ultra Sharp HD Display|500 NITS|ALWAYS-ON,smartwatch,2799.0,6999.0,60.0,4.3,7.0,,1.3,,True,True,Silicon,Circle,Burgundy,False,,False,kaggle_arnabchaki
+530,Gizmore,GizFit ORBIT BT Calling with 3.3 Cm | ALWAYS-ON | 500 NITS Brightness,smartwatch,2799.0,6999.0,60.0,4.7,,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+531,Gizmore,GizFit PLASMA Bluetooth Calling Smartwatch | 1.9 Inch HD Display | 550 NITS,smartwatch,1999.0,6999.0,71.4,3.8,927.0,,1.9,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+532,Gizmore,"GizFit Ultra BT Calling Smartwatch With 1.69"" HD Display| 60+ Sports Mode",smartwatch,1799.0,5999.0,70.0,4.2,4813.0,,,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+533,Gizmore,Gizfit 910,smartwatch,3299.0,5999.0,45.0,4.0,102.0,,1.3,,True,True,,,,False,,False,kaggle_arnabchaki
+534,Gizmore,Gizfit 910 Pro Bluetooth Calling with AI Voice Assistance,smartwatch,2199.0,5999.0,63.3,3.5,10.0,,1.7,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+535,Gizmore,Gizfit Slate BT Calling | 1.57 Inch display | AI voice Assistance,smartwatch,1999.0,5999.0,66.7,3.5,30.0,,1.6,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+536,Gizmore,Vogue 1.95 Edge to Edge Larger IPS HD Display Bluetooth Calling,smartwatch,1499.0,6999.0,78.6,4.7,,,1.9,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+537,Honor,GS Pro,smartwatch,17999.0,20999.0,14.3,4.4,,AMOLED Display,,25.0,,,Nylon,,,False,,False,kaggle_devsubhash
+538,Honor,GS Pro,smartwatch,13999.0,20999.0,33.3,4.4,,AMOLED Display,,25.0,,,Nylon,,,False,,False,kaggle_devsubhash
+539,Honor,MUS-B19,smartwatch,11499.0,18999.0,39.5,3.9,406.0,,1.4,,True,True,,,,False,,False,kaggle_arnabchaki
+540,Honor,Magic SmartWatch,smartwatch,9047.0,17999.0,49.7,4.3,1779.0,,1.2,,True,True,Leather,Circle,Brown,False,,False,kaggle_arnabchaki
+541,Honor,Magic Watch,smartwatch,9047.0,17999.0,49.7,4.3,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+542,Honor,Magic Watch 2,smartwatch,13999.0,15999.0,12.5,4.4,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+543,Honor,Magic Watch 2 (42 mm),smartwatch,10999.0,13999.0,21.4,4.4,14613.0,,1.7,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+544,Honor,Magic Watch 2 (46 mm),smartwatch,13999.0,15999.0,12.5,4.4,14613.0,,1.8,,True,True,Leather,Circle,Brown,False,,False,kaggle_arnabchaki
+545,Honor,Magic Watch 2 (46mm),smartwatch,8999.0,14999.0,40.0,4.4,14613.0,,1.4,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+546,Honor,Watch ES,smartwatch,4999.0,10999.0,54.6,4.3,2241.0,,1.6,,True,True,Silicon,Rectangle,Pink,False,,False,kaggle_arnabchaki
+547,Honor,Watch GS 3,smartwatch,12999.0,18999.0,31.6,4.2,84.0,,1.4,,True,True,Leather,Circle,Blue,False,,False,kaggle_arnabchaki
+548,Honor,Watch GS Pro,smartwatch,17999.0,20999.0,14.3,4.4,1111.0,,1.4,,True,True,Nylon,Circle,Blue,False,,False,kaggle_arnabchaki
+549,Honor,Watch Magic,smartwatch,7999.0,17333.0,53.9,4.3,1779.0,,1.2,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+550,Honor,Z1,smartwatch,5499.0,5499.0,0.0,3.1,,OLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+551,Amazfit,Amazfit Bip,smartwatch,5499.0,6999.0,21.4,4.2,,AMOLED Display,,28.0,,,Silicone,,,False,,False,kaggle_devsubhash
+552,Amazfit,Amazfit Bip,smartwatch,4950.0,5990.0,17.4,4.2,,AMOLED Display,,28.0,,,Silicone,,,False,,False,kaggle_devsubhash
+553,Amazfit,Amazfit Bip,smartwatch,6399.0,7399.0,13.5,4.4,,AMOLED Display,,28.0,,,Silicone,,,False,,False,kaggle_devsubhash
+554,Amazfit,Amazfit Bip Lite,smartwatch,3499.0,5499.0,36.4,4.0,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+555,Amazfit,Amazfit Bip S,smartwatch,4999.0,5999.0,16.7,4.0,,AMOLED Display,,15.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+556,Amazfit,Amazfit Bip S,smartwatch,3799.0,4999.0,24.0,3.9,,AMOLED Display,,15.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+557,Amazfit,Amazfit Bip S,smartwatch,2999.0,4999.0,40.0,3.9,,AMOLED Display,,15.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+558,Amazfit,Amazfit Bip S,smartwatch,5299.0,6499.0,18.5,4.0,,AMOLED Display,,15.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+559,Amazfit,Amazfit Bip S Lite,smartwatch,1999.0,4999.0,60.0,3.9,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+560,Amazfit,Amazfit Bip U,smartwatch,2999.0,5999.0,50.0,4.2,,AMOLED Display,,9.0,,,Silicone,,,False,,False,kaggle_devsubhash
+561,Amazfit,Amazfit GTR 2 Aluminium,smartwatch,11999.0,17999.0,33.3,4.1,,AMOLED Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+562,Amazfit,Amazfit GTR 2 Stainless Steel,smartwatch,12499.0,17999.0,30.6,4.1,,AMOLED Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+563,Amazfit,Amazfit GTR 42,smartwatch,9999.0,12999.0,23.1,4.3,,AMOLED Display,,12.0,,,Silicone,,,False,,False,kaggle_devsubhash
+564,Amazfit,Amazfit GTR 42,smartwatch,8999.0,12999.0,30.8,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+565,Amazfit,Amazfit GTR 42 mm Glitter,smartwatch,9999.0,16999.0,41.2,4.2,,AMOLED Display,,12.0,,,Silicone,,,False,,False,kaggle_devsubhash
+566,Amazfit,Amazfit GTR 47,smartwatch,8999.0,13999.0,35.7,4.3,,AMOLED Display,,25.0,,,Silicone,,,False,,False,kaggle_devsubhash
+567,Amazfit,Amazfit GTR 47,smartwatch,10999.0,18999.0,42.1,4.2,,AMOLED Display,,25.0,,,Silicone,,,False,,False,kaggle_devsubhash
+568,Amazfit,Amazfit GTS,smartwatch,5999.0,12999.0,53.9,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+569,Amazfit,Amazfit GTS,smartwatch,5299.0,12999.0,59.2,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+570,Amazfit,Amazfit GTS,smartwatch,5499.0,12999.0,57.7,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+571,Amazfit,Amazfit GTS 2,smartwatch,11999.0,17999.0,33.3,4.1,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+572,Amazfit,Amazfit GTS 2e,smartwatch,7999.0,13999.0,42.9,4.2,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+573,Amazfit,Amazfit Neo,smartwatch,2499.0,3999.0,37.5,4.2,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+574,Amazfit,Amazfit Pace,smartwatch,9999.0,10999.0,9.1,4.2,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+575,Amazfit,Amazfit Stratos,smartwatch,12999.0,15999.0,18.8,4.2,,AMOLED Display,,25.0,,,Silicone,,,False,,False,kaggle_devsubhash
+576,Amazfit,Amazfit Stratos 3,smartwatch,13999.0,17999.0,22.2,3.7,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+577,Amazfit,Amazfit T-Rex,smartwatch,5999.0,10999.0,45.5,4.3,,AMOLED Display,,20.0,,,Silicone,,,False,,False,kaggle_devsubhash
+578,Amazfit,Amazfit Verge,smartwatch,5999.0,8999.0,33.3,4.2,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+579,Amazfit,Amazfit Verge,smartwatch,11999.0,12999.0,7.7,4.1,,AMOLED Display,,25.0,,,Silicone,,,False,,False,kaggle_devsubhash
+580,Amazfit,Amazfit Verge,smartwatch,12999.0,12999.0,0.0,4.1,,AMOLED Display,,25.0,,,Silicone,,,False,,False,kaggle_devsubhash
+581,Amazfit,Amazfit Verge Lite,smartwatch,5999.0,8999.0,33.3,4.2,,AMOLED Display,,5.0,,,Silicone,,,False,,False,kaggle_devsubhash
+582,Amazfit,Bip Lite On,smartwatch,7999.0,14999.0,46.7,4.1,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+583,Huawei,Fit,smartwatch,6999.0,9999.0,30.0,3.3,20.0,,1.2,,True,True,Silicon,Circle,Orange,False,,False,kaggle_arnabchaki
+584,Huawei,Fit,smartwatch,9999.0,9999.0,0.0,3.4,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+585,Huawei,GT 2 Pro,smartwatch,18990.0,29990.0,36.7,4.3,189.0,,1.4,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+586,Huawei,GT Active,smartwatch,15990.0,20990.0,23.8,4.4,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+587,Huawei,GT Active,smartwatch,8990.0,20990.0,57.2,4.4,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+588,Huawei,GT Classic,smartwatch,10990.0,21990.0,50.0,4.5,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+589,Huawei,GT Fortuna-B19S Sport,smartwatch,13990.0,20990.0,33.3,4.1,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+590,Huawei,GT Sport,smartwatch,10990.0,20990.0,47.6,4.4,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+591,Huawei,GT2 42mm,smartwatch,14990.0,19990.0,25.0,4.3,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+592,Huawei,GT2 46mm,smartwatch,20990.0,30990.0,32.3,4.5,,AMOLED Display,,14.0,,,Stainless Steel,,,False,,False,kaggle_devsubhash
+593,Huawei,GT2 46mm,smartwatch,14990.0,20990.0,28.6,4.5,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+594,Huawei,GT2 Pro,smartwatch,24990.0,34990.0,28.6,3.5,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+595,Huawei,GT2 Pro,smartwatch,22990.0,29990.0,23.3,4.4,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+596,Huawei,GT2 eActive,smartwatch,11990.0,19990.0,40.0,4.3,,AMOLED Display,,14.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+597,Huawei,GT2 eSport,smartwatch,8990.0,19990.0,55.0,4.3,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+598,Huawei,GT2 eSport,smartwatch,11990.0,19990.0,40.0,4.3,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+599,Huawei,Leia-B19,smartwatch,6400.0,11999.0,46.7,4.5,49.0,,,,,True,,,,False,,False,kaggle_arnabchaki
+600,Huawei,Stainless Steel,smartwatch,19990.0,19990.0,0.0,4.5,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+601,Huawei,Watch 2,smartwatch,25999.0,25999.0,0.0,3.9,,AMOLED Display,,7.0,,,Leather,,,False,,False,kaggle_devsubhash
+602,Huawei,Watch 2 Leather,smartwatch,25999.0,,0.0,3.9,21.0,,1.2,,True,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+603,Huawei,Watch 2 Sport,smartwatch,29999.0,29999.0,0.0,3.8,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+604,Huawei,Watch 2 Sport with 4G,smartwatch,29999.0,,0.0,3.8,5.0,,1.2,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+605,Huawei,Watch 32564546,smartwatch,49999.0,49999.0,0.0,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+606,Huawei,Watch 36456,smartwatch,55000.0,55000.0,0.0,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+607,Huawei,Watch Fit,smartwatch,6990.0,14990.0,53.4,4.3,119.0,,,,True,True,Silicon,Rectangle,Pink,False,,False,kaggle_arnabchaki
+608,Huawei,Watch GT 2 (42 mm),smartwatch,14990.0,19990.0,25.0,4.7,,,1.7,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+609,Huawei,Watch GT 2 (46 mm),smartwatch,14990.0,20990.0,28.6,4.5,3228.0,,1.8,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+610,Huawei,Watch GT 2e Active,smartwatch,11990.0,19990.0,40.0,4.3,1269.0,,1.4,,True,True,Thermo Plastic Polyurethene,Circle,Green,False,,False,kaggle_arnabchaki
+611,Huawei,Watch GT 2e Sport,smartwatch,8990.0,19990.0,55.0,4.3,1269.0,,1.4,,True,True,Thermo Plastic Polyurethene,Circle,Red,False,,False,kaggle_arnabchaki
+612,Huawei,Watch GT Active,smartwatch,15990.0,20990.0,23.8,4.4,399.0,,1.8,,True,True,Silicon,Circle,Orange,False,,False,kaggle_arnabchaki
+613,Huawei,Watch GT Classic,smartwatch,10990.0,21990.0,50.0,4.5,93.0,,1.8,,True,True,Leather,Circle,Brown,False,,False,kaggle_arnabchaki
+614,Huawei,Watch GT Sport,smartwatch,10990.0,20990.0,47.6,4.5,203.0,,1.8,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+615,Lcare,Watch,smartwatch,2995.0,4495.0,33.4,3.5,,OLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+616,Noise,"Caliber Buzz Advanced BT Calling(True Sync), 1.69"" display, 500 NITS Brightness",smartwatch,1599.0,4999.0,68.0,4.3,4398.0,,1.7,,True,True,Silicon,Rectangle,Green,False,,False,kaggle_arnabchaki
+617,Noise,ColorFit Brio,smartwatch,1799.0,5999.0,70.0,4.2,32505.0,,1.5,,True,True,Thermo Plastic Polyurethene,Rectangle,Black,False,,False,kaggle_arnabchaki
+618,Noise,ColorFit Brio,smartwatch,3499.0,5999.0,41.7,4.3,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+619,Noise,ColorFit Brio,smartwatch,2999.0,5999.0,50.0,4.3,,AMOLED Display,,10.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+620,Noise,ColorFit Caliber,smartwatch,2699.0,3999.0,32.5,4.3,,TFT-LCD Display,,15.0,,,Silicone,,,False,,False,kaggle_devsubhash
+621,Noise,"ColorFit Caliber 2 Buzz Advanced BT Calling, 1.85"" display,10 days battery",smartwatch,1799.0,5999.0,70.0,4.1,3506.0,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+622,Noise,"ColorFit Caliber 2 with 1.83'' display Up to 12 Day Battery, 60 sports mode",smartwatch,1499.0,4999.0,70.0,3.4,504.0,,1.8,,True,True,Silicon,Rectangle,Green,False,,False,kaggle_arnabchaki
+623,Noise,"ColorFit Caliber Go with 1.69 inch HD Display, 40 Sports Modes, 150+ Watch Faces",smartwatch,1299.0,3999.0,67.5,4.2,27445.0,,1.7,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+624,Noise,"ColorFit Caliber Smart Watch with 15-day battery, 1.69"" display, 60 Sports Modes",smartwatch,1499.0,3999.0,62.5,4.2,275607.0,,1.7,,True,True,Silicon,Square,White,False,,False,kaggle_arnabchaki
+625,Noise,"ColorFit Icon 2 1.8 Display, Bluetooth Calling, AI Voice Assistance",smartwatch,1999.0,5999.0,66.7,4.2,80483.0,,1.8,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+626,Noise,ColorFit IconBuzz,smartwatch,4999.0,4999.0,0.0,,,TFT-LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+627,Noise,"ColorFit Loop Advanced BT Calling with 1.85"" display,130+Sports Modes",smartwatch,2499.0,6999.0,64.3,4.3,3944.0,,1.9,,True,True,Silicon,Square,Grey,False,,False,kaggle_arnabchaki
+628,Noise,ColorFit Pro,smartwatch,2499.0,4999.0,50.0,3.9,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+629,Noise,ColorFit Pro,smartwatch,2513.0,4999.0,49.7,3.9,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+630,Noise,ColorFit Pro 2,smartwatch,1499.0,4999.0,70.0,4.1,148555.0,,1.3,,True,True,Synthetic,Rectangle,Black,False,,False,kaggle_arnabchaki
+631,Noise,ColorFit Pro 2,smartwatch,2699.0,4999.0,46.0,4.1,,AMOLED Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+632,Noise,ColorFit Pro 2 Oxy,smartwatch,2499.0,4999.0,50.0,4.0,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+633,Noise,ColorFit Pro 3,smartwatch,1999.0,5999.0,66.7,4.1,69379.0,,1.6,,True,True,Thermo Plastic Polyurethene,Rectangle,Black,False,,False,kaggle_arnabchaki
+634,Noise,ColorFit Pro 3,smartwatch,3999.0,5999.0,33.3,4.2,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+635,Noise,"ColorFit Pro4 BT Calling 1.72"" TruView Display, Fully-functional digital crown",smartwatch,2999.0,5999.0,50.0,4.3,13108.0,,1.7,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+636,Noise,"ColorFit Pro4 Max 1.8"" BT Calling, Noise detection, Noise Health Suite",smartwatch,3799.0,5999.0,36.7,4.2,6004.0,,1.8,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+637,Noise,ColorFit Qube,smartwatch,2499.0,4999.0,50.0,4.0,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+638,Noise,ColorFit Qube SpO2,smartwatch,2499.0,4999.0,50.0,4.3,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+639,Noise,ColorFit Vision 2 Buzz,smartwatch,2999.0,7999.0,62.5,4.3,11755.0,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+640,Noise,"Core 2 1.28"" Display , Noisefit sync app, 100+ watch faces & 50+ Sports Modes",smartwatch,1499.0,3999.0,62.5,4.0,6638.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+641,Noise,Evolve,smartwatch,4999.0,7999.0,37.5,3.9,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+642,Noise,Evolve 2,smartwatch,3999.0,7999.0,50.0,3.9,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+643,Noise,"Evolve 3, 1.43"" AMOLED AOD, 466*466px, 500 nits, BT calling,Tru Sync Technology",smartwatch,3999.0,6999.0,42.9,4.4,12469.0,,1.4,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+644,Noise,Fit Active,smartwatch,3499.0,5999.0,41.7,4.2,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+645,Noise,"Fit Buzz with 1.32inch HD Round Screen, Bluetooth calling and SPO2",smartwatch,2999.0,8999.0,66.7,4.1,22942.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+646,Noise,Fit Evolve,smartwatch,5499.0,7999.0,31.3,3.9,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+647,Noise,Fusiom Hybrid,smartwatch,5999.0,9999.0,40.0,4.0,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+648,Noise,"Icon Buzz BT Calling with 1.69"" display , AI Voice Assistance, Built-In Games",smartwatch,1799.0,4999.0,64.0,4.2,219512.0,,1.7,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+649,Noise,NSW-05,smartwatch,1499.0,3999.0,62.5,4.0,32704.0,,1.7,,True,True,Other,,,False,,False,kaggle_arnabchaki
+650,Noise,NoiseFit Endure,smartwatch,2799.0,5999.0,53.3,3.9,,AMOLED Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+651,Noise,NoiseFit Endure,smartwatch,2599.0,5999.0,56.7,3.9,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+652,Noise,NoiseFit Endure,smartwatch,2999.0,5999.0,50.0,3.9,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+653,Noise,"Qube with 1.4"" Full Touch display, Multi-Sports modes, 7-day Battery,Spo2",smartwatch,1299.0,4999.0,74.0,4.1,142612.0,,1.4,,True,True,Thermo Plastic Polyurethene,Square,Black,False,,False,kaggle_arnabchaki
+654,Noise,X-Fit 2 (HRX Edition) Smart Watch with 1.69inch Display & 60 Sports Modes,smartwatch,1799.0,3999.0,55.0,4.2,5970.0,,1.7,,True,True,Silicon,Rectangle,Grey,False,,False,kaggle_arnabchaki
+655,OnePlus,Watch,smartwatch,14999.0,16999.0,11.8,4.4,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+656,Oppo,41mm,smartwatch,17990.0,24990.0,28.0,3.9,,AMOLED Display,,14.0,,,Rubber,,,False,,False,kaggle_devsubhash
+657,Oppo,46 mm,smartwatch,14990.0,19990.0,25.0,3.9,,AMOLED Display,,14.0,,,Rubber,,,False,,False,kaggle_devsubhash
+658,Pebble,Aspire Unisex 2.5D Curved Screen Smartwatch with Female Cycle Tracker Rose Gold,smartwatch,3999.0,6499.0,38.5,3.4,45.0,,1.6,,True,True,Silicon,Rectangle,Pink,False,,False,kaggle_arnabchaki
+659,Pebble,Cosmos,smartwatch,4990.0,6999.0,28.7,4.1,1964.0,,,,True,True,Silicon,Square,Maroon,False,,False,kaggle_arnabchaki
+660,Pebble,"Cosmos Grande 2.1 Largest Display, BT Calling, Wireless Charging,GPS Trajectory",smartwatch,3999.0,9999.0,60.0,3.9,677.0,,2.1,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+661,Pebble,"Cosmos Luxe 2.0 1.43"" AMOLED Display with BT Calling and Responsive Watch Faces",smartwatch,4199.0,9999.0,58.0,4.2,541.0,,1.4,,True,True,Silicon,Circle,Midnight,False,,False,kaggle_arnabchaki
+662,Pebble,Cosmos Pro 1.7inch HD LCD display with Bluetooth calling function,smartwatch,3999.0,7999.0,50.0,3.9,2874.0,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+663,Pebble,Cosmos Pro 1.7inch HD display with Bluetooth calling function,smartwatch,3999.0,7999.0,50.0,3.9,2874.0,,,,True,True,Silicon,Square,"Pink, Gold",False,,False,kaggle_arnabchaki
+664,Pebble,"Cosmos Ultra 1.91"" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial",smartwatch,2799.0,7499.0,62.7,4.4,12644.0,,1.9,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+665,Pebble,"Cosmos luxe 1.36"" AMOLED Always-on Display Bluetooth calling",smartwatch,4199.0,9499.0,55.8,4.2,7828.0,,,,True,True,Silicon,Circle,Green,False,,False,kaggle_arnabchaki
+666,Pebble,"Cosmos luxe 1.36"" AMOLED Always-on Display Bluetooth calling(Midnight Gold)",smartwatch,4199.0,9499.0,55.8,4.2,7828.0,,,,True,True,Silicon,Circle,Charcoal,False,,False,kaggle_arnabchaki
+667,Pebble,"Frost 1.87 BT Calling with 2.5D Curved HD Display, AI Voice Assisst",smartwatch,1999.0,4999.0,60.0,4.0,4240.0,,,,True,True,Silicon,Rectangle,Orange Alpine,False,,False,kaggle_arnabchaki
+668,Pebble,"Frost 1.87'' BT Calling with 2.5D Curved HD Display, AI Voice Assisst",smartwatch,1999.0,4999.0,60.0,4.0,4240.0,,,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+669,Pebble,PFB13 Charcoal Black,smartwatch,4499.0,7499.0,40.0,3.6,94.0,,1.3,,True,True,,,,False,,False,kaggle_arnabchaki
+670,Pebble,PFB22 Mint Green,smartwatch,2999.0,6999.0,57.2,3.8,3563.0,,1.8,,True,True,,,,False,,False,kaggle_arnabchaki
+671,Pebble,PFB24,smartwatch,4299.0,7499.0,42.7,3.6,55.0,,1.1,,True,True,,,,False,,False,kaggle_arnabchaki
+672,Pebble,"Pace Pro Smartwatch with 1.7"" HD Curved Display Golden Black",smartwatch,2999.0,5499.0,45.5,3.8,,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+673,Pebble,"Pace Pro Smartwatch with 1.7"" HD Curved Display Golden Ivory",smartwatch,2999.0,5499.0,45.5,3.8,5.0,,,,True,True,Silicon,Square,Gold,False,,False,kaggle_arnabchaki
+674,Pebble,Pace Unisex Smart Watch with Full Touch Dynamic Colour Display (Black,smartwatch,3069.0,4999.0,38.6,4.0,1371.0,,1.4,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+675,Pebble,Pace Unisex Smart Watch with Full Touch Dynamic Colour Display (Blue,smartwatch,2999.0,4999.0,40.0,4.0,1371.0,,1.4,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+676,Pebble,"Pebble Cosmos, Bluetooth Calling smartwatch 24 Hour Health Tracking (Burgundy)",smartwatch,4990.0,6999.0,28.7,4.1,,,,,True,True,Silicon,Square,Maroon,False,,False,kaggle_arnabchaki
+677,Pebble,"Pebble Cosmos, Bluetooth Calling smartwatch Multi Sports Modes",smartwatch,4990.0,6999.0,28.7,5.0,3.0,,,,True,True,Rubber,Square,Blue,False,,False,kaggle_arnabchaki
+678,Pebble,"Prism 1.7""Display With Fitness & Outdoor Activity Black",smartwatch,1499.0,3299.0,54.6,3.8,,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+679,Pebble,"Prism 1.7""Display With Fitness & Outdoor Activity Blue",smartwatch,2499.0,3299.0,24.2,3.8,,,,,True,True,Silicon,Square,Blue,False,,False,kaggle_arnabchaki
+680,Pebble,Prism Max Bluetooth Calling Large Display,smartwatch,3999.0,5499.0,27.3,4.1,16.0,,,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+681,Pebble,Revo Bluetooth Calling Smartwatch for Men Black,smartwatch,4699.0,7499.0,37.3,4.1,20.0,,1.3,,True,True,Leather,Circle,Brown,False,,False,kaggle_arnabchaki
+682,Pebble,Revo Bluetooth Calling Smartwatch for Men Tan Leather,smartwatch,4499.0,7499.0,40.0,3.1,10.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+683,Pebble,"Spark 1.7 inch Bluetooth Calling, HD Display with SPO2, HR Monitor",smartwatch,2499.0,4499.0,44.5,3.5,1014.0,,1.7,,True,True,Silicon,Rectangle,Deep Wine,False,,False,kaggle_arnabchaki
+684,Pebble,"Spark Ace 1.85 Large HD Display, Health Suite, 100+ Watch Faces, 7 days battery",smartwatch,1499.0,4499.0,66.7,3.8,1338.0,,1.9,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+685,Pebble,Venus,smartwatch,3999.0,7499.0,46.7,4.1,99.0,,1.1,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+686,Pebble,Venus Bluetooth Calling Smartwatch with Fitness Tracker for Women-Midnight Gold,smartwatch,5190.0,7499.0,30.8,4.1,,,,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+687,Pebble,Zen Pro Unisex SPO2 Grey,smartwatch,3499.0,5999.0,41.7,4.7,,,1.3,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+688,Pebble,"prism ultra 1.69"" HD Display With Bluetooth Calling Green",smartwatch,3299.0,4999.0,34.0,3.8,,,,,True,True,Silicon,Square,Sea Green,False,,False,kaggle_arnabchaki
+689,Realme,2 Pro,smartwatch,4999.0,5999.0,16.7,4.4,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+690,Realme,2S,smartwatch,3499.0,3999.0,12.5,4.2,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+691,Realme,Classic,smartwatch,3921.0,6999.0,44.0,4.0,,TFT-LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+692,Realme,Fashion,smartwatch,5400.0,6999.0,22.8,4.0,,TFT-LCD Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+693,Realme,S,smartwatch,6779.0,7999.0,15.3,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+694,Realme,S,smartwatch,4999.0,7999.0,37.5,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+695,Realme,S Master,smartwatch,5999.0,8999.0,33.3,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+696,Realme,S Pro,smartwatch,9999.0,12999.0,23.1,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+697,Samsung,Galaxy 42,smartwatch,24989.0,25990.0,3.9,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+698,Samsung,Galaxy 42,smartwatch,21989.0,25990.0,15.4,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+699,Samsung,Galaxy 44mm,smartwatch,24490.0,28490.0,14.0,3.6,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+700,Samsung,Galaxy 46mm,smartwatch,16990.0,33999.0,50.0,4.5,,AMOLED Display,,7.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+701,Samsung,Galaxy Active 2,smartwatch,18990.0,28490.0,33.3,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+702,Samsung,Galaxy Active 2,smartwatch,12990.0,25990.0,50.0,4.5,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+703,Samsung,Galaxy Active 2,smartwatch,11990.0,25990.0,53.9,4.5,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+704,Samsung,Galaxy Active 2 Steel,smartwatch,24490.0,31990.0,23.4,4.4,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+705,Samsung,Galaxy Active 42mm,smartwatch,19990.0,19990.0,0.0,4.4,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+706,Samsung,Galaxy Active 46mm,smartwatch,19990.0,19990.0,0.0,4.4,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+707,Samsung,Galaxy Active Steel,smartwatch,29990.0,34490.0,13.0,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+708,Samsung,Galaxy Active Steel 2,smartwatch,24490.0,31990.0,23.4,4.3,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+709,Samsung,Galaxy Active Steel 2 LTE,smartwatch,30990.0,34490.0,10.1,4.1,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+710,Samsung,Galaxy Classic 4,smartwatch,34999.0,37999.0,7.9,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+711,Samsung,Galaxy Classic 4,smartwatch,40000.0,42999.0,7.0,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+712,Samsung,Galaxy Classic 4,smartwatch,32959.0,37999.0,13.3,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+713,Samsung,Galaxy Classic 4 LTE,smartwatch,28999.0,31999.0,9.4,5.0,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+714,Samsung,Galaxy Classic 4 LTE,smartwatch,36999.0,39999.0,7.5,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+715,Samsung,Galaxy Gear,smartwatch,50408.0,60241.0,16.3,3.2,,AMOLED Display,,14.0,,,Rubber,,,True,,False,kaggle_devsubhash
+716,Samsung,Galaxy LTE,smartwatch,31999.0,31999.0,0.0,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+717,Samsung,Galaxy Watch 3,smartwatch,28990.0,30990.0,6.5,4.3,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+718,Samsung,Galaxy Watch 3,smartwatch,39490.0,39490.0,0.0,4.3,,AMOLED Display,,14.0,,,Leather,,,False,,False,kaggle_devsubhash
+719,Samsung,Galaxy Watch 3 41 mm,smartwatch,11999.0,30990.0,61.3,4.3,1489.0,,1.6,,True,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+720,Samsung,Galaxy Watch 3 41 mm LTE,smartwatch,29990.0,30990.0,3.2,4.3,1489.0,,1.6,,True,True,Leather,Circle,Pink,False,,False,kaggle_arnabchaki
+721,Samsung,Galaxy Watch 3 45 mm LTE,smartwatch,39490.0,,0.0,4.3,1489.0,,1.8,,True,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+722,Samsung,Galaxy Watch 4 Classic LTE,smartwatch,40000.0,42999.0,7.0,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+723,Samsung,Galaxy Watch 4 LTE,smartwatch,28999.0,31999.0,9.4,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+724,Samsung,Galaxy Watch 4 LTE,smartwatch,31999.0,34999.0,8.6,4.6,,AMOLED Display,,14.0,,,Elastomer,,,False,,False,kaggle_devsubhash
+725,Samsung,Galaxy Watch 42 mm LTE,smartwatch,24490.0,28490.0,14.0,3.7,153.0,,1.7,,True,True,Silicon,Circle,Beige,False,,False,kaggle_arnabchaki
+726,Samsung,Galaxy Watch 46 mm,smartwatch,16990.0,33999.0,50.0,4.5,12211.0,,1.8,,True,True,Rubber,Circle,Black,False,,False,kaggle_arnabchaki
+727,Samsung,Galaxy Watch 46 mm LTE,smartwatch,27490.0,29989.0,8.3,4.2,201.0,,1.8,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+728,Samsung,Galaxy Watch Active,smartwatch,19990.0,,0.0,4.3,68.0,,1.1,,True,True,Rubber,Circle,Blue,False,,False,kaggle_arnabchaki
+729,Samsung,Galaxy Watch Active 2 Aluminium,smartwatch,16999.0,25990.0,34.6,4.4,23940.0,,1.7,,True,True,Silicon,Circle,Beige,False,,False,kaggle_arnabchaki
+730,Samsung,Galaxy Watch Active 2 Aluminium LTE,smartwatch,16999.0,28490.0,40.3,4.1,1980.0,,1.4,,True,True,Silicon,Circle,Grey,False,,False,kaggle_arnabchaki
+731,Samsung,Galaxy Watch Active 2 Steel,smartwatch,16999.0,31990.0,46.9,4.4,23940.0,,1.7,,True,True,Leather,Circle,Black,False,,False,kaggle_arnabchaki
+732,Samsung,Galaxy Watch Active 2 Steel LTE,smartwatch,30990.0,34490.0,10.1,4.1,1980.0,,1.4,,True,True,Silicon,Circle,Brown,False,,False,kaggle_arnabchaki
+733,Samsung,Galaxy Watch LTE,smartwatch,27490.0,29989.0,8.3,4.2,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+734,Samsung,Galaxy Watch4 Bluetooth (4.0cm),smartwatch,24999.0,26999.0,7.4,4.1,91.0,,,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+735,Samsung,Galaxy Watch4 Classic Bluetooth (4.2cm),smartwatch,31999.0,34999.0,8.6,3.8,40.0,,1.2,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+736,Samsung,Galaxy Watch4 Classic Bluetooth (4.6cm),smartwatch,22749.0,37999.0,40.1,4.2,567.0,,1.4,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+737,Samsung,Galaxy Watch4 Classic Bluetooth(4.2cm),smartwatch,17490.0,34999.0,50.0,4.2,567.0,,1.2,,True,True,Fluoroelastomer,Circle,Silver,False,,False,kaggle_arnabchaki
+738,Samsung,Galaxy Watch4 Classic LTE (4.2cm),smartwatch,31999.0,39999.0,20.0,4.2,567.0,,1.2,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+739,Samsung,Galaxy Watch4 Classic LTE (4.6cm),smartwatch,34997.0,42999.0,18.6,4.2,567.0,,1.4,,True,True,Fluoroelastomer,Circle,Silver,False,,False,kaggle_arnabchaki
+740,Samsung,Galaxy Watch4 LTE (4.0cm),smartwatch,28999.0,31999.0,9.4,3.8,12.0,,1.2,,True,True,Fluoroelastomer,Circle,Pink,False,,False,kaggle_arnabchaki
+741,Samsung,Galaxy Watch4 LTE (4.4cm),smartwatch,16999.0,34999.0,51.4,4.2,567.0,,1.4,,True,True,Fluoroelastomer,Circle,Black,False,,False,kaggle_arnabchaki
+742,Samsung,Gear 2,smartwatch,19999.0,22550.0,11.3,2.3,,AMOLED Display,,14.0,,,Silicone,,,True,,False,kaggle_devsubhash
+743,Samsung,Gear Fit,smartwatch,7999.0,16860.0,52.6,3.9,,AMOLED Display,,7.0,,,Silicone,,,True,,False,kaggle_devsubhash
+744,Samsung,Gear Fit 2,smartwatch,15000.0,15000.0,0.0,4.2,,AMOLED Display,,7.0,,,Silicone,,,True,,False,kaggle_devsubhash
+745,Samsung,Gear Fit 2 Pro,smartwatch,9990.0,14990.0,33.4,4.3,,AMOLED Display,,7.0,,,Silicone,,,True,,False,kaggle_devsubhash
+746,Samsung,Gear Live,smartwatch,15900.0,15900.0,0.0,4.2,,AMOLED Display,,7.0,,,Rubber,,,True,,False,kaggle_devsubhash
+747,Samsung,Gear R730V S2,smartwatch,18532.0,22498.0,17.6,4.6,,AMOLED Display,,14.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+748,Samsung,Gear S2,smartwatch,24300.0,24300.0,0.0,4.3,,AMOLED Display,,14.0,,,Elastomer,,,True,,False,kaggle_devsubhash
+749,Samsung,Gear S2 Classic,smartwatch,18999.0,34550.0,45.0,4.2,,AMOLED Display,,14.0,,,Leather,,,True,,False,kaggle_devsubhash
+750,Samsung,Gear S3 Frontier,smartwatch,22990.0,28500.0,19.3,4.3,,AMOLED Display,,14.0,,,Silicone,,,True,,False,kaggle_devsubhash
+751,Samsung,Gear Sport,smartwatch,15999.0,22990.0,30.4,3.0,,AMOLED Display,,7.0,,,Silicone,,,True,,False,kaggle_devsubhash
+752,Samsung,Neo Gear 2,smartwatch,15500.0,16860.0,8.1,3.9,,AMOLED Display,,7.0,,,Rubber,,,True,,False,kaggle_devsubhash
+753,Samsung,R600NZBAXAR 600,smartwatch,21390.0,25155.0,15.0,4.5,,AMOLED Display,,14.0,,,Rubber,,,True,,False,kaggle_devsubhash
+754,Samsung,T-Mobile,smartwatch,21990.0,22990.0,4.3,4.3,,AMOLED Display,,14.0,,,Leather,,,True,,False,kaggle_devsubhash
+755,Samsung,"Watch 4, 44mmSuper AMOLED bluetooth calling function & body composition tracking",smartwatch,12990.0,29999.0,56.7,4.4,35511.0,,1.4,,True,True,Rubber,Circle,Black,False,,False,kaggle_arnabchaki
+756,Samsung,Watch 5 40mmSuper AMOLED display LTE calling & body composition tracking,smartwatch,32999.0,35999.0,8.3,4.3,435.0,,1.2,,True,True,Rubber,Circle,Graphite,False,,False,kaggle_arnabchaki
+757,Samsung,Watch 5 40mmSuper AMOLED displayBluetooth calling & body composition tracking,smartwatch,27999.0,29999.0,6.7,4.3,435.0,,1.2,,True,True,Rubber,Circle,Graphite,False,,False,kaggle_arnabchaki
+758,Samsung,Watch 5 44mmSuper AMOLED displayLTE calling & body composition tracking,smartwatch,35999.0,39999.0,10.0,4.3,435.0,,1.4,,True,True,Rubber,Circle,Graphite,False,,False,kaggle_arnabchaki
+759,Samsung,Watch 5 pro 45mmSuper AMOLED displayBluetooth callingwith advanced GPS tracking,smartwatch,44999.0,48999.0,8.2,4.4,88.0,,1.4,,True,True,Rubber,Circle,Black,False,,False,kaggle_arnabchaki
+760,Samsung,Watch 5 pro45mmSuper AMOLED displayLTE callingwith advanced GPS tracking,smartwatch,49999.0,54999.0,9.1,4.4,88.0,,1.4,,True,True,Rubber,Circle,Grey,False,,False,kaggle_arnabchaki
+761,Xiaomi,Revolve,smartwatch,12349.0,15999.0,22.8,4.4,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+762,Xiaomi,RevolveActive,smartwatch,12999.0,15999.0,18.8,4.4,,AMOLED Display,,14.0,,,Silicone,,,False,,False,kaggle_devsubhash
+763,Zebronics,FIT380CH,smartwatch,2999.0,5999.0,50.0,4.0,,,1.7,,True,True,Stainless Steel,Rectangle,Silver,False,,False,kaggle_arnabchaki
+764,Zebronics,FIT7220CH,smartwatch,3099.0,7999.0,61.3,2.3,3.0,,,,True,True,Aluminium,Curved,Silver,False,,False,kaggle_arnabchaki
+765,Zebronics,Fit-650,smartwatch,2949.0,4199.0,29.8,3.1,,TFT-LCD Display,,3.0,,,Leather,,,False,,False,kaggle_devsubhash
+766,Zebronics,Fitness band,smartwatch,1897.0,1899.0,0.1,3.3,4.0,,2.3,,True,True,Silicon,Rectangle,Grey,False,,False,kaggle_arnabchaki
+767,Zebronics,LEATHER fit-650,smartwatch,2949.0,4199.0,29.8,3.1,10.0,,,,True,True,Leather,Oval,Black,False,,False,kaggle_arnabchaki
+768,Zebronics,SPECIAL EDITION Zeb-Fit380CH BLUETOOTH CALLING,smartwatch,3499.0,5499.0,36.4,3.9,22.0,,,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+769,Zebronics,SPECIAL EDITION Zeb-Fit380CH METALLIC STRAP,smartwatch,3499.0,5999.0,41.7,3.9,,,,,True,True,Stainless Steel,Square,Silver,False,,False,kaggle_arnabchaki
+770,Zebronics,Smart Time 200,smartwatch,1499.0,2999.0,50.0,3.1,24.0,,,,True,True,Rubber,Circle,Black,False,,False,kaggle_arnabchaki
+771,Zebronics,Smarttime 200,smartwatch,1499.0,2999.0,50.0,3.1,,TFT-LCD Display,,3.0,,,Rubber,,,False,,False,kaggle_devsubhash
+772,Zebronics,UNBEATABLE ZEB-FIT480CH,smartwatch,5499.0,7499.0,26.7,3.9,22.0,,1.8,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+773,Zebronics,ZEB - COSMOS Lv1 - METALLIC BLACK,smartwatch,3599.0,10999.0,67.3,3.9,1611.0,,,,True,True,,,,False,,False,kaggle_arnabchaki
+774,Zebronics,ZEB - COSMOS Lv1 CLASSIC BLACK,smartwatch,3599.0,10999.0,67.3,3.9,1611.0,,,,True,True,,,,False,,False,kaggle_arnabchaki
+775,Zebronics,ZEB FIT 4 - BLACK (ICONIC ULTRA),smartwatch,3499.0,11499.0,69.6,4.2,52.0,,1.8,,True,True,,,,False,,False,kaggle_arnabchaki
+776,Zebronics,ZEB FIT380CH,smartwatch,2799.0,5499.0,49.1,3.9,22.0,,1.7,,True,True,Rubber,Square,Black,False,,False,kaggle_arnabchaki
+777,Zebronics,ZEB FIT8220CH,smartwatch,1999.0,3999.0,50.0,3.9,22.0,,1.7,,True,True,Silicon,Square,Rose Gold,False,,False,kaggle_arnabchaki
+778,Zebronics,ZEB-DRIP,smartwatch,1799.0,6499.0,72.3,3.8,2138.0,,,,True,True,,,,False,,False,kaggle_arnabchaki
+779,Zebronics,ZEB-DRIP (BLUE),smartwatch,1799.0,6499.0,72.3,3.8,2138.0,,,,,True,,,,False,,False,kaggle_arnabchaki
+780,Zebronics,ZEB-DRIP (METAL SILVER),smartwatch,1999.0,6999.0,71.4,3.8,2138.0,,,,True,True,,,,False,,False,kaggle_arnabchaki
+781,Zebronics,ZEB-FIT4220CH,smartwatch,3299.0,7999.0,58.8,4.2,,TFT-LCD Display,,10.0,,,Silicone,,,False,,False,kaggle_devsubhash
+782,Zebronics,ZEB-FIT5220CH,smartwatch,3299.0,4999.0,34.0,,,TFT-LCD Display,,7.0,,,Rubber,,,False,,False,kaggle_devsubhash
+783,Zebronics,"ZEB-FIT5220CH 7-Day Data Storage, 8 Sports Mode, SpO2, BP & HR Monitor, (Metal)",smartwatch,2999.0,5999.0,50.0,3.6,55.0,,,,True,True,Stainless Steel,Square,Black,False,,False,kaggle_arnabchaki
+784,Zebronics,ZEB-FIT5220CH(Gold Metal),smartwatch,2399.0,5999.0,60.0,3.8,3805.0,,,,True,True,Other,,,False,,False,kaggle_arnabchaki
+785,Zebronics,ZEB-FIT650,smartwatch,3449.0,4199.0,17.9,2.9,17.0,,2.4,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+786,Zebronics,ZEB-FIT650CH,smartwatch,3297.0,4199.0,21.5,2.9,,TFT-LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+787,Zebronics,ZEB-FIT7220CH (Metallic Silver),smartwatch,2099.0,7999.0,73.8,3.8,7386.0,,,,True,True,Metal,,,False,,False,kaggle_arnabchaki
+788,Zebronics,ZEB-FIT8220CH,smartwatch,1799.0,3999.0,55.0,4.2,1823.0,,,,True,True,Silicon,Square,Rose Gold,False,,False,kaggle_arnabchaki
+789,Zebronics,ZEB-FIT8220CH,smartwatch,2199.0,3999.0,45.0,4.5,,TFT-LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+790,Zebronics,ZEB-FIT920CH,smartwatch,1399.0,4499.0,68.9,4.0,469.0,,,,True,True,Thermo Plastic Polyurethene,Square,Red,False,,False,kaggle_arnabchaki
+791,Zebronics,ZEB-FIT920CH,smartwatch,2499.0,4499.0,44.5,4.6,,TFT-LCD Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+792,Zebronics,ZEB-FITME,smartwatch,2199.0,4999.0,56.0,3.9,22.0,,1.3,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+793,Zebronics,ZEB-FITMe,smartwatch,2799.0,4999.0,44.0,4.5,,TFT-LCD Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+794,Zebronics,Zeb Fit 4220 CH,smartwatch,3499.0,7999.0,56.3,1.0,1.0,,1.3,,True,True,Silicon,Circle,Black,False,,False,kaggle_arnabchaki
+795,Zebronics,Zeb Fit 7220 CH,smartwatch,4499.0,7499.0,40.0,3.7,3.0,,1.7,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+796,Zebronics,Zeb-Fit Me,smartwatch,2199.0,4999.0,56.0,3.9,272.0,,,,True,True,Thermo Plastic Polyurethene,Square,Green,False,,False,kaggle_arnabchaki
+797,Zebronics,Zeb-Fit1220CH,smartwatch,3499.0,3999.0,12.5,3.9,,,1.5,,True,True,Silicon,Square,Gold,False,,False,kaggle_arnabchaki
+798,Zebronics,Zeb-Fit280CH(Blue),smartwatch,1999.0,3999.0,50.0,3.8,2452.0,,,,True,True,Other,,,False,,False,kaggle_arnabchaki
+799,Zebronics,Zeb-Fit4220CH,smartwatch,2399.0,7999.0,70.0,3.9,1328.0,,,,True,True,Silicon,Circle,Silver,False,,False,kaggle_arnabchaki
+800,Zebronics,Zeb-Fit7220CH,smartwatch,2999.0,7999.0,62.5,3.5,22.0,,,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+801,boAt,BoAt Wave Call Plus,smartwatch,2199.0,7999.0,72.5,,,,1.8,,True,True,,,,False,,False,kaggle_arnabchaki
+802,boAt,Delta,smartwatch,2499.0,5990.0,58.3,3.6,,LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+803,boAt,O2,smartwatch,7990.0,7990.0,0.0,4.1,,LCD Display,,10.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+804,boAt,Storm,smartwatch,2999.0,5990.0,49.9,4.1,,LCD Display,,7.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+805,boAt,"Storm 1.3"" CurvedDisplay",smartwatch,1299.0,5990.0,78.3,4.1,619130.0,,1.3,,True,True,Thermo Plastic Polyurethene,Square,Blue,False,,False,kaggle_arnabchaki
+806,boAt,"Storm Pro Call with Bluetooth Calling, 1.78'' AMOLED Display and ASAP Charge",smartwatch,3299.0,9799.0,66.3,4.1,13261.0,,1.8,,True,True,Silicon,Rectangle,Red,False,,False,kaggle_arnabchaki
+807,boAt,"Storm Pro with 1.78"" AMOLED Display, 700+ Active Modes",smartwatch,1999.0,8999.0,77.8,3.9,6469.0,,1.8,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+808,boAt,Storm call 1.69 inch HD display with bluetooth calling and 550 nits brightness,smartwatch,1799.0,7990.0,77.5,4.1,125524.0,,1.7,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+809,boAt,Vertex,smartwatch,2499.0,6990.0,64.2,3.9,,AMOLED Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+810,boAt,"Vertex 1.69"" HealthEcosystem",smartwatch,2299.0,6990.0,67.1,3.9,16676.0,,1.7,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+811,boAt,Watch Blaze,smartwatch,1799.0,6990.0,74.3,3.9,2931.0,,1.8,,True,True,Metal,,,False,,False,kaggle_arnabchaki
+812,boAt,Watch Flash,smartwatch,1199.0,6990.0,82.8,4.0,27771.0,,1.3,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+813,boAt,"Watch Mercury 1.54"" TFTDisplay",smartwatch,1999.0,6990.0,71.4,3.9,12026.0,,1.5,,True,True,Silicon,Rectangle,Blue,False,,False,kaggle_arnabchaki
+814,boAt,Wave Arcade with 1.81 inch HD Display and Bluetooth Calling,smartwatch,2499.0,7990.0,68.7,4.0,8179.0,,1.8,,True,True,Silicon,Rectangle,Green,False,,False,kaggle_arnabchaki
+815,boAt,Wave Call,smartwatch,1999.0,7990.0,75.0,3.8,21724.0,,1.7,,True,True,Silicon,,,False,,False,kaggle_arnabchaki
+816,boAt,"Wave Connect with Bluetooth Calling, Voice Assistant and 1.69"" HD Display",smartwatch,2499.0,5990.0,58.3,4.2,39734.0,,1.7,,True,True,Silicon,Rectangle,Grey,False,,False,kaggle_arnabchaki
+817,boAt,"Wave Infinity with 1.85"" HD Screen, Functional Crown and Bluetooth Calling",smartwatch,2499.0,8990.0,72.2,4.2,2893.0,,1.9,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+818,boAt,Wave Lite,smartwatch,1699.0,6990.0,75.7,3.9,23498.0,,1.7,,True,True,Stainless Steel,,,False,,False,kaggle_arnabchaki
+819,boAt,"Wave Neo with 1.69 inch , 2.5D Curved Display & Multiple Sports Modes",smartwatch,1699.0,5990.0,71.6,4.0,98388.0,,1.7,,True,True,Silicon,Rectangle,Black,False,,False,kaggle_arnabchaki
+820,boAt,"Wave Select with 1.69"" HD Display, upto 10 Days Battery, HR & SpO2 Monitoring",smartwatch,2799.0,5990.0,53.3,3.9,2406.0,,1.6,,True,True,Silicon,Square,Green,False,,False,kaggle_arnabchaki
+821,boAt,"Wave Ultima with 1.8 inch Curve Arc HD Display, Bluetooth Calling with BT v5.3",smartwatch,3999.0,6990.0,42.8,4.2,628.0,,1.8,,True,True,Silicon,Rectangle,Red,False,,False,kaggle_arnabchaki
+822,boAt,Wave beat 1.69Inch HD display with complete health monitoring,smartwatch,1499.0,5990.0,75.0,4.1,45492.0,,1.6,,True,True,Silicon,Rectangle,Red,False,,False,kaggle_arnabchaki
+823,boAt,Wave pro 1.69inch HD display withTemperature Sensor and live cricket updates,smartwatch,1299.0,6990.0,81.4,3.9,17456.0,,1.7,,True,True,Silicon,Rectangle,Purple,False,,False,kaggle_arnabchaki
+824,boAt,Xplorer,smartwatch,2999.0,7990.0,62.5,3.8,11340.0,,1.3,,True,True,Silicon,Square,Black,False,,False,kaggle_arnabchaki
+825,boAt,Xplorer,smartwatch,3499.0,7990.0,56.2,3.8,,LCD Display,,10.0,,,Thermoplastic polyurethane,,,False,,False,kaggle_devsubhash
+826,pTron,Pulsefit,smartwatch,799.0,3199.0,75.0,2.5,,TFT-LCD Display,,3.0,,,Silicone,,,False,,False,kaggle_devsubhash
+827,pTron,Pulsefit P261,smartwatch,1299.0,2999.0,56.7,3.1,,TFT-LCD Display,,3.0,,,Silicone,,,False,,False,kaggle_devsubhash
+828,pTron,Pulsefit P461,smartwatch,1399.0,2999.0,53.4,3.3,,TFT-LCD Display,,3.0,,,Silicone,,,False,,False,kaggle_devsubhash
+829,pTron,Rhythm,smartwatch,1099.0,3000.0,63.4,3.4,,LCD Display,,7.0,,,Silicone,,,False,,False,kaggle_devsubhash
+830,pTron,Tronite,smartwatch,949.0,2000.0,52.6,3.7,,LCD Display,,3.0,,,Silicone,,,False,,False,kaggle_devsubhash

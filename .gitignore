@@ -8,3 +8,9 @@ node_modules/
 **/data/images/
 **/models/
 **/vectorstore/
+
+# Smartwatches: working files, keep only the final tables
+Smartwatches_Datasets/data/processed/smartwatches_clean.csv
+Smartwatches_Datasets/data/processed/smartwatches_review.csv
+Smartwatches_Datasets/data/processed/smartwatches_qa_sample.csv
+Smartwatches_Datasets/data/processed/smartwatches_final_v2.csv
