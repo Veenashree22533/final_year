@@ -411,39 +411,3 @@ Ground the LLM with retrieved context
         ↓
 Generate the recommendation and explanation
 ```
-
-## 17. Project Information
-
-**ConvoShop: A Retrieval-Augmented Generation Framework for Intent-Driven E-Commerce Product Advisory**
-
-Academic final-year project focused on conversational, intent-driven mobile-phone recommendation using semantic retrieval and RAG.
-
-### Team and Guide
-
-Add the project team members and project guide here.
-
-### Project License
-
-No open-source license is claimed for the project itself unless a `LICENSE` file is added to the repository. Dataset licenses are separate from the software license and must be respected independently.
-
-## Repository About Box
-
-Use the following GitHub repository description:
-
-> **ConvoShop — RAG-based conversational mobile-phone recommendation using FastAPI, Pinecone, MongoDB Atlas, Sentence Transformers, and Gemini.**
-
-Suggested GitHub topics:
-
-```text
-rag
-fastapi
-pinecone
-mongodb
-recommendation-system
-semantic-search
-sentence-transformers
-gemini
-conversational-ai
-e-commerce
-mobile-recommendation
-```
