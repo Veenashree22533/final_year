@@ -61,8 +61,11 @@ function formatNumber(n) {
 function Logo() {
   return (
     <div className="logo-nav-container">
-      <div className="logo-icon-badge">🤖🛒</div>
-      <span className="brand-fallback">Convo<b>Shop</b></span>
+      <img
+        className="logo-img-nav"
+        src="/logo.png"
+        alt="ConvoShop Logo"
+      />
     </div>
   )
 }
@@ -131,8 +134,8 @@ function Login({ onLogin }) {
     <div className="shopify-auth-viewport">
       <div className="shopify-auth-card-box">
         <div className="auth-brand-head">
-          <div className="login-big-icon">🤖🛒</div>
-          <h2>ConvoShop</h2>
+          <Logo />
+          <h2 style={{ marginTop: '10px' }}>ConvoShop</h2>
           <p>A Retrieval-Augmented Generation Framework for Intent-Driven E-Commerce Advisory</p>
         </div>
 
@@ -222,6 +225,99 @@ function Login({ onLogin }) {
   )
 }
 
+function GeminiSearchModal({ isOpen, onClose, allProducts, onSelectProduct }) {
+  const [query, setQuery] = useState('')
+  const [isListening, setIsListening] = useState(false)
+  const inputRef = useRef(null)
+
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => inputRef.current?.focus(), 50)
+    } else {
+      setQuery('')
+    }
+  }, [isOpen])
+
+  const handleVoice = () => {
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    if (!SpeechRecognition) {
+      alert('Speech recognition is not supported in this browser.')
+      return
+    }
+    const rec = new SpeechRecognition()
+    rec.lang = 'en-IN'
+    setIsListening(true)
+    rec.onresult = (e) => {
+      setQuery(e.results[0][0].transcript)
+      setIsListening(false)
+    }
+    rec.onerror = () => setIsListening(false)
+    rec.onend = () => setIsListening(false)
+    rec.start()
+  }
+
+  const results = useMemo(() => {
+    if (!query.trim()) return []
+    const q = query.toLowerCase()
+    return allProducts.filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q)).slice(0, 8)
+  }, [query, allProducts])
+
+  if (!isOpen) return null
+
+  return (
+    <div className="gemini-search-overlay" onClick={onClose}>
+      <div className="gemini-search-dialog" onClick={(e) => e.stopPropagation()}>
+        <div className="gemini-search-input-row">
+          <span className="search-mag-icon">🔍</span>
+          <input
+            ref={inputRef}
+            type="text"
+            placeholder={isListening ? "🎙️ Listening..." : "Search products, categories..."}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+          <button 
+            type="button" 
+            className={`gemini-mic-btn ${isListening ? 'listening' : ''}`}
+            onClick={handleVoice}
+            title="Voice search"
+          >
+            🎤
+          </button>
+          <button className="gemini-close-btn" onClick={onClose}>×</button>
+        </div>
+
+        {query.trim() !== '' && (
+          <div className="gemini-results-box">
+            <small className="gemini-results-title">Matching Results</small>
+            {results.length === 0 ? (
+              <p className="no-res" style={{ padding: '16px', color: '#6b7280', textAlign: 'center' }}>No products found matching "{query}"</p>
+            ) : (
+              results.map((item) => (
+                <div 
+                  key={item.id} 
+                  className="gemini-result-item"
+                  onClick={() => {
+                    onSelectProduct(item)
+                    onClose()
+                  }}
+                >
+                  <img src={item.image} alt="" />
+                  <div className="res-info">
+                    <h5>{item.title}</h5>
+                    <span className="cat">{item.category}</span>
+                  </div>
+                  <strong>{money(item.price)}</strong>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
   const [msgs, setMsgs] = useState([
     {
@@ -243,7 +339,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
   const handleVoiceSearch = () => {
     const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
     if (!SpeechRecognition) {
-      alert('Speech recognition is not supported in this browser. Try Chrome or Edge.')
+      alert('Speech recognition is not supported in this browser.')
       return
     }
 
@@ -327,7 +423,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
                     }}
                     style={{ background: 'none', border: '1px solid #93c5fd', color: '#1d4ed8', fontSize: '11px', padding: '3px 8px', borderRadius: '4px', cursor: 'pointer', fontWeight: 600 }}
                   >
-                    🔍 View RAG Source Chunks & Match Confidence ({m.confidence}) {m.ragInspectorOpen ? '▲' : '▼'}
+                    🔍 View RAG Source Chunks ({m.confidence}) {m.ragInspectorOpen ? '▲' : '▼'}
                   </button>
                   {m.ragInspectorOpen && (
                     <div className="rag-inspector-box">
@@ -347,7 +443,10 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
                     <div 
                       key={item.id} 
                       className="mini-product-row"
-                      onClick={() => onSelectProduct(item)}
+                      onClick={() => {
+                        onSelectProduct(item)
+                        onClose()
+                      }}
                       style={{ cursor: 'pointer' }}
                     >
                       <img src={item.image} alt="" />
@@ -362,7 +461,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
             </div>
           ))}
           {loading && <div className="chat-bubble-sh ai">Analyzing reviews via vector search…</div>}
-          {isListening && <div className="chat-bubble-sh ai voice-listening">🎙️ Listening to your request… Speak now!</div>}
+          {isListening && <div className="chat-bubble-sh ai voice-listening">🎙️ Listening... Speak now!</div>}
           <div ref={chatRef} />
         </div>
         <div className="drawer-footer-bar">
@@ -371,7 +470,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
               type="button"
               className={`voice-mic-btn ${isListening ? 'listening' : ''}`}
               onClick={handleVoiceSearch}
-              title="Click to speak your shopping intent"
+              title="Speak your query"
             >
               🎤
             </button>
@@ -829,7 +928,7 @@ function Store({ user, onLogout, onUpdateUser }) {
   const [category, setCategory] = useState('all')
   const [topRatedOnly, setTopRatedOnly] = useState(false)
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem('chargeshop_dark') === 'true')
-  const [isListeningHeader, setIsListeningHeader] = useState(false)
+  const [searchModalOpen, setSearchModalOpen] = useState(false)
   const [shown, setShown] = useState(BATCH)
   const [cart, setCart] = useState(() => read(`charge_cart_${user.email}`, []))
   const [wishlist, setWishlist] = useState(() => read(`charge_wishlist_${user.email}`, []))
@@ -873,32 +972,6 @@ function Store({ user, onLogout, onUpdateUser }) {
     })
   }, [])
 
-  const handleHeaderVoiceSearch = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    if (!SpeechRecognition) {
-      alert('Speech recognition is not supported in this browser. Try Chrome or Edge.')
-      return
-    }
-
-    const recognition = new SpeechRecognition()
-    recognition.lang = 'en-IN'
-    recognition.interimResults = false
-    recognition.maxAlternatives = 1
-
-    setIsListeningHeader(true)
-
-    recognition.onresult = (event) => {
-      const speechToText = event.results[0][0].transcript
-      setSearchQuery(speechToText)
-      setIsListeningHeader(false)
-    }
-
-    recognition.onerror = () => setIsListeningHeader(false)
-    recognition.onend = () => setIsListeningHeader(false)
-
-    recognition.start()
-  }
-
   const categories = useMemo(() => {
     const counts = new Map()
     rows.forEach((r) => counts.set(r.category, (counts.get(r.category) || 0) + 1))
@@ -909,8 +982,25 @@ function Store({ user, onLogout, onUpdateUser }) {
     return rows.filter((r) => {
       const matchCat = category === 'all' || r.category === category
       const matchRating = topRatedOnly ? (r.rating != null && r.rating >= 4.0) : true
-      const matchSearch = searchQuery.trim() === '' || r.title.toLowerCase().includes(searchQuery.toLowerCase()) || r.category.toLowerCase().includes(searchQuery.toLowerCase())
-      return matchCat && matchRating && matchSearch
+
+      const q = searchQuery.trim().toLowerCase()
+      if (!q) return matchCat && matchRating
+
+      const tokens = q.split(/\s+/).filter(w => w.length > 2 && !['under', 'below', 'rs', 'inr'].includes(w))
+      const titleLower = r.title.toLowerCase()
+      const catLower = r.category.toLowerCase()
+
+      const matchesKeyword = tokens.length === 0 || tokens.some(token => titleLower.includes(token) || catLower.includes(token))
+
+      let priceValid = true
+      const priceMatch = q.match(/(?:under|below|<)\s*(\d+)/i)
+      if (priceMatch) {
+        const maxLimit = parseInt(priceMatch[1], 10)
+        const itemPriceInINR = (r.price || 0) * RATE
+        priceValid = itemPriceInINR <= maxLimit
+      }
+
+      return matchCat && matchRating && matchesKeyword && priceValid
     })
   }, [rows, category, topRatedOnly, searchQuery])
 
@@ -1002,22 +1092,15 @@ function Store({ user, onLogout, onUpdateUser }) {
         <div className="shopify-header-inner">
           <Logo />
           
-          <div className="header-search-bar">
+          <div className="header-search-bar" onClick={() => setSearchModalOpen(true)}>
             <input 
               type="text" 
-              placeholder={isListeningHeader ? "🎙️ Listening..." : "Search our store..."} 
+              placeholder="Search store (e.g. Laptops under 50000)..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button 
-              type="button" 
-              className={`header-mic-btn ${isListeningHeader ? 'listening' : ''}`}
-              onClick={handleHeaderVoiceSearch}
-              title="Click to search with your voice"
-            >
-              🎤
-            </button>
-            <button className="search-submit-btn">🔍</button>
+            <button type="button" className="header-mic-btn" onClick={(e) => { e.stopPropagation(); setSearchModalOpen(true); }}>🎤</button>
+            <button className="search-submit-btn" onClick={(e) => { e.stopPropagation(); setSearchModalOpen(true); }}>🔍</button>
           </div>
 
           <div className="shopify-nav-icons">
@@ -1035,6 +1118,13 @@ function Store({ user, onLogout, onUpdateUser }) {
           </div>
         </div>
       </header>
+
+      <GeminiSearchModal
+        isOpen={searchModalOpen}
+        onClose={() => setSearchModalOpen(false)}
+        allProducts={rows}
+        onSelectProduct={(item) => handleOpenProduct(item)}
+      />
 
       <section className="shopify-hero-banner">
         <div className="hero-banner-inner">
