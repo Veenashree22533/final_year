@@ -26,11 +26,12 @@ if no_label.any(): errs.append(f"{int(no_label.sum())} estimated prices not labe
 
 # laptops: recompute every conversion from the stored EUR price
 raw = pd.read_csv(ROOT / "Laptop_Datasets/data/processed/laptops_kb.csv")
-eur = raw[raw["price_basis"] == "converted_from_EUR"]
+lp_df = df[df["category"] == "laptop"]
+eur_df = lp_df[lp_df["price_source"] == "converted_from_EUR"]
 rate = get_rates()["EUR"]
-expected = (eur["price_local"] * rate / 100).round() * 100
-bad = int(((expected - eur["price_inr"]).abs() > 1).sum())
-print(f"\nlaptops converted from EUR: {len(eur)} | rate {rate:.2f} | wrong conversions: {bad}")
+expected = (raw["price_local"] * rate / 100).round() * 100
+bad = int((np.abs(expected.values - eur_df["price_inr"].values) > 1).sum())
+print(f"\nlaptops converted from EUR: {len(eur_df)} | rate {rate:.2f} | wrong conversions: {bad}")
 if bad: errs.append(f"{bad} laptop prices do not match price_local x rate")
 lp = df[df["category"] == "laptop"]
 out = int((~lp["price_inr"].between(15000, 800000)).sum())

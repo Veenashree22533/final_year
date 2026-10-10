@@ -47,22 +47,31 @@ phones = pd.DataFrame({
 })
 
 # ---------------- laptops
+sys.path.insert(0, str(OUT))
+from currency import get_rates
+
 lp = pd.read_csv(ROOT / "Laptop_Datasets/data/processed/laptops_kb.csv")
-if "price_basis" in lp.columns:
-    lp_src = lp["price_basis"]
+eur_rate = get_rates()["EUR"]
+
+if "price_inr" in lp.columns and lp["price_inr"].notna().any():
+    lp_price_inr = lp["price_inr"]
+    lp_src = lp.get("price_basis", pd.Series("dataset_inr", index=lp.index))
 else:
-    est = col(lp, "price_inr_is_estimate").fillna(False).astype(bool)
-    lp_src = pd.Series(np.where(lp["price_inr"].isna(), "missing",
-                                np.where(est, "converted_estimate", "dataset_inr")), index=lp.index)
+    # Convert price_local (EUR) to INR using conversion rate
+    lp_price_inr = (lp["price_local"] * eur_rate / 100).round() * 100
+    lp_src = pd.Series("converted_from_EUR", index=lp.index)
+
+lp_desc = lp["description"] + " Price converted from EUR ~ INR " + lp_price_inr.map("{:,.0f}".format) + " (estimated conversion)."
+
 laptops = pd.DataFrame({
     "product_id": ids(lp["laptop_id"], "lp_"),
     "category": "laptop", "brand": lp["brand"], "name": lp["name"],
-    "price_inr": col(lp, "price_inr"), "price_source": lp_src,
+    "price_inr": lp_price_inr, "price_source": lp_src,
     "rating": np.nan, "launched_year": np.nan,
     "ram_gb": col(lp, "ram_gb"), "storage_gb": col(lp, "storage_gb"),
     "screen_in": col(lp, "screen_in"), "battery_mah": np.nan, "battery_days": np.nan,
     "image_url": col(lp, "image_url"), "has_image": col(lp, "has_image"),
-    "description": lp["description"],
+    "description": lp_desc,
     "specs_json": pack(lp, ["cpu_model", "cpu_generation", "storage_type", "gpu_final",
                             "touchscreen", "price_local", "price_currency"]),
 })

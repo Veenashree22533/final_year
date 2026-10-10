@@ -3,77 +3,73 @@ from app.config import GEMINI_API_KEY
 
 genai.configure(api_key=GEMINI_API_KEY)
 
-print("MODEL LOADED: gemini-3.5-flash-lite")
+try:
+    model = genai.GenerativeModel("gemini-3.5-flash-lite")
+except Exception:
+    model = genai.GenerativeModel("gemini-3.5-flash")
 
-model = genai.GenerativeModel("gemini-3.5-flash-lite")
+ABSTAIN_MESSAGE = "Not in our catalog. No matching products were found in our verified product catalog."
 
-
-def generate_response(query, context):
-
-    # No matching products found
+def generate_response(query: str, context: str) -> str:
     if not context.strip():
-        return """
-Sorry, I couldn't find any phones matching your requirements in the current database.
-
-Try:
-• Increasing your budget
-• Changing the brand
-• Using fewer filters
-
-Example:
-- Best Samsung phone under 70000
-- Best camera phone under 100000
-- Best gaming phone
-"""
+        return ABSTAIN_MESSAGE
 
     prompt = f"""
-You are an expert smartphone recommendation assistant.
+You are ConvoShop, an expert conversational shopping assistant.
 
-PHONE DATA:
+CATALOG PRODUCTS RETRIEVED FROM VERIFIED DATABASE:
 {context}
 
 USER QUESTION:
 {query}
 
-RULES:
-- Use ONLY the phone data provided.
-- Never invent specifications.
-- Respect budget limits mentioned by the user.
-- If the user asks for camera quality, prioritize camera specifications.
-- If the user asks for battery life, prioritize battery capacity.
-- If the user asks for gaming, prioritize processor and RAM.
-- If the user asks for value for money, compare specifications against price.
-- Rank recommendations from best to worst.
-- Explain clearly why each phone was selected.
-- Mention exact prices from the provided data.
-- If a phone exceeds the user's budget, do not recommend it unless explicitly asked.
-- If only one phone matches, return only one phone.
-- If two phones match, return only two phones.
-- Do not create fake recommendations.
+CRITICAL RULES & CONSTRAINTS:
+1. Answer ONLY using the retrieved catalog products provided above.
+2. DO NOT invent specs, prices, models, ratings, or features from external memory.
+3. For every product mentioned, cite its product_id in brackets, e.g. [ph_0012], [lp_0450], [sw_0120].
+4. Quote all specifications (RAM, Storage, Screen, Battery, Processor, Price) EXACTLY as listed.
+5. If a spec is missing, explicitly state "not listed".
+6. Respect user budget strictly.
+7. If no retrieved product matches query/budget, state: "Not in our catalog."
 
-OUTPUT FORMAT:
+REQUIRED OUTPUT FORMAT:
+🎯 **Top Recommendation**: [Product Name] [Product_ID]
+💰 **Price**: ₹xxxx (State "converted estimate" if applicable)
 
-#1 Phone Name
-Price: ₹xxxx
+📋 **Key Specifications**:
+- Battery: xxxx | RAM & Storage: xxxx | Processor/Screen: xxxx
 
-Specifications:
-- Battery: xxxx
-- Processor: xxxx
-- RAM: xxxx
-- Storage: xxxx
-- Camera: xxxx
-- Screen: xxxx
+💡 **Why Recommended & Comparison**:
+- State clearly why this product best fits the query.
+- Compare directly against other retrieved models in 2-3 bullet points.
 
-Why Recommended:
-- Point 1
-- Point 2
-- Point 3
+Be concise, accurate, objective, and fast.
 """
 
-    
     try:
-        response = model.generate_content(prompt)
-        return response.text
+        response = model.generate_content(
+            prompt,
+            generation_config=genai.types.GenerationConfig(
+                temperature=0.1,
+                max_output_tokens=250
+            )
+        )
+        text = response.text.strip()
+        if not text:
+            return ABSTAIN_MESSAGE
+        return text
     except Exception as e:
-        print("GEMINI ERROR:", e)
-        return f"Gemini Error: {str(e)}"
+        # Fallback to gemini-3.5-flash if lite hits any error
+        try:
+            fb_model = genai.GenerativeModel("gemini-3.5-flash")
+            res = fb_model.generate_content(
+                prompt,
+                generation_config=genai.types.GenerationConfig(
+                    temperature=0.1,
+                    max_output_tokens=250
+                )
+            )
+            return res.text.strip() or ABSTAIN_MESSAGE
+        except Exception as fb_err:
+            print("GEMINI ERROR:", fb_err)
+            return f"Gemini Error: {str(fb_err)}"
