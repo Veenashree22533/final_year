@@ -300,3 +300,57 @@ body { background: var(--sh-bg); color: var(--sh-text); font-family: -apple-syst
 .auth-alert-box.success { background: rgba(52, 211, 153, 0.2); color: #86efac; }
 .auth-card-footer { text-align: center; margin-top: 20px; font-size: 13px; color: #94a3b8; }
 .auth-card-footer button { background: none; border: 0; color: #ff2d2d; font-weight: 700; cursor: pointer; }
+.product-detail-dialog {
+  background: var(--sh-card-bg);
+  color: var(--sh-text);
+  width: min(860px, 92%);
+  max-height: 85vh;
+  border-radius: 16px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  border: 1px solid var(--sh-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  position: relative;
+  padding: 30px;
+  animation: geminiModalPopUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.modal-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.modal-img-viewport {
+  width: 100%;
+  aspect-ratio: 1;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid var(--sh-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.modal-img-viewport img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.modal-close-x {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: 0;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--sh-muted);
+  z-index: 10;
+}
