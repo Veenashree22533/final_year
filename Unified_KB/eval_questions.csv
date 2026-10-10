@@ -1,0 +1,71 @@
+﻿qid,type,question,expected_answer,product_ids
+Q001,spec_lookup,What is the price of the Infinix Note 40S?,"INR 16,999",ph_0244
+Q002,spec_lookup,What is the price of the Realme P2 Pro 5G 128GB?,"INR 32,999",ph_0115
+Q003,spec_lookup,What is the price of the Apple iPhone 16 512GB?,"INR 89,999",ph_0003
+Q004,spec_lookup,What is the price of the Infinix Note 40 Racing Edition?,"INR 32,999",ph_0247
+Q005,spec_lookup,What is the price of the Huawei Nova 12 Pro?,"INR 54,999",ph_0185
+Q006,spec_lookup,What is the price of the Oppo Reno13 Pro 512GB?,"INR 69,999",ph_0038
+Q007,spec_lookup,What is the price of the Motorola Moto G Stylus 5G 512GB?,"INR 29,999",ph_0174
+Q008,spec_lookup,What is the price of the Samsung Galaxy Z Fold6 1TB?,"INR 200,999",ph_0271
+Q009,spec_lookup,How much RAM does the Infinix Note 40S have?,8 GB,ph_0244
+Q010,spec_lookup,How much RAM does the Realme P2 Pro 5G 128GB have?,8 GB,ph_0115
+Q011,spec_lookup,How much RAM does the Apple iPhone 16 512GB have?,6 GB,ph_0003
+Q012,spec_lookup,How much RAM does the Infinix Note 40 Racing Edition have?,12 GB,ph_0247
+Q013,spec_lookup,How much RAM does the Huawei Nova 12 Pro have?,8 GB,ph_0185
+Q014,spec_lookup,How much RAM does the Oppo Reno13 Pro 512GB have?,12 GB,ph_0038
+Q015,spec_lookup,How much RAM does the Motorola Moto G Stylus 5G 512GB have?,8 GB,ph_0174
+Q016,spec_lookup,How much RAM does the Samsung Galaxy Z Fold6 1TB have?,12 GB,ph_0271
+Q017,spec_lookup,"How much storage does the MSI Pulse 17 B13VGK-085XES Intel Core i7-13700H/16GB/1TB SSD/RTX 4070/17.3"" have?",1000 GB,lp_0187
+Q018,spec_lookup,"How much storage does the Lenovo Legion Pro 5 16IRX8 Intel Core i7-13700HX/32GB/1TB SSD/RTX 4060/16"" have?",1000 GB,lp_0937
+Q019,spec_lookup,"How much storage does the Apple MacBook Pro Apple M2 Pro 12 Núcleos/32GB/1TB SSD/14.2"" Gris Espacial have?",1000 GB,lp_0667
+Q020,spec_lookup,"How much storage does the MSI Summit E14 Evo A12M-084ES Intel Core i7-1280P/32GB/1TB SSD/14"" have?",1000 GB,lp_1388
+Q021,spec_lookup,"How much storage does the Dell Latitude 3420 Intel Core i7-1165G7/16GB/512GB SSD/14"" have?",512 GB,lp_0802
+Q022,spec_lookup,"How much storage does the ASUS F515EA-BQ1625W Intel Core i3-1115G4/8GB/256GB/15.6"" have?",256 GB,lp_0565
+Q023,spec_lookup,"How much storage does the Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3"" Gris Espacial have?",512 GB,lp_0347
+Q024,spec_lookup,"How much storage does the HP 15S-FQ0023NS Intel Celeron N4120/8GB/256GB SSD/15.6"" have?",256 GB,lp_1181
+Q025,spec_lookup,What is the price of the Garmin Fenix 6 Sapphire Gray DLC?,"INR 74,990",sw_0414
+Q026,spec_lookup,What is the price of the Apple Series 5 GPS + Cellular 44 mm Stainless Steel Case?,"INR 73,900",sw_0070
+Q027,spec_lookup,What is the price of the Amazfit GTR 42 mm Glitter?,"INR 9,999",sw_0565
+Q028,spec_lookup,"What is the price of the Garmin Forerunner 255, GPS Running Smartwatch, Advanced Insights, HRV Status?","INR 39,490",sw_0438
+Q029,spec_lookup,"What is the price of the Noise Qube with 1.4"" Full Touch display, Multi-Sports modes, 7-day Battery,Spo2?","INR 1,299",sw_0653
+Q030,spec_lookup,"What is the price of the Garmin Venu 2 Plus, AMOLED Display, Built in Speaker & MIC, Upto 9 Days Battery, SPO2?","INR 46,990",sw_0487
+Q031,spec_lookup,What is the price of the Pebble Cosmos?,"INR 4,990",sw_0659
+Q032,spec_lookup,What is the price of the Garmin VIVOACTIVE 4S?,"INR 34,990",sw_0481
+Q033,spec_lookup,What is the price of the Realme 2S?,"INR 3,499",sw_0690
+Q034,spec_lookup,What is the price of the Noise Fit Evolve?,"INR 5,499",sw_0646
+Q035,estimate_honesty,"How much does the MSI Pulse 17 B13VGK-085XES Intel Core i7-13700H/16GB/1TB SSD/RTX 4070/17.3"" cost in rupees?","about INR 230,900, and the answer must say it is an estimate",lp_0187
+Q036,estimate_honesty,"How much does the Lenovo Legion Pro 5 16IRX8 Intel Core i7-13700HX/32GB/1TB SSD/RTX 4060/16"" cost in rupees?","about INR 241,900, and the answer must say it is an estimate",lp_0937
+Q037,estimate_honesty,"How much does the Apple MacBook Pro Apple M2 Pro 12 Núcleos/32GB/1TB SSD/14.2"" Gris Espacial cost in rupees?","about INR 360,700, and the answer must say it is an estimate",lp_0667
+Q038,estimate_honesty,"How much does the MSI Summit E14 Evo A12M-084ES Intel Core i7-1280P/32GB/1TB SSD/14"" cost in rupees?","about INR 188,000, and the answer must say it is an estimate",lp_1388
+Q039,estimate_honesty,"How much does the Dell Latitude 3420 Intel Core i7-1165G7/16GB/512GB SSD/14"" cost in rupees?","about INR 109,900, and the answer must say it is an estimate",lp_0802
+Q040,filtered_search,What is the cheapest Honor smartwatch?,"Honor Watch ES at INR 4,999 (ties possible)",sw_0546
+Q041,filtered_search,What is the cheapest Dizo smartwatch?,"Dizo Watch 2 sports (by realme techlife) 1.69"" Bright screen with 110+ sports modes at INR 1,199 (ties possible)",sw_0148
+Q042,filtered_search,What is the cheapest Noise smartwatch?,"Noise ColorFit Caliber Go with 1.69 inch HD Display, 40 Sports Modes, 150+ Watch Faces at INR 1,299 (ties possible)",sw_0623
+Q043,filtered_search,What is the cheapest Ambrane smartwatch?,"Ambrane Wise-Eon 1.69Lucid Display bluetooth calling function & 7 days battery life at INR 1,299 (ties possible)",sw_0024
+Q044,filtered_search,What is the cheapest Samsung smartwatch?,"Samsung Gear Fit at INR 7,999 (ties possible)",sw_0743
+Q045,filtered_search,"Show me phones with at least 6 GB RAM under INR 30,000.",Every result must have ram_gb>=6 and price<=30000. 87 matching phones exist.,
+Q046,filtered_search,"Show me phones with at least 8 GB RAM under INR 40,000.",Every result must have ram_gb>=8 and price<=40000. 90 matching phones exist.,
+Q047,filtered_search,"Show me phones with at least 8 GB RAM under INR 60,000.",Every result must have ram_gb>=8 and price<=60000. 126 matching phones exist.,
+Q048,filtered_search,"Show me phones with at least 12 GB RAM under INR 80,000.",Every result must have ram_gb>=12 and price<=80000. 56 matching phones exist.,
+Q049,filtered_search,"Show me phones with at least 12 GB RAM under INR 100,000.",Every result must have ram_gb>=12 and price<=100000. 67 matching phones exist.,
+Q050,not_listed,"What is the battery life of the Garmin Fenix 7 Solar Multisport Watch, PacePro Technology, ClimbPro, Stamina Tracking?",not listed in the catalog (must not invent a number),sw_0423
+Q051,not_listed,"What is the battery life of the Noise Icon Buzz BT Calling with 1.69"" display , AI Voice Assistance, Built-In Games?",not listed in the catalog (must not invent a number),sw_0648
+Q052,not_listed,What is the battery life of the Samsung Galaxy Watch4 Classic Bluetooth (4.2cm)?,not listed in the catalog (must not invent a number),sw_0735
+Q053,not_listed,What is the battery life of the Fitbit Versa 2 Special Edition?,not listed in the catalog (must not invent a number),sw_0249
+Q054,not_listed,"What is the battery life of the Apple Watch Series7 (GPS + Cellular, 41mm)Blue Aluminium Case-Abyss Blue Sport Band?",not listed in the catalog (must not invent a number),sw_0116
+Q055,not_listed,What is the battery life of the FitbitInspire 3 Health & Fitness Tracker (Lilac Bliss / Black?,not listed in the catalog (must not invent a number),sw_0231
+Q056,not_listed,What is the battery life of the Samsung Watch 5 pro45mmSuper AMOLED displayLTE callingwith advanced GPS tracking?,not listed in the catalog (must not invent a number),sw_0760
+Q057,not_listed,"What is the battery life of the boAt Wave Ultima with 1.8 inch Curve Arc HD Display, Bluetooth Calling with BT v5.3?",not listed in the catalog (must not invent a number),sw_0821
+Q058,not_in_catalog,Tell me the price and specs of the Samsung Galaxy Z Flux 9.,not in the catalog,
+Q059,not_in_catalog,Tell me the price and specs of the Apple iPhone 19 Pro.,not in the catalog,
+Q060,not_in_catalog,Tell me the price and specs of the OnePlus Nova X Ultra.,not in the catalog,
+Q061,not_in_catalog,Tell me the price and specs of the Dell Inspiron X9000 Pro.,not in the catalog,
+Q062,not_in_catalog,Tell me the price and specs of the Lenovo ThinkPad Zeta 15.,not in the catalog,
+Q063,not_in_catalog,Tell me the price and specs of the Apple Watch Ultra 9.,not in the catalog,
+Q064,not_in_catalog,Tell me the price and specs of the Garmin Fenix 12 Solar.,not in the catalog,
+Q065,not_in_catalog,Tell me the price and specs of the Noise ColorFit Quantum 5.,not in the catalog,
+Q066,not_in_catalog,Tell me the price and specs of the boAt Wave Titan Max.,not in the catalog,
+Q067,not_in_catalog,Tell me the price and specs of the HP Spectre Z Fold 3.,not in the catalog,
+Q068,not_in_catalog,Do you have DSLR cameras?,"not in the catalog: only phones, laptops and smartwatches",
+Q069,not_in_catalog,Show me wireless headphones under INR 3000.,"not in the catalog: only phones, laptops and smartwatches",
+Q070,not_in_catalog,Which gaming consoles do you sell?,"not in the catalog: only phones, laptops and smartwatches",

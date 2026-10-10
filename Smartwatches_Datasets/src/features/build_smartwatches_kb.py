@@ -19,6 +19,7 @@ for c in ["touchscreen", "bluetooth"]:
 df["watch_id"] = range(1, len(df) + 1)
 df["model_name"] = df["name"]
 df["display_type"] = df["display"]
+df["screen_in"] = df["display_size_in"]      # same column name as phones/laptops; missing stays missing
 df["image_url"] = np.nan          # no images in the Kaggle sources
 df["has_image"] = False
 
