@@ -886,27 +886,6 @@ function SettingsModal({ user, onClose, onUpdateUser, orders, onLogout, darkMode
                 </div>
               )}
 
-              {activeSub === 'address' && (
-                <div style={{ padding: '10px 0', fontSize: '13px' }}>
-                  <p style={{ fontWeight: 600, marginBottom: '8px' }}>Saved Delivery Address:</p>
-                  <div style={{ background: '#f3f4f6', padding: '12px', borderRadius: '6px' }}>
-                    <strong>{user.name}</strong><br />
-                    #42, Tech Park Avenue, Silicon Valley<br />
-                    Karnataka, India - 563101
-                  </div>
-                </div>
-              )}
-
-              {activeSub === 'payments' && (
-                <div style={{ padding: '10px 0', fontSize: '13px' }}>
-                  <p style={{ fontWeight: 600, marginBottom: '8px' }}>Saved Payment Methods:</p>
-                  <div style={{ background: '#f3f4f6', padding: '12px', borderRadius: '6px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span>💳 Visa ending in •••• 4892</span>
-                    <span style={{ color: '#10b981', fontWeight: 700 }}>Default</span>
-                  </div>
-                </div>
-              )}
-
               {(activeSub === 'terms' || activeSub === 'policy') && (
                 <div style={{ padding: '10px 0', fontSize: '13px', lineHeight: '1.5', color: '#4b5563' }}>
                   <h4 style={{ color: '#111827', marginBottom: '8px' }}>ConvoShop Terms & Privacy Policy</h4>
