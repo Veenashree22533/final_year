@@ -26,146 +26,123 @@ function toNumber(value) {
   return n
 }
 
-const BRAND_IMAGE_POOLS = {
-  phone: {
-    samsung: [
-      'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1580910051074-3eb694886505?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80'
-    ],
-    apple: [
-      'https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1567581935884-3349723552ca?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1574944985070-8f3ebc6b79d2?w=500&auto=format&fit=crop&q=80'
-    ],
-    google: [
-      'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1585060544812-6b45742d762f?w=500&auto=format&fit=crop&q=80'
-    ],
-    general_android: [
-      'https://images.unsplash.com/photo-1565849904461-04a58ad377e0?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1546054454-aa26e2b734c7?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1533228876829-65c94e7b5025?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1575695342320-d2d2d2f9b73f?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop&q=80'
-    ]
-  },
-  laptop: {
-    apple: [
-      'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=500&auto=format&fit=crop&q=80'
-    ],
-    asus: [
-      'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=500&auto=format&fit=crop&q=80'
-    ],
-    hp: [
-      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop&q=80'
-    ],
-    lenovo: [
-      'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?w=500&auto=format&fit=crop&q=80'
-    ],
-    general_laptop: [
-      'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&auto=format&fit=crop&q=80'
-    ]
-  },
-  smartwatch: {
-    apple: [
-      'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1510017803434-a899398421b3?w=500&auto=format&fit=crop&q=80'
-    ],
-    samsung: [
-      'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format&fit=crop&q=80'
-    ],
-    general_watch: [
-      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1544117519-31a4b719223d?w=500&auto=format&fit=crop&q=80',
-      'https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=500&auto=format&fit=crop&q=80'
-    ]
-  }
+/* ---------- Icons (square-cornered line icons, no emoji) ---------- */
+
+const ICON_SHAPES = {
+  mic: (
+    <>
+      <rect x="9" y="2" width="6" height="12" />
+      <path d="M5 11v1a7 7 0 0 0 14 0v-1M12 19v3M8 22h8" />
+    </>
+  ),
+  search: (
+    <>
+      <circle cx="10.5" cy="10.5" r="6.5" />
+      <path d="M15.5 15.5L21 21" />
+    </>
+  ),
+  heart: <path d="M12 21L3 12a5.5 5.5 0 0 1 9-6 5.5 5.5 0 0 1 9 6z" />,
+  cart: (
+    <>
+      <path d="M2 3h3l2.5 12h11L21 7H6" />
+      <circle cx="9" cy="20" r="1.5" />
+      <circle cx="18" cy="20" r="1.5" />
+    </>
+  ),
+  settings: (
+    <>
+      <path d="M3 7h11M18 7h3M3 17h3M10 17h11" />
+      <rect x="14" y="4" width="4" height="6" />
+      <rect x="6" y="14" width="4" height="6" />
+    </>
+  ),
+  spark: <path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z" />,
+  link: <path d="M10 14l4-4M8 12l-3 3a3.5 3.5 0 0 0 5 5l3-3M16 12l3-3a3.5 3.5 0 0 0-5-5l-3 3" />,
+  close: <path d="M5 5l14 14M19 5L5 19" />,
+  check: <path d="M4 12l5 5L20 6" />,
+  star: <path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2-6.4-3.7-6.4 3.7 1.7-7.2L2 9.6 9 9z" />,
+  truck: (
+    <>
+      <path d="M2 6h12v10H2zM14 10h4l3 3v3h-7z" />
+      <circle cx="7" cy="18" r="2" />
+      <circle cx="17" cy="18" r="2" />
+    </>
+  ),
+  up: <path d="M5 15l7-7 7 7" />,
+  down: <path d="M5 9l7 7 7-7" />,
 }
 
-function hashString(str) {
-  let hash = 0
-  for (let i = 0; i < str.length; i++) {
-    hash = (hash << 5) - hash + str.charCodeAt(i)
-    hash |= 0
-  }
-  return Math.abs(hash)
+function Icon({ name, size = 20, fill = false }) {
+  return (
+    <svg
+      className="icon-svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill={fill ? 'currentColor' : 'none'}
+      stroke="currentColor"
+      strokeWidth="2.5"
+      strokeLinecap="square"
+      strokeLinejoin="miter"
+      aria-hidden="true"
+    >
+      {ICON_SHAPES[name]}
+    </svg>
+  )
+}
+
+/* ---------- Product images ----------
+   A real image_url from the catalog is used when it is a usable http(s) link.
+   Otherwise a placeholder (category icon + brand) is generated, so a product
+   never shows an unrelated stock photo. */
+
+const PRODUCT_SHAPES = {
+  phone:
+    '<rect x="112" y="30" width="96" height="176" rx="14" fill="#fff" stroke="#111" stroke-width="6"/>' +
+    '<rect x="124" y="48" width="72" height="132" fill="#111"/>' +
+    '<rect x="146" y="36" width="28" height="5" fill="#111"/>' +
+    '<circle cx="160" cy="193" r="5" fill="#111"/>',
+  laptop:
+    '<rect x="76" y="44" width="168" height="112" rx="8" fill="#fff" stroke="#111" stroke-width="6"/>' +
+    '<rect x="88" y="56" width="144" height="88" fill="#111"/>' +
+    '<path d="M44 168 H276 L260 196 H60 Z" fill="#fff" stroke="#111" stroke-width="6" stroke-linejoin="round"/>',
+  smartwatch:
+    '<rect x="132" y="12" width="56" height="46" fill="#111"/>' +
+    '<rect x="132" y="168" width="56" height="46" fill="#111"/>' +
+    '<rect x="104" y="50" width="112" height="124" rx="30" fill="#fff" stroke="#111" stroke-width="6"/>' +
+    '<rect x="118" y="64" width="84" height="96" rx="18" fill="#111"/>' +
+    '<rect x="214" y="96" width="8" height="24" fill="#111"/>',
+}
+
+const escapeXml = (s) =>
+  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
+function makePlaceholder(brand = '', category = '') {
+  const key = PRODUCT_SHAPES[category] ? category : 'phone'
+  const label = escapeXml((brand || key).toUpperCase().slice(0, 18))
+  const svg =
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260">' +
+    '<rect width="320" height="260" fill="#fcb900"/>' +
+    '<rect x="14" y="14" width="14" height="14" fill="#111"/>' +
+    '<rect x="28" y="28" width="14" height="14" fill="#ff5a00"/>' +
+    PRODUCT_SHAPES[key] +
+    '<rect y="222" width="320" height="38" fill="#111"/>' +
+    `<text x="160" y="249" text-anchor="middle" font-family="Impact, 'Arial Narrow', sans-serif" font-size="24" letter-spacing="2" fill="#fcb900">${label}</text>` +
+    '</svg>'
+  return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`
 }
 
 function getProductImage(brand = '', title = '', category = '', rawUrl = '') {
-  if (rawUrl && rawUrl.startsWith('http') && !rawUrl.includes('phonedb.net') && !rawUrl.includes('photo-1511707171634')) {
+  const c = (category || '').toLowerCase()
+  if (
+    rawUrl &&
+    typeof rawUrl === 'string' &&
+    rawUrl.startsWith('http') &&
+    !rawUrl.includes('phonedb.net')
+  ) {
     return rawUrl
   }
-
-  const b = (brand || '').toLowerCase()
-  const t = (title || '').toLowerCase()
-  const c = (category || '').toLowerCase()
-  const key = `${b}_${t}`
-  const hash = hashString(key)
-
-  if (c === 'phone') {
-    if (b.includes('samsung')) {
-      const pool = BRAND_IMAGE_POOLS.phone.samsung
-      return pool[hash % pool.length]
-    }
-    if (b.includes('apple') || t.includes('iphone')) {
-      const pool = BRAND_IMAGE_POOLS.phone.apple
-      return pool[hash % pool.length]
-    }
-    if (b.includes('google') || t.includes('pixel')) {
-      const pool = BRAND_IMAGE_POOLS.phone.google
-      return pool[hash % pool.length]
-    }
-    const pool = BRAND_IMAGE_POOLS.phone.general_android
-    return pool[hash % pool.length]
-  }
-
-  if (c === 'laptop') {
-    if (b.includes('apple') || t.includes('macbook')) {
-      const pool = BRAND_IMAGE_POOLS.laptop.apple
-      return pool[hash % pool.length]
-    }
-    if (b.includes('asus') || b.includes('rog') || b.includes('tuf')) {
-      const pool = BRAND_IMAGE_POOLS.laptop.asus
-      return pool[hash % pool.length]
-    }
-    if (b.includes('hp')) {
-      const pool = BRAND_IMAGE_POOLS.laptop.hp
-      return pool[hash % pool.length]
-    }
-    if (b.includes('lenovo') || b.includes('thinkpad')) {
-      const pool = BRAND_IMAGE_POOLS.laptop.lenovo
-      return pool[hash % pool.length]
-    }
-    const pool = BRAND_IMAGE_POOLS.laptop.general_laptop
-    return pool[hash % pool.length]
-  }
-
-  if (c === 'smartwatch') {
-    if (b.includes('apple')) {
-      const pool = BRAND_IMAGE_POOLS.smartwatch.apple
-      return pool[hash % pool.length]
-    }
-    if (b.includes('samsung')) {
-      const pool = BRAND_IMAGE_POOLS.smartwatch.samsung
-      return pool[hash % pool.length]
-    }
-    const pool = BRAND_IMAGE_POOLS.smartwatch.general_watch
-    return pool[hash % pool.length]
-  }
-
-  const pool = BRAND_IMAGE_POOLS.phone.general_android
-  return pool[hash % pool.length]
+  return makePlaceholder(brand, c)
 }
 
 function parseFormattedMarkdown(text) {
@@ -192,7 +169,7 @@ function Logo() {
         alt="ConvoShop Logo"
         onError={(e) => { e.target.style.display = 'none' }}
       />
-      <span style={{ fontSize: '20px', fontWeight: 'bold', color: '#ef4444', letterSpacing: '-0.5px' }}>ConvoShop</span>
+      <span>ConvoShop</span>
     </div>
   )
 }
@@ -223,6 +200,7 @@ function Login({ onLogin }) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [showPw, setShowPw] = useState(false)
   const [remember, setRemember] = useState(true)
   const [msg, setMsg] = useState(null)
 
@@ -262,8 +240,8 @@ function Login({ onLogin }) {
       <div className="shopify-auth-card-box">
         <div className="auth-brand-head">
           <Logo />
-          <h2 style={{ marginTop: '10px' }}>ConvoShop</h2>
-          <p>A RAG-Based Conversational Shopping Assistant with Verified Product Catalog</p>
+          <h2 style={{ marginTop: '14px' }}>{mode === 'signin' ? 'WELCOME BACK!' : 'CREATE ACCOUNT'}</h2>
+          <p>{mode === 'signin' ? 'Sign in to continue' : 'Join ConvoShop to start shopping'}</p>
         </div>
 
         <div className="auth-tab-switch">
@@ -310,14 +288,19 @@ function Login({ onLogin }) {
 
           <div className="auth-field">
             <label>Password</label>
-            <input
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              minLength={6}
-            />
+            <div className="pw-wrap">
+              <input
+                type={showPw ? 'text' : 'password'}
+                placeholder="••••••••"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                minLength={6}
+              />
+              <button type="button" className="pw-toggle" onClick={() => setShowPw(!showPw)}>
+                {showPw ? 'HIDE' : 'SHOW'}
+              </button>
+            </div>
           </div>
 
           {mode === 'signin' && (
@@ -426,53 +409,53 @@ function GeminiSearchModal({ isOpen, onClose, allProducts, onSelectProduct, onTr
     <div className="gemini-search-overlay" onClick={onClose}>
       <div className="gemini-search-dialog" onClick={(e) => e.stopPropagation()}>
         <div className="gemini-search-input-row">
-          <span className="search-mag-icon">🔍</span>
+          <span className="search-mag-icon"><Icon name="search" /></span>
           <input
             ref={inputRef}
             type="text"
-            placeholder={isListening ? "🎙️ Listening..." : "Search catalog (e.g. samsung phones under 100000)..."}
+            placeholder={isListening ? 'LISTENING...' : 'Search catalog (e.g. samsung phones under 100000)...'}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             onKeyDown={handleKeyDown}
           />
-          <button 
-            type="button" 
+          <button
+            type="button"
             className={`gemini-mic-btn ${isListening ? 'listening' : ''}`}
             onClick={handleVoice}
             title="Voice search"
           >
-            🎤
+            <Icon name="mic" />
           </button>
-          <button className="gemini-close-btn" onClick={onClose}>×</button>
+          <button className="gemini-close-btn" onClick={onClose} title="Close"><Icon name="close" /></button>
         </div>
 
         {query.trim() !== '' && (
           <div className="gemini-results-box">
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <small className="gemini-results-title">Matching Results</small>
-              <button 
-                style={{ background: '#ef4444', color: '#fff', border: 0, padding: '4px 10px', borderRadius: '4px', fontSize: '11px', fontWeight: 'bold', cursor: 'pointer' }}
+              <button
+                className="rag-ai-btn"
                 onClick={() => {
                   onTriggerSearch(query)
                   onClose()
                 }}
               >
-                ✨ Get AI RAG Recommendation
+                <Icon name="spark" size={16} /> Get AI Recommendation
               </button>
             </div>
             {results.length === 0 ? (
-              <p className="no-res" style={{ padding: '16px', color: '#6b7280', textAlign: 'center' }}>No products found matching "{query}"</p>
+              <p className="empty-note">No products found matching "{query}"</p>
             ) : (
               results.map((item) => (
-                <div 
-                  key={item.id} 
+                <div
+                  key={item.id}
                   className="gemini-result-item"
                   onClick={() => {
                     onSelectProduct(item)
                     onClose()
                   }}
                 >
-                  <img src={item.image} alt="" onError={(e) => { e.target.src = getProductImage(item.brand, item.title, item.category) }} />
+                  <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
                   <div className="res-info">
                     <h5>{item.title}</h5>
                     <span className="cat">{item.category.toUpperCase()} • {item.brand}</span>
@@ -492,7 +475,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
   const [msgs, setMsgs] = useState([
     {
       sender: 'ai',
-      text: "👋 Hi! I'm ConvoShop, your RAG-powered product advisor. Ask me anything about Phones, Laptops, or Smartwatches!",
+      text: "Hi! I'm ConvoShop, your RAG-powered product advisor. Ask me anything about Phones, Laptops, or Smartwatches!",
       matches: [],
       ragInspectorOpen: false,
     },
@@ -501,6 +484,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
   const [loading, setLoading] = useState(false)
   const [isListening, setIsListening] = useState(false)
   const chatRef = useRef(null)
+  const lastQuery = useRef('')
 
   useEffect(() => {
     chatRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -533,10 +517,15 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
     recognition.start()
   }
 
-  const send = async (q) => {
-    const text = (q || input).trim()
-    if (!text) return
-    setMsgs((m) => [...m, { sender: 'user', text }])
+  
+const send = async (q) => {
+  const text = (q || input).trim()
+  if (!text) return
+  const mentionsCategory = /phone|mobile|laptop|notebook|watch/i.test(text)
+  const searchText = !mentionsCategory && lastQuery.current ? `${lastQuery.current}. ${text}` : text
+  if (mentionsCategory) lastQuery.current = text
+  setMsgs((m) => [...m, { sender: 'user', text }])
+
     setInput('')
     setLoading(true)
 
@@ -556,7 +545,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
         ...m,
         {
           sender: 'ai',
-          text: data.response || "No response received.",
+          text: data.response || 'No response received.',
           reasoning: 'Grounded in verified catalog & Pinecone hybrid vector search.',
           confidence: `${confidence}`,
           chunks: (data.matches || []).map(item => `[${item.id || item.product_id}]: ${item.title} (₹${item.price || 0})`),
@@ -602,26 +591,26 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
     <div className="shopify-drawer-overlay" onClick={onClose}>
       <aside className="shopify-drawer" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-header-bar">
-          <h3>✨ ConvoShop AI Advisor</h3>
-          <button onClick={onClose}>×</button>
+          <h3><Icon name="spark" size={22} /> ConvoShop AI Advisor</h3>
+          <button onClick={onClose} title="Close"><Icon name="close" /></button>
         </div>
         <div className="drawer-body-chat">
           {msgs.map((m, i) => (
             <div key={i} className={`chat-bubble-sh ${m.sender}`}>
-              <div 
+              <div
                 className="chat-text-inner"
-                dangerouslySetInnerHTML={{ __html: parseFormattedMarkdown(m.text) }} 
+                dangerouslySetInnerHTML={{ __html: parseFormattedMarkdown(m.text) }}
               />
               {m.reasoning && <span className="r-badge">{m.reasoning}</span>}
               {m.confidence && (
                 <div style={{ marginTop: '8px' }}>
-                  <button 
+                  <button
+                    className="rag-toggle-btn"
                     onClick={() => {
                       setMsgs(msgs.map((msg, idx) => idx === i ? { ...msg, ragInspectorOpen: !msg.ragInspectorOpen } : msg))
                     }}
-                    style={{ background: 'none', border: '1px solid #93c5fd', color: '#1d4ed8', fontSize: '11px', padding: '3px 8px', borderRadius: '4px', cursor: 'pointer', fontWeight: 600 }}
                   >
-                    🔍 View Vector RAG Context ({m.confidence}) {m.ragInspectorOpen ? '▲' : '▼'}
+                    <Icon name="search" size={14} /> View Vector RAG Context ({m.confidence}) <Icon name={m.ragInspectorOpen ? 'up' : 'down'} size={14} />
                   </button>
                   {m.ragInspectorOpen && (
                     <div className="rag-inspector-box">
@@ -638,8 +627,8 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
               {m.matches?.length > 0 && (
                 <div className="mini-grid-sh">
                   {m.matches.map((item) => (
-                    <div 
-                      key={item.id} 
+                    <div
+                      key={item.id}
                       className="mini-product-row"
                       onClick={() => {
                         const fullProd = allProducts.find(p => p.id === item.id || p.title === item.title) || item
@@ -648,7 +637,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
                       }}
                       style={{ cursor: 'pointer' }}
                     >
-                      <img src={item.image} alt="" onError={(e) => { e.target.src = getProductImage(item.brand, item.title, item.category) }} />
+                      <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
                       <div>
                         <h6>{item.title}</h6>
                         <strong>{money(item.price)}</strong>
@@ -660,7 +649,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
             </div>
           ))}
           {loading && <div className="chat-bubble-sh ai">Searching Pinecone vector catalog & generating response…</div>}
-          {isListening && <div className="chat-bubble-sh ai voice-listening">🎙️ Listening... Speak now!</div>}
+          {isListening && <div className="chat-bubble-sh ai voice-listening">LISTENING... SPEAK NOW</div>}
           <div ref={chatRef} />
         </div>
         <div className="drawer-footer-bar">
@@ -671,7 +660,7 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
               onClick={handleVoiceSearch}
               title="Speak your query"
             >
-              🎤
+              <Icon name="mic" />
             </button>
             <input type="text" placeholder="Ask for phones, laptops, or watches..." value={input} onChange={(e) => setInput(e.target.value)} />
             <button type="submit" className="shop-btn-red">Send</button>
@@ -683,9 +672,10 @@ function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
 }
 
 function ProductDetailModal({ product, onClose, onAddToCart, isWishlisted, onToggleWishlist }) {
-  if (!product) return null
   const [zoom, setZoom] = useState(false)
   const [copied, setCopied] = useState(false)
+
+  if (!product) return null
 
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href)
@@ -696,57 +686,54 @@ function ProductDetailModal({ product, onClose, onAddToCart, isWishlisted, onTog
   return (
     <div className="shopify-drawer-overlay" onClick={onClose}>
       <div className="product-detail-dialog" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close-x" onClick={onClose}>×</button>
-        
+        <button className="modal-close-x" onClick={onClose} title="Close"><Icon name="close" /></button>
+
         <div className="modal-content-grid">
-          <div 
+          <div
             className={`modal-img-viewport ${zoom ? 'zoomed' : ''}`}
             onClick={() => setZoom(!zoom)}
             title="Click to toggle image zoom"
           >
-            <img 
-              src={product.image} 
-              alt={product.title} 
-              onError={(e) => { e.target.src = getProductImage(product.brand, product.title, product.category) }} 
+            <img
+              src={product.image}
+              alt={product.title}
+              onError={(e) => { e.target.src = makePlaceholder(product.brand, product.category) }}
             />
-            <span className="zoom-hint">{zoom ? '🔍 Click to Zoom Out' : '🔍 Click to Zoom In'}</span>
+            <span className="zoom-hint"><Icon name="search" size={14} /> {zoom ? 'CLICK TO ZOOM OUT' : 'CLICK TO ZOOM IN'}</span>
           </div>
 
           <div className="modal-info-side">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
               <span className="cat-tag-sh">{product.category.toUpperCase()} • {product.brand}</span>
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button 
-                  onClick={handleShare} 
-                  style={{ background: 'none', border: 0, fontSize: '18px', cursor: 'pointer' }}
-                  title="Share product link"
-                >
-                  🔗 {copied ? '✓ Copied!' : ''}
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button className="icon-btn wide" onClick={handleShare} title="Copy product link">
+                  <Icon name={copied ? 'check' : 'link'} size={18} />
+                  {copied && <span>COPIED</span>}
                 </button>
-                <button 
-                  onClick={() => onToggleWishlist(product)} 
-                  style={{ background: 'none', border: 0, fontSize: '20px', cursor: 'pointer' }}
+                <button
+                  className={`icon-btn ${isWishlisted ? 'active' : ''}`}
+                  onClick={() => onToggleWishlist(product)}
                   title={isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
                 >
-                  {isWishlisted ? '❤️' : '🤍'}
+                  <Icon name="heart" size={18} fill={isWishlisted} />
                 </button>
               </div>
             </div>
             <h2>{product.title}</h2>
-            
+
             <div className="price-row-sh" style={{ margin: '12px 0' }}>
-              <span className="current-price" style={{ fontSize: '22px' }}>{money(product.price)}</span>
+              <span className="current-price" style={{ fontSize: '30px' }}>{money(product.price)}</span>
             </div>
 
             {product.description && (
-              <div style={{ background: '#f8fafc', padding: '12px', borderRadius: '8px', fontSize: '13px', color: '#334155', marginBottom: '14px', lineHeight: '1.5' }}>
+              <div className="spec-box">
                 <strong>Product Description & Specifications:</strong>
                 <p style={{ marginTop: '4px' }}>{product.description}</p>
               </div>
             )}
 
-            <button 
-              className="shop-btn-red full" 
+            <button
+              className="shop-btn-red full"
               onClick={() => {
                 onAddToCart(product)
                 onClose()
@@ -768,35 +755,34 @@ function WishlistDrawer({ isOpen, onClose, wishlist, onRemoveWishlist, onAddToCa
     <div className="shopify-drawer-overlay" onClick={onClose}>
       <aside className="shopify-drawer" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-header-bar">
-          <h3>❤️ My Wishlist ({wishlist.length})</h3>
-          <button onClick={onClose}>×</button>
+          <h3><Icon name="heart" size={22} /> My Wishlist ({wishlist.length})</h3>
+          <button onClick={onClose} title="Close"><Icon name="close" /></button>
         </div>
 
         <div className="drawer-body-chat">
           {wishlist.length === 0 ? (
-            <p style={{ textAlign: 'center', color: '#6b7280', marginTop: '40px' }}>Your wishlist is empty. Tap the heart icon on any product to save it!</p>
+            <p className="empty-note">Your wishlist is empty. Tap the heart on any product to save it.</p>
           ) : (
             wishlist.map((item) => (
               <div key={item.id} className="mini-product-row" style={{ justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flex: 1 }}>
-                  <img src={item.image} alt="" onError={(e) => { e.target.src = getProductImage(item.brand, item.title, item.category) }} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-                  <div>
-                    <h6 style={{ fontSize: '12px', maxWidth: '160px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.title}</h6>
-                    <strong style={{ fontSize: '13px' }}>{money(item.price)}</strong>
+                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flex: 1, minWidth: 0 }}>
+                  <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
+                  <div style={{ minWidth: 0 }}>
+                    <h6 style={{ maxWidth: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.title}</h6>
+                    <strong>{money(item.price)}</strong>
                   </div>
                 </div>
                 <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  <button 
-                    className="shop-btn-red" 
-                    style={{ padding: '6px 10px', fontSize: '11px' }}
+                  <button
+                    className="shop-btn-red small"
                     onClick={() => {
                       onAddToCart(item)
                       onRemoveWishlist(item.id)
                     }}
                   >
-                    Move to Cart
+                    To Cart
                   </button>
-                  <button onClick={() => onRemoveWishlist(item.id)} style={{ border: 0, background: 'none', color: '#ef4444', fontSize: '16px', cursor: 'pointer' }}>×</button>
+                  <button className="icon-x-btn" onClick={() => onRemoveWishlist(item.id)} title="Remove"><Icon name="close" size={16} /></button>
                 </div>
               </div>
             ))
@@ -846,8 +832,8 @@ function CheckoutModal({ cartItems, totalAmount, onClose, onSuccess }) {
     <div className="shopify-drawer-overlay" onClick={onClose}>
       <div className="checkout-modal-dialog" onClick={(e) => e.stopPropagation()}>
         <div className="drawer-header-bar">
-          <h3>🚚 Delivery Address & Checkout</h3>
-          <button onClick={onClose}>×</button>
+          <h3><Icon name="truck" size={24} /> Delivery & Checkout</h3>
+          <button onClick={onClose} title="Close"><Icon name="close" /></button>
         </div>
 
         <form onSubmit={handleSubmit} className="checkout-form-body">
@@ -883,12 +869,12 @@ function CheckoutModal({ cartItems, totalAmount, onClose, onSuccess }) {
               <input type="text" name="coupon" placeholder="e.g. CONVO20" value={form.coupon} onChange={handleChange} style={{ flex: 1 }} />
               <button type="button" className="shop-btn-outline" onClick={applyCoupon}>Apply</button>
             </div>
-            {couponMsg && <small style={{ color: couponMsg.type === 'success' ? '#10b981' : '#ef4444', fontWeight: 600, marginTop: '2px' }}>{couponMsg.text}</small>}
+            {couponMsg && <small className={`coupon-msg ${couponMsg.type}`}>{couponMsg.text}</small>}
           </div>
 
           <div className="auth-field" style={{ marginTop: '4px' }}>
             <label>Payment Method</label>
-            <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} className="setting-select" style={{ padding: '10px' }}>
+            <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} className="setting-select">
               <option value="cod">Cash on Delivery (COD)</option>
               <option value="upi">UPI / Google Pay / PhonePe</option>
               <option value="card">Credit / Debit Card</option>
@@ -911,7 +897,7 @@ function OrderSuccessModal({ orderData, onClose }) {
   return (
     <div className="shopify-drawer-overlay" onClick={onClose}>
       <div className="success-modal-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="success-icon-badge">🎉</div>
+        <div className="success-icon-badge"><Icon name="check" size={44} /></div>
         <h2>Order Placed Successfully!</h2>
         <p className="success-sub">Thank you, {orderData.shipping.fullName}. Your AI-assisted order is confirmed.</p>
 
@@ -959,7 +945,7 @@ function SettingsModal({ user, onClose, onUpdateUser, orders, onLogout, darkMode
       <div className="settings-modal-dialog" onClick={(e) => e.stopPropagation()}>
         <div className="settings-header">
           <h2>Settings & Profile</h2>
-          <button className="modal-close-x" onClick={onClose}>×</button>
+          <button className="modal-close-x" onClick={onClose} title="Close"><Icon name="close" /></button>
         </div>
 
         <div className="settings-body-content">
@@ -1006,7 +992,7 @@ function Store({ user, onLogout, onUpdateUser }) {
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [orderPlacedData, setOrderPlacedData] = useState(null)
-  
+
   // AI Recommendation Banner State
   const [aiRecommendation, setAiRecommendation] = useState(null)
   const [aiLoading, setAiLoading] = useState(false)
@@ -1056,7 +1042,7 @@ function Store({ user, onLogout, onUpdateUser }) {
       const res = await fetch(`${BACKEND_URL}/chat/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({ message: searchText })
       })
 
       if (!res.ok) throw new Error('HTTP Error')
@@ -1086,7 +1072,7 @@ function Store({ user, onLogout, onUpdateUser }) {
   }, [rows])
 
   const filtered = useMemo(() => {
-    // If AI Recommendation has matches, prioritize returning those matches in the catalog grid!
+    // If AI Recommendation has matches, prioritize returning those matches in the catalog grid
     if (aiRecommendation && aiRecommendation.matches && aiRecommendation.matches.length > 0) {
       const matchPids = new Set(aiRecommendation.matches.map(m => m.id || m.product_id))
       const matchedCatalog = rows.filter(r => matchPids.has(r.id) || matchPids.has(r.product_id))
@@ -1147,7 +1133,7 @@ function Store({ user, onLogout, onUpdateUser }) {
     setCart((c) =>
       c.some((i) => i.id === p.id)
         ? c.map((i) => (i.id === p.id ? { ...i, qty: i.qty + 1 } : i))
-        : [...c, { id: p.id, title: p.title, image: p.image, price: p.price, qty: 1 }]
+        : [...c, { id: p.id, title: p.title, brand: p.brand, category: p.category, image: p.image, price: p.price, qty: 1 }]
     )
     setCartOpen(true)
   }
@@ -1198,34 +1184,34 @@ function Store({ user, onLogout, onUpdateUser }) {
       <header className="shopify-header">
         <div className="shopify-header-inner">
           <Logo />
-          
-          <form 
-            className="header-search-bar" 
+
+          <form
+            className="header-search-bar"
             onSubmit={(e) => {
               e.preventDefault()
               handleRAGSearch(searchQuery)
             }}
           >
-            <input 
-              type="text" 
-              placeholder="Search (e.g. which samsung phone has the biggest battery under 100000)..." 
+            <input
+              type="text"
+              placeholder="Search (e.g. which samsung phone has the biggest battery under 100000)..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button type="button" className="header-mic-btn" onClick={() => setSearchModalOpen(true)}>🎤</button>
-            <button type="submit" className="search-submit-btn">🔍</button>
+            <button type="button" className="header-mic-btn" onClick={() => setSearchModalOpen(true)} title="Voice search"><Icon name="mic" /></button>
+            <button type="submit" className="search-submit-btn" title="Search"><Icon name="search" /></button>
           </form>
 
           <div className="shopify-nav-icons">
-            <button className="ai-nav-chip" onClick={() => setAiOpen(true)}>✨ AI Advisor</button>
+            <button className="ai-nav-chip" onClick={() => setAiOpen(true)}><Icon name="spark" /> AI Advisor</button>
             <button className="cart-text-btn" onClick={() => setWishlistOpen(true)} title="Wishlist">
-              ❤️ <span className="cart-badge-num">{wishlistCount}</span>
+              <Icon name="heart" /> <span className="cart-badge-num">{wishlistCount}</span>
             </button>
             <button className="cart-text-btn" onClick={() => setCartOpen(true)}>
-              🛒 Cart <span className="cart-badge-num">{count}</span>
+              <Icon name="cart" /> Cart <span className="cart-badge-num">{count}</span>
             </button>
             <button className="account-icon-btn" onClick={() => setSettingsOpen(true)} title="Settings">
-              ⚙️ Settings
+              <Icon name="settings" /> Settings
             </button>
             <button className="logout-text-btn" onClick={onLogout}>Sign Out</button>
           </div>
@@ -1246,7 +1232,7 @@ function Store({ user, onLogout, onUpdateUser }) {
             <span className="banner-tag">VERIFIED PRODUCT CATALOG</span>
             <h2>Phones, Laptops & Smartwatches</h2>
             <p>RAG-Augmented AI Conversational Assistant with Zero Hallucination Guarantee</p>
-            <button className="shop-btn-red" onClick={() => setAiOpen(true)}>Ask AI Advisor</button>
+            <button className="shop-btn-red" onClick={() => setAiOpen(true)}><Icon name="spark" size={18} /> Ask AI Advisor</button>
           </div>
         </div>
       </section>
@@ -1254,7 +1240,7 @@ function Store({ user, onLogout, onUpdateUser }) {
       {categories.length > 0 && (
         <nav className="shopify-cat-nav">
           <div className="shopify-cat-track" style={{ justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', gap: '6px' }}>
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
               <button
                 className={`sh-pill ${category === 'all' ? 'active' : ''}`}
                 onClick={() => setCategory('all')}
@@ -1275,17 +1261,16 @@ function Store({ user, onLogout, onUpdateUser }) {
               className={`sh-pill rating-filter-btn ${topRatedOnly ? 'active' : ''}`}
               onClick={() => setTopRatedOnly(!topRatedOnly)}
             >
-              ⭐ Top Rated (4.0+)
+              <Icon name="star" size={16} fill={topRatedOnly} /> Top Rated (4.0+)
             </button>
           </div>
         </nav>
       )}
 
       <main className="shopify-main-content" id="products">
-        {/* AI Recommendation & RAG Comparison Card */}
         {aiLoading && (
           <div className="ai-recommendation-card loading">
-            <span>✨ Querying Pinecone RAG database & generating comparative recommendation...</span>
+            <span><Icon name="spark" size={18} /> Querying Pinecone RAG database & generating comparative recommendation...</span>
           </div>
         )}
 
@@ -1293,40 +1278,40 @@ function Store({ user, onLogout, onUpdateUser }) {
           <div className="ai-recommendation-card">
             <div className="ai-card-header">
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ fontSize: '24px' }}>✨</span>
+                <span className="ai-card-icon"><Icon name="spark" size={26} /></span>
                 <div>
-                  <h4 style={{ margin: 0, fontSize: '18px', color: '#fff' }}>AI Product Recommendation & Comparative Analysis</h4>
-                  <small style={{ color: '#818cf8', fontSize: '12px' }}>Query: "{aiRecommendation.query}"</small>
+                  <h4>AI Product Recommendation & Comparative Analysis</h4>
+                  <small>Query: "{aiRecommendation.query}"</small>
                 </div>
               </div>
-              <button className="close-rec-btn" onClick={() => setAiRecommendation(null)}>×</button>
+              <button className="close-rec-btn" onClick={() => setAiRecommendation(null)} title="Close"><Icon name="close" size={18} /></button>
             </div>
 
             <div className="ai-card-body">
-              <div 
+              <div
                 className="ai-response-text"
-                dangerouslySetInnerHTML={{ __html: parseFormattedMarkdown(aiRecommendation.response) }} 
+                dangerouslySetInnerHTML={{ __html: parseFormattedMarkdown(aiRecommendation.response) }}
               />
 
               {aiRecommendation.matches && aiRecommendation.matches.length > 0 && (
-                <div style={{ marginTop: '20px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
-                  <small style={{ color: '#94a3b8', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 'bold' }}>
+                <div className="ai-matches-wrap">
+                  <small className="ai-matches-label">
                     Retrieved Catalog Products for Comparison ({aiRecommendation.matches.length}):
                   </small>
                   <div className="ai-matches-grid">
                     {aiRecommendation.matches.map((item) => (
-                      <div 
-                        key={item.id} 
+                      <div
+                        key={item.id}
                         className="ai-match-card"
                         onClick={() => {
                           const fullProd = rows.find(r => r.id === item.id || r.title === item.title) || item
                           handleOpenProduct(fullProd)
                         }}
                       >
-                        <img 
-                          src={item.image} 
-                          alt={item.title} 
-                          onError={(e) => { e.target.src = getProductImage(item.brand, item.title, item.category) }} 
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }}
                         />
                         <div className="ai-match-info">
                           <h6>{item.title}</h6>
@@ -1354,27 +1339,27 @@ function Store({ user, onLogout, onUpdateUser }) {
             {filtered.slice(0, shown).map((p) => {
               const isWishlisted = wishlist.some((i) => i.id === p.id)
               return (
-                <div 
-                  key={p.id} 
+                <div
+                  key={p.id}
                   className="shopify-card"
                   onClick={() => handleOpenProduct(p)}
                 >
                   <div className="card-img-wrap" style={{ position: 'relative' }}>
-                    <button 
+                    <button
+                      className={`wish-btn ${isWishlisted ? 'active' : ''}`}
                       onClick={(e) => {
                         e.stopPropagation()
                         toggleWishlist(p)
                       }}
-                      style={{ position: 'absolute', top: '10px', right: '10px', background: 'none', border: 0, fontSize: '18px', cursor: 'pointer', zIndex: 5 }}
                       title={isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
                     >
-                      {isWishlisted ? '❤️' : '🤍'}
+                      <Icon name="heart" size={18} fill={isWishlisted} />
                     </button>
-                    <img 
-                      src={p.image} 
-                      alt={p.title} 
-                      loading="lazy" 
-                      onError={(e) => { e.target.src = getProductImage(p.brand, p.title, p.category) }} 
+                    <img
+                      src={p.image}
+                      alt={p.title}
+                      loading="lazy"
+                      onError={(e) => { e.target.src = makePlaceholder(p.brand, p.category) }}
                     />
                   </div>
                   <div className="card-details">
@@ -1383,8 +1368,8 @@ function Store({ user, onLogout, onUpdateUser }) {
                     <div className="price-row-sh">
                       <span className="current-price">{money(p.price)}</span>
                     </div>
-                    <button 
-                      className="shop-btn-red full" 
+                    <button
+                      className="shop-btn-red full"
                       onClick={(e) => {
                         e.stopPropagation()
                         addToCart(p)
@@ -1405,13 +1390,13 @@ function Store({ user, onLogout, onUpdateUser }) {
       </main>
 
       <button className="floating-shopify-ai" onClick={() => setAiOpen(true)}>
-        ✨ Ask AI Advisor
+        <Icon name="spark" size={20} /> Ask AI Advisor
       </button>
 
-      <AIDrawer 
-        isOpen={aiOpen} 
-        onClose={() => setAiOpen(false)} 
-        allProducts={rows} 
+      <AIDrawer
+        isOpen={aiOpen}
+        onClose={() => setAiOpen(false)}
+        allProducts={rows}
         onSelectProduct={(item) => handleOpenProduct(item)}
       />
 
@@ -1465,37 +1450,37 @@ function Store({ user, onLogout, onUpdateUser }) {
         <div className="shopify-drawer-overlay" onClick={() => setCartOpen(false)}>
           <aside className="shopify-drawer" onClick={(e) => e.stopPropagation()}>
             <div className="drawer-header-bar">
-              <h3>Your Shopping Cart ({count})</h3>
-              <button onClick={() => setCartOpen(false)}>×</button>
+              <h3><Icon name="cart" size={22} /> Your Cart ({count})</h3>
+              <button onClick={() => setCartOpen(false)} title="Close"><Icon name="close" /></button>
             </div>
-            
+
             <div className="drawer-body-chat">
               {cart.length === 0 ? (
-                <p style={{ textAlign: 'center', color: '#6b7280', marginTop: '40px' }}>Your cart is empty.</p>
+                <p className="empty-note">Your cart is empty.</p>
               ) : (
                 cart.map((item) => (
-                  <div 
-                    key={item.id} 
+                  <div
+                    key={item.id}
                     className="mini-product-row cart-clickable-row"
                     onClick={() => {
-                      const fullProd = rows.find(r => r.title === item.title) || item
+                      const fullProd = rows.find(r => r.id === item.id) || item
                       handleOpenProduct(fullProd)
                       setCartOpen(false)
                     }}
                     title="Click to view product details"
                   >
-                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flex: 1, cursor: 'pointer' }}>
-                      <img src={item.image} alt="" onError={(e) => { e.target.src = getProductImage(item.brand, item.title, item.category) }} style={{ width: '40px', height: '40px', objectFit: 'contain' }} />
-                      <div>
-                        <h6 style={{ fontSize: '12px', maxWidth: '160px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.title}</h6>
-                        <strong style={{ fontSize: '13px' }}>{money(item.price)}</strong>
+                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flex: 1, minWidth: 0, cursor: 'pointer' }}>
+                      <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
+                      <div style={{ minWidth: 0 }}>
+                        <h6 style={{ maxWidth: '140px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.title}</h6>
+                        <strong>{money(item.price)}</strong>
                       </div>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }} onClick={(e) => e.stopPropagation()}>
-                      <button onClick={() => changeQty(item.id, -1)} style={{ width: '22px', height: '22px', border: '1px solid #ccc', background: '#fff', cursor: 'pointer' }}>-</button>
-                      <span style={{ fontSize: '13px', fontWeight: 'bold' }}>{item.qty}</span>
-                      <button onClick={() => changeQty(item.id, 1)} style={{ width: '22px', height: '22px', border: '1px solid #ccc', background: '#fff', cursor: 'pointer' }}>+</button>
-                      <button onClick={() => removeItem(item.id)} style={{ border: 0, background: 'none', color: '#ef4444', fontSize: '12px', cursor: 'pointer', marginLeft: '6px' }}>Remove</button>
+                      <button className="qty-btn" onClick={() => changeQty(item.id, -1)}>-</button>
+                      <span className="qty-num">{item.qty}</span>
+                      <button className="qty-btn" onClick={() => changeQty(item.id, 1)}>+</button>
+                      <button className="link-remove" onClick={() => removeItem(item.id)}>Remove</button>
                     </div>
                   </div>
                 ))
@@ -1504,7 +1489,7 @@ function Store({ user, onLogout, onUpdateUser }) {
 
             {cart.length > 0 && (
               <div className="drawer-footer-bar" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontWeight: 'bold' }}>
+                <div className="cart-total-row">
                   <span>Total:</span>
                   <span>{money(total)}</span>
                 </div>

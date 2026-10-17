@@ -5,4 +5,4 @@ client = MongoClient(MONGO_URI)
 
 db = client[DATABASE_NAME]
 
-products_collection = db["products"]
+products_collection = db["products_unified"]

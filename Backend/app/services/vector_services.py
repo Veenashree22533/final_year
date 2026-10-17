@@ -32,6 +32,7 @@ def build_pinecone_filter(parsed_filters: dict) -> dict:
 
     return conditions
 
+
 def search_similar_products(query: str, top_k: int = 5, parsed_filters: dict = None):
     query_embedding = get_embedding(query)
 
@@ -48,18 +49,5 @@ def search_similar_products(query: str, top_k: int = 5, parsed_filters: dict = N
 
     results = index.query(**query_kwargs)
     matches = results.get("matches", [])
-
-    # Fallback search if strict numeric filters returned zero results
-    if not matches and pinecone_filter and ("price_inr" in pinecone_filter or "ram_gb" in pinecone_filter or "storage_gb" in pinecone_filter):
-        relaxed_filter = {}
-        if "category" in pinecone_filter:
-            relaxed_filter["category"] = pinecone_filter["category"]
-        if "brand_lower" in pinecone_filter:
-            relaxed_filter["brand_lower"] = pinecone_filter["brand_lower"]
-        relaxed_filter["legacy"] = {"$ne": True}
-
-        query_kwargs["filter"] = relaxed_filter
-        results = index.query(**query_kwargs)
-        matches = results.get("matches", [])
 
     return matches

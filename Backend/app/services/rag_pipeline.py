@@ -19,8 +19,10 @@ def answer_query(query: str, return_matches: bool = False):
         return (ABSTAIN_MESSAGE, [], parsed_filters) if return_matches else ABSTAIN_MESSAGE
 
     top_score = matches[0].get("score", 1.0)
+    
     if top_score < SIMILARITY_SCORE_CUTOFF:
-        return (ABSTAIN_MESSAGE, matches, parsed_filters) if return_matches else ABSTAIN_MESSAGE
+        return (ABSTAIN_MESSAGE, [], parsed_filters) if return_matches else ABSTAIN_MESSAGE
+
 
     context_blocks = []
 
@@ -32,7 +34,7 @@ def answer_query(query: str, return_matches: bool = False):
         name = meta.get("name", "N/A")
 
         price = to_float(meta.get("price_inr"))
-        price_str = f"₹{price:,.0f}" if price > 0 else "not listed"
+        price_str = f"INR{price:,.0f}" if price > 0 else "not listed"
         if meta.get("price_source") == "converted_from_EUR" and price > 0:
             price_str += " (converted estimate from EUR)"
 
@@ -72,6 +74,13 @@ Full Description: {desc}
 -----------------------------------"""
         context_blocks.append(block)
 
+
+
     context = "\n".join(context_blocks)
     response_text = generate_response(query, context)
+
+    if response_text.strip().startswith("Not in our catalog"):
+        matches = []
+
     return (response_text, matches, parsed_filters) if return_matches else response_text
+
