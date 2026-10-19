@@ -9,6 +9,15 @@ const CURRENCY = 'INR'
 const LOCALE = 'en-IN'
 const RATE = 1
 
+// Edit these to queries your backend answers well; they appear on the hero and in the empty chat.
+const SUGGESTIONS = [
+  'Best phone under ₹25,000',
+  'Student setup under ₹1 lakh',
+  'Compare two smartwatches',
+  'Laptop for coding',
+]
+const FOLLOW_UPS = ['Compare these', 'Show cheaper options', 'Which has the best battery?']
+
 const money = (n) =>
   n == null || n <= 0
     ? '–'
@@ -20,162 +29,499 @@ const money = (n) =>
 
 function toNumber(value) {
   if (value == null) return null
-  const text = String(value)
-  const n = parseFloat(text.replace(/[^0-9.]/g, ''))
-  if (Number.isNaN(n)) return null
-  return n
+  const n = parseFloat(String(value).replace(/[^0-9.]/g, ''))
+  return Number.isNaN(n) ? null : n
 }
 
-/* ---------- Icons (square-cornered line icons, no emoji) ---------- */
+/* ---------- Query parsing (price + keywords) ---------- */
 
-const ICON_SHAPES = {
-  mic: (
-    <>
-      <rect x="9" y="2" width="6" height="12" />
-      <path d="M5 11v1a7 7 0 0 0 14 0v-1M12 19v3M8 22h8" />
-    </>
-  ),
+const PRICE_RE =
+  /(?:\b(?:under|below|less than|within|max|upto|up to|rs\.?|inr)|₹)\s*(\d+(?:\.\d+)?)\s*(k|thousand|lakhs?|lacs?)?\b/i
+
+const STOP = new Set([
+  'a', 'an', 'the', 'and', 'or', 'for', 'with', 'of', 'in', 'on', 'to', 'me', 'my', 'i', 'is', 'are',
+  'show', 'find', 'get', 'give', 'want', 'need', 'looking', 'best', 'top', 'good', 'great', 'cheap',
+  'which', 'what', 'that', 'has', 'have', 'under', 'below', 'over', 'than', 'less', 'within', 'max',
+  'upto', 'up', 'budget', 'please', 'can', 'you', 'some', 'any', 'one',
+])
+
+function parseQuery(raw) {
+  const q = String(raw).toLowerCase().replace(/(\d),(?=\d)/g, '$1')
+  let maxPrice = null
+  const m = q.match(PRICE_RE)
+  if (m) {
+    let v = parseFloat(m[1])
+    const unit = m[2] || ''
+    if (/^(k|thousand)$/.test(unit)) v *= 1000
+    else if (/^(lakhs?|lacs?)$/.test(unit)) v *= 100000
+    else if (v < 1000) v *= 1000
+    maxPrice = v
+  }
+  const words = q
+    .replace(new RegExp(PRICE_RE.source, 'gi'), ' ')
+    .replace(/mobiles?/g, 'phone')
+    .replace(/notebooks?/g, 'laptop')
+    .split(/\s+/)
+    .map((w) => w.replace(/[^a-z0-9+]/g, ''))
+    .filter((w) => w.length > 1 && !STOP.has(w))
+  return { maxPrice, words }
+}
+
+function matchProducts(products, raw, { any = false, category = 'all' } = {}) {
+  const { maxPrice, words } = parseQuery(raw)
+  return products.filter((p) => {
+    if (category !== 'all' && p.category !== category) return false
+    if (maxPrice && !(p.price != null && p.price > 0 && p.price <= maxPrice)) return false
+    if (!words.length) return true
+    const hay = `${p.brand || ''} ${p.title || ''} ${p.category || ''}`.toLowerCase()
+    const hit = (w) => hay.includes(w) || w.includes(p.category) || p.category.includes(w)
+    return any ? words.some(hit) : words.every(hit)
+  })
+}
+
+/* ---------- Icons (rounded line icons) ---------- */
+
+const ICONS = {
   search: (
     <>
-      <circle cx="10.5" cy="10.5" r="6.5" />
-      <path d="M15.5 15.5L21 21" />
+      <circle cx="11" cy="11" r="7" />
+      <path d="M21 21l-4.3-4.3" />
     </>
   ),
-  heart: <path d="M12 21L3 12a5.5 5.5 0 0 1 9-6 5.5 5.5 0 0 1 9 6z" />,
-  cart: (
+  mic: (
     <>
-      <path d="M2 3h3l2.5 12h11L21 7H6" />
-      <circle cx="9" cy="20" r="1.5" />
-      <circle cx="18" cy="20" r="1.5" />
+      <rect x="9" y="2" width="6" height="12" rx="3" />
+      <path d="M5 11a7 7 0 0 0 14 0M12 18v4" />
     </>
   ),
-  settings: (
+  heart: (
+    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+  ),
+  bag: (
     <>
-      <path d="M3 7h11M18 7h3M3 17h3M10 17h11" />
-      <rect x="14" y="4" width="4" height="6" />
-      <rect x="6" y="14" width="4" height="6" />
+      <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+      <path d="M3 6h18" />
+      <path d="M16 10a4 4 0 0 1-8 0" />
     </>
   ),
-  spark: <path d="M12 2l2.5 7.5L22 12l-7.5 2.5L12 22l-2.5-7.5L2 12l7.5-2.5z" />,
-  link: <path d="M10 14l4-4M8 12l-3 3a3.5 3.5 0 0 0 5 5l3-3M16 12l3-3a3.5 3.5 0 0 0-5-5l-3 3" />,
-  close: <path d="M5 5l14 14M19 5L5 19" />,
-  check: <path d="M4 12l5 5L20 6" />,
-  star: <path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2-6.4-3.7-6.4 3.7 1.7-7.2L2 9.6 9 9z" />,
+  user: (
+    <>
+      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </>
+  ),
+  spark: (
+    <>
+      <path d="M11 3l1.9 5.1L18 10l-5.1 1.9L11 17l-1.9-5.1L4 10l5.1-1.9z" />
+      <path d="M19 15l.7 1.8 1.8.7-1.8.7L19 20l-.7-1.8-1.8-.7 1.8-.7z" />
+    </>
+  ),
+  share: <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8M16 6l-4-4-4 4M12 2v13" />,
+  close: <path d="M18 6L6 18M6 6l12 12" />,
+  check: <path d="M20 6L9 17l-5-5" />,
+  star: <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />,
   truck: (
     <>
-      <path d="M2 6h12v10H2zM14 10h4l3 3v3h-7z" />
-      <circle cx="7" cy="18" r="2" />
-      <circle cx="17" cy="18" r="2" />
+      <rect x="1" y="3" width="15" height="13" rx="1" />
+      <path d="M16 8h4l3 3v5h-7z" />
+      <circle cx="5.5" cy="18.5" r="2.5" />
+      <circle cx="18.5" cy="18.5" r="2.5" />
     </>
   ),
-  up: <path d="M5 15l7-7 7 7" />,
-  down: <path d="M5 9l7 7 7-7" />,
+  up: <path d="M18 15l-6-6-6 6" />,
+  down: <path d="M6 9l6 6 6-6" />,
+  plus: <path d="M12 5v14M5 12h14" />,
+  minus: <path d="M5 12h14" />,
+  arrowUp: <path d="M12 19V5M5 12l7-7 7 7" />,
 }
 
 function Icon({ name, size = 20, fill = false }) {
   return (
     <svg
-      className="icon-svg"
+      className="icon"
       width={size}
       height={size}
       viewBox="0 0 24 24"
       fill={fill ? 'currentColor' : 'none'}
       stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="square"
-      strokeLinejoin="miter"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
     >
-      {ICON_SHAPES[name]}
+      {ICONS[name]}
     </svg>
   )
 }
 
 /* ---------- Product images ----------
    A real image_url from the catalog is used when it is a usable http(s) link.
-   Otherwise a placeholder (category icon + brand) is generated, so a product
-   never shows an unrelated stock photo. */
+   Otherwise a neutral placeholder (device outline + brand) is generated. */
 
-const PRODUCT_SHAPES = {
+const SHAPES = {
   phone:
-    '<rect x="112" y="30" width="96" height="176" rx="14" fill="#fff" stroke="#111" stroke-width="6"/>' +
-    '<rect x="124" y="48" width="72" height="132" fill="#111"/>' +
-    '<rect x="146" y="36" width="28" height="5" fill="#111"/>' +
-    '<circle cx="160" cy="193" r="5" fill="#111"/>',
+    '<rect x="118" y="30" width="84" height="164" rx="16" fill="#fff" stroke="#e3b184" stroke-width="3"/>' +
+    '<rect x="128" y="46" width="64" height="124" rx="6" fill="#f3d3b3"/>' +
+    '<rect x="146" y="36" width="28" height="4" rx="2" fill="#e3b184"/>',
   laptop:
-    '<rect x="76" y="44" width="168" height="112" rx="8" fill="#fff" stroke="#111" stroke-width="6"/>' +
-    '<rect x="88" y="56" width="144" height="88" fill="#111"/>' +
-    '<path d="M44 168 H276 L260 196 H60 Z" fill="#fff" stroke="#111" stroke-width="6" stroke-linejoin="round"/>',
+    '<rect x="80" y="44" width="160" height="104" rx="8" fill="#fff" stroke="#e3b184" stroke-width="3"/>' +
+    '<rect x="90" y="54" width="140" height="84" rx="3" fill="#f3d3b3"/>' +
+    '<path d="M52 160h216l-14 22H66z" fill="#fff" stroke="#e3b184" stroke-width="3" stroke-linejoin="round"/>',
   smartwatch:
-    '<rect x="132" y="12" width="56" height="46" fill="#111"/>' +
-    '<rect x="132" y="168" width="56" height="46" fill="#111"/>' +
-    '<rect x="104" y="50" width="112" height="124" rx="30" fill="#fff" stroke="#111" stroke-width="6"/>' +
-    '<rect x="118" y="64" width="84" height="96" rx="18" fill="#111"/>' +
-    '<rect x="214" y="96" width="8" height="24" fill="#111"/>',
+    '<rect x="134" y="10" width="52" height="44" rx="10" fill="#f3d3b3"/>' +
+    '<rect x="134" y="158" width="52" height="44" rx="10" fill="#f3d3b3"/>' +
+    '<rect x="108" y="48" width="104" height="116" rx="30" fill="#fff" stroke="#e3b184" stroke-width="3"/>' +
+    '<rect x="120" y="60" width="80" height="92" rx="20" fill="#f3d3b3"/>',
 }
 
-const escapeXml = (s) =>
-  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+const shapeKey = (category = '') =>
+  /laptop|notebook/i.test(category) ? 'laptop' : /watch|band|wear/i.test(category) ? 'smartwatch' : 'phone'
+
+const escapeXml = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 function makePlaceholder(brand = '', category = '') {
-  const key = PRODUCT_SHAPES[category] ? category : 'phone'
+  const key = shapeKey(category)
   const label = escapeXml((brand || key).toUpperCase().slice(0, 18))
   const svg =
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 260">' +
-    '<rect width="320" height="260" fill="#fcb900"/>' +
-    '<rect x="14" y="14" width="14" height="14" fill="#111"/>' +
-    '<rect x="28" y="28" width="14" height="14" fill="#ff5a00"/>' +
-    PRODUCT_SHAPES[key] +
-    '<rect y="222" width="320" height="38" fill="#111"/>' +
-    `<text x="160" y="249" text-anchor="middle" font-family="Impact, 'Arial Narrow', sans-serif" font-size="24" letter-spacing="2" fill="#fcb900">${label}</text>` +
+    '<rect width="320" height="260" fill="#ffffff"/>' +
+    SHAPES[key] +
+    `<text x="160" y="242" text-anchor="middle" font-family="-apple-system, Helvetica, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.5" fill="#b07c52">${label}</text>` +
     '</svg>'
   return `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`
 }
 
 function getProductImage(brand = '', title = '', category = '', rawUrl = '') {
-  const c = (category || '').toLowerCase()
-  if (
-    rawUrl &&
-    typeof rawUrl === 'string' &&
-    rawUrl.startsWith('http') &&
-    !rawUrl.includes('phonedb.net')
-  ) {
+  if (rawUrl && typeof rawUrl === 'string' && rawUrl.startsWith('http') && !rawUrl.includes('phonedb.net')) {
     return rawUrl
   }
-  return makePlaceholder(brand, c)
+  return makePlaceholder(brand, (category || '').toLowerCase())
 }
 
-function parseFormattedMarkdown(text) {
-  if (!text) return ''
-  let html = text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.*?)\*/g, '<em>$1</em>')
-    .replace(/^### (.*$)/gim, '<h4 class="md-h4">$1</h4>')
-    .replace(/^## (.*$)/gim, '<h3 class="md-h3">$1</h3>')
-    .replace(/^- (.*$)/gim, '<li class="md-li">$1</li>')
-    .replace(/\n\n/g, '<br/><br/>')
-  return html
+function ProductImg({ src, brand, category, alt = '', loading }) {
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading={loading}
+      onError={(e) => {
+        const el = e.currentTarget
+        if (el.dataset.fb) return
+        el.dataset.fb = '1'
+        el.src = makePlaceholder(brand, category)
+      }}
+    />
+  )
 }
+
+function Thumb({ item }) {
+  return (
+    <span className="thumb">
+      <ProductImg src={item.image} brand={item.brand} category={item.category} />
+    </span>
+  )
+}
+
+function Price({ p }) {
+  return (
+    <span className="price-wrap">
+      <span className="price">{money(p.price)}</span>
+      {p.estimated && p.price > 0 && (
+        <span className="chip chip-est" title="This price is an estimate">est.</span>
+      )}
+    </span>
+  )
+}
+
+/* ---------- Tiny markdown renderer (escapes first, so it is safe for innerHTML) ---------- */
+
+function renderMarkdown(text) {
+  if (!text) return ''
+  const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  const inline = (s) =>
+    esc(s)
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>')
+  const out = []
+  let list = null
+  const close = () => {
+    if (list) out.push(`</${list}>`)
+    list = null
+  }
+  for (const raw of String(text).split('\n')) {
+    const line = raw.trimEnd()
+    const ul = line.match(/^\s*[-*•]\s+(.*)$/)
+    const ol = line.match(/^\s*\d+[.)]\s+(.*)$/)
+    if (ul || ol) {
+      const type = ul ? 'ul' : 'ol'
+      if (list !== type) {
+        close()
+        out.push(`<${type}>`)
+        list = type
+      }
+      out.push(`<li>${inline((ul || ol)[1])}</li>`)
+      continue
+    }
+    close()
+    if (!line.trim()) continue
+    const h = line.match(/^#{1,3}\s+(.*)$/)
+    out.push(h ? `<h4 class="md-h">${inline(h[1])}</h4>` : `<p>${inline(line)}</p>`)
+  }
+  close()
+  return out.join('')
+}
+
+/* ---------- Voice input ---------- */
+
+const SpeechRec =
+  typeof window !== 'undefined' ? window.SpeechRecognition || window.webkitSpeechRecognition : null
+
+function useVoice(onText) {
+  const [listening, setListening] = useState(false)
+  const recRef = useRef(null)
+  const cb = useRef(onText)
+  cb.current = onText
+
+  const toggle = () => {
+    if (!SpeechRec) return
+    if (listening) {
+      recRef.current?.stop()
+      return
+    }
+    const rec = new SpeechRec()
+    rec.lang = 'en-IN'
+    rec.interimResults = false
+    rec.maxAlternatives = 1
+    rec.onresult = (e) => cb.current(e.results[0][0].transcript)
+    rec.onerror = () => setListening(false)
+    rec.onend = () => setListening(false)
+    recRef.current = rec
+    setListening(true)
+    try {
+      rec.start()
+    } catch {
+      setListening(false)
+    }
+  }
+  return { supported: !!SpeechRec, listening, toggle }
+}
+
+/* ---------- Shared UI ---------- */
 
 function Logo() {
   return (
-    <div className="logo-nav-container">
+    <div className="logo">
       <img
-        className="logo-img-nav"
+        className="logo-img"
         src="/logo.png"
-        alt="ConvoShop Logo"
-        onError={(e) => { e.target.style.display = 'none' }}
+        alt=""
+        onError={(e) => {
+          e.currentTarget.style.display = 'none'
+        }}
       />
       <span>ConvoShop</span>
     </div>
   )
 }
 
+function Overlay({ onClose, variant = 'center', size, label, children }) {
+  const closeRef = useRef(onClose)
+  closeRef.current = onClose
+
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && closeRef.current()
+    document.addEventListener('keydown', onKey)
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prev
+    }
+  }, [])
+
+  return (
+    <div
+      className={`overlay overlay-${variant}`}
+      onMouseDown={(e) => e.target === e.currentTarget && onClose()}
+    >
+      <div
+        className={`sheet sheet-${variant} ${size ? `sheet-${size}` : ''}`}
+        role="dialog"
+        aria-modal="true"
+        aria-label={label}
+      >
+        {children}
+      </div>
+    </div>
+  )
+}
+
+function SheetHead({ title, subtitle, icon, onClose }) {
+  return (
+    <header className="sheet-head">
+      <div className="sheet-title">
+        {icon && <span className="soft-icon"><Icon name={icon} size={18} /></span>}
+        <div>
+          <h3>{title}</h3>
+          {subtitle && <p className="muted">{subtitle}</p>}
+        </div>
+      </div>
+      <button className="icon-btn" onClick={onClose} aria-label="Close">
+        <Icon name="close" />
+      </button>
+    </header>
+  )
+}
+
+function Composer({ value, onChange, onSubmit, placeholder, voice, disabled, large, autoFocus }) {
+  return (
+    <form
+      className={`composer ${large ? 'composer-lg' : ''}`}
+      onSubmit={(e) => {
+        e.preventDefault()
+        onSubmit()
+      }}
+    >
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={voice?.listening ? 'Listening…' : placeholder}
+        aria-label={placeholder}
+        autoFocus={autoFocus}
+      />
+      {voice?.supported && (
+        <button
+          type="button"
+          className={`icon-btn ${voice.listening ? 'is-listening' : ''}`}
+          onClick={voice.toggle}
+          aria-label={voice.listening ? 'Stop listening' : 'Voice input'}
+        >
+          <Icon name="mic" />
+        </button>
+      )}
+      <button type="submit" className="send-btn" disabled={disabled || !value.trim()} aria-label="Send">
+        <Icon name="arrowUp" size={18} />
+      </button>
+    </form>
+  )
+}
+
+function EmptyState({ icon = 'search', title, text, children }) {
+  return (
+    <div className="empty">
+      <span className="soft-icon soft-icon-lg"><Icon name={icon} size={26} /></span>
+      <h3>{title}</h3>
+      {text && <p className="muted">{text}</p>}
+      {children}
+    </div>
+  )
+}
+
+function ProductRow({ item, onOpen, children }) {
+  return (
+    <div
+      className="row"
+      role="button"
+      tabIndex={0}
+      onClick={() => onOpen?.(item)}
+      onKeyDown={(e) => {
+        if (e.target !== e.currentTarget) return
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onOpen?.(item)
+        }
+      }}
+    >
+      <Thumb item={item} />
+      <div className="row-main">
+        <p className="row-title">{item.title}</p>
+        <p className="row-sub">
+          {item.brand}
+          {item.brand && item.category ? ' · ' : ''}
+          {item.category}
+        </p>
+        <Price p={item} />
+      </div>
+      {children && (
+        <div className="row-end" onClick={(e) => e.stopPropagation()}>
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+function ProductCard({ p, wished, onOpen, onWish, onAdd }) {
+  return (
+    <article
+      className="card"
+      tabIndex={0}
+      onClick={() => onOpen(p)}
+      onKeyDown={(e) => e.target === e.currentTarget && e.key === 'Enter' && onOpen(p)}
+    >
+      <div className="card-media">
+        <button
+          className={`wish ${wished ? 'on' : ''}`}
+          aria-label={wished ? 'Remove from wishlist' : 'Add to wishlist'}
+          aria-pressed={wished}
+          onClick={(e) => {
+            e.stopPropagation()
+            onWish(p)
+          }}
+        >
+          <Icon name="heart" size={18} fill={wished} />
+        </button>
+        <ProductImg src={p.image} brand={p.brand} category={p.category} alt={p.title} loading="lazy" />
+      </div>
+      <div className="card-body">
+        <p className="eyebrow">
+          {p.brand}
+          {p.brand && p.category ? ' · ' : ''}
+          {p.category}
+        </p>
+        <h4 className="card-title">{p.title}</h4>
+        <div className="card-foot">
+          <Price p={p} />
+          <button
+            className="btn btn-soft btn-sm"
+            onClick={(e) => {
+              e.stopPropagation()
+              onAdd(p)
+            }}
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </article>
+  )
+}
+
+function Toast({ toast, onDismiss }) {
+  if (!toast) return null
+  return (
+    <div className="toast" role="status">
+      <span>{toast.text}</span>
+      {toast.action && (
+        <button
+          onClick={() => {
+            toast.action.run()
+            onDismiss()
+          }}
+        >
+          {toast.action.label}
+        </button>
+      )}
+    </div>
+  )
+}
+
+/* ---------- Auth ---------- */
+
 const SESSION_KEY = 'convoshop_session'
 const USERS_KEY = 'convoshop_users'
+const DARK_KEY = 'convoshop_dark'
 
 const readSession = () => {
   for (const store of [localStorage, sessionStorage]) {
@@ -195,6 +541,15 @@ const read = (key, fallback) => {
   }
 }
 
+const readDark = () => {
+  try {
+    const v = localStorage.getItem(DARK_KEY)
+    if (v === 'true') return true
+    if (v === 'false') return false
+  } catch {}
+  return typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches === true
+}
+
 function Login({ onLogin }) {
   const [mode, setMode] = useState('signin')
   const [name, setName] = useState('')
@@ -203,6 +558,11 @@ function Login({ onLogin }) {
   const [showPw, setShowPw] = useState(false)
   const [remember, setRemember] = useState(true)
   const [msg, setMsg] = useState(null)
+
+  const switchMode = (m) => {
+    setMode(m)
+    setMsg(null)
+  }
 
   const submit = (e) => {
     e.preventDefault()
@@ -217,57 +577,63 @@ function Login({ onLogin }) {
       }
       const newUser = { name: name.trim() || mail.split('@')[0], email: mail, password }
       localStorage.setItem(USERS_KEY, JSON.stringify([...users, newUser]))
-      setMsg({ type: 'success', text: 'Account created successfully! Logging you in…' })
+      setMsg({ type: 'success', text: 'Account created. Signing you in…' })
       setTimeout(() => onLogin(newUser, remember), 600)
       return
     }
 
     if (!existing) {
-      setMsg({ type: 'error', text: 'No account found with this email. Please sign up.' })
+      setMsg({ type: 'error', text: 'No account found with this email. Please create one.' })
       return
     }
     if (existing.password !== password) {
       setMsg({ type: 'error', text: 'Incorrect password. Please try again.' })
       return
     }
-
-    setMsg({ type: 'success', text: 'Welcome back! Launching your store…' })
+    setMsg({ type: 'success', text: 'Welcome back. Opening your store…' })
     setTimeout(() => onLogin(existing, remember), 600)
   }
 
   return (
-    <div className="shopify-auth-viewport">
-      <div className="shopify-auth-card-box">
-        <div className="auth-brand-head">
-          <Logo />
-          <h2 style={{ marginTop: '14px' }}>{mode === 'signin' ? 'WELCOME BACK!' : 'CREATE ACCOUNT'}</h2>
-          <p>{mode === 'signin' ? 'Sign in to continue' : 'Join ConvoShop to start shopping'}</p>
-        </div>
+    <div className="auth-viewport">
+      <div className="auth-card">
+        <Logo />
+        <h1>{mode === 'signin' ? 'Welcome back' : 'Create your account'}</h1>
+        <p className="muted auth-sub">
+          {mode === 'signin' ? 'Sign in to continue shopping.' : 'Join ConvoShop to start shopping.'}
+        </p>
 
-        <div className="auth-tab-switch">
+        <div className="segmented" role="tablist">
           <button
             type="button"
+            role="tab"
+            aria-selected={mode === 'signin'}
             className={mode === 'signin' ? 'active' : ''}
-            onClick={() => { setMode('signin'); setMsg(null); }}
+            onClick={() => switchMode('signin')}
           >
-            Sign In
+            Sign in
           </button>
           <button
             type="button"
+            role="tab"
+            aria-selected={mode === 'signup'}
             className={mode === 'signup' ? 'active' : ''}
-            onClick={() => { setMode('signup'); setMsg(null); }}
+            onClick={() => switchMode('signup')}
           >
-            Create Account
+            Create account
           </button>
         </div>
 
-        <form onSubmit={submit} className="auth-form-stack">
+        <form onSubmit={submit} className="stack">
           {mode === 'signup' && (
-            <div className="auth-field">
-              <label>Full Name</label>
+            <div className="field">
+              <label htmlFor="auth-name">Full name</label>
               <input
+                id="auth-name"
+                className="input"
                 type="text"
-                placeholder="e.g. Alex Sharma"
+                autoComplete="name"
+                placeholder="Alex Sharma"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 required
@@ -275,10 +641,13 @@ function Login({ onLogin }) {
             </div>
           )}
 
-          <div className="auth-field">
-            <label>Email Address</label>
+          <div className="field">
+            <label htmlFor="auth-email">Email</label>
             <input
+              id="auth-email"
+              className="input"
               type="email"
+              autoComplete="email"
               placeholder="you@domain.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -286,246 +655,91 @@ function Login({ onLogin }) {
             />
           </div>
 
-          <div className="auth-field">
-            <label>Password</label>
-            <div className="pw-wrap">
+          <div className="field">
+            <label htmlFor="auth-pw">Password</label>
+            <div className="input-wrap">
               <input
+                id="auth-pw"
+                className="input"
                 type={showPw ? 'text' : 'password'}
-                placeholder="••••••••"
+                autoComplete={mode === 'signin' ? 'current-password' : 'new-password'}
+                placeholder="At least 6 characters"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
                 minLength={6}
               />
-              <button type="button" className="pw-toggle" onClick={() => setShowPw(!showPw)}>
-                {showPw ? 'HIDE' : 'SHOW'}
+              <button type="button" className="link-btn input-action" onClick={() => setShowPw(!showPw)}>
+                {showPw ? 'Hide' : 'Show'}
               </button>
             </div>
           </div>
 
           {mode === 'signin' && (
-            <div className="auth-meta-row">
-              <label className="remember-check">
-                <input
-                  type="checkbox"
-                  checked={remember}
-                  onChange={(e) => setRemember(e.target.checked)}
-                />
-                <span>Remember this device</span>
-              </label>
+            <label className="check">
+              <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} />
+              <span>Remember this device</span>
+            </label>
+          )}
+
+          {msg && (
+            <div className={`notice notice-${msg.type}`} role={msg.type === 'error' ? 'alert' : 'status'}>
+              {msg.text}
             </div>
           )}
 
-          {msg && <div className={`auth-alert-box ${msg.type}`}>{msg.text}</div>}
-
-          <button type="submit" className="shop-btn-red full-width">
-            {mode === 'signin' ? 'Sign In to Store' : 'Complete Registration'}
+          <button type="submit" className="btn btn-primary btn-block btn-lg">
+            {mode === 'signin' ? 'Sign in' : 'Create account'}
           </button>
         </form>
-
-        <div className="auth-card-footer">
-          {mode === 'signin' ? (
-            <p>New customer? <button type="button" onClick={() => { setMode('signup'); setMsg(null); }}>Create an account</button></p>
-          ) : (
-            <p>Already have an account? <button type="button" onClick={() => { setMode('signin'); setMsg(null); }}>Sign in here</button></p>
-          )}
-        </div>
       </div>
     </div>
   )
 }
 
-function GeminiSearchModal({ isOpen, onClose, allProducts, onSelectProduct, onTriggerSearch }) {
-  const [query, setQuery] = useState('')
-  const [isListening, setIsListening] = useState(false)
-  const inputRef = useRef(null)
+/* ---------- AI advisor (chat) ---------- */
 
-  useEffect(() => {
-    if (isOpen) {
-      setTimeout(() => inputRef.current?.focus(), 50)
-    } else {
-      setQuery('')
-    }
-  }, [isOpen])
-
-  const handleVoice = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    if (!SpeechRecognition) {
-      alert('Speech recognition is not supported in this browser.')
-      return
-    }
-    const rec = new SpeechRecognition()
-    rec.lang = 'en-IN'
-    setIsListening(true)
-    rec.onresult = (e) => {
-      const txt = e.results[0][0].transcript
-      setQuery(txt)
-      setIsListening(false)
-      onTriggerSearch(txt)
-      onClose()
-    }
-    rec.onerror = () => setIsListening(false)
-    rec.onend = () => setIsListening(false)
-    rec.start()
-  }
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && query.trim()) {
-      onTriggerSearch(query)
-      onClose()
-    }
-  }
-
-  const results = useMemo(() => {
-    if (!query.trim()) return []
-    const q = query.toLowerCase()
-
-    let maxLimit = null
-    const priceMatch = q.match(/(?:under|below|less than|within|max|upto|up to|₹|rs\.?)\s*(\d+)\s*(k|thousand|lakh)?/i)
-    if (priceMatch) {
-      maxLimit = parseFloat(priceMatch[1])
-      const unit = (priceMatch[2] || '').toLowerCase()
-      if (unit === 'k' || unit === 'thousand') maxLimit *= 1000
-      else if (unit === 'lakh') maxLimit *= 100000
-      else if (maxLimit < 1000) maxLimit *= 1000
-    }
-
-    const keywords = q
-      .replace(/(?:under|below|less than|within|max|upto|up to|₹|rs\.?)\s*\d+\s*(k|thousand|lakh)?/gi, '')
-      .split(/\s+/)
-      .filter(w => w.length > 1)
-
-    return allProducts.filter(p => {
-      const textToSearch = `${p.brand || ''} ${p.title || ''} ${p.category || ''}`.toLowerCase()
-      const matchesKw = keywords.length === 0 || keywords.every(kw => textToSearch.includes(kw) || kw.includes(p.category.toLowerCase()))
-      const matchesPrice = maxLimit ? (p.price != null && p.price > 0 && p.price <= maxLimit) : true
-      return matchesKw && matchesPrice
-    }).slice(0, 10)
-  }, [query, allProducts])
-
-  if (!isOpen) return null
-
-  return (
-    <div className="gemini-search-overlay" onClick={onClose}>
-      <div className="gemini-search-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="gemini-search-input-row">
-          <span className="search-mag-icon"><Icon name="search" /></span>
-          <input
-            ref={inputRef}
-            type="text"
-            placeholder={isListening ? 'LISTENING...' : 'Search catalog (e.g. samsung phones under 100000)...'}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            onKeyDown={handleKeyDown}
-          />
-          <button
-            type="button"
-            className={`gemini-mic-btn ${isListening ? 'listening' : ''}`}
-            onClick={handleVoice}
-            title="Voice search"
-          >
-            <Icon name="mic" />
-          </button>
-          <button className="gemini-close-btn" onClick={onClose} title="Close"><Icon name="close" /></button>
-        </div>
-
-        {query.trim() !== '' && (
-          <div className="gemini-results-box">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <small className="gemini-results-title">Matching Results</small>
-              <button
-                className="rag-ai-btn"
-                onClick={() => {
-                  onTriggerSearch(query)
-                  onClose()
-                }}
-              >
-                <Icon name="spark" size={16} /> Get AI Recommendation
-              </button>
-            </div>
-            {results.length === 0 ? (
-              <p className="empty-note">No products found matching "{query}"</p>
-            ) : (
-              results.map((item) => (
-                <div
-                  key={item.id}
-                  className="gemini-result-item"
-                  onClick={() => {
-                    onSelectProduct(item)
-                    onClose()
-                  }}
-                >
-                  <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
-                  <div className="res-info">
-                    <h5>{item.title}</h5>
-                    <span className="cat">{item.category.toUpperCase()} • {item.brand}</span>
-                  </div>
-                  <strong>{money(item.price)}</strong>
-                </div>
-              ))
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  )
+const WELCOME = {
+  sender: 'ai',
+  text: "Hi, I'm ConvoShop. Tell me what you're looking for — budget, battery, camera, anything — and I'll recommend from the catalog.",
+  matches: [],
 }
 
-function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct }) {
-  const [msgs, setMsgs] = useState([
-    {
-      sender: 'ai',
-      text: "Hi! I'm ConvoShop, your RAG-powered product advisor. Ask me anything about Phones, Laptops, or Smartwatches!",
-      matches: [],
-      ragInspectorOpen: false,
-    },
-  ])
+function normalizeMatch(item, byId) {
+  const id = item.id || item.product_id
+  const full = byId.get(id)
+  return {
+    ...item,
+    id,
+    category: (item.category || '').toLowerCase(),
+    estimated: full?.estimated ?? false,
+    image: getProductImage(item.brand, item.title, item.category, item.image),
+  }
+}
+
+function AIDrawer({ isOpen, onClose, allProducts, onSelectProduct, onAddToCart, seed }) {
+  const [msgs, setMsgs] = useState([WELCOME])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [isListening, setIsListening] = useState(false)
-  const chatRef = useRef(null)
+  const chatEnd = useRef(null)
   const lastQuery = useRef('')
+  const lastSeed = useRef(0)
+  const byId = useMemo(() => new Map(allProducts.map((p) => [p.id, p])), [allProducts])
 
   useEffect(() => {
-    chatRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [msgs, loading])
+    if (isOpen) chatEnd.current?.scrollIntoView({ behavior: 'smooth', block: 'end' })
+  }, [msgs, loading, isOpen])
 
-  const handleVoiceSearch = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-    if (!SpeechRecognition) {
-      alert('Speech recognition is not supported in this browser.')
-      return
-    }
+  const send = async (q) => {
+    const text = (q ?? input).trim()
+    if (!text || loading) return
 
-    const recognition = new SpeechRecognition()
-    recognition.lang = 'en-IN'
-    recognition.interimResults = false
-    recognition.maxAlternatives = 1
+    // Follow-ups like "show cheaper ones" carry the last category the user mentioned.
+    const mentionsCategory = /phone|mobile|laptop|notebook|watch/i.test(text)
+    const searchText = !mentionsCategory && lastQuery.current ? `${lastQuery.current}. ${text}` : text
+    if (mentionsCategory) lastQuery.current = text
 
-    setIsListening(true)
-
-    recognition.onresult = (event) => {
-      const speechToText = event.results[0][0].transcript
-      setInput(speechToText)
-      setIsListening(false)
-      send(speechToText)
-    }
-
-    recognition.onerror = () => setIsListening(false)
-    recognition.onend = () => setIsListening(false)
-
-    recognition.start()
-  }
-
-  
-const send = async (q) => {
-  const text = (q || input).trim()
-  if (!text) return
-  const mentionsCategory = /phone|mobile|laptop|notebook|watch/i.test(text)
-  const searchText = !mentionsCategory && lastQuery.current ? `${lastQuery.current}. ${text}` : text
-  if (mentionsCategory) lastQuery.current = text
-  setMsgs((m) => [...m, { sender: 'user', text }])
-
+    setMsgs((m) => [...m, { sender: 'user', text }])
     setInput('')
     setLoading(true)
 
@@ -533,51 +747,31 @@ const send = async (q) => {
       const res = await fetch(`${BACKEND_URL}/chat/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text })
+        body: JSON.stringify({ message: searchText }),
       })
-
-      if (!res.ok) throw new Error('Backend HTTP error')
-
+      if (!res.ok) throw new Error(`Backend HTTP ${res.status}`)
       const data = await res.json()
-      const confidence = '98.5%'
-
       setMsgs((m) => [
         ...m,
         {
           sender: 'ai',
-          text: data.response || 'No response received.',
-          reasoning: 'Grounded in verified catalog & Pinecone hybrid vector search.',
-          confidence: `${confidence}`,
-          chunks: (data.matches || []).map(item => `[${item.id || item.product_id}]: ${item.title} (₹${item.price || 0})`),
-          matches: (data.matches || []).map(item => ({
-            id: item.id || item.product_id,
-            title: item.title,
-            brand: item.brand,
-            category: item.category,
-            price: item.price,
-            image: getProductImage(item.brand, item.title, item.category, item.image)
-          })),
-          ragInspectorOpen: false,
+          text: data.response || 'I could not generate an answer for that.',
+          matches: (data.matches || []).map((x) => normalizeMatch(x, byId)),
+          open: false,
         },
       ])
     } catch (err) {
       console.error('Backend RAG API error:', err)
-      const queryLower = text.toLowerCase()
-      const matches = allProducts.filter((p) => {
-        const textToSearch = `${p.brand || ''} ${p.title || ''} ${p.category || ''}`.toLowerCase()
-        return queryLower.split(' ').some(w => w.length > 2 && textToSearch.includes(w))
-      }).slice(0, 3)
-
+      const matches = matchProducts(allProducts, text, { any: true }).slice(0, 3)
       setMsgs((m) => [
         ...m,
         {
           sender: 'ai',
-          text: `Retrieved ${matches.length} catalog products for "${text}":`,
-          reasoning: 'Catalog match.',
-          confidence: `90%`,
-          chunks: matches.map(item => `[${item.id}]: ${item.title}`),
-          matches: matches,
-          ragInspectorOpen: false,
+          offline: true,
+          text: matches.length
+            ? `I can't reach the AI advisor right now, so these are plain catalog matches for “${text}”.`
+            : `I can't reach the AI advisor right now, and I found no catalog matches for “${text}”. Try again in a moment.`,
+          matches,
         },
       ])
     } finally {
@@ -585,213 +779,283 @@ const send = async (q) => {
     }
   }
 
+  const voice = useVoice((t) => send(t))
+
+  useEffect(() => {
+    if (seed && seed.n !== lastSeed.current) {
+      lastSeed.current = seed.n
+      send(seed.text)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [seed])
+
+  const toggleSources = (i) =>
+    setMsgs((all) => all.map((m, idx) => (idx === i ? { ...m, open: !m.open } : m)))
+
   if (!isOpen) return null
 
+  const last = msgs[msgs.length - 1]
+  const showFollowUps = !loading && last.sender === 'ai' && last.matches?.length > 0 && !last.offline
+
   return (
-    <div className="shopify-drawer-overlay" onClick={onClose}>
-      <aside className="shopify-drawer" onClick={(e) => e.stopPropagation()}>
-        <div className="drawer-header-bar">
-          <h3><Icon name="spark" size={22} /> ConvoShop AI Advisor</h3>
-          <button onClick={onClose} title="Close"><Icon name="close" /></button>
-        </div>
-        <div className="drawer-body-chat">
-          {msgs.map((m, i) => (
-            <div key={i} className={`chat-bubble-sh ${m.sender}`}>
-              <div
-                className="chat-text-inner"
-                dangerouslySetInnerHTML={{ __html: parseFormattedMarkdown(m.text) }}
-              />
-              {m.reasoning && <span className="r-badge">{m.reasoning}</span>}
-              {m.confidence && (
-                <div style={{ marginTop: '8px' }}>
-                  <button
-                    className="rag-toggle-btn"
-                    onClick={() => {
-                      setMsgs(msgs.map((msg, idx) => idx === i ? { ...msg, ragInspectorOpen: !msg.ragInspectorOpen } : msg))
+    <Overlay onClose={onClose} variant="drawer" label="AI advisor">
+      <SheetHead title="ConvoShop AI" subtitle="Answers grounded in the catalog" icon="spark" onClose={onClose} />
+
+      <div className="chat">
+        {msgs.map((m, i) => (
+          <div key={i} className={`msg msg-${m.sender}`}>
+            <div className="bubble">
+              <div className="md" dangerouslySetInnerHTML={{ __html: renderMarkdown(m.text) }} />
+            </div>
+
+            {m.matches?.length > 0 && (
+              <div className="msg-cards">
+                {m.matches.map((item) => (
+                  <ProductRow
+                    key={item.id}
+                    item={item}
+                    onOpen={(it) => {
+                      onSelectProduct(byId.get(it.id) || it)
+                      onClose()
                     }}
                   >
-                    <Icon name="search" size={14} /> View Vector RAG Context ({m.confidence}) <Icon name={m.ragInspectorOpen ? 'up' : 'down'} size={14} />
-                  </button>
-                  {m.ragInspectorOpen && (
-                    <div className="rag-inspector-box">
-                      <strong>Retrieved Vector Metadata:</strong>
-                      <ul>
-                        {m.chunks.map((chk, ci) => (
-                          <li key={ci}>{chk}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-                </div>
-              )}
-              {m.matches?.length > 0 && (
-                <div className="mini-grid-sh">
-                  {m.matches.map((item) => (
-                    <div
-                      key={item.id}
-                      className="mini-product-row"
-                      onClick={() => {
-                        const fullProd = allProducts.find(p => p.id === item.id || p.title === item.title) || item
-                        onSelectProduct(fullProd)
-                        onClose()
-                      }}
-                      style={{ cursor: 'pointer' }}
-                    >
-                      <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
-                      <div>
-                        <h6>{item.title}</h6>
-                        <strong>{money(item.price)}</strong>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          {loading && <div className="chat-bubble-sh ai">Searching Pinecone vector catalog & generating response…</div>}
-          {isListening && <div className="chat-bubble-sh ai voice-listening">LISTENING... SPEAK NOW</div>}
-          <div ref={chatRef} />
-        </div>
-        <div className="drawer-footer-bar">
-          <form onSubmit={(e) => { e.preventDefault(); send(); }}>
-            <button
-              type="button"
-              className={`voice-mic-btn ${isListening ? 'listening' : ''}`}
-              onClick={handleVoiceSearch}
-              title="Speak your query"
-            >
-              <Icon name="mic" />
-            </button>
-            <input type="text" placeholder="Ask for phones, laptops, or watches..." value={input} onChange={(e) => setInput(e.target.value)} />
-            <button type="submit" className="shop-btn-red">Send</button>
-          </form>
-        </div>
-      </aside>
-    </div>
-  )
-}
-
-function ProductDetailModal({ product, onClose, onAddToCart, isWishlisted, onToggleWishlist }) {
-  const [zoom, setZoom] = useState(false)
-  const [copied, setCopied] = useState(false)
-
-  if (!product) return null
-
-  const handleShare = () => {
-    navigator.clipboard.writeText(window.location.href)
-    setCopied(true)
-    setTimeout(() => setCopied(false), 2000)
-  }
-
-  return (
-    <div className="shopify-drawer-overlay" onClick={onClose}>
-      <div className="product-detail-dialog" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close-x" onClick={onClose} title="Close"><Icon name="close" /></button>
-
-        <div className="modal-content-grid">
-          <div
-            className={`modal-img-viewport ${zoom ? 'zoomed' : ''}`}
-            onClick={() => setZoom(!zoom)}
-            title="Click to toggle image zoom"
-          >
-            <img
-              src={product.image}
-              alt={product.title}
-              onError={(e) => { e.target.src = makePlaceholder(product.brand, product.category) }}
-            />
-            <span className="zoom-hint"><Icon name="search" size={14} /> {zoom ? 'CLICK TO ZOOM OUT' : 'CLICK TO ZOOM IN'}</span>
-          </div>
-
-          <div className="modal-info-side">
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
-              <span className="cat-tag-sh">{product.category.toUpperCase()} • {product.brand}</span>
-              <div style={{ display: 'flex', gap: '8px' }}>
-                <button className="icon-btn wide" onClick={handleShare} title="Copy product link">
-                  <Icon name={copied ? 'check' : 'link'} size={18} />
-                  {copied && <span>COPIED</span>}
-                </button>
-                <button
-                  className={`icon-btn ${isWishlisted ? 'active' : ''}`}
-                  onClick={() => onToggleWishlist(product)}
-                  title={isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
-                >
-                  <Icon name="heart" size={18} fill={isWishlisted} />
-                </button>
-              </div>
-            </div>
-            <h2>{product.title}</h2>
-
-            <div className="price-row-sh" style={{ margin: '12px 0' }}>
-              <span className="current-price" style={{ fontSize: '30px' }}>{money(product.price)}</span>
-            </div>
-
-            {product.description && (
-              <div className="spec-box">
-                <strong>Product Description & Specifications:</strong>
-                <p style={{ marginTop: '4px' }}>{product.description}</p>
+                    <button className="btn btn-soft btn-sm" onClick={() => onAddToCart(byId.get(item.id) || item)}>
+                      Add
+                    </button>
+                  </ProductRow>
+                ))}
               </div>
             )}
 
-            <button
-              className="shop-btn-red full"
-              onClick={() => {
-                onAddToCart(product)
-                onClose()
-              }}
-            >
-              Add to Cart
-            </button>
+            {m.sender === 'ai' && m.matches?.length > 0 && !m.offline && (
+              <div className="sources">
+                <button className="link-btn" onClick={() => toggleSources(i)} aria-expanded={!!m.open}>
+                  Sources ({m.matches.length}) <Icon name={m.open ? 'up' : 'down'} size={14} />
+                </button>
+                {m.open && (
+                  <div className="sources-panel">
+                    <p className="muted">Retrieved from the verified catalog with hybrid vector search.</p>
+                    <ul>
+                      {m.matches.map((x) => (
+                        <li key={x.id}>
+                          <span>{x.title}</span>
+                          <code>{x.id}</code>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
-        </div>
+        ))}
+
+        {loading && (
+          <div className="msg msg-ai">
+            <div className="bubble typing" aria-label="ConvoShop is thinking">
+              <i />
+              <i />
+              <i />
+            </div>
+          </div>
+        )}
+        <div ref={chatEnd} />
       </div>
-    </div>
+
+      <footer className="sheet-foot">
+        {msgs.length === 1 && !loading && (
+          <div className="chips">
+            {SUGGESTIONS.map((s) => (
+              <button key={s} className="chip-btn" onClick={() => send(s)}>
+                {s}
+              </button>
+            ))}
+          </div>
+        )}
+        {showFollowUps && (
+          <div className="chips">
+            {FOLLOW_UPS.map((s) => (
+              <button key={s} className="chip-btn" onClick={() => send(s)}>
+                {s}
+              </button>
+            ))}
+          </div>
+        )}
+        <Composer
+          value={input}
+          onChange={setInput}
+          onSubmit={() => send()}
+          placeholder="Ask for phones, laptops or watches…"
+          voice={voice}
+          disabled={loading}
+          autoFocus
+        />
+      </footer>
+    </Overlay>
   )
 }
 
-function WishlistDrawer({ isOpen, onClose, wishlist, onRemoveWishlist, onAddToCart }) {
-  if (!isOpen) return null
+/* ---------- Product detail ---------- */
+
+function ProductDetail({ product, onClose, onAddToCart, wished, onToggleWish }) {
+  const [zoom, setZoom] = useState(false)
+  const [copied, setCopied] = useState(false)
+
+  const share = async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    } catch {}
+  }
 
   return (
-    <div className="shopify-drawer-overlay" onClick={onClose}>
-      <aside className="shopify-drawer" onClick={(e) => e.stopPropagation()}>
-        <div className="drawer-header-bar">
-          <h3><Icon name="heart" size={22} /> My Wishlist ({wishlist.length})</h3>
-          <button onClick={onClose} title="Close"><Icon name="close" /></button>
-        </div>
+    <Overlay onClose={onClose} variant="center" label={product.title}>
+      <button className="icon-btn modal-x" onClick={onClose} aria-label="Close">
+        <Icon name="close" />
+      </button>
+      <div className="detail">
+        <button
+          className={`detail-media ${zoom ? 'zoomed' : ''}`}
+          onClick={() => setZoom(!zoom)}
+          aria-label={zoom ? 'Zoom out' : 'Zoom in'}
+        >
+          <ProductImg src={product.image} brand={product.brand} category={product.category} alt={product.title} />
+          <span className="media-hint">
+            <Icon name="search" size={14} /> {zoom ? 'Zoom out' : 'Zoom in'}
+          </span>
+        </button>
 
-        <div className="drawer-body-chat">
-          {wishlist.length === 0 ? (
-            <p className="empty-note">Your wishlist is empty. Tap the heart on any product to save it.</p>
-          ) : (
-            wishlist.map((item) => (
-              <div key={item.id} className="mini-product-row" style={{ justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flex: 1, minWidth: 0 }}>
-                  <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
-                  <div style={{ minWidth: 0 }}>
-                    <h6 style={{ maxWidth: '150px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.title}</h6>
-                    <strong>{money(item.price)}</strong>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-                  <button
-                    className="shop-btn-red small"
-                    onClick={() => {
-                      onAddToCart(item)
-                      onRemoveWishlist(item.id)
-                    }}
-                  >
-                    To Cart
-                  </button>
-                  <button className="icon-x-btn" onClick={() => onRemoveWishlist(item.id)} title="Remove"><Icon name="close" size={16} /></button>
-                </div>
-              </div>
-            ))
+        <div className="detail-info">
+          <div className="detail-top">
+            <p className="eyebrow">
+              {product.brand}
+              {product.brand && product.category ? ' · ' : ''}
+              {product.category}
+            </p>
+            <div className="detail-actions">
+              <button className="icon-btn" onClick={share} aria-label="Copy link">
+                <Icon name={copied ? 'check' : 'share'} size={18} />
+              </button>
+              <button
+                className={`icon-btn ${wished ? 'is-on' : ''}`}
+                onClick={() => onToggleWish(product)}
+                aria-label={wished ? 'Remove from wishlist' : 'Add to wishlist'}
+                aria-pressed={wished}
+              >
+                <Icon name="heart" size={18} fill={wished} />
+              </button>
+            </div>
+          </div>
+
+          <h2>{product.title}</h2>
+          <div className="detail-price">
+            <Price p={product} />
+          </div>
+          {product.estimated && product.price > 0 && (
+            <p className="muted small">Estimated price — not a live listing price.</p>
           )}
+
+          {product.description && (
+            <div className="panel">
+              <h5>About this product</h5>
+              <p>{product.description}</p>
+            </div>
+          )}
+
+          <button
+            className="btn btn-primary btn-block btn-lg"
+            onClick={() => {
+              onAddToCart(product)
+              onClose()
+            }}
+          >
+            Add to cart
+          </button>
         </div>
-      </aside>
-    </div>
+      </div>
+    </Overlay>
   )
 }
+
+/* ---------- Wishlist / Cart ---------- */
+
+function WishlistDrawer({ isOpen, onClose, wishlist, onRemove, onMoveToCart, onOpen }) {
+  if (!isOpen) return null
+  return (
+    <Overlay onClose={onClose} variant="drawer" label="Wishlist">
+      <SheetHead title={`Wishlist (${wishlist.length})`} onClose={onClose} />
+      <div className="sheet-body">
+        {wishlist.length === 0 ? (
+          <EmptyState icon="heart" title="Nothing saved yet" text="Tap the heart on any product to save it here.">
+            <button className="btn btn-soft" onClick={onClose}>Browse products</button>
+          </EmptyState>
+        ) : (
+          <div className="stack">
+            {wishlist.map((item) => (
+              <ProductRow key={item.id} item={item} onOpen={(it) => { onOpen(it); onClose() }}>
+                <div className="row-actions">
+                  <button className="btn btn-soft btn-sm" onClick={() => onMoveToCart(item)}>Move to cart</button>
+                  <button className="link-btn" onClick={() => onRemove(item.id)}>Remove</button>
+                </div>
+              </ProductRow>
+            ))}
+          </div>
+        )}
+      </div>
+    </Overlay>
+  )
+}
+
+function CartDrawer({ isOpen, onClose, cart, count, total, onQty, onRemove, onCheckout, onOpen }) {
+  if (!isOpen) return null
+  const hasEst = cart.some((i) => i.estimated)
+  return (
+    <Overlay onClose={onClose} variant="drawer" label="Cart">
+      <SheetHead title={`Cart (${count})`} onClose={onClose} />
+      <div className="sheet-body">
+        {cart.length === 0 ? (
+          <EmptyState icon="bag" title="Your cart is empty" text="Add something you like and it will show up here.">
+            <button className="btn btn-soft" onClick={onClose}>Continue shopping</button>
+          </EmptyState>
+        ) : (
+          <div className="stack">
+            {cart.map((item) => (
+              <ProductRow key={item.id} item={item} onOpen={(it) => { onOpen(it); onClose() }}>
+                <div className="row-actions">
+                  <div className="stepper">
+                    <button onClick={() => onQty(item.id, -1)} aria-label="Decrease quantity">
+                      <Icon name="minus" size={14} />
+                    </button>
+                    <span>{item.qty}</span>
+                    <button onClick={() => onQty(item.id, 1)} aria-label="Increase quantity">
+                      <Icon name="plus" size={14} />
+                    </button>
+                  </div>
+                  <button className="link-btn" onClick={() => onRemove(item.id)}>Remove</button>
+                </div>
+              </ProductRow>
+            ))}
+          </div>
+        )}
+      </div>
+      {cart.length > 0 && (
+        <footer className="sheet-foot">
+          <div className="total-row">
+            <span>Total</span>
+            <strong>{money(total)}</strong>
+          </div>
+          {hasEst && <p className="muted small">Includes estimated prices.</p>}
+          <button className="btn btn-primary btn-block btn-lg" onClick={onCheckout}>
+            Check out
+          </button>
+        </footer>
+      )}
+    </Overlay>
+  )
+}
+
+/* ---------- Checkout / success / settings ---------- */
 
 function CheckoutModal({ cartItems, totalAmount, onClose, onSuccess }) {
   const [form, setForm] = useState({
@@ -801,186 +1065,314 @@ function CheckoutModal({ cartItems, totalAmount, onClose, onSuccess }) {
     city: '',
     pincode: '',
     paymentMethod: 'cod',
-    coupon: ''
+    coupon: '',
   })
   const [discount, setDiscount] = useState(0)
   const [couponMsg, setCouponMsg] = useState(null)
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
+    const { name, value } = e.target
+    setForm((f) => ({ ...f, [name]: value }))
+    if (name === 'coupon') {
+      setDiscount(0)
+      setCouponMsg(null)
+    }
   }
 
   const applyCoupon = () => {
-    const code = form.coupon.trim().toUpperCase()
-    if (code === 'CONVO20') {
-      setDiscount(0.20)
-      setCouponMsg({ type: 'success', text: 'Coupon applied! 20% discount unlocked.' })
+    if (form.coupon.trim().toUpperCase() === 'CONVO20') {
+      setDiscount(0.2)
+      setCouponMsg({ type: 'success', text: '20% discount applied.' })
     } else {
       setDiscount(0)
-      setCouponMsg({ type: 'error', text: 'Invalid coupon code (try CONVO20)' })
+      setCouponMsg({ type: 'error', text: 'That code isn’t valid. Try CONVO20.' })
     }
   }
 
   const finalPayable = totalAmount * (1 - discount)
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    onSuccess({ ...form, finalTotal: finalPayable })
-  }
-
   return (
-    <div className="shopify-drawer-overlay" onClick={onClose}>
-      <div className="checkout-modal-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="drawer-header-bar">
-          <h3><Icon name="truck" size={24} /> Delivery & Checkout</h3>
-          <button onClick={onClose} title="Close"><Icon name="close" /></button>
+    <Overlay onClose={onClose} variant="center" size="narrow" label="Checkout">
+      <SheetHead title="Delivery & payment" icon="truck" onClose={onClose} />
+      <form
+        className="sheet-body stack"
+        onSubmit={(e) => {
+          e.preventDefault()
+          onSuccess({ ...form, finalTotal: finalPayable })
+        }}
+      >
+        <div className="field">
+          <label htmlFor="co-name">Full name</label>
+          <input id="co-name" className="input" name="fullName" autoComplete="name" placeholder="Rahul Sharma" value={form.fullName} onChange={handleChange} required />
+        </div>
+        <div className="field">
+          <label htmlFor="co-phone">Phone number</label>
+          <input id="co-phone" className="input" type="tel" inputMode="tel" name="phone" autoComplete="tel" placeholder="+91 98765 43210" value={form.phone} onChange={handleChange} required />
+        </div>
+        <div className="field">
+          <label htmlFor="co-addr">Address</label>
+          <input id="co-addr" className="input" name="address" autoComplete="street-address" placeholder="#42, Tech Park Road" value={form.address} onChange={handleChange} required />
+        </div>
+        <div className="grid-2">
+          <div className="field">
+            <label htmlFor="co-city">City</label>
+            <input id="co-city" className="input" name="city" autoComplete="address-level2" placeholder="Bengaluru" value={form.city} onChange={handleChange} required />
+          </div>
+          <div className="field">
+            <label htmlFor="co-pin">Pincode</label>
+            <input id="co-pin" className="input" name="pincode" inputMode="numeric" pattern="\d{6}" title="6-digit pincode" autoComplete="postal-code" placeholder="560001" value={form.pincode} onChange={handleChange} required />
+          </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="checkout-form-body">
-          <div className="auth-field">
-            <label>Full Name</label>
-            <input type="text" name="fullName" placeholder="e.g. Rahul Sharma" value={form.fullName} onChange={handleChange} required />
+        <div className="field">
+          <label htmlFor="co-coupon">Coupon code</label>
+          <div className="inline">
+            <input id="co-coupon" className="input" name="coupon" placeholder="CONVO20" value={form.coupon} onChange={handleChange} />
+            <button type="button" className="btn btn-soft" onClick={applyCoupon}>Apply</button>
           </div>
+          {couponMsg && <small className={`coupon-msg ${couponMsg.type}`}>{couponMsg.text}</small>}
+        </div>
 
-          <div className="auth-field">
-            <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="e.g. +91 98765 43210" value={form.phone} onChange={handleChange} required />
-          </div>
+        <div className="field">
+          <label htmlFor="co-pay">Payment method</label>
+          <select id="co-pay" className="input" name="paymentMethod" value={form.paymentMethod} onChange={handleChange}>
+            <option value="cod">Cash on delivery</option>
+            <option value="upi">UPI / Google Pay / PhonePe</option>
+            <option value="card">Credit / debit card</option>
+          </select>
+        </div>
 
-          <div className="auth-field">
-            <label>Street Address / House No.</label>
-            <input type="text" name="address" placeholder="e.g. #42, Tech Park Road" value={form.address} onChange={handleChange} required />
-          </div>
+        <div className="summary">
+          <div><span>{cartItems.reduce((n, i) => n + i.qty, 0)} items</span><span>{money(totalAmount)}</span></div>
+          {discount > 0 && <div><span>Discount (20%)</span><span>− {money(totalAmount * discount)}</span></div>}
+          <div className="summary-total"><span>Total</span><strong>{money(finalPayable)}</strong></div>
+        </div>
 
-          <div className="checkout-row-2">
-            <div className="auth-field">
-              <label>City / Town</label>
-              <input type="text" name="city" placeholder="e.g. Bengaluru" value={form.city} onChange={handleChange} required />
-            </div>
-            <div className="auth-field">
-              <label>Postal Code (Pincode)</label>
-              <input type="text" name="pincode" placeholder="e.g. 560001" value={form.pincode} onChange={handleChange} required />
-            </div>
-          </div>
-
-          <div className="auth-field" style={{ marginTop: '4px' }}>
-            <label>Discount Coupon (Try CONVO20)</label>
-            <div style={{ display: 'flex', gap: '8px' }}>
-              <input type="text" name="coupon" placeholder="e.g. CONVO20" value={form.coupon} onChange={handleChange} style={{ flex: 1 }} />
-              <button type="button" className="shop-btn-outline" onClick={applyCoupon}>Apply</button>
-            </div>
-            {couponMsg && <small className={`coupon-msg ${couponMsg.type}`}>{couponMsg.text}</small>}
-          </div>
-
-          <div className="auth-field" style={{ marginTop: '4px' }}>
-            <label>Payment Method</label>
-            <select name="paymentMethod" value={form.paymentMethod} onChange={handleChange} className="setting-select">
-              <option value="cod">Cash on Delivery (COD)</option>
-              <option value="upi">UPI / Google Pay / PhonePe</option>
-              <option value="card">Credit / Debit Card</option>
-            </select>
-          </div>
-
-          <div className="checkout-total-banner">
-            <span>Total Payable:</span>
-            <strong>{money(finalPayable)}</strong>
-          </div>
-
-          <button type="submit" className="shop-btn-red full">Place Secure Order</button>
-        </form>
-      </div>
-    </div>
+        <button type="submit" className="btn btn-primary btn-block btn-lg">Place order</button>
+      </form>
+    </Overlay>
   )
 }
 
 function OrderSuccessModal({ orderData, onClose }) {
   return (
-    <div className="shopify-drawer-overlay" onClick={onClose}>
-      <div className="success-modal-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="success-icon-badge"><Icon name="check" size={44} /></div>
-        <h2>Order Placed Successfully!</h2>
-        <p className="success-sub">Thank you, {orderData.shipping.fullName}. Your AI-assisted order is confirmed.</p>
+    <Overlay onClose={onClose} variant="center" size="xs" label="Order confirmed">
+      <div className="success">
+        <span className="success-badge"><Icon name="check" size={32} /></span>
+        <h2>Order placed</h2>
+        <p className="muted">Thank you, {orderData.shipping.fullName}. Your order is confirmed.</p>
 
-        <div className="order-meta-card">
-          <div className="meta-line">
-            <span>Order Tracking ID:</span>
-            <strong>{orderData.id}</strong>
+        <dl className="meta">
+          <div><dt>Order ID</dt><dd>{orderData.id}</dd></div>
+          <div>
+            <dt>Delivering to</dt>
+            <dd>{orderData.shipping.address}, {orderData.shipping.city} – {orderData.shipping.pincode}</dd>
           </div>
-          <div className="meta-line">
-            <span>Delivery Address:</span>
-            <strong style={{ textAlign: 'right', maxWidth: '200px' }}>{orderData.shipping.address}, {orderData.shipping.city} - {orderData.shipping.pincode}</strong>
-          </div>
-          <div className="meta-line">
-            <span>Payment:</span>
-            <strong style={{ textTransform: 'uppercase' }}>{orderData.shipping.paymentMethod}</strong>
-          </div>
-          <div className="meta-line">
-            <span>Total Paid:</span>
-            <strong>{money(orderData.total)}</strong>
-          </div>
-        </div>
+          <div><dt>Payment</dt><dd style={{ textTransform: 'uppercase' }}>{orderData.shipping.paymentMethod}</dd></div>
+          <div><dt>Total</dt><dd>{money(orderData.total)}</dd></div>
+        </dl>
 
-        <button className="shop-btn-red full" onClick={onClose}>
-          Continue Shopping
-        </button>
+        <button className="btn btn-primary btn-block btn-lg" onClick={onClose}>Continue shopping</button>
       </div>
-    </div>
+    </Overlay>
   )
 }
 
 function SettingsModal({ user, onClose, onUpdateUser, orders, onLogout, darkMode, setDarkMode }) {
   const [name, setName] = useState(user.name)
   const [email, setEmail] = useState(user.email)
-  const [msg, setMsg] = useState(false)
+  const [saved, setSaved] = useState(false)
 
-  const handleSaveProfile = (e) => {
+  const save = (e) => {
     e.preventDefault()
     onUpdateUser({ name, email })
-    setMsg(true)
-    setTimeout(() => setMsg(false), 2000)
+    setSaved(true)
+    setTimeout(() => setSaved(false), 2000)
   }
 
   return (
-    <div className="shopify-drawer-overlay" onClick={onClose}>
-      <div className="settings-modal-dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="settings-header">
-          <h2>Settings & Profile</h2>
-          <button className="modal-close-x" onClick={onClose} title="Close"><Icon name="close" /></button>
-        </div>
+    <Overlay onClose={onClose} variant="center" size="narrow" label="Settings">
+      <SheetHead title="Settings" onClose={onClose} />
+      <div className="sheet-body stack-lg">
+        <form onSubmit={save} className="stack">
+          <h5 className="section-label">Profile</h5>
+          <div className="field">
+            <label htmlFor="st-name">Full name</label>
+            <input id="st-name" className="input" value={name} onChange={(e) => setName(e.target.value)} required />
+          </div>
+          <div className="field">
+            <label htmlFor="st-email">Email</label>
+            <input id="st-email" className="input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+          {saved && <div className="notice notice-success" role="status">Profile updated.</div>}
+          <button type="submit" className="btn btn-soft btn-block">Save changes</button>
+        </form>
 
-        <div className="settings-body-content">
-          <form onSubmit={handleSaveProfile} className="auth-form-stack">
-            <div className="auth-field">
-              <label>Full Name</label>
-              <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-            </div>
-            <div className="auth-field">
-              <label>Email Address</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            </div>
-            {msg && <div className="auth-alert-box success">Profile updated successfully!</div>}
-            <button type="submit" className="shop-btn-red full-width">Save Changes</button>
-          </form>
-
-          <div className="settings-signout-box" style={{ marginTop: '20px' }}>
-            <button className="settings-signout-btn" onClick={onLogout}>
-              Sign Out
+        <div className="stack">
+          <h5 className="section-label">Appearance</h5>
+          <div className="setting-row">
+            <span>Dark mode</span>
+            <button
+              type="button"
+              role="switch"
+              aria-checked={darkMode}
+              aria-label="Dark mode"
+              className={`switch ${darkMode ? 'on' : ''}`}
+              onClick={() => setDarkMode(!darkMode)}
+            >
+              <i />
             </button>
           </div>
         </div>
+
+        <div className="stack">
+          <h5 className="section-label">Orders</h5>
+          {orders.length === 0 ? (
+            <p className="muted">No orders yet.</p>
+          ) : (
+            <ul className="orders">
+              {orders.slice(0, 5).map((o) => (
+                <li key={o.id}>
+                  <div>
+                    <strong>{o.id}</strong>
+                    <span className="muted small">{o.date}</span>
+                  </div>
+                  <span>{money(o.total)}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+
+        <button className="btn btn-danger btn-block" onClick={onLogout}>Sign out</button>
       </div>
-    </div>
+    </Overlay>
   )
 }
 
-function Store({ user, onLogout, onUpdateUser }) {
+/* ---------- Store ---------- */
+
+function HeaderSearch({ value, onChange, onSubmit, onClear }) {
+  const voice = useVoice((t) => onSubmit(t))
+  return (
+    <form
+      className="search"
+      role="search"
+      onSubmit={(e) => {
+        e.preventDefault()
+        onSubmit(value)
+      }}
+    >
+      <Icon name="search" size={18} />
+      <input
+        type="text"
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder={voice.listening ? 'Listening…' : 'Search, or ask: best phone under 30k'}
+        aria-label="Search products"
+      />
+      {value && (
+        <button type="button" className="icon-btn icon-btn-sm" onClick={onClear} aria-label="Clear search">
+          <Icon name="close" size={16} />
+        </button>
+      )}
+      {voice.supported && (
+        <button
+          type="button"
+          className={`icon-btn icon-btn-sm ${voice.listening ? 'is-listening' : ''}`}
+          onClick={voice.toggle}
+          aria-label="Voice search"
+        >
+          <Icon name="mic" size={18} />
+        </button>
+      )}
+    </form>
+  )
+}
+
+function Hero({ onAsk }) {
+  const [text, setText] = useState('')
+  const submit = (t) => {
+    const v = (t ?? text).trim()
+    if (!v) return
+    onAsk(v)
+    setText('')
+  }
+  const voice = useVoice((t) => submit(t))
+
+  return (
+    <section className="hero">
+      <div className="hero-inner">
+        <p className="eyebrow eyebrow-accent">ConvoShop AI</p>
+        <h1>Tell us what you need.<br />We’ll find what fits.</h1>
+        <p className="lead">
+          Ask in plain words — budget, battery, camera — and get recommendations grounded in the catalog’s real specs.
+        </p>
+        <Composer
+          large
+          value={text}
+          onChange={setText}
+          onSubmit={() => submit()}
+          placeholder="e.g. A phone under ₹30,000 with great battery life"
+          voice={voice}
+        />
+        <div className="chips chips-center">
+          {SUGGESTIONS.map((s) => (
+            <button key={s} className="chip-btn" onClick={() => submit(s)}>
+              {s}
+            </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function Recommendation({ rec, onClose, onOpen }) {
+  return (
+    <section className="reco" aria-live="polite">
+      <header className="reco-head">
+        <div className="sheet-title">
+          <span className="soft-icon"><Icon name="spark" size={18} /></span>
+          <div>
+            <h3>{rec.offline ? 'AI advisor unavailable' : 'Recommended for you'}</h3>
+            <p className="muted">“{rec.query}”</p>
+          </div>
+        </div>
+        <button className="icon-btn" onClick={onClose} aria-label="Dismiss">
+          <Icon name="close" />
+        </button>
+      </header>
+
+      {rec.offline ? (
+        <p className="reco-text">
+          I couldn’t reach the AI advisor, so the products below are plain catalog matches instead.
+        </p>
+      ) : (
+        <div className="reco-text md" dangerouslySetInnerHTML={{ __html: renderMarkdown(rec.response) }} />
+      )}
+
+      {rec.matches.length > 0 && (
+        <div className="reco-matches">
+          <p className="eyebrow">Retrieved from the catalog · {rec.matches.length}</p>
+          <div className="match-grid">
+            {rec.matches.map((item) => (
+              <ProductRow key={item.id} item={item} onOpen={onOpen} />
+            ))}
+          </div>
+        </div>
+      )}
+    </section>
+  )
+}
+
+function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
   const [rows, setRows] = useState([])
   const [status, setStatus] = useState('loading')
   const [searchQuery, setSearchQuery] = useState('')
   const [category, setCategory] = useState('all')
   const [topRatedOnly, setTopRatedOnly] = useState(false)
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('convoshop_dark') === 'true')
-  const [searchModalOpen, setSearchModalOpen] = useState(false)
+  const [sort, setSort] = useState('featured')
   const [shown, setShown] = useState(BATCH)
   const [cart, setCart] = useState(() => read(`convo_cart_${user.email}`, []))
   const [wishlist, setWishlist] = useState(() => read(`convo_wishlist_${user.email}`, []))
@@ -988,19 +1380,23 @@ function Store({ user, onLogout, onUpdateUser }) {
   const [cartOpen, setCartOpen] = useState(false)
   const [wishlistOpen, setWishlistOpen] = useState(false)
   const [aiOpen, setAiOpen] = useState(false)
+  const [aiSeed, setAiSeed] = useState(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [orderPlacedData, setOrderPlacedData] = useState(null)
-
-  // AI Recommendation Banner State
   const [aiRecommendation, setAiRecommendation] = useState(null)
   const [aiLoading, setAiLoading] = useState(false)
+  const [toast, setToast] = useState(null)
+  const toastTimer = useRef(null)
   const endRef = useRef(null)
 
-  useEffect(() => {
-    localStorage.setItem('convoshop_dark', darkMode)
-  }, [darkMode])
+  const showToast = (text, action) => {
+    clearTimeout(toastTimer.current)
+    setToast({ text, action })
+    toastTimer.current = setTimeout(() => setToast(null), 3200)
+  }
+  useEffect(() => () => clearTimeout(toastTimer.current), [])
 
   useEffect(() => {
     Papa.parse(CSV_URL, {
@@ -1010,19 +1406,23 @@ function Store({ user, onLogout, onUpdateUser }) {
       complete: (result) => {
         const products = result.data.map((row, i) => {
           const priceVal = toNumber(row.price_inr)
-          const img = getProductImage(row.brand, row.name, row.category, row.image_url)
-
+          const cat = (row.category || 'Uncategorized').toLowerCase()
+          // Price is an estimate if the CSV says so (price_estimated / is_estimated column);
+          // otherwise laptops are treated as estimated (their INR prices are converted from EUR).
+          const flag = String(row.price_estimated ?? row.is_estimated ?? '').trim().toLowerCase()
+          const estimated = flag ? ['1', 'true', 'yes', 'y'].includes(flag) : /laptop/.test(cat)
           return {
             id: row.product_id || `prod_${i}`,
             product_id: row.product_id || `prod_${i}`,
             title: row.name || 'Untitled product',
             brand: row.brand || '',
-            category: (row.category || 'Uncategorized').toLowerCase(),
+            category: cat,
             price: priceVal,
             original: priceVal,
+            estimated,
             rating: toNumber(row.rating),
-            image: img,
-            description: row.description || ''
+            image: getProductImage(row.brand, row.name, row.category, row.image_url),
+            description: row.description || '',
           }
         })
         setRows(products)
@@ -1032,37 +1432,45 @@ function Store({ user, onLogout, onUpdateUser }) {
     })
   }, [])
 
+  const byId = useMemo(() => new Map(rows.map((p) => [p.id, p])), [rows])
+  const openProduct = (p) => setSelectedProduct(byId.get(p.id) || p)
+
+  const openAdvisor = (text) => {
+    if (text) setAiSeed({ text, n: Date.now() })
+    setAiOpen(true)
+  }
+
   const handleRAGSearch = async (textToSearch) => {
     const text = (textToSearch || searchQuery).trim()
     if (!text) return
     setSearchQuery(text)
     setAiLoading(true)
+    setAiRecommendation(null)
 
     try {
       const res = await fetch(`${BACKEND_URL}/chat/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: searchText })
+        body: JSON.stringify({ message: text }),
       })
-
-      if (!res.ok) throw new Error('HTTP Error')
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
-
-      const cleanedMatches = (data.matches || []).map(item => ({
-        ...item,
-        image: getProductImage(item.brand, item.title, item.category, item.image)
-      }))
-
       setAiRecommendation({
         query: text,
-        response: data.response,
-        matches: cleanedMatches
+        response: data.response || '',
+        matches: (data.matches || []).map((m) => normalizeMatch(m, byId)),
       })
     } catch (err) {
       console.error('RAG Search Error:', err)
+      setAiRecommendation({ query: text, response: '', matches: [], offline: true })
     } finally {
       setAiLoading(false)
     }
+  }
+
+  const clearSearch = () => {
+    setSearchQuery('')
+    setAiRecommendation(null)
   }
 
   const categories = useMemo(() => {
@@ -1071,342 +1479,306 @@ function Store({ user, onLogout, onUpdateUser }) {
     return [...counts.entries()].sort((a, b) => b[1] - a[1])
   }, [rows])
 
+  const hasRatings = useMemo(() => rows.some((r) => r.rating != null), [rows])
+
   const filtered = useMemo(() => {
-    // If AI Recommendation has matches, prioritize returning those matches in the catalog grid
-    if (aiRecommendation && aiRecommendation.matches && aiRecommendation.matches.length > 0) {
-      const matchPids = new Set(aiRecommendation.matches.map(m => m.id || m.product_id))
-      const matchedCatalog = rows.filter(r => matchPids.has(r.id) || matchPids.has(r.product_id))
-      if (matchedCatalog.length > 0) return matchedCatalog
+    // When the AI returned matches, show exactly those in the grid.
+    if (aiRecommendation?.matches?.length) {
+      const ids = new Set(aiRecommendation.matches.map((m) => m.id))
+      const matched = rows.filter((r) => ids.has(r.id))
+      if (matched.length) return matched
     }
-
-    return rows.filter((r) => {
-      const matchCat = category === 'all' || r.category === category
-      const matchRating = topRatedOnly ? (r.rating != null && r.rating >= 4.0) : true
-
-      const q = searchQuery.trim().toLowerCase()
-      if (!q) return matchCat && matchRating
-
-      let priceValid = true
-      const priceMatch = q.match(/(?:under|below|less than|within|max|upto|up to|₹|rs\.?)\s*(\d+)\s*(k|thousand|lakh)?/i)
-      if (priceMatch) {
-        let maxLimit = parseFloat(priceMatch[1])
-        const unit = (priceMatch[2] || '').toLowerCase()
-        if (unit === 'k' || unit === 'thousand') maxLimit *= 1000
-        else if (unit === 'lakh') maxLimit *= 100000
-        else if (maxLimit < 1000) maxLimit *= 1000
-        priceValid = (r.price != null && r.price > 0 && r.price <= maxLimit)
-      }
-
-      const keywords = q
-        .replace(/(?:under|below|less than|within|max|upto|up to|₹|rs\.?)\s*\d+\s*(k|thousand|lakh)?/gi, '')
-        .split(/\s+/)
-        .filter(w => w.length > 1)
-
-      const textToSearch = `${r.brand || ''} ${r.title || ''} ${r.category || ''}`.toLowerCase()
-      const matchesKeyword = keywords.length === 0 || keywords.every(kw => textToSearch.includes(kw) || kw.includes(r.category) || r.category.includes(kw))
-
-      return matchCat && matchRating && matchesKeyword && priceValid
-    })
+    return matchProducts(rows, searchQuery.trim(), { category }).filter(
+      (r) => !topRatedOnly || (r.rating != null && r.rating >= 4.0)
+    )
   }, [rows, category, topRatedOnly, searchQuery, aiRecommendation])
+
+  const sorted = useMemo(() => {
+    if (sort === 'featured') return filtered
+    const list = [...filtered]
+    if (sort === 'low') {
+      const key = (p) => (p.price > 0 ? p.price : Infinity)
+      return list.sort((a, b) => (key(a) === key(b) ? 0 : key(a) < key(b) ? -1 : 1))
+    }
+    return list.sort((a, b) => (b.price || 0) - (a.price || 0))
+  }, [filtered, sort])
+
+  useEffect(() => {
+    setShown(BATCH)
+  }, [category, topRatedOnly, searchQuery, aiRecommendation, sort])
 
   useEffect(() => {
     const el = endRef.current
     if (!el) return
-    const io = new IntersectionObserver(([e]) => e.isIntersecting && setShown((s) => s + BATCH), { rootMargin: '600px' })
+    const io = new IntersectionObserver(
+      ([e]) => e.isIntersecting && setShown((s) => s + BATCH),
+      { rootMargin: '600px' }
+    )
     io.observe(el)
     return () => io.disconnect()
-  }, [status, filtered.length])
+  }, [status, sorted.length])
 
   useEffect(() => {
     localStorage.setItem(`convo_cart_${user.email}`, JSON.stringify(cart))
   }, [cart, user.email])
-
   useEffect(() => {
     localStorage.setItem(`convo_wishlist_${user.email}`, JSON.stringify(wishlist))
   }, [wishlist, user.email])
-
-  const handleOpenProduct = (p) => {
-    setSelectedProduct(p)
-  }
+  useEffect(() => {
+    localStorage.setItem(`convo_orders_${user.email}`, JSON.stringify(orders))
+  }, [orders, user.email])
 
   const addToCart = (p) => {
     setCart((c) =>
       c.some((i) => i.id === p.id)
         ? c.map((i) => (i.id === p.id ? { ...i, qty: i.qty + 1 } : i))
-        : [...c, { id: p.id, title: p.title, brand: p.brand, category: p.category, image: p.image, price: p.price, qty: 1 }]
+        : [
+            ...c,
+            {
+              id: p.id,
+              title: p.title,
+              brand: p.brand,
+              category: p.category,
+              image: p.image,
+              price: p.price,
+              estimated: p.estimated,
+              qty: 1,
+            },
+          ]
     )
-    setCartOpen(true)
+    showToast('Added to cart', { label: 'View cart', run: () => setCartOpen(true) })
   }
 
-  const toggleWishlist = (p) => {
-    setWishlist((w) =>
-      w.some((i) => i.id === p.id) ? w.filter((i) => i.id !== p.id) : [...w, p]
-    )
+  const toggleWishlist = (p) =>
+    setWishlist((w) => (w.some((i) => i.id === p.id) ? w.filter((i) => i.id !== p.id) : [...w, p]))
+
+  const removeWishlistItem = (id) => setWishlist((w) => w.filter((i) => i.id !== id))
+
+  const moveToCart = (item) => {
+    addToCart(item)
+    removeWishlistItem(item.id)
   }
 
-  const removeWishlistItem = (id) => {
-    setWishlist((w) => w.filter((i) => i.id !== id))
-  }
+  const changeQty = (id, delta) =>
+    setCart((c) => c.map((i) => (i.id === id ? { ...i, qty: i.qty + delta } : i)).filter((i) => i.qty > 0))
 
-  const changeQty = (id, delta) => {
-    setCart((c) =>
-      c.map((i) => (i.id === id ? { ...i, qty: i.qty + delta } : i)).filter((i) => i.qty > 0)
-    )
-  }
-
-  const removeItem = (id) => {
-    setCart((c) => c.filter((i) => i.id !== id))
-  }
+  const removeItem = (id) => setCart((c) => c.filter((i) => i.id !== id))
 
   const count = cart.reduce((n, i) => n + i.qty, 0)
-  const wishlistCount = wishlist.length
   const total = cart.reduce((n, i) => n + (i.price ?? 0) * i.qty, 0)
 
   const handleFinalizeOrder = (checkoutData) => {
-    const summary = [...cart]
-    const finalTotal = checkoutData.finalTotal
     const newOrder = {
       id: 'CS-' + Math.floor(100000 + Math.random() * 900000),
-      date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-      items: summary,
-      total: finalTotal,
-      shipping: checkoutData
+      date: new Date().toLocaleDateString('en-IN', { month: 'short', day: 'numeric', year: 'numeric' }),
+      items: [...cart],
+      total: checkoutData.finalTotal,
+      shipping: checkoutData,
     }
-    setOrders([newOrder, ...orders])
+    setOrders((o) => [newOrder, ...o])
     setCart([])
     setCartOpen(false)
     setCheckoutOpen(false)
     setOrderPlacedData(newOrder)
   }
 
+  const query = searchQuery.trim()
+  const heading = aiRecommendation
+    ? `Results for “${aiRecommendation.query}”`
+    : query
+      ? `Results for “${query}”`
+      : 'All products'
+
   return (
-    <div className={`shopify-store-root ${darkMode ? 'theme-dark' : 'theme-light'}`}>
-      <header className="shopify-header">
-        <div className="shopify-header-inner">
-          <Logo />
+    <div className="store">
+      <header className="topbar">
+        <div className="topbar-inner">
+          <div className="area-logo"><Logo /></div>
 
-          <form
-            className="header-search-bar"
-            onSubmit={(e) => {
-              e.preventDefault()
-              handleRAGSearch(searchQuery)
-            }}
-          >
-            <input
-              type="text"
-              placeholder="Search (e.g. which samsung phone has the biggest battery under 100000)..."
+          <div className="area-search">
+            <HeaderSearch
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(v) => {
+                setSearchQuery(v)
+                if (aiRecommendation) setAiRecommendation(null)
+              }}
+              onSubmit={handleRAGSearch}
+              onClear={clearSearch}
             />
-            <button type="button" className="header-mic-btn" onClick={() => setSearchModalOpen(true)} title="Voice search"><Icon name="mic" /></button>
-            <button type="submit" className="search-submit-btn" title="Search"><Icon name="search" /></button>
-          </form>
-
-          <div className="shopify-nav-icons">
-            <button className="ai-nav-chip" onClick={() => setAiOpen(true)}><Icon name="spark" /> AI Advisor</button>
-            <button className="cart-text-btn" onClick={() => setWishlistOpen(true)} title="Wishlist">
-              <Icon name="heart" /> <span className="cart-badge-num">{wishlistCount}</span>
-            </button>
-            <button className="cart-text-btn" onClick={() => setCartOpen(true)}>
-              <Icon name="cart" /> Cart <span className="cart-badge-num">{count}</span>
-            </button>
-            <button className="account-icon-btn" onClick={() => setSettingsOpen(true)} title="Settings">
-              <Icon name="settings" /> Settings
-            </button>
-            <button className="logout-text-btn" onClick={onLogout}>Sign Out</button>
           </div>
+
+          <nav className="area-actions" aria-label="Main">
+            <button className="btn btn-soft btn-sm ai-chip" onClick={() => openAdvisor()}>
+              <Icon name="spark" size={16} /> <span>Ask AI</span>
+            </button>
+            <button className="icon-btn" onClick={() => setWishlistOpen(true)} aria-label={`Wishlist, ${wishlist.length} items`}>
+              <Icon name="heart" />
+              {wishlist.length > 0 && <span className="badge">{wishlist.length}</span>}
+            </button>
+            <button className="icon-btn" onClick={() => setCartOpen(true)} aria-label={`Cart, ${count} items`}>
+              <Icon name="bag" />
+              {count > 0 && <span className="badge">{count}</span>}
+            </button>
+            <button className="icon-btn" onClick={() => setSettingsOpen(true)} aria-label="Account and settings">
+              <Icon name="user" />
+            </button>
+          </nav>
         </div>
       </header>
 
-      <GeminiSearchModal
-        isOpen={searchModalOpen}
-        onClose={() => setSearchModalOpen(false)}
-        allProducts={rows}
-        onSelectProduct={(item) => handleOpenProduct(item)}
-        onTriggerSearch={(txt) => handleRAGSearch(txt)}
-      />
-
-      <section className="shopify-hero-banner">
-        <div className="hero-banner-inner">
-          <div className="hero-banner-content">
-            <span className="banner-tag">VERIFIED PRODUCT CATALOG</span>
-            <h2>Phones, Laptops & Smartwatches</h2>
-            <p>RAG-Augmented AI Conversational Assistant with Zero Hallucination Guarantee</p>
-            <button className="shop-btn-red" onClick={() => setAiOpen(true)}><Icon name="spark" size={18} /> Ask AI Advisor</button>
-          </div>
-        </div>
-      </section>
+      <Hero onAsk={openAdvisor} />
 
       {categories.length > 0 && (
-        <nav className="shopify-cat-nav">
-          <div className="shopify-cat-track" style={{ justifyContent: 'space-between' }}>
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              <button
-                className={`sh-pill ${category === 'all' ? 'active' : ''}`}
-                onClick={() => setCategory('all')}
-              >
-                All Categories ({rows.length})
-              </button>
-              {categories.map(([name, catCount]) => (
-                <button
-                  key={name}
-                  className={`sh-pill ${category === name ? 'active' : ''}`}
-                  onClick={() => setCategory(name)}
-                >
-                  {name.toUpperCase()} <small>({catCount})</small>
-                </button>
-              ))}
-            </div>
-            <button
-              className={`sh-pill rating-filter-btn ${topRatedOnly ? 'active' : ''}`}
-              onClick={() => setTopRatedOnly(!topRatedOnly)}
-            >
-              <Icon name="star" size={16} fill={topRatedOnly} /> Top Rated (4.0+)
+        <nav className="cats" aria-label="Categories">
+          <div className="cats-track">
+            <button className={`pill ${category === 'all' ? 'active' : ''}`} onClick={() => setCategory('all')}>
+              All <small>{rows.length}</small>
             </button>
+            {categories.map(([name, n]) => (
+              <button
+                key={name}
+                className={`pill ${category === name ? 'active' : ''}`}
+                onClick={() => setCategory(name)}
+              >
+                <span className="cap">{name}</span> <small>{n}</small>
+              </button>
+            ))}
           </div>
+          {hasRatings && (
+            <button
+              className={`pill ${topRatedOnly ? 'active' : ''}`}
+              onClick={() => setTopRatedOnly(!topRatedOnly)}
+              aria-pressed={topRatedOnly}
+            >
+              <Icon name="star" size={14} fill={topRatedOnly} /> Top rated
+            </button>
+          )}
         </nav>
       )}
 
-      <main className="shopify-main-content" id="products">
+      <main className="main" id="products">
         {aiLoading && (
-          <div className="ai-recommendation-card loading">
-            <span><Icon name="spark" size={18} /> Querying Pinecone RAG database & generating comparative recommendation...</span>
-          </div>
+          <section className="reco" aria-busy="true">
+            <div className="skeleton sk-line sk-w40" />
+            <div className="skeleton sk-line" />
+            <div className="skeleton sk-line sk-w70" />
+          </section>
         )}
 
         {aiRecommendation && !aiLoading && (
-          <div className="ai-recommendation-card">
-            <div className="ai-card-header">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span className="ai-card-icon"><Icon name="spark" size={26} /></span>
-                <div>
-                  <h4>AI Product Recommendation & Comparative Analysis</h4>
-                  <small>Query: "{aiRecommendation.query}"</small>
+          <Recommendation rec={aiRecommendation} onClose={() => setAiRecommendation(null)} onOpen={openProduct} />
+        )}
+
+        <div className="catalog-head">
+          <div>
+            <h2>{heading}</h2>
+            {status === 'ready' && <p className="muted">{sorted.length} {sorted.length === 1 ? 'item' : 'items'}</p>}
+          </div>
+          <div className="catalog-tools">
+            {(query || aiRecommendation) && (
+              <button className="btn btn-ghost btn-sm" onClick={clearSearch}>Clear search</button>
+            )}
+            <select
+              className="select"
+              value={sort}
+              onChange={(e) => setSort(e.target.value)}
+              aria-label="Sort products"
+            >
+              <option value="featured">Featured</option>
+              <option value="low">Price: low to high</option>
+              <option value="high">Price: high to low</option>
+            </select>
+          </div>
+        </div>
+
+        {status === 'loading' && (
+          <div className="grid">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="card" aria-hidden="true">
+                <div className="card-media skeleton" />
+                <div className="card-body">
+                  <div className="skeleton sk-line sk-w40" />
+                  <div className="skeleton sk-line" />
+                  <div className="skeleton sk-line sk-w70" />
                 </div>
               </div>
-              <button className="close-rec-btn" onClick={() => setAiRecommendation(null)} title="Close"><Icon name="close" size={18} /></button>
-            </div>
-
-            <div className="ai-card-body">
-              <div
-                className="ai-response-text"
-                dangerouslySetInnerHTML={{ __html: parseFormattedMarkdown(aiRecommendation.response) }}
-              />
-
-              {aiRecommendation.matches && aiRecommendation.matches.length > 0 && (
-                <div className="ai-matches-wrap">
-                  <small className="ai-matches-label">
-                    Retrieved Catalog Products for Comparison ({aiRecommendation.matches.length}):
-                  </small>
-                  <div className="ai-matches-grid">
-                    {aiRecommendation.matches.map((item) => (
-                      <div
-                        key={item.id}
-                        className="ai-match-card"
-                        onClick={() => {
-                          const fullProd = rows.find(r => r.id === item.id || r.title === item.title) || item
-                          handleOpenProduct(fullProd)
-                        }}
-                      >
-                        <img
-                          src={item.image}
-                          alt={item.title}
-                          onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }}
-                        />
-                        <div className="ai-match-info">
-                          <h6>{item.title}</h6>
-                          <span className="badge">{item.category?.toUpperCase()} • {item.brand}</span>
-                          <strong>{money(item.price)}</strong>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
+            ))}
           </div>
         )}
 
-        <div className="catalog-title-row">
-          <h3>{aiRecommendation ? `RAG Search Results (${filtered.length})` : 'Verified Product Catalog'}</h3>
-          <span>Showing {filtered.length} items</span>
-        </div>
+        {(status === 'error' || status === 'empty') && (
+          <EmptyState
+            icon="search"
+            title={status === 'error' ? 'We couldn’t load the catalog' : 'The catalog is empty'}
+            text={status === 'error' ? 'Check your connection and try again.' : 'No products were found in the data file.'}
+          >
+            <button className="btn btn-primary" onClick={() => window.location.reload()}>Try again</button>
+          </EmptyState>
+        )}
 
-        {status === 'loading' && <div className="loading-note">Loading verified catalog inventory…</div>}
+        {status === 'ready' && sorted.length === 0 && (
+          <EmptyState
+            title="No matches"
+            text={query ? `Nothing in the catalog matches “${query}”. Try fewer words, or ask the AI advisor.` : 'No products match these filters.'}
+          >
+            <div className="chips chips-center">
+              <button className="btn btn-primary" onClick={() => openAdvisor(query || undefined)}>
+                <Icon name="spark" size={16} /> Ask the AI advisor
+              </button>
+              <button
+                className="btn btn-soft"
+                onClick={() => {
+                  clearSearch()
+                  setCategory('all')
+                  setTopRatedOnly(false)
+                }}
+              >
+                Clear filters
+              </button>
+            </div>
+          </EmptyState>
+        )}
 
-        {status === 'ready' && (
-          <div className="shopify-product-grid">
-            {filtered.slice(0, shown).map((p) => {
-              const isWishlisted = wishlist.some((i) => i.id === p.id)
-              return (
-                <div
-                  key={p.id}
-                  className="shopify-card"
-                  onClick={() => handleOpenProduct(p)}
-                >
-                  <div className="card-img-wrap" style={{ position: 'relative' }}>
-                    <button
-                      className={`wish-btn ${isWishlisted ? 'active' : ''}`}
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        toggleWishlist(p)
-                      }}
-                      title={isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}
-                    >
-                      <Icon name="heart" size={18} fill={isWishlisted} />
-                    </button>
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      loading="lazy"
-                      onError={(e) => { e.target.src = makePlaceholder(p.brand, p.category) }}
-                    />
-                  </div>
-                  <div className="card-details">
-                    <span className="cat-tag-sh">{p.category.toUpperCase()} • {p.brand}</span>
-                    <h4 className="title-sh">{p.title}</h4>
-                    <div className="price-row-sh">
-                      <span className="current-price">{money(p.price)}</span>
-                    </div>
-                    <button
-                      className="shop-btn-red full"
-                      onClick={(e) => {
-                        e.stopPropagation()
-                        addToCart(p)
-                      }}
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
-                </div>
-              )
-            })}
+        {status === 'ready' && sorted.length > 0 && (
+          <div className="grid">
+            {sorted.slice(0, shown).map((p) => (
+              <ProductCard
+                key={p.id}
+                p={p}
+                wished={wishlist.some((i) => i.id === p.id)}
+                onOpen={openProduct}
+                onWish={toggleWishlist}
+                onAdd={addToCart}
+              />
+            ))}
           </div>
         )}
 
         <div ref={endRef} className="end-sentinel">
-          {shown < filtered.length ? 'Loading more products…' : 'End of catalog.'}
+          {status === 'ready' && sorted.length > 0 && (shown < sorted.length ? 'Loading more…' : 'You’ve reached the end.')}
         </div>
       </main>
 
-      <button className="floating-shopify-ai" onClick={() => setAiOpen(true)}>
-        <Icon name="spark" size={20} /> Ask AI Advisor
+      <button className="fab" onClick={() => openAdvisor()}>
+        <Icon name="spark" size={18} /> Ask AI
       </button>
 
       <AIDrawer
         isOpen={aiOpen}
         onClose={() => setAiOpen(false)}
         allProducts={rows}
-        onSelectProduct={(item) => handleOpenProduct(item)}
+        onSelectProduct={openProduct}
+        onAddToCart={addToCart}
+        seed={aiSeed}
       />
 
       {selectedProduct && (
-        <ProductDetailModal
+        <ProductDetail
           product={selectedProduct}
           onClose={() => setSelectedProduct(null)}
           onAddToCart={addToCart}
-          isWishlisted={wishlist.some((i) => i.id === selectedProduct.id)}
-          onToggleWishlist={toggleWishlist}
+          wished={wishlist.some((i) => i.id === selectedProduct.id)}
+          onToggleWish={toggleWishlist}
         />
       )}
 
@@ -1414,8 +1786,24 @@ function Store({ user, onLogout, onUpdateUser }) {
         isOpen={wishlistOpen}
         onClose={() => setWishlistOpen(false)}
         wishlist={wishlist}
-        onRemoveWishlist={removeWishlistItem}
-        onAddToCart={addToCart}
+        onRemove={removeWishlistItem}
+        onMoveToCart={moveToCart}
+        onOpen={openProduct}
+      />
+
+      <CartDrawer
+        isOpen={cartOpen}
+        onClose={() => setCartOpen(false)}
+        cart={cart}
+        count={count}
+        total={total}
+        onQty={changeQty}
+        onRemove={removeItem}
+        onCheckout={() => {
+          setCartOpen(false)
+          setCheckoutOpen(true)
+        }}
+        onOpen={openProduct}
       />
 
       {checkoutOpen && (
@@ -1439,72 +1827,27 @@ function Store({ user, onLogout, onUpdateUser }) {
         />
       )}
 
-      {orderPlacedData && (
-        <OrderSuccessModal
-          orderData={orderPlacedData}
-          onClose={() => setOrderPlacedData(null)}
-        />
-      )}
+      {orderPlacedData && <OrderSuccessModal orderData={orderPlacedData} onClose={() => setOrderPlacedData(null)} />}
 
-      {cartOpen && (
-        <div className="shopify-drawer-overlay" onClick={() => setCartOpen(false)}>
-          <aside className="shopify-drawer" onClick={(e) => e.stopPropagation()}>
-            <div className="drawer-header-bar">
-              <h3><Icon name="cart" size={22} /> Your Cart ({count})</h3>
-              <button onClick={() => setCartOpen(false)} title="Close"><Icon name="close" /></button>
-            </div>
-
-            <div className="drawer-body-chat">
-              {cart.length === 0 ? (
-                <p className="empty-note">Your cart is empty.</p>
-              ) : (
-                cart.map((item) => (
-                  <div
-                    key={item.id}
-                    className="mini-product-row cart-clickable-row"
-                    onClick={() => {
-                      const fullProd = rows.find(r => r.id === item.id) || item
-                      handleOpenProduct(fullProd)
-                      setCartOpen(false)
-                    }}
-                    title="Click to view product details"
-                  >
-                    <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flex: 1, minWidth: 0, cursor: 'pointer' }}>
-                      <img src={item.image} alt="" onError={(e) => { e.target.src = makePlaceholder(item.brand, item.category) }} />
-                      <div style={{ minWidth: 0 }}>
-                        <h6 style={{ maxWidth: '140px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{item.title}</h6>
-                        <strong>{money(item.price)}</strong>
-                      </div>
-                    </div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }} onClick={(e) => e.stopPropagation()}>
-                      <button className="qty-btn" onClick={() => changeQty(item.id, -1)}>-</button>
-                      <span className="qty-num">{item.qty}</span>
-                      <button className="qty-btn" onClick={() => changeQty(item.id, 1)}>+</button>
-                      <button className="link-remove" onClick={() => removeItem(item.id)}>Remove</button>
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-
-            {cart.length > 0 && (
-              <div className="drawer-footer-bar" style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                <div className="cart-total-row">
-                  <span>Total:</span>
-                  <span>{money(total)}</span>
-                </div>
-                <button className="shop-btn-red" onClick={() => { setCartOpen(false); setCheckoutOpen(true); }}>Proceed to Checkout</button>
-              </div>
-            )}
-          </aside>
-        </div>
-      )}
+      <Toast toast={toast} onDismiss={() => setToast(null)} />
     </div>
   )
 }
 
 export default function App() {
   const [user, setUser] = useState(readSession)
+  const [darkMode, setDarkModeState] = useState(readDark)
+
+  useEffect(() => {
+    document.documentElement.classList.toggle('theme-dark', darkMode)
+  }, [darkMode])
+
+  const setDarkMode = (v) => {
+    setDarkModeState(v)
+    try {
+      localStorage.setItem(DARK_KEY, String(v))
+    } catch {}
+  }
 
   const login = (u, remember) => {
     const sessionData = { name: u.name, email: u.email }
@@ -1524,9 +1867,9 @@ export default function App() {
     localStorage.setItem(SESSION_KEY, JSON.stringify(newSession))
   }
 
-  return (
-    <>
-      {user ? <Store user={user} onLogout={logout} onUpdateUser={updateUser} /> : <Login onLogin={login} />}
-    </>
+  return user ? (
+    <Store user={user} onLogout={logout} onUpdateUser={updateUser} darkMode={darkMode} setDarkMode={setDarkMode} />
+  ) : (
+    <Login onLogin={login} />
   )
 }
