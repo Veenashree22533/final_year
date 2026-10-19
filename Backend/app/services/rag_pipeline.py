@@ -1,3 +1,5 @@
+import re
+
 from app.services.retriever import retrieve_products
 from app.services.llm import generate_response, ABSTAIN_MESSAGE
 
@@ -12,14 +14,45 @@ def to_float(val):
     except Exception:
         return -1.0
 
+
+def repair_ids(text: str, matches) -> str:
+    """Fix product IDs the LLM mangled (e.g. 'ph_078' for 'ph_0078', or a cut-off 'ph_0')
+    by mapping them back to the IDs that were actually retrieved for this answer."""
+    valid = {m.get("metadata", {}).get("product_id") for m in matches}
+    valid.discard(None)
+    if not valid:
+        return text
+
+    by_num = {}
+    for pid in valid:
+        prefix, _, num = pid.partition("_")
+        if num.isdigit():
+            by_num[(prefix, int(num))] = pid
+    prefixes = {pid.partition("_")[0] for pid in valid}
+    pattern = re.compile(r"(?<![A-Za-z0-9_])(" + "|".join(map(re.escape, prefixes)) + r")_(\d+)")
+
+    def fix(m):
+        token = m.group(0)
+        if token in valid:
+            return token
+        hit = by_num.get((m.group(1), int(m.group(2))))      # dropped/added leading zero
+        if hit:
+            return hit
+        partial = [pid for pid in valid if pid.startswith(token)]  # cut-off ID
+        return partial[0] if len(partial) == 1 else token
+
+    return pattern.sub(fix, text)
+
+
 def answer_query(query: str, return_matches: bool = False):
     matches, parsed_filters = retrieve_products(query, top_k=5)
 
     if not matches:
         return (ABSTAIN_MESSAGE, [], parsed_filters) if return_matches else ABSTAIN_MESSAGE
 
-    top_score = matches[0].get("score", 1.0)
-    
+    # best similarity among candidates (re-ranking can change the order)
+    top_score = max(m.get("score", 1.0) for m in matches)
+
     if top_score < SIMILARITY_SCORE_CUTOFF:
         return (ABSTAIN_MESSAGE, [], parsed_filters) if return_matches else ABSTAIN_MESSAGE
 
@@ -78,9 +111,9 @@ Full Description: {desc}
 
     context = "\n".join(context_blocks)
     response_text = generate_response(query, context)
+    response_text = repair_ids(response_text, matches)
 
     if response_text.strip().startswith("Not in our catalog"):
         matches = []
 
     return (response_text, matches, parsed_filters) if return_matches else response_text
-

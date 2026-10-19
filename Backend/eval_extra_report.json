@@ -1,0 +1,3349 @@
+{
+  "sections": [
+    {
+      "key": "constraints",
+      "title": "Hard constraints: budget / brand / category / RAM",
+      "results": [
+        {
+          "ok": true,
+          "label": "phone under 30000",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "best phone under 50k for university use",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "samsung phones under 40000",
+          "detail": "correctly said nothing matches"
+        },
+        {
+          "ok": true,
+          "label": "Show me phones with at least 8 GB RAM under INR 40,000.",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 with 16GB RAM",
+          "detail": "4 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "smartwatch under 5000",
+          "detail": "5 products, all within constraints"
+        }
+      ]
+    },
+    {
+      "key": "accuracy",
+      "title": "Answer accuracy on answerable questions",
+      "results": [
+        {
+          "ok": true,
+          "label": "What is the price of the ASUS VivoBook F1605PA-MB127W Intel Core i5-11300H/16GB/512GB SSD/16\"?",
+          "detail": "correct (76800)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much RAM does the Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial have?",
+          "detail": "correct (16)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much storage does the Lenovo ThinkPad X1 Carbon Gen 9 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\" have?",
+          "detail": "correct (256)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Google Pixel 9 Pro XL 512GB?",
+          "detail": "correct (129999)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much RAM does the ASUS TUF Gaming F15 FX507ZC4-HN002 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\" have?",
+          "detail": "correct (16)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Garmin Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout?",
+          "detail": "correct (44990)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\"?",
+          "detail": "correct (153900)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much RAM does the HP EliteBook 1040 G9 Intel Core i7-1255U/32GB/1TB SSD/14\" have?",
+          "detail": "correct (32)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Pebble Cosmos Ultra 1.91\" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial?",
+          "detail": "correct (2799)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Infinix Hot 50i?",
+          "detail": "correct (12499)",
+          "kind": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Fossil Neely?",
+          "detail": "correct (13495)",
+          "kind": "ok"
+        },
+        {
+          "ok": false,
+          "label": "How much storage does the ASUS ExpertBook B1 B1502CBA-EJ0439W Intel Core i7-1255U/16GB/512GB SSD/15.6\" have?",
+          "detail": "expected 512, got: Why Recommended & Comparison\n- The ASUS ExpertBook B1 B1502CBA",
+          "kind": "wrong"
+        }
+      ]
+    },
+    {
+      "key": "abstention",
+      "title": "Abstention on products NOT in the catalog",
+      "results": [
+        {
+          "ok": true,
+          "label": "Apple Watch Ultra 9",
+          "detail": "refused correctly"
+        },
+        {
+          "ok": true,
+          "label": "iPhone 17 Pro Max 1TB",
+          "detail": "refused correctly"
+        },
+        {
+          "ok": true,
+          "label": "Samsung Galaxy S26 Ultra",
+          "detail": "refused correctly"
+        },
+        {
+          "ok": true,
+          "label": "PlayStation 5",
+          "detail": "refused correctly"
+        },
+        {
+          "ok": true,
+          "label": "Canon EOS R5 DSLR camera",
+          "detail": "refused correctly"
+        },
+        {
+          "ok": true,
+          "label": "Sony WH-1000XM6 headphones",
+          "detail": "refused correctly"
+        },
+        {
+          "ok": true,
+          "label": "Dell XPS 17 9999",
+          "detail": "refused correctly"
+        },
+        {
+          "ok": true,
+          "label": "OnePlus 13 Ultra Max",
+          "detail": "refused correctly"
+        }
+      ]
+    },
+    {
+      "key": "paraphrase",
+      "title": "Semantic robustness: paraphrases, typos, Hinglish",
+      "results": [
+        {
+          "ok": true,
+          "label": "[phone under 25k] best phone under 25000",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[phone under 25k] phone below 25k please",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[phone under 25k] good mobile within Rs 25,000",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[phone under 25k] mujhe 25 hazaar ke andar accha phone chahiye",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[phone under 25k] fone under 25k",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[laptop for coding under 60k] laptop for coding under 60000",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[laptop for coding under 60k] i need a laptop under 60k for programming",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[laptop for coding under 60k] cheap notebook for programming below 60 thousand",
+          "detail": "5 products, all within constraints"
+        },
+        {
+          "ok": true,
+          "label": "[laptop for coding under 60k] 60k ke andar coding ke liye laptop",
+          "detail": "5 products, all within constraints"
+        }
+      ]
+    },
+    {
+      "key": "stability",
+      "title": "Stability: same question 3x gives the same top pick",
+      "results": [
+        {
+          "ok": true,
+          "label": "best phone under 30000 for gaming",
+          "detail": "top picks over 3 runs: ['ph_0220', 'ph_0220', 'ph_0220']"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 for coding",
+          "detail": "top picks over 3 runs: ['lp_1017', 'lp_1017', 'lp_1017']"
+        }
+      ]
+    },
+    {
+      "key": "followup",
+      "title": "Follow-up consistency ('why is this better?')",
+      "results": [
+        {
+          "ok": true,
+          "label": "best phone under 50000 for university use",
+          "detail": "asked about ph_0043; explanation led with ph_0043"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 for coding",
+          "detail": "asked about lp_1017; explanation led with lp_1017"
+        }
+      ]
+    },
+    {
+      "key": "grounding",
+      "title": "Grounding: IDs exist, prices match catalog (all answers)",
+      "results": [
+        {
+          "ok": true,
+          "label": "phone under 30000",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "best phone under 50k for university use",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "samsung phones under 40000",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "Show me phones with at least 8 GB RAM under INR 40,000.",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 with 16GB RAM",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "smartwatch under 5000",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the ASUS VivoBook F1605PA-MB127W Intel Core i5-11300H/16GB/512GB SSD/16\"?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much RAM does the Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial have?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much storage does the Lenovo ThinkPad X1 Carbon Gen 9 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\" have?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Google Pixel 9 Pro XL 512GB?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much RAM does the ASUS TUF Gaming F15 FX507ZC4-HN002 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\" have?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Garmin Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\"?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much RAM does the HP EliteBook 1040 G9 Intel Core i7-1255U/32GB/1TB SSD/14\" have?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Pebble Cosmos Ultra 1.91\" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Infinix Hot 50i?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price of the Fossil Neely?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "How much storage does the ASUS ExpertBook B1 B1502CBA-EJ0439W Intel Core i7-1255U/16GB/512GB SSD/15.6\" have?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the Apple Watch Ultra 9?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the iPhone 17 Pro Max 1TB?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the Samsung Galaxy S26 Ultra?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the PlayStation 5?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the Canon EOS R5 DSLR camera?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the Sony WH-1000XM6 headphones?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the Dell XPS 17 9999?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "What is the price and specs of the OnePlus 13 Ultra Max?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "best phone under 25000",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "phone below 25k please",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "good mobile within Rs 25,000",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "mujhe 25 hazaar ke andar accha phone chahiye",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "fone under 25k",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "laptop for coding under 60000",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "i need a laptop under 60k for programming",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "cheap notebook for programming below 60 thousand",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "60k ke andar coding ke liye laptop",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "best phone under 30000 for gaming",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "best phone under 30000 for gaming",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "best phone under 30000 for gaming",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 for coding",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 for coding",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 for coding",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "best phone under 50000 for university use",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "Why is the Oppo Reno12 256GB a good choice compared to the other options?",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "laptop under 60000 for coding",
+          "detail": "ok"
+        },
+        {
+          "ok": true,
+          "label": "Why is the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" a good choice compared to the other options?",
+          "detail": "ok"
+        }
+      ]
+    },
+    {
+      "key": "latency",
+      "title": "Reliability: no errors, p95 <= 15s",
+      "results": [
+        {
+          "ok": true,
+          "label": "all calls",
+          "detail": "errors/timeouts: 0 | median 2.5s | p95 4.0s | max 7.2s"
+        }
+      ]
+    }
+  ],
+  "raw": [
+    {
+      "q": "phone under 30000",
+      "data": {
+        "query": "phone under 30000",
+        "response": "### Top Recommendation\n**Edge 50 Fusion 128GB** [ph_0140] - INR29,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 128 GB storage\n- Processor/Screen: Processor: Snapdragon 7 Gen 1. The screen is 6.7 inches (AM-OLED 144 Hz).\n\n### Why Recommended & Comparison\n- This model offers a faster processor (Snapdragon 7 Gen 1) and a superior 144 Hz AM-OLED display compared to the other options within your budget.\n- The Motorola Edge 50 Lite 256GB [ph_0147] provides double the storage (256 GB) for the same price, but features an older Snapdragon 695 processor.\n- The Tecno Camon 30 128GB [ph_0220], Tecno Camon 20 128GB [ph_0234], and Tecno Camon 20 Pro 128GB [ph_0233] all cost INR29,999 but are limited to 6 GB RAM and slower MediaTek Helio G99 processors.",
+        "filters": {
+          "category": "phone",
+          "max_price": 30000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0220",
+            "product_id": "ph_0220",
+            "title": "Camon 30 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 30 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0147",
+            "product_id": "ph_0147",
+            "title": "Edge 50 Lite 256GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Edge 50 Lite 256GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Snapdragon 695. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 64MP, front 32MP. Weight: 170 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0234",
+            "product_id": "ph_0234",
+            "title": "Camon 20 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0140",
+            "product_id": "ph_0140",
+            "title": "Edge 50 Fusion 128GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/motorola_edge_50_fusion_2024.jpg",
+            "description": "Edge 50 Fusion 128GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 128 GB storage. Processor: Snapdragon 7 Gen 1. The screen is 6.7 inches (AM-OLED 144 Hz). Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 168 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0233",
+            "product_id": "ph_0233",
+            "title": "Camon 20 Pro 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 Pro 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 198 g. Launch price: INR 29,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "best phone under 50k for university use",
+      "data": {
+        "query": "best phone under 50k for university use",
+        "response": "### Top Recommendation\n**Edge 50 512GB** [ph_0161] - INR49,999\n\n### Key Specifications\n- Battery: 4700 mAh\n- RAM & Storage: 12 GB RAM and 512 GB storage\n- Processor/Screen: Snapdragon 7s Gen 2 / 6.7 inches (AM-OLED 120 Hz)\n\n### Why Recommended & Comparison\n- This phone offers the best balance of high RAM and massive storage within the budget, making it ideal for multitasking, heavy university apps, and storing large study files.\n- Compared to the Oppo Reno12 256GB [ph_0043] and Tecno Camon 30 5G 256GB [ph_0219], it provides double the storage space and significantly more RAM for the same or lower price.\n- It offers higher RAM and storage capacities than the Oppo A80 256GB [ph_0048], while staying comfortably under the 50k budget limit.",
+        "filters": {
+          "category": "phone",
+          "max_price": 50000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0171",
+            "product_id": "ph_0171",
+            "title": "Edge 512GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 49999,
+            "ram_gb": 12,
+            "storage_gb": 512,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Edge 512GB by Motorola is a smartphone launched in 2024. It has 12 GB RAM and 512 GB storage. Processor: Snapdragon 7s Gen 2. The screen is 6.7 inches. Battery: 4700 mAh. Cameras: rear 50MP, front 32MP. Weight: 174 g. Launch price: INR 49,999."
+          },
+          {
+            "id": "ph_0043",
+            "product_id": "ph_0043",
+            "title": "Reno12 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 49999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/oppo_reno12_5g_3.jpg",
+            "description": "Reno12 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7050. The screen is 6.7 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP + 8MP, front 32MP. Weight: 185 g. Launch price: INR 49,999."
+          },
+          {
+            "id": "ph_0161",
+            "product_id": "ph_0161",
+            "title": "Edge 50 512GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 49999,
+            "ram_gb": 12,
+            "storage_gb": 512,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/motorola_edge_50_2024_3.jpg",
+            "description": "Edge 50 512GB by Motorola is a smartphone launched in 2024. It has 12 GB RAM and 512 GB storage. Processor: Snapdragon 7s Gen 2. The screen is 6.7 inches (AM-OLED 120 Hz). Battery: 4700 mAh. Cameras: rear 50MP, front 32MP. Weight: 180 g. Launch price: INR 49,999."
+          },
+          {
+            "id": "ph_0048",
+            "product_id": "ph_0048",
+            "title": "A80 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 44999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "",
+            "description": "A80 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Dimensity 6300. The screen is 6.67 inches. Battery: 5100 mAh. Cameras: rear 50MP + 2MP, front 8MP. Weight: 186 g. Launch price: INR 44,999."
+          },
+          {
+            "id": "ph_0219",
+            "product_id": "ph_0219",
+            "title": "Camon 30 5G 256GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 39999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 30 5G 256GB by Tecno is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 810. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 198 g. Launch price: INR 39,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "samsung phones under 40000",
+      "data": {
+        "query": "samsung phones under 40000",
+        "response": "Not in our catalog. No matching products were found in our verified product catalog.",
+        "filters": {
+          "category": "phone",
+          "max_price": 40000.0,
+          "brand": "Samsung",
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "Show me phones with at least 8 GB RAM under INR 40,000.",
+      "data": {
+        "query": "Show me phones with at least 8 GB RAM under INR 40,000.",
+        "response": "### Top Recommendation\n**Note 40** [ph_0251] - INR17,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM, Storage: not listed\n- Processor/Screen: MediaTek Helio G99, 6.78 inches\n\n### Why Recommended & Comparison\n- It fits the budget under INR 40,000 and meets the requirement of having at least 8 GB RAM while offering a strong feature set for INR17,999.\n- Note 40S [ph_0244] costs INR16,999 with 8 GB RAM and a 50MP rear camera, whereas the base Note 40 [ph_0251] upgrades to a 108MP rear camera for INR17,999.\n- Note 40 5G [ph_0245] provides 5G connectivity and a 5200 mAh battery for INR19,999, while the Note 40 Pro [ph_0252] steps up to 12 GB RAM for INR22,999.",
+        "filters": {
+          "category": "phone",
+          "ram_gb": 8.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0251",
+            "product_id": "ph_0251",
+            "title": "Note 40",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 17999,
+            "ram_gb": 8,
+            "storage_gb": -1,
+            "screen_in": 6.78,
+            "image": "",
+            "description": "Note 40 by Infinix is a smartphone launched in 2024. It has 8 GB RAM. Processor: MediaTek Helio G99. The screen is 6.78 inches. Battery: 5000 mAh. Cameras: rear 108MP, front 32MP. Weight: 190 g. Launch price: INR 17,999."
+          },
+          {
+            "id": "ph_0245",
+            "product_id": "ph_0245",
+            "title": "Note 40 5G",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 19999,
+            "ram_gb": 8,
+            "storage_gb": -1,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Note 40 5G by Infinix is a smartphone launched in 2024. It has 8 GB RAM. Processor: MediaTek Dimensity 8100. The screen is 6.8 inches. Battery: 5200 mAh. Cameras: rear 108MP, front 32MP. Weight: 195 g. Launch price: INR 19,999."
+          },
+          {
+            "id": "ph_0246",
+            "product_id": "ph_0246",
+            "title": "Note 40 Pro 5G",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 27999,
+            "ram_gb": 12,
+            "storage_gb": -1,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Note 40 Pro 5G by Infinix is a smartphone launched in 2024. It has 12 GB RAM. Processor: MediaTek Dimensity 9000. The screen is 6.8 inches. Battery: 5300 mAh. Cameras: rear 108MP, front 32MP. Weight: 195 g. Launch price: INR 27,999."
+          },
+          {
+            "id": "ph_0244",
+            "product_id": "ph_0244",
+            "title": "Note 40S",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 16999,
+            "ram_gb": 8,
+            "storage_gb": -1,
+            "screen_in": 6.78,
+            "image": "",
+            "description": "Note 40S by Infinix is a smartphone launched in 2024. It has 8 GB RAM. Processor: MediaTek Helio G99. The screen is 6.78 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 196 g. Launch price: INR 16,999."
+          },
+          {
+            "id": "ph_0252",
+            "product_id": "ph_0252",
+            "title": "Note 40 Pro",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 22999,
+            "ram_gb": 12,
+            "storage_gb": -1,
+            "screen_in": 6.78,
+            "image": "",
+            "description": "Note 40 Pro by Infinix is a smartphone launched in 2024. It has 12 GB RAM. Processor: MediaTek Dimensity 8100. The screen is 6.78 inches. Battery: 5000 mAh. Cameras: rear 108MP, front 32MP. Weight: 190 g. Launch price: INR 22,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "laptop under 60000 with 16GB RAM",
+      "data": {
+        "query": "laptop under 60000 with 16GB RAM",
+        "response": "### Top Recommendation\n**Lenovo V15 G3 ABA AMD Ryzen 5 5625U/16GB/512GB SSD/15.6\"** [lp_0014] - INR52,500 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 16 GB RAM and 512 GB SSD storage\n- Processor/Screen: Ryzen 5 5625U / 15.6 inches\n\n### Why Recommended & Comparison\n- This laptop fits the budget of under 60000, comes with 16 GB RAM, and offers a slightly newer Ryzen 5 5625U processor and larger 512 GB SSD storage compared to some of the other models.\n- It is priced lower at INR52,500 compared to the Alurin Flex Advance Intel Core i5-1155G7/16GB/500GB SSD/15.6\" [lp_0678] at INR59,300 and the Alurin Flex Advance AMD Ryzen 5 5500U/16GB/500GB SSD/15.6\" [lp_0623] at INR54,900, while offering more storage (512 GB vs 500 GB).\n- Compared to the Lenovo V15 G2 ALC AMD Ryzen 5 5500U/16GB/512GB SSD/15.6\" [lp_0235] which costs INR52,200, it features a more updated Ryzen 5 5625U processor for a very similar price point.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "ram_gb": 16.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_0678",
+            "product_id": "lp_0678",
+            "title": "Alurin Flex Advance Intel Core i5-1155G7/16GB/500GB SSD/15.6\"",
+            "brand": "Alurin",
+            "category": "laptop",
+            "price": 59300,
+            "ram_gb": 16,
+            "storage_gb": 500,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Alurin Flex Advance Intel Core i5-1155G7/16GB/500GB SSD/15.6\" is a laptop by Alurin. Processor: i5-1155G7 (Intel generation 11). It has 16 GB RAM and 500 GB SSD storage. The screen is 15.6 inches. Listed price: 539 EUR. Price converted from EUR ~ INR 59,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0235",
+            "product_id": "lp_0235",
+            "title": "Lenovo V15 G2 ALC AMD Ryzen 5 5500U/16GB/512GB SSD/15.6\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 52200,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Lenovo V15 G2 ALC AMD Ryzen 5 5500U/16GB/512GB SSD/15.6\" is a laptop by Lenovo. Processor: Ryzen 5 5500U. It has 16 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 475 EUR. Price converted from EUR ~ INR 52,200 (estimated conversion)."
+          },
+          {
+            "id": "lp_0623",
+            "product_id": "lp_0623",
+            "title": "Alurin Flex Advance AMD Ryzen 5 5500U/16GB/500GB SSD/15.6\"",
+            "brand": "Alurin",
+            "category": "laptop",
+            "price": 54900,
+            "ram_gb": 16,
+            "storage_gb": 500,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Alurin Flex Advance AMD Ryzen 5 5500U/16GB/500GB SSD/15.6\" is a laptop by Alurin. Processor: Ryzen 5 5500U. It has 16 GB RAM and 500 GB SSD storage. The screen is 15.6 inches. Listed price: 499 EUR. Price converted from EUR ~ INR 54,900 (estimated conversion)."
+          },
+          {
+            "id": "lp_0014",
+            "product_id": "lp_0014",
+            "title": "Lenovo V15 G3 ABA AMD Ryzen 5 5625U/16GB/512GB SSD/15.6\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 52500,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Lenovo V15 G3 ABA AMD Ryzen 5 5625U/16GB/512GB SSD/15.6\" is a laptop by Lenovo. Processor: Ryzen 5 5625U. It has 16 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 477 EUR. Price converted from EUR ~ INR 52,500 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "smartwatch under 5000",
+      "data": {
+        "query": "smartwatch under 5000",
+        "response": "### Top Recommendation\n**Pebble Cosmos, Bluetooth Calling smartwatch Multi Sports Modes** [sw_0677] - INR4,990\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: RAM: not listed | Storage: not listed\n- Processor/Screen: Screen: not listed\n\n### Why Recommended & Comparison\n- This smartwatch fits your budget strictly at INR4,990 and offers Bluetooth calling and multi-sports modes.\n- Compared to the Fire-Boltt Almighty [sw_0166] priced at INR4,999 with a 10-day battery and AMOLED display, and the Fire-Boltt bsw002 [sw_0205] priced at INR4,599 with a 1.7 inches screen, it provides another solid option under 5000.\n- Compared to the Fire-Boltt HULK BLUETOOTH CALLING [sw_0185] at INR4,599 with a 1.8 inches screen and the Crossbeats S4 Max [sw_0138] at INR3,999 with a 1.9 inches screen, it stays well within your price limit.",
+        "filters": {
+          "category": "smartwatch",
+          "max_price": 5000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "sw_0677",
+            "product_id": "sw_0677",
+            "title": "Pebble Cosmos, Bluetooth Calling smartwatch Multi Sports Modes",
+            "brand": "Pebble",
+            "category": "smartwatch",
+            "price": 4990,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Pebble Cosmos, Bluetooth Calling smartwatch Multi Sports Modes by Pebble is a smartwatch. Price: INR 4,990 (MRP INR 6,999, 28.7% off). Display size: not listed. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Rubber. Customer rating: 5.0/5 from 3 ratings."
+          },
+          {
+            "id": "sw_0166",
+            "product_id": "sw_0166",
+            "title": "Almighty",
+            "brand": "Fire-Boltt",
+            "category": "smartwatch",
+            "price": 4999,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Almighty by Fire-Boltt is a smartwatch. Price: INR 4,999 (MRP INR 14,999, 66.7% off). Display size: not listed. Display type: AMOLED Display. Battery life: 10 days. Strap material: Silicone. Customer rating: 4.1/5."
+          },
+          {
+            "id": "sw_0205",
+            "product_id": "sw_0205",
+            "title": "bsw002",
+            "brand": "Fire-Boltt",
+            "category": "smartwatch",
+            "price": 4599,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": 1.7,
+            "image": "",
+            "description": "bsw002 by Fire-Boltt is a smartwatch. Price: INR 4,599 (MRP INR 7,999, 42.5% off). Display size: 1.7 inches. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Silicon. Customer rating: 2.5/5."
+          },
+          {
+            "id": "sw_0185",
+            "product_id": "sw_0185",
+            "title": "HULK BLUETOOTH CALLING",
+            "brand": "Fire-Boltt",
+            "category": "smartwatch",
+            "price": 4599,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": 1.8,
+            "image": "",
+            "description": "HULK BLUETOOTH CALLING by Fire-Boltt is a smartwatch. Price: INR 4,599 (MRP INR 17,999, 74.4% off). Display size: 1.8 inches. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Silicon. Customer rating: 2.5/5 from 11 ratings."
+          },
+          {
+            "id": "sw_0138",
+            "product_id": "sw_0138",
+            "title": "S4 Max",
+            "brand": "Crossbeats",
+            "category": "smartwatch",
+            "price": 3999,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": 1.9,
+            "image": "",
+            "description": "S4 Max by Crossbeats is a smartwatch. Price: INR 3,999 (MRP INR 7,999, 50% off). Display size: 1.9 inches. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Customer rating: 3.9/5 from 3,856 ratings."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price of the ASUS VivoBook F1605PA-MB127W Intel Core i5-11300H/16GB/512GB SSD/16\"?",
+      "data": {
+        "query": "What is the price of the ASUS VivoBook F1605PA-MB127W Intel Core i5-11300H/16GB/512GB SSD/16\"?",
+        "response": "### Top Recommendation\n**ASUS VivoBook F1605PA-MB127W Intel Core i5-11300H/16GB/512GB SSD/16\"** [lp_1056] - INR76,800 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 16 GB RAM and 512 GB SSD storage\n- Processor/Screen: Intel Core i5-11300H / 16 inches\n\n### Why Recommended & Comparison\n- This model directly matches your requested product name and provides exact pricing and specification details from the verified database.\n- Compared to the ASUS VivoBook F1605PA-MB125W [lp_0099] which costs INR87,900, this model offers the same 16 GB RAM and 512 GB SSD configuration at a lower price point.\n- Compared to the 8GB RAM variants such as the ASUS VivoBook F1605PA-MB091W [lp_0376], ASUS VivoBook F1605PA-MB146 [lp_0112], and ASUS VivoBook 16 F1605PA-MB104 [lp_0916], this model provides double the RAM capacity (16 GB versus 8 GB).",
+        "filters": {
+          "brand": "ASUS",
+          "storage_gb": 512.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1056",
+            "product_id": "lp_1056",
+            "title": "ASUS VivoBook F1605PA-MB127W Intel Core i5-11300H/16GB/512GB SSD/16\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": "76800.0",
+            "ram_gb": "16.0",
+            "storage_gb": "512.0",
+            "screen_in": "16.0",
+            "image": "",
+            "description": "ASUS VivoBook F1605PA-MB127W Intel Core i5-11300H/16GB/512GB SSD/16\" is a laptop by ASUS. Processor: i5-11300H (Intel generation 11). It has 16 GB RAM and 512 GB SSD storage. The screen is 16 inches. Listed price: 698 EUR. Price converted from EUR ~ INR 76,800 (estimated conversion)."
+          },
+          {
+            "id": "lp_0099",
+            "product_id": "lp_0099",
+            "title": "ASUS VivoBook F1605PA-MB125W Intel Core i5-11300H/16GB/512GB SSD/16\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 87900,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 16,
+            "image": "",
+            "description": "ASUS VivoBook F1605PA-MB125W Intel Core i5-11300H/16GB/512GB SSD/16\" is a laptop by ASUS. Processor: i5-11300H (Intel generation 11). It has 16 GB RAM and 512 GB SSD storage. The screen is 16 inches. Listed price: 799 EUR. Price converted from EUR ~ INR 87,900 (estimated conversion)."
+          },
+          {
+            "id": "lp_0376",
+            "product_id": "lp_0376",
+            "title": "ASUS VivoBook F1605PA-MB091W Intel Core i5-11300H/8GB/512GB SSD/16\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60500,
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "screen_in": 16,
+            "image": "",
+            "description": "ASUS VivoBook F1605PA-MB091W Intel Core i5-11300H/8GB/512GB SSD/16\" is a laptop by ASUS. Processor: i5-11300H (Intel generation 11). It has 8 GB RAM and 512 GB SSD storage. The screen is 16 inches. Listed price: 550 EUR. Price converted from EUR ~ INR 60,500 (estimated conversion)."
+          },
+          {
+            "id": "lp_0112",
+            "product_id": "lp_0112",
+            "title": "ASUS VivoBook F1605PA-MB146 Intel Core i5-11300H/8GB/512GB SSD/16\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 67000,
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "screen_in": 16,
+            "image": "",
+            "description": "ASUS VivoBook F1605PA-MB146 Intel Core i5-11300H/8GB/512GB SSD/16\" is a laptop by ASUS. Processor: i5-11300H (Intel generation 11). It has 8 GB RAM and 512 GB SSD storage. The screen is 16 inches. Listed price: 609 EUR. Price converted from EUR ~ INR 67,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0916",
+            "product_id": "lp_0916",
+            "title": "ASUS VivoBook 16 F1605PA-MB104 Intel Core i5-11300H/8GB/512GB SSD/16\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 55000,
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "screen_in": 16,
+            "image": "",
+            "description": "ASUS VivoBook 16 F1605PA-MB104 Intel Core i5-11300H/8GB/512GB SSD/16\" is a laptop by ASUS. Processor: i5-11300H (Intel generation 11). It has 8 GB RAM and 512 GB SSD storage. The screen is 16 inches. Listed price: 500 EUR. Price converted from EUR ~ INR 55,000 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "How much RAM does the Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial have?",
+      "data": {
+        "query": "How much RAM does the Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial have?",
+        "response": "### Top Recommendation\n**Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial** [lp_0347] - INR208,900 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 16 GB RAM and 512 GB SSD storage\n- Processor/Screen: Processor: Apple M2 / 13.3 inches screen\n\n### Why Recommended & Comparison\n- The Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial [lp_0347] explicitly features 16 GB RAM as requested.\n- Compared to the Apple Macbook Pro Apple M2/8GB/256GB SSD/GPU Deca Core/13.3\" Gris Espacial [lp_0229], which has 8 GB RAM, this model provides double the RAM and larger storage.\n- Compared to the Apple Macbook Pro Apple M2/16GB/256GB SSD/GPU Deca Core/13.3\" Gris Espacial [lp_0324], this model shares the same 16 GB RAM but offers larger 512 GB SSD storage.",
+        "filters": {
+          "category": "laptop",
+          "brand": "Apple",
+          "storage_gb": 512.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_0347",
+            "product_id": "lp_0347",
+            "title": "Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial",
+            "brand": "Apple",
+            "category": "laptop",
+            "price": "208900.0",
+            "ram_gb": "16.0",
+            "storage_gb": "512.0",
+            "screen_in": "13.3",
+            "image": "",
+            "description": "Apple Macbook Pro Apple M2/16GB/512GB SSD/GPU Deca Core/13.3\" Gris Espacial is a laptop by Apple. Processor: Apple M2. It has 16 GB RAM and 512 GB SSD storage. The screen is 13.3 inches. Listed price: 1899 EUR. Price converted from EUR ~ INR 208,900 (estimated conversion)."
+          },
+          {
+            "id": "lp_0324",
+            "product_id": "lp_0324",
+            "title": "Apple Macbook Pro Apple M2/16GB/256GB SSD/GPU Deca Core/13.3\" Gris Espacial",
+            "brand": "Apple",
+            "category": "laptop",
+            "price": "190200.0",
+            "ram_gb": "16.0",
+            "storage_gb": "256.0",
+            "screen_in": "13.3",
+            "image": "",
+            "description": "Apple Macbook Pro Apple M2/16GB/256GB SSD/GPU Deca Core/13.3\" Gris Espacial is a laptop by Apple. Processor: Apple M2. It has 16 GB RAM and 256 GB SSD storage. The screen is 13.3 inches. Listed price: 1729 EUR. Price converted from EUR ~ INR 190,200 (estimated conversion)."
+          },
+          {
+            "id": "lp_0229",
+            "product_id": "lp_0229",
+            "title": "Apple Macbook Pro Apple M2/8GB/256GB SSD/GPU Deca Core/13.3\" Gris Espacial",
+            "brand": "Apple",
+            "category": "laptop",
+            "price": "178100.0",
+            "ram_gb": "8.0",
+            "storage_gb": "256.0",
+            "screen_in": "13.3",
+            "image": "",
+            "description": "Apple Macbook Pro Apple M2/8GB/256GB SSD/GPU Deca Core/13.3\" Gris Espacial is a laptop by Apple. Processor: Apple M2. It has 8 GB RAM and 256 GB SSD storage. The screen is 13.3 inches. Listed price: 1619 EUR. Price converted from EUR ~ INR 178,100 (estimated conversion)."
+          },
+          {
+            "id": "lp_0524",
+            "product_id": "lp_0524",
+            "title": "Apple MacBook Pro Apple M2 Pro 12 Núcleos/16GB/512GB SSD/16.2\" Gris Espacial",
+            "brand": "Apple",
+            "category": "laptop",
+            "price": 300200,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 16.2,
+            "image": "",
+            "description": "Apple MacBook Pro Apple M2 Pro 12 Núcleos/16GB/512GB SSD/16.2\" Gris Espacial is a laptop by Apple. Processor: Apple M2 Pro. It has 16 GB RAM and 512 GB SSD storage. The screen is 16.2 inches. Listed price: 2729 EUR. Price converted from EUR ~ INR 300,200 (estimated conversion)."
+          },
+          {
+            "id": "lp_0282",
+            "product_id": "lp_0282",
+            "title": "Apple MacBook Pro Apple M2 Pro 10 Núcleos/16GB/512GB SSD/14.2\" Gris Espacial",
+            "brand": "Apple",
+            "category": "laptop",
+            "price": 243000,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 14.2,
+            "image": "",
+            "description": "Apple MacBook Pro Apple M2 Pro 10 Núcleos/16GB/512GB SSD/14.2\" Gris Espacial is a laptop by Apple. Processor: Apple M2 Pro. It has 16 GB RAM and 512 GB SSD storage. The screen is 14.2 inches. Listed price: 2209 EUR. Price converted from EUR ~ INR 243,000 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "How much storage does the Lenovo ThinkPad X1 Carbon Gen 9 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\" have?",
+      "data": {
+        "query": "How much storage does the Lenovo ThinkPad X1 Carbon Gen 9 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\" have?",
+        "response": "### Top Recommendation\n**Lenovo ThinkPad X1 Carbon Gen 9 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\"** [lp_1347] - INR146,800 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 256 GB SSD storage\n- Processor/Screen: i5-1135G7 (Intel generation 11) / 14 inches\n\n### Why Recommended & Comparison\n- The Lenovo ThinkPad X1 Carbon Gen 9 [lp_1347] directly matches your query and features 256 GB SSD storage.\n- It is priced at INR146,800, positioning it below the ThinkPad T14s Gen 2 [lp_1342] (INR166,400) and ThinkPad T14 Gen 3 [lp_1338] (INR196,000), but higher than the ThinkBook 14 [lp_0052] (INR76,900) and ThinkPad T14s Gen 2 [lp_1341] (INR134,600).\n- While all compared models share the same 8 GB RAM and 256 GB SSD configuration, this X1 Carbon model belongs to Lenovo's premium lightweight lineup with an Intel Evo certification.",
+        "filters": {
+          "brand": "Lenovo",
+          "storage_gb": 256.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1347",
+            "product_id": "lp_1347",
+            "title": "Lenovo ThinkPad X1 Carbon Gen 9 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": "146800.0",
+            "ram_gb": "8.0",
+            "storage_gb": "256.0",
+            "screen_in": "14.0",
+            "image": "",
+            "description": "Lenovo ThinkPad X1 Carbon Gen 9 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\" is a laptop by Lenovo. Processor: i5-1135G7 (Intel generation 11). It has 8 GB RAM and 256 GB SSD storage. The screen is 14 inches. Listed price: 1335 EUR. Price converted from EUR ~ INR 146,800 (estimated conversion)."
+          },
+          {
+            "id": "lp_1342",
+            "product_id": "lp_1342",
+            "title": "Lenovo ThinkPad T14s Gen 2 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 166400,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 14,
+            "image": "",
+            "description": "Lenovo ThinkPad T14s Gen 2 Intel Evo Core i5-1135G7/8 GB/256GB SSD/14\" is a laptop by Lenovo. Processor: i5-1135G7 (Intel generation 11). It has 8 GB RAM and 256 GB SSD storage. The screen is 14 inches. Listed price: 1513 EUR. Price converted from EUR ~ INR 166,400 (estimated conversion)."
+          },
+          {
+            "id": "lp_1341",
+            "product_id": "lp_1341",
+            "title": "Lenovo ThinkPad T14s Gen 2 Intel Core i5-1135G7/8GB/256GB SSD/14\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 134600,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 14,
+            "image": "",
+            "description": "Lenovo ThinkPad T14s Gen 2 Intel Core i5-1135G7/8GB/256GB SSD/14\" is a laptop by Lenovo. Processor: i5-1135G7 (Intel generation 11). It has 8 GB RAM and 256 GB SSD storage. The screen is 14 inches. Listed price: 1223 EUR. Price converted from EUR ~ INR 134,600 (estimated conversion)."
+          },
+          {
+            "id": "lp_0052",
+            "product_id": "lp_0052",
+            "title": "Lenovo ThinkBook 14 Intel Core i5-1135G7/8GB/256GB SSD/14\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 76900,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 14,
+            "image": "",
+            "description": "Lenovo ThinkBook 14 Intel Core i5-1135G7/8GB/256GB SSD/14\" is a laptop by Lenovo. Processor: i5-1135G7 (Intel generation 11). It has 8 GB RAM and 256 GB SSD storage. The screen is 14 inches. Listed price: 699 EUR. Price converted from EUR ~ INR 76,900 (estimated conversion)."
+          },
+          {
+            "id": "lp_1338",
+            "product_id": "lp_1338",
+            "title": "Lenovo ThinkPad T14 Gen 3 Intel Core i5-1235U/8GB/256GB SSD/14\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 196000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 14,
+            "image": "",
+            "description": "Lenovo ThinkPad T14 Gen 3 Intel Core i5-1235U/8GB/256GB SSD/14\" is a laptop by Lenovo. Processor: i5-1235U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 14 inches. Listed price: 1782 EUR. Price converted from EUR ~ INR 196,000 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price of the Google Pixel 9 Pro XL 512GB?",
+      "data": {
+        "query": "What is the price of the Google Pixel 9 Pro XL 512GB?",
+        "response": "### Top Recommendation\n**Pixel 9 Pro XL 512GB** [ph_0198] - INR129,999\n\n### Key Specifications\n- Battery: 5250 mAh\n- RAM & Storage: 16 GB RAM and 512 GB storage\n- Processor/Screen: Processor: Google Tensor G4. The screen is 6.8 inches (AM-OLED 120 Hz).\n\n### Why Recommended & Comparison\n- The Pixel 9 Pro XL 512GB matches the exact model requested by the user with a price of INR129,999.\n- Compared to the Pixel 9 Pro 256GB [ph_0197] (priced at INR109,999 with 12 GB RAM, 256 GB storage, 6.7-inch screen, and 5050 mAh battery), the XL model offers more storage, RAM, battery capacity, and a larger screen.\n- Compared to the Pixel 9 Pro Fold 512GB [ph_0199] (priced at INR179,999 with 16 GB RAM, 512 GB storage, 7.6-inch screen, and 5500 mAh battery), the XL model is a traditional smartphone form factor at a lower price point.",
+        "filters": {
+          "brand": "Google",
+          "storage_gb": 512.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0198",
+            "product_id": "ph_0198",
+            "title": "Pixel 9 Pro XL 512GB",
+            "brand": "Google",
+            "category": "phone",
+            "price": "129999.0",
+            "ram_gb": "16.0",
+            "storage_gb": "512.0",
+            "screen_in": "6.8",
+            "image": "https://phonedb.net/img/google_pixel_9_pro_xl_5g.jpg",
+            "description": "Pixel 9 Pro XL 512GB by Google is a smartphone launched in 2024. It has 16 GB RAM and 512 GB storage. Processor: Google Tensor G4. The screen is 6.8 inches (AM-OLED 120 Hz). Battery: 5250 mAh. Cameras: rear 50MP, front 10.8MP. Weight: 222 g. Launch price: INR 129,999."
+          },
+          {
+            "id": "ph_0199",
+            "product_id": "ph_0199",
+            "title": "Pixel 9 Pro Fold 512GB",
+            "brand": "Google",
+            "category": "phone",
+            "price": "179999.0",
+            "ram_gb": "16.0",
+            "storage_gb": "512.0",
+            "screen_in": "7.6",
+            "image": "https://phonedb.net/img/google_pixel_9_pro_fold_5g.jpg",
+            "description": "Pixel 9 Pro Fold 512GB by Google is a smartphone launched in 2024. It has 16 GB RAM and 512 GB storage. Processor: Google Tensor G4. The screen is 7.6 inches (AM-OLED 120 Hz). Battery: 5500 mAh. Cameras: rear 50MP, front 10.8MP. Weight: 250 g. Launch price: INR 179,999."
+          },
+          {
+            "id": "ph_0197",
+            "product_id": "ph_0197",
+            "title": "Pixel 9 Pro 256GB",
+            "brand": "Google",
+            "category": "phone",
+            "price": "109999.0",
+            "ram_gb": "12.0",
+            "storage_gb": "256.0",
+            "screen_in": "6.7",
+            "image": "https://phonedb.net/img/google_pixel_9_pro_5g.jpg",
+            "description": "Pixel 9 Pro 256GB by Google is a smartphone launched in 2024. It has 12 GB RAM and 256 GB storage. Processor: Google Tensor G4. The screen is 6.7 inches (AM-OLED 120 Hz). Battery: 5050 mAh. Cameras: rear 50MP, front 10.8MP. Weight: 216 g. Launch price: INR 109,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "How much RAM does the ASUS TUF Gaming F15 FX507ZC4-HN002 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\" have?",
+      "data": {
+        "query": "How much RAM does the ASUS TUF Gaming F15 FX507ZC4-HN002 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\" have?",
+        "response": "### Top Recommendation\n**ASUS TUF Gaming F15 FX507ZC4-HN002 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\"** [lp_0026] - INR129,700 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 16 GB RAM and 512 GB SSD storage\n- Processor/Screen: Intel Core i7-12700H (Intel generation 12) / 15.6 inches\n\n### Why Recommended & Comparison\n- This is the exact laptop requested by the user, featuring 16 GB of RAM.\n- It shares the same 16 GB RAM and 512 GB SSD configuration as models [lp_0654], [lp_1051], and [lp_0230], but differs in its graphics card and pricing.\n- Model [lp_0329] offers a larger 1TB SSD, whereas this model comes with 512 GB SSD.",
+        "filters": {
+          "brand": "ASUS",
+          "storage_gb": 512.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_0026",
+            "product_id": "lp_0026",
+            "title": "ASUS TUF Gaming F15 FX507ZC4-HN002 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": "129700.0",
+            "ram_gb": "16.0",
+            "storage_gb": "512.0",
+            "screen_in": "15.6",
+            "image": "",
+            "description": "ASUS TUF Gaming F15 FX507ZC4-HN002 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\" is a laptop by ASUS. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 3050. The screen is 15.6 inches. Listed price: 1179 EUR. Price converted from EUR ~ INR 129,700 (estimated conversion)."
+          },
+          {
+            "id": "lp_0654",
+            "product_id": "lp_0654",
+            "title": "ASUS TUF Gaming F15 TUF507ZC4-HN040 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 100100,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS TUF Gaming F15 TUF507ZC4-HN040 Intel Core i7-12700H/16GB/512GB SSD/RTX 3050/15.6\" is a laptop by ASUS. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 3050. The screen is 15.6 inches. Listed price: 910 EUR. Price converted from EUR ~ INR 100,100 (estimated conversion)."
+          },
+          {
+            "id": "lp_1051",
+            "product_id": "lp_1051",
+            "title": "ASUS TUF Gaming F15 TUF507ZU4-LP110 Intel Core i7-12700H/16GB/512GB SSD/RTX 4050/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 139200,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS TUF Gaming F15 TUF507ZU4-LP110 Intel Core i7-12700H/16GB/512GB SSD/RTX 4050/15.6\" is a laptop by ASUS. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 4050. The screen is 15.6 inches. Listed price: 1265 EUR. Price converted from EUR ~ INR 139,200 (estimated conversion)."
+          },
+          {
+            "id": "lp_0230",
+            "product_id": "lp_0230",
+            "title": "ASUS TUF Gaming F15 FX507ZU4-LP040 Intel Core i7-12700H/16GB/512GB SSD/RTX 4050/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 167100,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS TUF Gaming F15 FX507ZU4-LP040 Intel Core i7-12700H/16GB/512GB SSD/RTX 4050/15.6\" is a laptop by ASUS. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 4050. The screen is 15.6 inches. Listed price: 1519 EUR. Price converted from EUR ~ INR 167,100 (estimated conversion)."
+          },
+          {
+            "id": "lp_0329",
+            "product_id": "lp_0329",
+            "title": "ASUS TUF Gaming F15 FX507ZU4-LP003 Intel Core i7-12700H/16GB/1TB SSD/RTX 4050/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 225400,
+            "ram_gb": 16,
+            "storage_gb": 1000,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS TUF Gaming F15 FX507ZU4-LP003 Intel Core i7-12700H/16GB/1TB SSD/RTX 4050/15.6\" is a laptop by ASUS. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 1000 GB SSD storage. Dedicated graphics: RTX 4050. The screen is 15.6 inches. Listed price: 2049 EUR. Price converted from EUR ~ INR 225,400 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price of the Garmin Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout?",
+      "data": {
+        "query": "What is the price of the Garmin Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout?",
+        "response": "### Top Recommendation\n**Garmin Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout** [sw_0471] - INR44,990\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: RAM: not listed, Storage: not listed\n- Processor/Screen: Screen: not listed\n\n### Why Recommended & Comparison\n- This exact model matches your query and is priced at INR44,990 with solar charging capabilities lasting up to 51 days.\n- Compared to the non-solar Garmin Instinct 2S [sw_0472] priced at INR33,490, this model offers solar charging extending battery life up to 51 days instead of 21 days.\n- Compared to the Garmin Venu 2S [sw_0490] priced at INR39,490, this model features rugged outdoor capabilities and extended solar battery life rather than an AMOLED display and music storage.",
+        "filters": {
+          "brand": "Garmin",
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "sw_0471",
+            "product_id": "sw_0471",
+            "title": "Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout",
+            "brand": "Garmin",
+            "category": "smartwatch",
+            "price": "44990.0",
+            "ram_gb": "",
+            "storage_gb": "",
+            "screen_in": "",
+            "image": "",
+            "description": "Instinct 2S Solar, Battery Upto 21 days/51 days with solar*, SPO2, HIIT workout by Garmin is a smartwatch. Price: INR 44,990 (MRP INR 50,490, 10.9% off). Display size: not listed. Battery life: not listed. Touchscreen: no. Bluetooth: yes. Strap material: Silicon. Customer rating: 4.7/5."
+          },
+          {
+            "id": "sw_0472",
+            "product_id": "sw_0472",
+            "title": "Instinct 2S, Battery Upto 21 days, Health Snapshot, SPO2, HIIT workout, VO2 Max",
+            "brand": "Garmin",
+            "category": "smartwatch",
+            "price": "33490.0",
+            "ram_gb": "",
+            "storage_gb": "",
+            "screen_in": "",
+            "image": "",
+            "description": "Instinct 2S, Battery Upto 21 days, Health Snapshot, SPO2, HIIT workout, VO2 Max by Garmin is a smartwatch. Price: INR 33,490 (MRP INR 39,490, 15.2% off). Display size: not listed. Battery life: not listed. Touchscreen: no. Bluetooth: no. Strap material: Silicon. Customer rating: 4.7/5 from 109 ratings."
+          },
+          {
+            "id": "sw_0490",
+            "product_id": "sw_0490",
+            "title": "Venu 2S, GPS Smartwatch, AMOLED Display, Upto 11 Days Battery, SPO2 & Music",
+            "brand": "Garmin",
+            "category": "smartwatch",
+            "price": "39490.0",
+            "ram_gb": "",
+            "storage_gb": "",
+            "screen_in": "",
+            "image": "",
+            "description": "Venu 2S, GPS Smartwatch, AMOLED Display, Upto 11 Days Battery, SPO2 & Music by Garmin is a smartwatch. Price: INR 39,490 (MRP INR 44,990, 12.2% off). Display size: not listed. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Silicon. Customer rating: 4.7/5 from 109 ratings."
+          },
+          {
+            "id": "sw_0467",
+            "product_id": "sw_0467",
+            "title": "Instinct 2 Solar, Rugged Outdoor SmartWatch, Multi GNSS, Tracback Routing",
+            "brand": "Garmin",
+            "category": "smartwatch",
+            "price": 44990,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": 0.9,
+            "image": "",
+            "description": "Instinct 2 Solar, Rugged Outdoor SmartWatch, Multi GNSS, Tracback Routing by Garmin is a smartwatch. Price: INR 44,990 (MRP INR 50,490, 10.9% off). Display size: 0.9 inches. Battery life: not listed. Touchscreen: no. Bluetooth: yes. Strap material: Silicon. Customer rating: 4.0/5 from 6 ratings."
+          },
+          {
+            "id": "sw_0466",
+            "product_id": "sw_0466",
+            "title": "Instinct 2 Solar, Battery Up to 28 days/Unlimited with solar*, Tracback Routing",
+            "brand": "Garmin",
+            "category": "smartwatch",
+            "price": 44990,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": 0.9,
+            "image": "",
+            "description": "Instinct 2 Solar, Battery Up to 28 days/Unlimited with solar*, Tracback Routing by Garmin is a smartwatch. Price: INR 44,990 (MRP INR 46,990, 4.3% off). Display size: 0.9 inches. Battery life: not listed. Touchscreen: no. Bluetooth: yes. Strap material: Silicon. Customer rating: 4.0/5 from 6 ratings."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price of the Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\"?",
+      "data": {
+        "query": "What is the price of the Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\"?",
+        "response": "### Top Recommendation\n**Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\"** [lp_0115] - INR153,900 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 16 GB RAM and 512 GB SSD storage\n- Processor/Screen: Intel Core i7-12700H (Intel generation 12) / 15.6 inches\n\n### Why Recommended & Comparison\n- This is the exact model requested, featuring an i7-12700H processor and an RTX 3060 GPU.\n- Compared to the IdeaPad models with i5 processors ([lp_1296] and [lp_0149]), this option offers a stronger i7 processor and a better graphics card.\n- Compared to the Legion 5 models with similar specs ([lp_0910] and [lp_0132]), this IdeaPad model provides the requested configuration at a more affordable price point.",
+        "filters": {
+          "brand": "Lenovo",
+          "storage_gb": 512.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_0115",
+            "product_id": "lp_0115",
+            "title": "Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": "153900.0",
+            "ram_gb": "16.0",
+            "storage_gb": "512.0",
+            "screen_in": "15.6",
+            "image": "",
+            "description": "Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\" is a laptop by Lenovo. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 3060. The screen is 15.6 inches. Listed price: 1399 EUR. Price converted from EUR ~ INR 153,900 (estimated conversion)."
+          },
+          {
+            "id": "lp_1296",
+            "product_id": "lp_1296",
+            "title": "Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i5-12450H/16GB/512GB SSD/RTX 3050/15.6\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 132700,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i5-12450H/16GB/512GB SSD/RTX 3050/15.6\" is a laptop by Lenovo. Processor: i5-12450H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 3050. The screen is 15.6 inches. Listed price: 1206 EUR. Price converted from EUR ~ INR 132,700 (estimated conversion)."
+          },
+          {
+            "id": "lp_0149",
+            "product_id": "lp_0149",
+            "title": "Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i5-12500H/16GB/512GB SSD/RTX3050/15.6\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 120900,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Lenovo IdeaPad Gaming 3 15IAH7 Intel Core i5-12500H/16GB/512GB SSD/RTX3050/15.6\" is a laptop by Lenovo. Processor: i5-12500H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 3050. The screen is 15.6 inches. Listed price: 1099 EUR. Price converted from EUR ~ INR 120,900 (estimated conversion)."
+          },
+          {
+            "id": "lp_0910",
+            "product_id": "lp_0910",
+            "title": "Lenovo Legion 5 15IAH7H Intel Core i7-12700H/16GB/512GB SSD/RTX 3060/15.6\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 201300,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Lenovo Legion 5 15IAH7H Intel Core i7-12700H/16GB/512GB SSD/RTX 3060/15.6\" is a laptop by Lenovo. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 3060. The screen is 15.6 inches. Listed price: 1830 EUR. Price converted from EUR ~ INR 201,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0132",
+            "product_id": "lp_0132",
+            "title": "Lenovo Legion 5 15IAH7H Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 175900,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Lenovo Legion 5 15IAH7H Intel Core i7-12700H/16GB/512GB SSD/RTX3060/15.6\" is a laptop by Lenovo. Processor: i7-12700H (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. Dedicated graphics: RTX 3060. The screen is 15.6 inches. Listed price: 1599 EUR. Price converted from EUR ~ INR 175,900 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "How much RAM does the HP EliteBook 1040 G9 Intel Core i7-1255U/32GB/1TB SSD/14\" have?",
+      "data": {
+        "query": "How much RAM does the HP EliteBook 1040 G9 Intel Core i7-1255U/32GB/1TB SSD/14\" have?",
+        "response": "### Top Recommendation\n**HP EliteBook 1040 G9 Intel Core i7-1255U/32GB/1TB SSD/14\"** [lp_1227] - INR275,300 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 32 GB RAM and 1000 GB SSD storage\n- Processor/Screen: i7-1255U (Intel generation 12) / 14 inches\n\n### Why Recommended & Comparison\n- This laptop directly answers your question by featuring 32 GB of RAM.\n- No other products were retrieved to compare against, making this the only available match in our catalog for your query.",
+        "filters": {
+          "brand": "HP",
+          "storage_gb": 1024.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1227",
+            "product_id": "lp_1227",
+            "title": "HP EliteBook 1040 G9 Intel Core i7-1255U/32GB/1TB SSD/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": "275300.0",
+            "ram_gb": "32.0",
+            "storage_gb": "1000.0",
+            "screen_in": "14.0",
+            "image": "",
+            "description": "HP EliteBook 1040 G9 Intel Core i7-1255U/32GB/1TB SSD/14\" is a laptop by HP. Processor: i7-1255U (Intel generation 12). It has 32 GB RAM and 1000 GB SSD storage. The screen is 14 inches. Listed price: 2503 EUR. Price converted from EUR ~ INR 275,300 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price of the Pebble Cosmos Ultra 1.91\" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial?",
+      "data": {
+        "query": "What is the price of the Pebble Cosmos Ultra 1.91\" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial?",
+        "response": "### Top Recommendation\n**Cosmos Ultra 1.91\" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial** [sw_0664] - INR2,799\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: RAM: not listed, Storage: not listed\n- Processor/Screen: Screen: 1.9 inches\n\n### Why Recommended & Comparison\n- This is the exact model requested by the user, featuring a 1.9-inch screen, Bluetooth calling, and a 600 nits high-resolution curved display at a price of INR2,799 [sw_0664].\n- Compared to the Pebble Cosmos, Bluetooth Calling smartwatch Multi Sports Modes [sw_0677] and Pebble Cosmos, Bluetooth Calling smartwatch 24 Hour Health Tracking (Burgundy) [sw_0676], which are priced higher at INR4,990, this model offers a larger specified screen size and a lower price point.\n- Compared to the Cosmos Grande 2.1 Largest Display, BT Calling, Wireless Charging,GPS Trajectory [sw_0660] (INR3,999) and Cosmos Pro 1.7inch HD display with Bluetooth calling function [sw_0663] (INR3,999), this model is more affordable while providing specific display dimensions.",
+        "filters": {
+          "brand": "Pebble",
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "sw_0664",
+            "product_id": "sw_0664",
+            "title": "Cosmos Ultra 1.91\" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial",
+            "brand": "Pebble",
+            "category": "smartwatch",
+            "price": "2799.0",
+            "ram_gb": "",
+            "storage_gb": "",
+            "screen_in": "1.9",
+            "image": "",
+            "description": "Cosmos Ultra 1.91\" 600 nits BT-Calling High-Res Curved Display, Ultra-Thin Dial by Pebble is a smartwatch. Price: INR 2,799 (MRP INR 7,499, 62.7% off). Display size: 1.9 inches. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Silicon. Customer rating: 4.4/5 from 12,644 ratings."
+          },
+          {
+            "id": "sw_0677",
+            "product_id": "sw_0677",
+            "title": "Pebble Cosmos, Bluetooth Calling smartwatch Multi Sports Modes",
+            "brand": "Pebble",
+            "category": "smartwatch",
+            "price": 4990,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Pebble Cosmos, Bluetooth Calling smartwatch Multi Sports Modes by Pebble is a smartwatch. Price: INR 4,990 (MRP INR 6,999, 28.7% off). Display size: not listed. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Rubber. Customer rating: 5.0/5 from 3 ratings."
+          },
+          {
+            "id": "sw_0676",
+            "product_id": "sw_0676",
+            "title": "Pebble Cosmos, Bluetooth Calling smartwatch 24 Hour Health Tracking (Burgundy)",
+            "brand": "Pebble",
+            "category": "smartwatch",
+            "price": 4990,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Pebble Cosmos, Bluetooth Calling smartwatch 24 Hour Health Tracking (Burgundy) by Pebble is a smartwatch. Price: INR 4,990 (MRP INR 6,999, 28.7% off). Display size: not listed. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Silicon. Customer rating: 4.1/5."
+          },
+          {
+            "id": "sw_0660",
+            "product_id": "sw_0660",
+            "title": "Cosmos Grande 2.1 Largest Display, BT Calling, Wireless Charging,GPS Trajectory",
+            "brand": "Pebble",
+            "category": "smartwatch",
+            "price": 3999,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": 2.1,
+            "image": "",
+            "description": "Cosmos Grande 2.1 Largest Display, BT Calling, Wireless Charging,GPS Trajectory by Pebble is a smartwatch. Price: INR 3,999 (MRP INR 9,999, 60% off). Display size: 2.1 inches. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Silicon. Customer rating: 3.9/5 from 677 ratings."
+          },
+          {
+            "id": "sw_0663",
+            "product_id": "sw_0663",
+            "title": "Cosmos Pro 1.7inch HD display with Bluetooth calling function",
+            "brand": "Pebble",
+            "category": "smartwatch",
+            "price": 3999,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Cosmos Pro 1.7inch HD display with Bluetooth calling function by Pebble is a smartwatch. Price: INR 3,999 (MRP INR 7,999, 50% off). Display size: not listed. Battery life: not listed. Touchscreen: yes. Bluetooth: yes. Strap material: Silicon. Customer rating: 3.9/5 from 2,874 ratings."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price of the Infinix Hot 50i?",
+      "data": {
+        "query": "What is the price of the Infinix Hot 50i?",
+        "response": "### Top Recommendation\n**Infinix Hot 50i** [ph_0238] - INR12,499\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 4 GB RAM, Storage: not listed\n- Processor/Screen: Unisoc T606, 6.6 inches\n\n### Why Recommended & Comparison\n- The Infinix Hot 50i directly matches your query for the price of this specific model at INR12,499 [ph_0238].\n- It is more affordable than the Infinix Hot 50, which is priced at INR14,999 [ph_0237].\n- It features lower RAM and a smaller screen compared to higher-end models like the Hot 50 Pro+ [ph_0241].",
+        "filters": {
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0238",
+            "product_id": "ph_0238",
+            "title": "Hot 50i",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 12499,
+            "ram_gb": 4,
+            "storage_gb": -1,
+            "screen_in": 6.6,
+            "image": "",
+            "description": "Hot 50i by Infinix is a smartphone launched in 2024. It has 4 GB RAM. Processor: Unisoc T606. The screen is 6.6 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 8MP. Weight: 190 g. Launch price: INR 12,499."
+          },
+          {
+            "id": "ph_0237",
+            "product_id": "ph_0237",
+            "title": "Hot 50",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 14999,
+            "ram_gb": 6,
+            "storage_gb": -1,
+            "screen_in": 6.78,
+            "image": "",
+            "description": "Hot 50 by Infinix is a smartphone launched in 2024. It has 6 GB RAM. Processor: MediaTek Helio G85. The screen is 6.78 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 8MP. Weight: 192 g. Launch price: INR 14,999."
+          },
+          {
+            "id": "ph_0239",
+            "product_id": "ph_0239",
+            "title": "Hot 50 5G",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 18999,
+            "ram_gb": 8,
+            "storage_gb": -1,
+            "screen_in": 6.78,
+            "image": "",
+            "description": "Hot 50 5G by Infinix is a smartphone launched in 2024. It has 8 GB RAM. Processor: MediaTek Dimensity 810. The screen is 6.78 inches. Battery: 5200 mAh. Cameras: rear 50MP, front 16MP. Weight: 195 g. Launch price: INR 18,999."
+          },
+          {
+            "id": "ph_0240",
+            "product_id": "ph_0240",
+            "title": "Hot 50 Pro",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 17999,
+            "ram_gb": 8,
+            "storage_gb": -1,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Hot 50 Pro by Infinix is a smartphone launched in 2024. It has 8 GB RAM. Processor: MediaTek Helio G99. The screen is 6.8 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 16MP. Weight: 194 g. Launch price: INR 17,999."
+          },
+          {
+            "id": "ph_0241",
+            "product_id": "ph_0241",
+            "title": "Hot 50 Pro+",
+            "brand": "Infinix",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 12,
+            "storage_gb": -1,
+            "screen_in": 6.9,
+            "image": "",
+            "description": "Hot 50 Pro+ by Infinix is a smartphone launched in 2024. It has 12 GB RAM. Processor: MediaTek Dimensity 9200. The screen is 6.9 inches. Battery: 5300 mAh. Cameras: rear 108MP, front 32MP. Weight: 196 g. Launch price: INR 24,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price of the Fossil Neely?",
+      "data": {
+        "query": "What is the price of the Fossil Neely?",
+        "response": "### Top Recommendation\n**Neely** [sw_0356] - INR8,995\n\n### Key Specifications\n- Battery: 1 days\n- RAM & Storage: RAM: not listed, Storage: not listed\n- Processor/Screen: Screen: not listed\n\n### Why Recommended & Comparison\n- The Fossil Neely models in our catalog are available at different price points depending on the specific variant and materials.\n- The leather strap Neely variant is priced at INR8,995 [sw_0356] (currently on discount from an MRP of INR13,495).\n- Another leather strap variant, the Q Neely, is priced at INR6,995 [sw_0372].\n- The stainless steel strap Neely variant is priced at INR13,495 [sw_0355] and features a 1.3 inches screen.",
+        "filters": {
+          "brand": "Fossil",
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "sw_0356",
+            "product_id": "sw_0356",
+            "title": "Neely",
+            "brand": "Fossil",
+            "category": "smartwatch",
+            "price": 8995,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Neely by Fossil is a smartwatch. Price: INR 8,995 (MRP INR 13,495, 33.3% off). Display size: not listed. Display type: AMOLED Display. Battery life: 1 days. Strap material: Leather. Customer rating: 4.7/5."
+          },
+          {
+            "id": "sw_0355",
+            "product_id": "sw_0355",
+            "title": "Neely",
+            "brand": "Fossil",
+            "category": "smartwatch",
+            "price": 13495,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": 1.3,
+            "image": "",
+            "description": "Neely by Fossil is a smartwatch. Price: INR 13,495. Display size: 1.3 inches. Battery life: not listed. Touchscreen: no. Bluetooth: yes. Strap material: Stainless Steel. Customer rating: 4.7/5 from 3 ratings."
+          },
+          {
+            "id": "sw_0372",
+            "product_id": "sw_0372",
+            "title": "Q Neely",
+            "brand": "Fossil",
+            "category": "smartwatch",
+            "price": 6995,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Q Neely by Fossil is a smartwatch. Price: INR 6,995 (MRP INR 12,995, 46.2% off). Display size: not listed. Display type: AMOLED Display. Battery life: 2 days. Strap material: Leather. Customer rating: 4.6/5."
+          },
+          {
+            "id": "sw_0358",
+            "product_id": "sw_0358",
+            "title": "Neutra Hybrid",
+            "brand": "Fossil",
+            "category": "smartwatch",
+            "price": 11995,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Neutra Hybrid by Fossil is a smartwatch. Price: INR 11,995. Display size: not listed. Display type: AMOLED Display. Battery life: 12 days. Strap material: Leather. Customer rating: 5.0/5."
+          },
+          {
+            "id": "sw_0357",
+            "product_id": "sw_0357",
+            "title": "Neutra Hybrid",
+            "brand": "Fossil",
+            "category": "smartwatch",
+            "price": 13495,
+            "ram_gb": -1,
+            "storage_gb": -1,
+            "screen_in": -1,
+            "image": "",
+            "description": "Neutra Hybrid by Fossil is a smartwatch. Price: INR 13,495. Display size: not listed. Display type: AMOLED Display. Battery life: 12 days. Strap material: Stainless Steel. Customer rating: 5.0/5."
+          }
+        ]
+      }
+    },
+    {
+      "q": "How much storage does the ASUS ExpertBook B1 B1502CBA-EJ0439W Intel Core i7-1255U/16GB/512GB SSD/15.6\" have?",
+      "data": {
+        "query": "How much storage does the ASUS ExpertBook B1 B1502CBA-EJ0439W Intel Core i7-1255U/16GB/512GB SSD/15.6\" have?",
+        "response": "Why Recommended & Comparison\n- The ASUS ExpertBook B1 B1502CBA",
+        "filters": {
+          "brand": "ASUS",
+          "storage_gb": 512.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_0609",
+            "product_id": "lp_0609",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0439W Intel Core i7-1255U/16GB/512GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": "97300.0",
+            "ram_gb": "16.0",
+            "storage_gb": "512.0",
+            "screen_in": "15.6",
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0439W Intel Core i7-1255U/16GB/512GB SSD/15.6\" is a laptop by ASUS. Processor: i7-1255U (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 885 EUR. Price converted from EUR ~ INR 97,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0579",
+            "product_id": "lp_0579",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0439 Intel Core i7-1255U/16GB/512GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 88000,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0439 Intel Core i7-1255U/16GB/512GB SSD/15.6\" is a laptop by ASUS. Processor: i7-1255U (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 800 EUR. Price converted from EUR ~ INR 88,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0881",
+            "product_id": "lp_0881",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0426X Intel Core i7-1255U/16GB/512GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 104600,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0426X Intel Core i7-1255U/16GB/512GB SSD/15.6\" is a laptop by ASUS. Processor: i7-1255U (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 951 EUR. Price converted from EUR ~ INR 104,600 (estimated conversion)."
+          },
+          {
+            "id": "lp_0773",
+            "product_id": "lp_0773",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0438W Intel Core i5-1235U/16GB/512GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 88000,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0438W Intel Core i5-1235U/16GB/512GB SSD/15.6\" is a laptop by ASUS. Processor: i5-1235U (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 800 EUR. Price converted from EUR ~ INR 88,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0553",
+            "product_id": "lp_0553",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0425 Intel Core i5-1235U/16GB/512GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 76400,
+            "ram_gb": 16,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0425 Intel Core i5-1235U/16GB/512GB SSD/15.6\" is a laptop by ASUS. Processor: i5-1235U (Intel generation 12). It has 16 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 695 EUR. Price converted from EUR ~ INR 76,400 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "What is the price and specs of the Apple Watch Ultra 9?",
+      "data": {
+        "query": "What is the price and specs of the Apple Watch Ultra 9?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "category": "smartwatch",
+          "brand": "Apple",
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "What is the price and specs of the iPhone 17 Pro Max 1TB?",
+      "data": {
+        "query": "What is the price and specs of the iPhone 17 Pro Max 1TB?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "category": "phone",
+          "storage_gb": 1024.0,
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "What is the price and specs of the Samsung Galaxy S26 Ultra?",
+      "data": {
+        "query": "What is the price and specs of the Samsung Galaxy S26 Ultra?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "brand": "Samsung",
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "What is the price and specs of the PlayStation 5?",
+      "data": {
+        "query": "What is the price and specs of the PlayStation 5?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "What is the price and specs of the Canon EOS R5 DSLR camera?",
+      "data": {
+        "query": "What is the price and specs of the Canon EOS R5 DSLR camera?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "What is the price and specs of the Sony WH-1000XM6 headphones?",
+      "data": {
+        "query": "What is the price and specs of the Sony WH-1000XM6 headphones?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "What is the price and specs of the Dell XPS 17 9999?",
+      "data": {
+        "query": "What is the price and specs of the Dell XPS 17 9999?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "brand": "Dell",
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "What is the price and specs of the OnePlus 13 Ultra Max?",
+      "data": {
+        "query": "What is the price and specs of the OnePlus 13 Ultra Max?",
+        "response": "Not in our catalog.",
+        "filters": {
+          "brand": "OnePlus",
+          "include_legacy": false
+        },
+        "matches": []
+      }
+    },
+    {
+      "q": "best phone under 25000",
+      "data": {
+        "query": "best phone under 25000",
+        "response": "### Top Recommendation\n**X6 Pro 256GB** [ph_0262] - INR24,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 256 GB storage\n- Processor/Screen: MediaTek Dimensity 8300 / 6.67 inches (AM-OLED 120 Hz)\n\n### Why Recommended & Comparison\n- This model offers the most powerful processor among the options in your budget, featuring the MediaTek Dimensity 8300 alongside an AM-OLED 120 Hz display for smooth performance and viewing.\n- Compared to the Realme 13+ 5G 256GB [ph_0078], it features a larger 6.67-inch AM-OLED 120 Hz screen rather than the 6.5-inch screen, while matching the price of INR24,999.\n- Compared to the Tecno Pova 5 256GB [ph_0236], which has a larger 6000 mAh battery and a MediaTek Helio G99 processor at INR24,999, this POCO model provides significantly stronger processing power.\n- Compared to the Xiaomi Redmi Note 14 5G 256GB [ph_0135] priced at INR24,999, it trades the Dimensity 7025-Ultra for a superior Dimensity 8300 chip while maintaining the same 8 GB RAM, 256 GB storage, and 6.67 inches AM-OLED 120 Hz screen setup.",
+        "filters": {
+          "category": "phone",
+          "max_price": 25000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0078",
+            "product_id": "ph_0078",
+            "title": "13+ 5G 256GB",
+            "brand": "Realme",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.5,
+            "image": "",
+            "description": "13+ 5G 256GB by Realme is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7200. The screen is 6.5 inches. Battery: 5000 mAh. Cameras: rear 50MP + 2MP, front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0135",
+            "product_id": "ph_0135",
+            "title": "Redmi Note 14 5G 256GB",
+            "brand": "Xiaomi",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_redmi_note_14_5g.jpg",
+            "description": "Redmi Note 14 5G 256GB by Xiaomi is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7025-Ultra. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP (Main) + 8MP (Ultra-wide) + 2MP (Macro), front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0262",
+            "product_id": "ph_0262",
+            "title": "X6 Pro 256GB",
+            "brand": "POCO",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_poco_x6_pro_5g_2.jpg",
+            "description": "X6 Pro 256GB by POCO is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 8300. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 108MP, front 20MP. Weight: 205 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0236",
+            "product_id": "ph_0236",
+            "title": "Pova 5 256GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Pova 5 256GB by Tecno is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Helio G99. The screen is 6.8 inches. Battery: 6000 mAh. Cameras: rear 50MP, front 16MP. Weight: 230 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0068",
+            "product_id": "ph_0068",
+            "title": "A40 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 22999,
+            "ram_gb": 6,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "",
+            "description": "A40 256GB by Oppo is a smartphone launched in 2024. It has 6 GB RAM and 256 GB storage. Processor: Qualcomm Snapdragon 6s Gen 1. The screen is 6.67 inches. Battery: 5100 mAh. Cameras: rear 50MP, front 5MP. Weight: 186 g. Launch price: INR 22,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "phone below 25k please",
+      "data": {
+        "query": "phone below 25k please",
+        "response": "### Top Recommendation\n**A40 256GB** [ph_0068] - INR22,999\n\n### Key Specifications\n- Battery: 5100 mAh\n- RAM & Storage: 6 GB RAM and 256 GB storage\n- Processor/Screen: Qualcomm Snapdragon 6s Gen 1 / 6.67 inches\n\n### Why Recommended & Comparison\n- This model is the only one in our catalog priced strictly below INR25,000 at INR22,999, fitting your budget while offering generous 256 GB storage.\n- Compared to the Tecno Pova 5 256GB [ph_0236] (INR24,999 with 8 GB RAM, 6.8 inches screen, and 6000 mAh battery), the Realme 13+ 5G 256GB [ph_0078] (INR24,999 with 8 GB RAM, 6.5 inches screen, and 5000 mAh battery), the POCO X6 Pro 256GB [ph_0262] (INR24,999 with 8 GB RAM, 6.67 inches screen, and 5000 mAh battery), and the Realme P1 Pro 5G 256GB [ph_0092] (INR24,999 with 12 GB RAM, 6.7 inches screen, and 5200 mAh battery), all the other options cost exactly INR24,999.",
+        "filters": {
+          "category": "phone",
+          "max_price": 25000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0068",
+            "product_id": "ph_0068",
+            "title": "A40 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 22999,
+            "ram_gb": 6,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "",
+            "description": "A40 256GB by Oppo is a smartphone launched in 2024. It has 6 GB RAM and 256 GB storage. Processor: Qualcomm Snapdragon 6s Gen 1. The screen is 6.67 inches. Battery: 5100 mAh. Cameras: rear 50MP, front 5MP. Weight: 186 g. Launch price: INR 22,999."
+          },
+          {
+            "id": "ph_0236",
+            "product_id": "ph_0236",
+            "title": "Pova 5 256GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Pova 5 256GB by Tecno is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Helio G99. The screen is 6.8 inches. Battery: 6000 mAh. Cameras: rear 50MP, front 16MP. Weight: 230 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0078",
+            "product_id": "ph_0078",
+            "title": "13+ 5G 256GB",
+            "brand": "Realme",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.5,
+            "image": "",
+            "description": "13+ 5G 256GB by Realme is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7200. The screen is 6.5 inches. Battery: 5000 mAh. Cameras: rear 50MP + 2MP, front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0262",
+            "product_id": "ph_0262",
+            "title": "X6 Pro 256GB",
+            "brand": "POCO",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_poco_x6_pro_5g_2.jpg",
+            "description": "X6 Pro 256GB by POCO is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 8300. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 108MP, front 20MP. Weight: 205 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0092",
+            "product_id": "ph_0092",
+            "title": "P1 Pro 5G 256GB",
+            "brand": "Realme",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 12,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "P1 Pro 5G 256GB by Realme is a smartphone launched in 2024. It has 12 GB RAM and 256 GB storage. Processor: Qualcomm Snapdragon 7s Gen 1. The screen is 6.7 inches. Battery: 5200 mAh. Cameras: rear 64MP + 2MP, front 16MP. Weight: 190 g. Launch price: INR 24,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "good mobile within Rs 25,000",
+      "data": {
+        "query": "good mobile within Rs 25,000",
+        "response": "### Top Recommendation\n**POCO X6 Pro 256GB** [ph_0262] - INR 24,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 256 GB storage\n- Processor/Screen: MediaTek Dimensity 8300 / 6.67 inches (AM-OLED 120 Hz)\n\n### Why Recommended & Comparison\n- This model stands out by offering the high-performance MediaTek Dimensity 8300 processor, making it the strongest performer in this price bracket for demanding tasks.\n- Compared to the Xiaomi Redmi Note 14 5G 256GB [ph_0135] and Realme 13+ 5G 256GB [ph_0078], which cost the same at INR 24,999 and share identical RAM, storage, and battery capacities, this POCO model features a superior processor.\n- Compared to the Tecno Pova 5 256GB [ph_0236], which also costs INR 24,999 and has a larger 6000 mAh battery and 6.8-inch screen, this option provides a significantly better processor and an AM-OLED 120 Hz display.\n- Compared to the Oppo A40 256GB [ph_0068], which is priced lower at INR 22,999 with 6 GB RAM, this option gives you more RAM and a higher-tier display and processor while staying strictly within your INR 25,000 budget.",
+        "filters": {
+          "category": "phone",
+          "max_price": 25000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0135",
+            "product_id": "ph_0135",
+            "title": "Redmi Note 14 5G 256GB",
+            "brand": "Xiaomi",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_redmi_note_14_5g.jpg",
+            "description": "Redmi Note 14 5G 256GB by Xiaomi is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7025-Ultra. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP (Main) + 8MP (Ultra-wide) + 2MP (Macro), front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0078",
+            "product_id": "ph_0078",
+            "title": "13+ 5G 256GB",
+            "brand": "Realme",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.5,
+            "image": "",
+            "description": "13+ 5G 256GB by Realme is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7200. The screen is 6.5 inches. Battery: 5000 mAh. Cameras: rear 50MP + 2MP, front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0262",
+            "product_id": "ph_0262",
+            "title": "X6 Pro 256GB",
+            "brand": "POCO",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_poco_x6_pro_5g_2.jpg",
+            "description": "X6 Pro 256GB by POCO is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 8300. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 108MP, front 20MP. Weight: 205 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0236",
+            "product_id": "ph_0236",
+            "title": "Pova 5 256GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Pova 5 256GB by Tecno is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Helio G99. The screen is 6.8 inches. Battery: 6000 mAh. Cameras: rear 50MP, front 16MP. Weight: 230 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0068",
+            "product_id": "ph_0068",
+            "title": "A40 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 22999,
+            "ram_gb": 6,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "",
+            "description": "A40 256GB by Oppo is a smartphone launched in 2024. It has 6 GB RAM and 256 GB storage. Processor: Qualcomm Snapdragon 6s Gen 1. The screen is 6.67 inches. Battery: 5100 mAh. Cameras: rear 50MP, front 5MP. Weight: 186 g. Launch price: INR 22,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "mujhe 25 hazaar ke andar accha phone chahiye",
+      "data": {
+        "query": "mujhe 25 hazaar ke andar accha phone chahiye",
+        "response": "### Top Recommendation\n**POCO X6 Pro 256GB** [ph_0262] - INR24,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 256 GB storage\n- Processor/Screen: MediaTek Dimensity 8300 / 6.67 inches (AM-OLED 120 Hz)\n\n### Why Recommended & Comparison\n- This phone offers the best performance in this budget thanks to its powerful MediaTek Dimensity 8300 processor and smooth 120 Hz AMOLED display.\n- Compared to the Tecno Pova 5 256GB [ph_0236] (INR24,999, 6000 mAh battery, MediaTek Helio G99, 6.8 inches screen), the POCO has a superior processor and AMOLED screen, though a smaller battery.\n- Compared to the Oppo A40 256GB [ph_0068] (INR22,999, 5100 mAh battery, 6 GB RAM, Snapdragon 6s Gen 1, 6.67 inches screen), the POCO provides more RAM and a stronger processor for the same budget tier.\n- Compared to the Xiaomi Redmi Note 14 5G 256GB [ph_0135] (INR24,999, 5000 mAh battery, MediaTek Dimensity 7025-Ultra, 6.67 inches AM-OLED 120 Hz screen) and Realme 13+ 5G 256GB [ph_0078] (INR24,999, 5000 mAh battery, MediaTek Dimensity 7200, 6.5 inches screen), the POCO features a significantly higher-tier Dimensity 8300 chipset for better gaming and multitasking performance.",
+        "filters": {
+          "category": "phone",
+          "max_price": 25000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0236",
+            "product_id": "ph_0236",
+            "title": "Pova 5 256GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Pova 5 256GB by Tecno is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Helio G99. The screen is 6.8 inches. Battery: 6000 mAh. Cameras: rear 50MP, front 16MP. Weight: 230 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0068",
+            "product_id": "ph_0068",
+            "title": "A40 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 22999,
+            "ram_gb": 6,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "",
+            "description": "A40 256GB by Oppo is a smartphone launched in 2024. It has 6 GB RAM and 256 GB storage. Processor: Qualcomm Snapdragon 6s Gen 1. The screen is 6.67 inches. Battery: 5100 mAh. Cameras: rear 50MP, front 5MP. Weight: 186 g. Launch price: INR 22,999."
+          },
+          {
+            "id": "ph_0135",
+            "product_id": "ph_0135",
+            "title": "Redmi Note 14 5G 256GB",
+            "brand": "Xiaomi",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_redmi_note_14_5g.jpg",
+            "description": "Redmi Note 14 5G 256GB by Xiaomi is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7025-Ultra. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP (Main) + 8MP (Ultra-wide) + 2MP (Macro), front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0262",
+            "product_id": "ph_0262",
+            "title": "X6 Pro 256GB",
+            "brand": "POCO",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_poco_x6_pro_5g_2.jpg",
+            "description": "X6 Pro 256GB by POCO is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 8300. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 108MP, front 20MP. Weight: 205 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0078",
+            "product_id": "ph_0078",
+            "title": "13+ 5G 256GB",
+            "brand": "Realme",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.5,
+            "image": "",
+            "description": "13+ 5G 256GB by Realme is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7200. The screen is 6.5 inches. Battery: 5000 mAh. Cameras: rear 50MP + 2MP, front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "fone under 25k",
+      "data": {
+        "query": "fone under 25k",
+        "response": "### Top Recommendation\n**POCO X6 Pro 256GB** [ph_0262] - INR24,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 256 GB storage\n- Processor/Screen: MediaTek Dimensity 8300 / 6.67 inches (AM-OLED 120 Hz)\n\n### Why Recommended & Comparison\n- This model offers the most powerful processor (MediaTek Dimensity 8300) and a high-refresh-rate AMOLED screen within your budget of under 25k.\n- Compared to the Oppo A40 256GB [ph_0068] (priced at INR22,999 with 6 GB RAM, Snapdragon 6s Gen 1, and 6.67 inches screen), the POCO provides more RAM and a stronger chip for the same budget tier.\n- Compared to the Realme 13+ 5G 256GB [ph_0078] (priced at INR24,999 with 8 GB RAM, MediaTek Dimensity 7200, and a 6.5 inches screen), the POCO features a better processor and a larger screen.\n- Compared to the Xiaomi Redmi Note 14 5G 256GB [ph_0135] (priced at INR24,999 with 8 GB RAM, MediaTek Dimensity 7025-Ultra, and a 6.67 inches AM-OLED 120 Hz screen), the POCO delivers superior performance with its Dimensity 8300 chip.\n- Compared to the Tecno Pova 5 256GB [ph_0236] (priced at INR24,999 with 8 GB RAM, MediaTek Helio G99, a 6.8 inches screen, and a 6000 mAh battery), the POCO offers much faster processing and a superior display quality.",
+        "filters": {
+          "max_price": 25000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0068",
+            "product_id": "ph_0068",
+            "title": "A40 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 22999,
+            "ram_gb": 6,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "",
+            "description": "A40 256GB by Oppo is a smartphone launched in 2024. It has 6 GB RAM and 256 GB storage. Processor: Qualcomm Snapdragon 6s Gen 1. The screen is 6.67 inches. Battery: 5100 mAh. Cameras: rear 50MP, front 5MP. Weight: 186 g. Launch price: INR 22,999."
+          },
+          {
+            "id": "ph_0078",
+            "product_id": "ph_0078",
+            "title": "13+ 5G 256GB",
+            "brand": "Realme",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.5,
+            "image": "",
+            "description": "13+ 5G 256GB by Realme is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7200. The screen is 6.5 inches. Battery: 5000 mAh. Cameras: rear 50MP + 2MP, front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0135",
+            "product_id": "ph_0135",
+            "title": "Redmi Note 14 5G 256GB",
+            "brand": "Xiaomi",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_redmi_note_14_5g.jpg",
+            "description": "Redmi Note 14 5G 256GB by Xiaomi is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7025-Ultra. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP (Main) + 8MP (Ultra-wide) + 2MP (Macro), front 16MP. Weight: 185 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0236",
+            "product_id": "ph_0236",
+            "title": "Pova 5 256GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.8,
+            "image": "",
+            "description": "Pova 5 256GB by Tecno is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Helio G99. The screen is 6.8 inches. Battery: 6000 mAh. Cameras: rear 50MP, front 16MP. Weight: 230 g. Launch price: INR 24,999."
+          },
+          {
+            "id": "ph_0262",
+            "product_id": "ph_0262",
+            "title": "X6 Pro 256GB",
+            "brand": "POCO",
+            "category": "phone",
+            "price": 24999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/xiaomi_poco_x6_pro_5g_2.jpg",
+            "description": "X6 Pro 256GB by POCO is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 8300. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 108MP, front 20MP. Weight: 205 g. Launch price: INR 24,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "laptop for coding under 60000",
+      "data": {
+        "query": "laptop for coding under 60000",
+        "response": "### Top Recommendation\n**ASUS F1500EA-BQ3064 Intel Core i5-1135G7/8GB/512GB SSD/15.6\"** [lp_1026] - INR59,900 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 512 GB SSD storage\n- Processor/Screen: Intel Core i5-1135G7 (Intel generation 11) / 15.6 inches\n\n### Why Recommended & Comparison\n- This laptop offers the best storage capacity (512 GB SSD) and a solid Intel Core i5 processor among the options under the INR60,000 budget, making it ideal for coding projects and development tools.\n- Compared to the ASUS ExpertBook B1 [lp_1017] (INR60,000), it provides double the storage for a slightly lower price while upgrading the processor from an i3 to an i5.\n- Compared to the HP 255 G9 [lp_1219] (INR59,300), HP 15S-eq2089ns [lp_0104] (INR58,200), and HP ChromeBook 14a-na1009ns [lp_0273] (INR50,500), it matches or exceeds the budget limit while offering superior storage capacity for development environments.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1219",
+            "product_id": "lp_1219",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 59300,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 539 EUR. Price converted from EUR ~ INR 59,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_1026",
+            "product_id": "lp_1026",
+            "title": "ASUS F1500EA-BQ3064 Intel Core i5-1135G7/8GB/512GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 59900,
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS F1500EA-BQ3064 Intel Core i5-1135G7/8GB/512GB SSD/15.6\" is a laptop by ASUS. Processor: i5-1135G7 (Intel generation 11). It has 8 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 59,900 (estimated conversion)."
+          },
+          {
+            "id": "lp_0104",
+            "product_id": "lp_0104",
+            "title": "HP 15S-eq2089ns AMD Ryzen 3 5300U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 58200,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 15S-eq2089ns AMD Ryzen 3 5300U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 3 5300U. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 529 EUR. Price converted from EUR ~ INR 58,200 (estimated conversion)."
+          },
+          {
+            "id": "lp_0273",
+            "product_id": "lp_0273",
+            "title": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 50500,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 14,
+            "image": "",
+            "description": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" is a laptop by HP. Processor: N6000. It has 8 GB RAM and 128 GB eMMC storage. The screen is 14 inches. Listed price: 459 EUR. Price converted from EUR ~ INR 50,500 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "i need a laptop under 60k for programming",
+      "data": {
+        "query": "i need a laptop under 60k for programming",
+        "response": "### Top Recommendation\n**HP 255 G9 AMD Ryzen 5 5625U/8GB/512GB SSD/15.6\"** [lp_0908] - INR54,800 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 512 GB SSD storage\n- Processor/Screen: Ryzen 5 5625U, 15.6 inches screen\n\n### Why Recommended & Comparison\n- This laptop offers the best storage capacity among the options within your budget, providing 512 GB SSD which is ideal for programming environments and storing development files.\n- Compared to the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_1017] (INR60,000) and Medion Akoya E15415 Intel Core i5-10210U/8GB/256GB SSD/15.6\" [lp_0009] (INR57,100), this HP model provides double the storage space at a lower price point.\n- It also offers better value compared to the HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\" [lp_1219] (INR59,300), which has the same processor and RAM but only 256 GB of storage for a higher price.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1219",
+            "product_id": "lp_1219",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 59300,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 539 EUR. Price converted from EUR ~ INR 59,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0009",
+            "product_id": "lp_0009",
+            "title": "Medion Akoya E15415 Intel Core i5-10210U/8GB/256GB SSD/15.6\"",
+            "brand": "Medion",
+            "category": "laptop",
+            "price": 57100,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Medion Akoya E15415 Intel Core i5-10210U/8GB/256GB SSD/15.6\" is a laptop by Medion. Processor: i5-10210U (Intel generation 10). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 519 EUR. Price converted from EUR ~ INR 57,100 (estimated conversion)."
+          },
+          {
+            "id": "lp_0952",
+            "product_id": "lp_0952",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/512 GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 55800,
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/512 GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 508 EUR. Price converted from EUR ~ INR 55,800 (estimated conversion)."
+          },
+          {
+            "id": "lp_0908",
+            "product_id": "lp_0908",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/512GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 54800,
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/512GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 498 EUR. Price converted from EUR ~ INR 54,800 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "cheap notebook for programming below 60 thousand",
+      "data": {
+        "query": "cheap notebook for programming below 60 thousand",
+        "response": "### Top Recommendation\n**ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"** [lp_1017] - INR60,000 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 256 GB SSD storage\n- Processor/Screen: Processor: i3-1215U (Intel generation 12) / 15.6 inches\n\n### Why Recommended & Comparison\n- This laptop best fits programming needs within your budget by offering a stronger Intel Core i3 processor, 8 GB of RAM, and a faster 256 GB SSD compared to the lower-spec Celeron and Athlon models.\n- The Prixton Netbook Pro [lp_0490], Innjoo Voom Laptop Max [lp_1273], and Primux Ioxbook C15 [lp_0735] rely on slower Celeron processors and limited eMMC storage or lower RAM, making them less suitable for programming.\n- The HP 15S-EQ1157NS [lp_1165] is priced at INR50,600 (converted estimate from EUR) with an AMD Athlon Silver 3050U processor, 8 GB RAM, and 256 GB SSD, but the ASUS ExpertBook B1 [lp_1017] offers a superior 12th-generation Core i3 processor for better programming performance while staying right at your budget limit of 60 thousand.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_0490",
+            "product_id": "lp_0490",
+            "title": "Prixton Netbook Pro Intel Celeron N4020/4GB/64GB eMMC/14.1\"",
+            "brand": "Prixton",
+            "category": "laptop",
+            "price": 33000,
+            "ram_gb": 4,
+            "storage_gb": 64,
+            "screen_in": 14.1,
+            "image": "",
+            "description": "Prixton Netbook Pro Intel Celeron N4020/4GB/64GB eMMC/14.1\" is a laptop by Prixton. Processor: Celeron N4020. It has 4 GB RAM and 64 GB eMMC storage. The screen is 14.1 inches. Listed price: 300 EUR. Price converted from EUR ~ INR 33,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1273",
+            "product_id": "lp_1273",
+            "title": "Innjoo Voom Laptop Max Intel Celeron N3350/6GB/64GB eMMC/14.1\"",
+            "brand": "Innjoo",
+            "category": "laptop",
+            "price": 42200,
+            "ram_gb": 6,
+            "storage_gb": 64,
+            "screen_in": 14.1,
+            "image": "",
+            "description": "Innjoo Voom Laptop Max Intel Celeron N3350/6GB/64GB eMMC/14.1\" is a laptop by Innjoo. Processor: Celeron N3350. It has 6 GB RAM and 64 GB eMMC storage. The screen is 14.1 inches. Listed price: 384 EUR. Price converted from EUR ~ INR 42,200 (estimated conversion)."
+          },
+          {
+            "id": "lp_0735",
+            "product_id": "lp_0735",
+            "title": "Primux Ioxbook C15 Intel Celeron N4020/4GB/128GB SSD/15.6\"",
+            "brand": "Primux",
+            "category": "laptop",
+            "price": 30000,
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "Primux Ioxbook C15 Intel Celeron N4020/4GB/128GB SSD/15.6\" is a laptop by Primux. Processor: Celeron N4020. It has 4 GB RAM and 128 GB SSD storage. The screen is 15.6 inches. Listed price: 273 EUR. Price converted from EUR ~ INR 30,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1165",
+            "product_id": "lp_1165",
+            "title": "HP 15S-EQ1157NS AMD Athlon Silver 3050U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 50600,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 15S-EQ1157NS AMD Athlon Silver 3050U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: AMD Athlon. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 460 EUR. Price converted from EUR ~ INR 50,600 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "60k ke andar coding ke liye laptop",
+      "data": {
+        "query": "60k ke andar coding ke liye laptop",
+        "response": "### Top Recommendation\n**ASUS ExpertBook B1 B1502CBA-EJ043",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0273",
+            "product_id": "lp_0273",
+            "title": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 50500,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 14,
+            "image": "",
+            "description": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" is a laptop by HP. Processor: N6000. It has 8 GB RAM and 128 GB eMMC storage. The screen is 14 inches. Listed price: 459 EUR. Price converted from EUR ~ INR 50,500 (estimated conversion)."
+          },
+          {
+            "id": "lp_0140",
+            "product_id": "lp_0140",
+            "title": "ASUS Chromebook CX1400FKA-EC0078 Intel Celeron N4500/8GB/64GB eMMC/14\" Táctil",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 49400,
+            "ram_gb": 8,
+            "storage_gb": 64,
+            "screen_in": 14,
+            "image": "",
+            "description": "ASUS Chromebook CX1400FKA-EC0078 Intel Celeron N4500/8GB/64GB eMMC/14\" Táctil is a laptop by ASUS. Processor: Celeron N4500. It has 8 GB RAM and 64 GB eMMC storage. The screen is 14 inches, touchscreen. Listed price: 449 EUR. Price converted from EUR ~ INR 49,400 (estimated conversion)."
+          },
+          {
+            "id": "lp_0499",
+            "product_id": "lp_0499",
+            "title": "HP ChromeBook 14b-na0013ns AMD Athlon Silver 3050C/4GB/64GB eMMC/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 46100,
+            "ram_gb": 4,
+            "storage_gb": 64,
+            "screen_in": 14,
+            "image": "",
+            "description": "HP ChromeBook 14b-na0013ns AMD Athlon Silver 3050C/4GB/64GB eMMC/14\" is a laptop by HP. Processor: AMD Athlon. It has 4 GB RAM and 64 GB eMMC storage. The screen is 14 inches. Listed price: 419 EUR. Price converted from EUR ~ INR 46,100 (estimated conversion)."
+          },
+          {
+            "id": "lp_1283",
+            "product_id": "lp_1283",
+            "title": "Lenovo IdeaPad 1 14ADA7 AMD 3020e/4GB/256GB SSD/14\"",
+            "brand": "Lenovo",
+            "category": "laptop",
+            "price": 46400,
+            "ram_gb": 4,
+            "storage_gb": 256,
+            "screen_in": 14,
+            "image": "",
+            "description": "Lenovo IdeaPad 1 14ADA7 AMD 3020e/4GB/256GB SSD/14\" is a laptop by Lenovo. Processor: AMD 3020e. It has 4 GB RAM and 256 GB SSD storage. The screen is 14 inches. Listed price: 422 EUR. Price converted from EUR ~ INR 46,400 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "best phone under 30000 for gaming",
+      "data": {
+        "query": "best phone under 30000 for gaming",
+        "response": "### Top Recommendation\n**Edge 50 Fusion 128GB** [ph_0140] - INR29,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 128 GB storage\n- Processor/Screen: Snapdragon 7 Gen 1, 6.7 inches (AM-OLED 144 Hz)\n\n### Why Recommended & Comparison\n- This phone is the best fit for gaming because it features a Snapdragon 7 Gen 1 processor and a 144 Hz AM-OLED screen, offering stronger performance and a smoother display than the other options.\n- The Motorola Edge 50 Lite 256GB [ph_0147] has more storage (256 GB) and 8 GB RAM, but uses a slower Snapdragon 695 processor.\n- The Tecno models (Camon 30 128GB [ph_0220], Camon 20 128GB [ph_0234], and Camon 20 Pro 128GB [ph_0233]) are limited to 6 GB RAM, 128 GB storage, and a MediaTek Helio G99 processor.",
+        "filters": {
+          "category": "phone",
+          "max_price": 30000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0220",
+            "product_id": "ph_0220",
+            "title": "Camon 30 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 30 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0147",
+            "product_id": "ph_0147",
+            "title": "Edge 50 Lite 256GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Edge 50 Lite 256GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Snapdragon 695. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 64MP, front 32MP. Weight: 170 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0234",
+            "product_id": "ph_0234",
+            "title": "Camon 20 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0233",
+            "product_id": "ph_0233",
+            "title": "Camon 20 Pro 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 Pro 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 198 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0140",
+            "product_id": "ph_0140",
+            "title": "Edge 50 Fusion 128GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/motorola_edge_50_fusion_2024.jpg",
+            "description": "Edge 50 Fusion 128GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 128 GB storage. Processor: Snapdragon 7 Gen 1. The screen is 6.7 inches (AM-OLED 144 Hz). Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 168 g. Launch price: INR 29,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "best phone under 30000 for gaming",
+      "data": {
+        "query": "best phone under 30000 for gaming",
+        "response": "### Top Recommendation\n**Edge 50 Fusion 128GB** [ph_0140] - INR29,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 128 GB storage\n- Processor/Screen: Snapdragon 7 Gen 1, 6.7 inches (AM-OLED 144 Hz)\n\n### Why Recommended & Comparison\n- This phone is the best fit for gaming because it features a Snapdragon 7 Gen 1 processor and a 144 Hz AM-OLED screen, offering stronger performance and a smoother display than the other options.\n- The Motorola Edge 50 Lite 256GB [ph_0147] has more storage (256 GB) and 8 GB RAM, but uses a slower Snapdragon 695 processor.\n- The Tecno Camon 30 128GB [ph_0220], Tecno Camon 20 128GB [ph_0234], and Tecno Camon 20 Pro 128GB [ph_0233] all have less RAM (6 GB) and lower-tier MediaTek Helio G99 processors.",
+        "filters": {
+          "category": "phone",
+          "max_price": 30000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0220",
+            "product_id": "ph_0220",
+            "title": "Camon 30 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 30 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0147",
+            "product_id": "ph_0147",
+            "title": "Edge 50 Lite 256GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Edge 50 Lite 256GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Snapdragon 695. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 64MP, front 32MP. Weight: 170 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0234",
+            "product_id": "ph_0234",
+            "title": "Camon 20 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0233",
+            "product_id": "ph_0233",
+            "title": "Camon 20 Pro 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 Pro 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 198 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0140",
+            "product_id": "ph_0140",
+            "title": "Edge 50 Fusion 128GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/motorola_edge_50_fusion_2024.jpg",
+            "description": "Edge 50 Fusion 128GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 128 GB storage. Processor: Snapdragon 7 Gen 1. The screen is 6.7 inches (AM-OLED 144 Hz). Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 168 g. Launch price: INR 29,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "best phone under 30000 for gaming",
+      "data": {
+        "query": "best phone under 30000 for gaming",
+        "response": "### Top Recommendation\n**Edge 50 Fusion 128GB** [ph_0140] - INR29,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 128 GB storage\n- Processor/Screen: Processor: Snapdragon 7 Gen 1. The screen is 6.7 inches (AM-OLED 144 Hz).\n\n### Why Recommended & Comparison\n- This phone is the best fit for gaming in this price range because it features the stronger Snapdragon 7 Gen 1 processor and a high refresh rate 144 Hz AM-OLED screen compared to the other options.\n- The Motorola Edge 50 Lite 256GB [ph_0147] offers more storage (256 GB) and 8 GB RAM with a Snapdragon 695 processor, but lacks the higher refresh rate screen of the Fusion model.\n- The Tecno options (Camon 30 128GB [ph_0220], Camon 20 128GB [ph_0234], and Camon 20 Pro 128GB [ph_0233]) are limited to 6 GB RAM and use the lower-performing MediaTek Helio G99 processor.",
+        "filters": {
+          "category": "phone",
+          "max_price": 30000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0220",
+            "product_id": "ph_0220",
+            "title": "Camon 30 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 30 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0147",
+            "product_id": "ph_0147",
+            "title": "Edge 50 Lite 256GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Edge 50 Lite 256GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Snapdragon 695. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 64MP, front 32MP. Weight: 170 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0234",
+            "product_id": "ph_0234",
+            "title": "Camon 20 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 195 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0233",
+            "product_id": "ph_0233",
+            "title": "Camon 20 Pro 128GB",
+            "brand": "Tecno",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 6,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Camon 20 Pro 128GB by Tecno is a smartphone launched in 2024. It has 6 GB RAM and 128 GB storage. Processor: MediaTek Helio G99. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 198 g. Launch price: INR 29,999."
+          },
+          {
+            "id": "ph_0140",
+            "product_id": "ph_0140",
+            "title": "Edge 50 Fusion 128GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 29999,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/motorola_edge_50_fusion_2024.jpg",
+            "description": "Edge 50 Fusion 128GB by Motorola is a smartphone launched in 2024. It has 8 GB RAM and 128 GB storage. Processor: Snapdragon 7 Gen 1. The screen is 6.7 inches (AM-OLED 144 Hz). Battery: 5000 mAh. Cameras: rear 50MP, front 32MP. Weight: 168 g. Launch price: INR 29,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "laptop under 60000 for coding",
+      "data": {
+        "query": "laptop under 60000 for coding",
+        "response": "### Top Recommendation\n**HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"** [lp_1219] - INR59,300 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 256 GB SSD storage\n- Processor/Screen: Processor: Ryzen 5 5625U / 15.6 inches\n\n### Why Recommended & Comparison\n- This laptop fits the budget of under INR 60,000 and offers a solid AMD Ryzen 5 processor and 8 GB RAM, making it the most suitable choice among the options for coding tasks.\n- Compared to the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_1017], it features a stronger multi-core processor for development work while staying slightly under the budget limit at INR59,300.\n- Compared to lower-tier options like the HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" [lp_0273], HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" [lp_0858], and ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" [lp_0299], this model provides significantly better processing capability and standard SSD storage.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1219",
+            "product_id": "lp_1219",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 59300,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 539 EUR. Price converted from EUR ~ INR 59,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0273",
+            "product_id": "lp_0273",
+            "title": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 50500,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 14,
+            "image": "",
+            "description": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" is a laptop by HP. Processor: N6000. It has 8 GB RAM and 128 GB eMMC storage. The screen is 14 inches. Listed price: 459 EUR. Price converted from EUR ~ INR 50,500 (estimated conversion)."
+          },
+          {
+            "id": "lp_0858",
+            "product_id": "lp_0858",
+            "title": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" is a laptop by HP. Processor: AMD 3020e. It has 4 GB RAM and 128 GB SSD storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0299",
+            "product_id": "lp_0299",
+            "title": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 8,
+            "storage_gb": 64,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" is a laptop by ASUS. Processor: Celeron N4500. It has 8 GB RAM and 64 GB eMMC storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "laptop under 60000 for coding",
+      "data": {
+        "query": "laptop under 60000 for coding",
+        "response": "### Top Recommendation\n**HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"** [lp_1219] - INR59,300 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 256 GB SSD storage\n- Processor/Screen: Processor: Ryzen 5 5625U / 15.6 inches\n\n### Why Recommended & Comparison\n- This laptop fits the budget strictly and offers an AMD Ryzen 5 processor, which is better suited for coding workloads compared to the lower-tier processors in the other options.\n- Compared to the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_1017] (INR60,000), it is slightly more affordable while providing a robust Ryzen 5 processor.\n- Compared to the HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" [lp_0273] (INR50,500), ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" [lp_0299] (INR42,000), and HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" [lp_0858] (INR42,000), it features a significantly stronger processor and sufficient SSD storage ideal for development tasks.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1219",
+            "product_id": "lp_1219",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 59300,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 539 EUR. Price converted from EUR ~ INR 59,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0273",
+            "product_id": "lp_0273",
+            "title": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 50500,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 14,
+            "image": "",
+            "description": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" is a laptop by HP. Processor: N6000. It has 8 GB RAM and 128 GB eMMC storage. The screen is 14 inches. Listed price: 459 EUR. Price converted from EUR ~ INR 50,500 (estimated conversion)."
+          },
+          {
+            "id": "lp_0858",
+            "product_id": "lp_0858",
+            "title": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" is a laptop by HP. Processor: AMD 3020e. It has 4 GB RAM and 128 GB SSD storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0299",
+            "product_id": "lp_0299",
+            "title": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 8,
+            "storage_gb": 64,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" is a laptop by ASUS. Processor: Celeron N4500. It has 8 GB RAM and 64 GB eMMC storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "laptop under 60000 for coding",
+      "data": {
+        "query": "laptop under 60000 for coding",
+        "response": "### Top Recommendation\n**HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"** [lp_1219] - INR59,300 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 256 GB SSD storage\n- Processor/Screen: Processor: Ryzen 5 5625U / 15.6 inches\n\n### Why Recommended & Comparison\n- This laptop fits the budget strictly and offers an AMD Ryzen 5 processor, which is better suited for coding workloads compared to the entry-level processors found in the other options.\n- Compared to the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_1017], it features a stronger multi-core AMD Ryzen 5 processor while staying under the INR 60,000 budget at INR59,300.\n- Compared to the HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" [lp_0273], HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" [lp_0858], and ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" [lp_0299], it provides a more capable processor and standard Windows operating environment, making it a more practical choice for development tasks.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1219",
+            "product_id": "lp_1219",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 59300,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 539 EUR. Price converted from EUR ~ INR 59,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0273",
+            "product_id": "lp_0273",
+            "title": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 50500,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 14,
+            "image": "",
+            "description": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" is a laptop by HP. Processor: N6000. It has 8 GB RAM and 128 GB eMMC storage. The screen is 14 inches. Listed price: 459 EUR. Price converted from EUR ~ INR 50,500 (estimated conversion)."
+          },
+          {
+            "id": "lp_0858",
+            "product_id": "lp_0858",
+            "title": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" is a laptop by HP. Processor: AMD 3020e. It has 4 GB RAM and 128 GB SSD storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0299",
+            "product_id": "lp_0299",
+            "title": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 8,
+            "storage_gb": 64,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" is a laptop by ASUS. Processor: Celeron N4500. It has 8 GB RAM and 64 GB eMMC storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "best phone under 50000 for university use",
+      "data": {
+        "query": "best phone under 50000 for university use",
+        "response": "### Top Recommendation\n**Edge 512GB** [ph_0171] - INR49,999\n\n### Key Specifications\n- Battery: 4700 mAh\n- RAM & Storage: 12 GB RAM and 512 GB storage\n- Processor/Screen: Snapdragon 7s Gen 2 / 6.7 inches\n\n### Why Recommended & Comparison\n- This phone is best for university use because it offers the highest RAM (12 GB) and largest storage (512 GB) among all options in this budget, ensuring smooth multitasking for academic apps and plenty of space for documents and media.\n- Compared to the Oppo Reno12 256GB [ph_0043], Oppo A5 Pro 256GB [ph_0046], Oppo F27 256GB [ph_0060], and Oppo A80 256GB [ph_0048], which all feature only 8 GB RAM and lower storage capacities, this Motorola model delivers superior performance headroom for the same price of INR49,999 (except the A80 which is INR44,999).\n- While the Oppo models offer larger battery capacities ranging from 5000 mAh to 6000 mAh, the Motorola Edge 512GB [ph_0171] balances its 4700 mAh battery with a more powerful processor and double the storage capacity, making it a more future-proof choice for students.",
+        "filters": {
+          "category": "phone",
+          "max_price": 50000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0043",
+            "product_id": "ph_0043",
+            "title": "Reno12 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 49999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/oppo_reno12_5g_3.jpg",
+            "description": "Reno12 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7050. The screen is 6.7 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP + 8MP, front 32MP. Weight: 185 g. Launch price: INR 49,999."
+          },
+          {
+            "id": "ph_0046",
+            "product_id": "ph_0046",
+            "title": "A5 Pro 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 49999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "A5 Pro 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Dimensity 7300. The screen is 6.7 inches. Battery: 6000 mAh. Cameras: rear 50MP + 2MP, front 16MP. Weight: 180 g. Launch price: INR 49,999."
+          },
+          {
+            "id": "ph_0171",
+            "product_id": "ph_0171",
+            "title": "Edge 512GB",
+            "brand": "Motorola",
+            "category": "phone",
+            "price": 49999,
+            "ram_gb": 12,
+            "storage_gb": 512,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "Edge 512GB by Motorola is a smartphone launched in 2024. It has 12 GB RAM and 512 GB storage. Processor: Snapdragon 7s Gen 2. The screen is 6.7 inches. Battery: 4700 mAh. Cameras: rear 50MP, front 32MP. Weight: 174 g. Launch price: INR 49,999."
+          },
+          {
+            "id": "ph_0060",
+            "product_id": "ph_0060",
+            "title": "F27 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 47999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "",
+            "description": "F27 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Dimensity 7050. The screen is 6.7 inches. Battery: 5000 mAh. Cameras: rear 64MP + 2MP, front 32MP. Weight: 175 g. Launch price: INR 47,999."
+          },
+          {
+            "id": "ph_0048",
+            "product_id": "ph_0048",
+            "title": "A80 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 44999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "",
+            "description": "A80 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Dimensity 6300. The screen is 6.67 inches. Battery: 5100 mAh. Cameras: rear 50MP + 2MP, front 8MP. Weight: 186 g. Launch price: INR 44,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "Why is the Oppo Reno12 256GB a good choice compared to the other options?",
+      "data": {
+        "query": "Why is the Oppo Reno12 256GB a good choice compared to the other options?",
+        "response": "### Top Recommendation\n**Oppo Reno12 256GB** [ph_0043] - INR49,999\n\n### Key Specifications\n- Battery: 5000 mAh\n- RAM & Storage: 8 GB RAM and 256 GB storage\n- Processor/Screen: MediaTek Dimensity 7050 / 6.7 inches (AM-OLED 120 Hz)\n\n### Why Recommended & Comparison\n- The Oppo Reno12 256GB [ph_0043] offers a strong balance of performance and display quality with its MediaTek Dimensity 7050 processor and 120 Hz AM-OLED screen, positioning itself comfortably in the mid-range of the current lineup.\n- Compared to the lower-priced Oppo Reno12 F 256GB [ph_0041] and Oppo Reno12 F 4G 256GB [ph_0040] (both priced at INR39,999 with a Snapdragon 685 processor), this model features a superior MediaTek Dimensity 7050 processor for better performance.\n- Compared to the newer Oppo Reno13 F 256GB [ph_0037] (INR44,999 with a MediaTek Helio G100) and Oppo Reno13 256GB [ph_0039] (INR54,999 with 12 GB RAM), it provides a distinct alternative depending on your processing and budget preferences.",
+        "filters": {
+          "brand": "Oppo",
+          "storage_gb": 256.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "ph_0043",
+            "product_id": "ph_0043",
+            "title": "Reno12 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 49999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/oppo_reno12_5g_3.jpg",
+            "description": "Reno12 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 7050. The screen is 6.7 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP + 8MP, front 32MP. Weight: 185 g. Launch price: INR 49,999."
+          },
+          {
+            "id": "ph_0041",
+            "product_id": "ph_0041",
+            "title": "Reno12 F 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 39999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/oppo_reno12_f_5g_2024.jpg",
+            "description": "Reno12 F 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Snapdragon 685. The screen is 6.7 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP + 8MP + 2MP, front 32MP. Weight: 187 g. Launch price: INR 39,999."
+          },
+          {
+            "id": "ph_0040",
+            "product_id": "ph_0040",
+            "title": "Reno12 F 4G 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 39999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.7,
+            "image": "https://phonedb.net/img/oppo_reno12_f_5g_2024.jpg",
+            "description": "Reno12 F 4G 256GB by Oppo is a smartphone launched in 2024. It has 8 GB RAM and 256 GB storage. Processor: Snapdragon 685. The screen is 6.7 inches (AM-OLED 120 Hz). Battery: 5000 mAh. Cameras: rear 50MP + 8MP + 2MP, front 32MP. Weight: 187 g. Launch price: INR 39,999."
+          },
+          {
+            "id": "ph_0039",
+            "product_id": "ph_0039",
+            "title": "Reno13 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 54999,
+            "ram_gb": 12,
+            "storage_gb": 256,
+            "screen_in": 6.59,
+            "image": "https://phonedb.net/img/oppo_reno13_5g_5.jpg",
+            "description": "Reno13 256GB by Oppo is a smartphone launched in 2025. It has 12 GB RAM and 256 GB storage. Processor: MediaTek Dimensity 8350. The screen is 6.59 inches (AM-OLED 120 Hz). Battery: 5600 mAh. Cameras: rear 50MP + 8MP, front 50MP. Weight: 200 g. Launch price: INR 54,999."
+          },
+          {
+            "id": "ph_0037",
+            "product_id": "ph_0037",
+            "title": "Reno13 F 256GB",
+            "brand": "Oppo",
+            "category": "phone",
+            "price": 44999,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 6.67,
+            "image": "https://phonedb.net/img/oppo_reno13_f_4g.jpg",
+            "description": "Reno13 F 256GB by Oppo is a smartphone launched in 2025. It has 8 GB RAM and 256 GB storage. Processor: MediaTek Helio G100. The screen is 6.67 inches (AM-OLED 120 Hz). Battery: 5800 mAh. Cameras: rear 50MP + 8MP + 2MP, front 32MP. Weight: 192 g. Launch price: INR 44,999."
+          }
+        ]
+      }
+    },
+    {
+      "q": "laptop under 60000 for coding",
+      "data": {
+        "query": "laptop under 60000 for coding",
+        "response": "### Top Recommendation\n**HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"** [lp_1219] - INR59,300 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 256 GB SSD storage\n- Processor/Screen: Processor: Ryzen 5 5625U / 15.6 inches\n\n### Why Recommended & Comparison\n- This laptop fits the coding requirement best within the budget due to its stronger AMD Ryzen 5 5625U processor and solid 8 GB RAM and 256 GB SSD configuration.\n- Compared to the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_1017], it features a higher-performing Ryzen 5 processor while staying just under the INR60,000 budget at INR59,300 (converted estimate from EUR).\n- Compared to lower-tier options like the HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" [lp_0273], HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" [lp_0858], and ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" [lp_0299], it offers a vastly superior processor and storage setup better suited for coding tasks.",
+        "filters": {
+          "category": "laptop",
+          "max_price": 60000.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 60000,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_1219",
+            "product_id": "lp_1219",
+            "title": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 59300,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 255 G9 AMD Ryzen 5 5625U/8GB/256GB SSD/15.6\" is a laptop by HP. Processor: Ryzen 5 5625U. It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 539 EUR. Price converted from EUR ~ INR 59,300 (estimated conversion)."
+          },
+          {
+            "id": "lp_0273",
+            "product_id": "lp_0273",
+            "title": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 50500,
+            "ram_gb": 8,
+            "storage_gb": 128,
+            "screen_in": 14,
+            "image": "",
+            "description": "HP ChromeBook 14a-na1009ns Intel Pentium Silver N6000/8GB/128GB eMMC/14\" is a laptop by HP. Processor: N6000. It has 8 GB RAM and 128 GB eMMC storage. The screen is 14 inches. Listed price: 459 EUR. Price converted from EUR ~ INR 50,500 (estimated conversion)."
+          },
+          {
+            "id": "lp_0858",
+            "product_id": "lp_0858",
+            "title": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\"",
+            "brand": "HP",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 4,
+            "storage_gb": 128,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "HP 15S-EQ1160NS AMD 3020e/4GB/128GB SSD/15.6\" is a laptop by HP. Processor: AMD 3020e. It has 4 GB RAM and 128 GB SSD storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0299",
+            "product_id": "lp_0299",
+            "title": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 42000,
+            "ram_gb": 8,
+            "storage_gb": 64,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS Chromebook CX1500CKA-EJ0181 Intel Celeron N4500/8GB/64GB eMMC/15.6\" is a laptop by ASUS. Processor: Celeron N4500. It has 8 GB RAM and 64 GB eMMC storage. The screen is 15.6 inches. Listed price: 382 EUR. Price converted from EUR ~ INR 42,000 (estimated conversion)."
+          }
+        ]
+      }
+    },
+    {
+      "q": "Why is the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" a good choice compared to the other options?",
+      "data": {
+        "query": "Why is the ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" a good choice compared to the other options?",
+        "response": "### Top Recommendation\n**ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"** [lp_1017] - INR60,000 (converted estimate from EUR)\n\n### Key Specifications\n- Battery: not listed\n- RAM & Storage: 8 GB RAM and 256 GB SSD storage\n- Processor/Screen: Intel Core i3-1215U (Intel generation 12) / 15.6 inches\n\n### Why Recommended & Comparison\n- The ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_1017] offers a balanced mid-range price point of INR60,000 (converted estimate from EUR) while providing the same solid core specifications (8 GB RAM, 256 GB SSD, 15.6-inch screen, and i3-1215U processor) found in other i3 variants.\n- Compared to the ASUS ExpertBook B1 B1502CBA-EJ0433 Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_0847], which is priced at INR49,100 (converted estimate from EUR), it is slightly more expensive, but it is much more affordable than the ASUS ExpertBook B1 B1502CBA-EJ0424X Intel Core i3-1215U/8GB/256GB SSD/15.6\" [lp_0003] at INR86,800 (converted estimate from EUR) despite sharing identical hardware specifications.\n- Compared to the higher-tier i5 options like the ASUS ExpertBook B1 B1502CBA-EJ0436X Intel Core i5-1235U/8GB/512GB SSD/15.6\" [lp_0001] at INR111,000 (converted estimate from EUR) and the ASUS ExpertBook B1 B1502CBA-EJ0469X Intel Core i5-1235U/8GB/256GB SSD/15.6\" [lp_0102] at INR108,800 (converted estimate from EUR), this model provides a significantly lower cost while maintaining the same 8 GB RAM and reliable 15.6-inch display.",
+        "filters": {
+          "brand": "ASUS",
+          "storage_gb": 256.0,
+          "include_legacy": false
+        },
+        "matches": [
+          {
+            "id": "lp_1017",
+            "product_id": "lp_1017",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": "60000.0",
+            "ram_gb": "8.0",
+            "storage_gb": "256.0",
+            "screen_in": "15.6",
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433W Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 545 EUR. Price converted from EUR ~ INR 60,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0847",
+            "product_id": "lp_0847",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0433 Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 49100,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0433 Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 446 EUR. Price converted from EUR ~ INR 49,100 (estimated conversion)."
+          },
+          {
+            "id": "lp_0003",
+            "product_id": "lp_0003",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0424X Intel Core i3-1215U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 86800,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0424X Intel Core i3-1215U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i3-1215U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 789 EUR. Price converted from EUR ~ INR 86,800 (estimated conversion)."
+          },
+          {
+            "id": "lp_0001",
+            "product_id": "lp_0001",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0436X Intel Core i5-1235U/8GB/512GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 111000,
+            "ram_gb": 8,
+            "storage_gb": 512,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0436X Intel Core i5-1235U/8GB/512GB SSD/15.6\" is a laptop by ASUS. Processor: i5-1235U (Intel generation 12). It has 8 GB RAM and 512 GB SSD storage. The screen is 15.6 inches. Listed price: 1009 EUR. Price converted from EUR ~ INR 111,000 (estimated conversion)."
+          },
+          {
+            "id": "lp_0102",
+            "product_id": "lp_0102",
+            "title": "ASUS ExpertBook B1 B1502CBA-EJ0469X Intel Core i5-1235U/8GB/256GB SSD/15.6\"",
+            "brand": "ASUS",
+            "category": "laptop",
+            "price": 108800,
+            "ram_gb": 8,
+            "storage_gb": 256,
+            "screen_in": 15.6,
+            "image": "",
+            "description": "ASUS ExpertBook B1 B1502CBA-EJ0469X Intel Core i5-1235U/8GB/256GB SSD/15.6\" is a laptop by ASUS. Processor: i5-1235U (Intel generation 12). It has 8 GB RAM and 256 GB SSD storage. The screen is 15.6 inches. Listed price: 989 EUR. Price converted from EUR ~ INR 108,800 (estimated conversion)."
+          }
+        ]
+      }
+    }
+  ]
+}

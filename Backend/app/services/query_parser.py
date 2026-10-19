@@ -10,21 +10,61 @@ BRANDS = [
     "gizmore", "honor", "ambrane", "crossbeats", "fastrack", "lcare", "ptron"
 ]
 
+BRAND_DISPLAY = {"boat": "boAt", "hp": "HP", "asus": "ASUS", "msi": "MSI", "lg": "LG", "ptron": "pTron",
+                 "iqoo": "iQOO", "oneplus": "OnePlus"}
+
 CATEGORY_KEYWORDS = {
     "phone": ["phone", "phones", "mobile", "mobiles", "smartphone", "smartphones", "iphone"],
     "laptop": ["laptop", "laptops", "notebook", "notebooks", "macbook"],
     "smartwatch": ["smartwatch", "smartwatches", "watch", "watches", "fitness tracker", "band"]
 }
 
+# Number words: English + Hinglish
+UNITS = {"k": 1_000, "thousand": 1_000, "hazaar": 1_000, "hazar": 1_000, "hajar": 1_000,
+         "lakh": 100_000, "lakhs": 100_000, "lac": 100_000, "lacs": 100_000}
+_UNIT_RE = "|".join(sorted(UNITS, key=len, reverse=True))
+
+_CUR = r"(?:rs\.?|inr|₹)?\s*"
+# number + optional unit; the lookahead stops "16gb ram" / "5000mah" being read as a price
+_AMT = (r"(\d+(?:\.\d+)?)(?:\s*(" + _UNIT_RE + r")\b)?"
+        r"(?![\d.]|\s*(?:gb|tb|mah|mp|mm|inch|hz|days?|hours?|hrs?|weeks?|months?|years?|mins?|minutes?)\b)")
+
+_MAX_BEFORE = re.compile(
+    r"(?:under|below|less than|within|upto|up to|max|maximum|not more than|budget of|budget)\s*" + _CUR + _AMT)
+_MAX_AFTER = re.compile(
+    _CUR + _AMT + r"\s*(?:ke andar|ke ander|ke niche|se kam|tak|or less|and below)\b")
+_MIN_BEFORE = re.compile(
+    r"(?:above|over|more than|at least|minimum|min|starting from)\s*" + _CUR + _AMT)
+_MIN_AFTER = re.compile(
+    _CUR + _AMT + r"\s*(?:se upar|se zyada|se jyada|or more|and above|plus)\b")
+
+
+def _to_inr(num: str, unit: str | None) -> float:
+    val = float(num)
+    if unit:
+        return val * UNITS[unit]
+    # bare small number like "under 50" is shorthand for thousands
+    return val * 1000 if val < 1000 else val
+
+
+def _first_amount(patterns, text):
+    for pat in patterns:
+        m = pat.search(text)
+        if m:
+            return _to_inr(m.group(1), m.group(2))
+    return None
+
+
 def parse_query(message: str) -> dict:
-    msg_lower = message.lower()
+    # lowercase and strip thousands separators: "25,000" -> "25000"
+    msg_lower = re.sub(r"(?<=\d),(?=\d)", "", message.lower())
     filters = {}
 
     # Category extraction
     detected_categories = []
     for cat, keywords in CATEGORY_KEYWORDS.items():
         for kw in keywords:
-            if re.search(r'\b' + re.escape(kw) + r'\b', msg_lower):
+            if re.search(r"\b" + re.escape(kw) + r"\b", msg_lower):
                 detected_categories.append(cat)
                 break
 
@@ -33,71 +73,45 @@ def parse_query(message: str) -> dict:
     elif len(detected_categories) > 1:
         filters["categories"] = detected_categories
 
-    # Budget extraction (max price)
-    max_price_match = re.search(r"(?:under|below|less than|within|upto|up to|max|budget of)\s*(?:rs\.?|inr|₹)?\s*(\d+)\s*(k|thousand|lakh)?", msg_lower)
-    if max_price_match:
-        val = float(max_price_match.group(1))
-        unit = max_price_match.group(2)
-        if unit in ["k", "thousand"]:
-            val *= 1000
-        elif unit == "lakh":
-            val *= 100000
-        elif val < 1000 and "k" not in msg_lower and "lakh" not in msg_lower:
-            # Handle e.g. "under 50k" vs "under 50000"
-            val *= 1000
-        filters["max_price"] = val
-
-    # Min price extraction
-    min_price_match = re.search(r"(?:above|over|more than|at least|starting from)\s*(?:rs\.?|inr|₹)?\s*(\d+)\s*(k|thousand|lakh)?", msg_lower)
-    if min_price_match:
-        val = float(min_price_match.group(1))
-        unit = min_price_match.group(2)
-        if unit in ["k", "thousand"]:
-            val *= 1000
-        elif unit == "lakh":
-            val *= 100000
-        elif val < 1000:
-            val *= 1000
-        filters["min_price"] = val
+    # Budget (max) and minimum price - English and Hinglish
+    max_price = _first_amount((_MAX_BEFORE, _MAX_AFTER), msg_lower)
+    if max_price is not None:
+        filters["max_price"] = max_price
+    min_price = _first_amount((_MIN_BEFORE, _MIN_AFTER), msg_lower)
+    if min_price is not None:
+        filters["min_price"] = min_price
 
     # Brand extraction
     for brand in BRANDS:
-        pattern = r'\b' + re.escape(brand) + r'\b'
-        if re.search(pattern, msg_lower):
-            # Normalize display brand name
-            if brand == "boat":
-                filters["brand"] = "boAt"
-            elif brand == "hp":
-                filters["brand"] = "HP"
-            elif brand == "asus":
-                filters["brand"] = "ASUS"
-            elif brand == "msi":
-                filters["brand"] = "MSI"
-            elif brand == "lg":
-                filters["brand"] = "LG"
-            elif brand == "ptron":
-                filters["brand"] = "pTron"
-            else:
-                filters["brand"] = brand.capitalize()
+        if re.search(r"\b" + re.escape(brand) + r"\b", msg_lower):
+            # "nothing" is a common word: count it as a brand only in "nothing phone"
+            if brand == "nothing" and not re.search(r"\bnothing\s+(?:phone|cmf|ear)", msg_lower):
+                continue
+            filters["brand"] = BRAND_DISPLAY.get(brand, brand.capitalize())
             break
 
-    # RAM extraction
-    ram_match = re.search(r"(\d+)\s*gb\s*ram", msg_lower)
-    if ram_match:
-        filters["ram_gb"] = float(ram_match.group(1))
-
-    # Storage extraction
-    storage_match = re.search(r"(\d+)\s*(?:gb|tb)\s*(?:ssd|storage|rom)?", msg_lower)
-    if storage_match and "ram" not in storage_match.group(0):
-        val = float(storage_match.group(1))
-        if "tb" in storage_match.group(0):
+    # RAM and storage: read every "<n> gb/tb [ram|ssd|storage|rom]" mention
+    for m in re.finditer(r"(\d+(?:\.\d+)?)\s*(gb|tb)\b(?:\s*(ram|ssd|hdd|storage|rom))?", msg_lower):
+        val = float(m.group(1))
+        if m.group(2) == "tb":
             val *= 1024
-        filters["storage_gb"] = val
+        kind = m.group(3)
+        if kind == "ram":
+            filters["ram_gb"] = val
+        elif kind in ("ssd", "hdd", "storage", "rom") or m.group(2) == "tb":
+            filters["storage_gb"] = val
+        elif val >= 64 and "storage_gb" not in filters:
+            filters["storage_gb"] = val  # bare "128gb" is storage
+    ram_first = re.search(r"\bram\s*(?:of\s*)?(\d+(?:\.\d+)?)\s*gb", msg_lower)  # "ram 16gb"
+    if ram_first and "ram_gb" not in filters:
+        filters["ram_gb"] = float(ram_first.group(1))
 
     # Legacy smartwatches: exclude discontinued lines unless explicitly requested
-    if "legacy" in msg_lower or "discontinued" in msg_lower or "old" in msg_lower:
-        filters["include_legacy"] = True
-    else:
-        filters["include_legacy"] = False
+    filters["include_legacy"] = bool(re.search(r"\b(legacy|discontinued|old)\b", msg_lower))
 
     return filters
+
+
+def parse_budget(query: str):
+    """Compatibility helper: max budget in INR, or None."""
+    return parse_query(query).get("max_price")
