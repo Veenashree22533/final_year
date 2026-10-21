@@ -9,7 +9,37 @@ const TOP_K = 5 // rag_pipeline.py: products sent to the LLM
 const DWELL = 800 // ms the query rests on a node
 const TRAVEL = 1000 // ms the query takes to travel along a line
 
-const money = (n) => '₹' + Number(n).toLocaleString('en-IN')
+// Live numbers shown on the database stickers. Change these to match your data.
+const CATALOG = {
+  csvRows: 2554, // rows in the catalog CSV
+  pineconeCount: 2554, // vectors in the Pinecone index
+  mongoCount: 2554, // documents in MongoDB Atlas
+  dim: 384, // ASSUMPTION: embedding size of your Sentence Transformer
+  metric: 'cosine', // ASSUMPTION: Pinecone index metric
+  candidates: TOP_K * 4, // retriever asks Pinecone for 4x more than needed
+}
+
+const fmt = (n) => Number(n).toLocaleString('en-IN')
+const money = (n) => '₹' + fmt(n)
+
+/* ---------- Count-up hook for the live database numbers ---------- */
+
+function useCountUp(target, ms = 1100) {
+  const [v, setV] = useState(0)
+  useEffect(() => {
+    let raf
+    let start = null
+    const tick = (now) => {
+      if (start == null) start = now
+      const p = Math.min(1, (now - start) / ms)
+      setV(Math.round(target * (1 - Math.pow(1 - p, 3))))
+      if (p < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [target, ms])
+  return v
+}
 
 /* ---------- Device icons (phone / laptop / watch) ---------- */
 
@@ -55,27 +85,123 @@ function DeviceIcon({ cat, size = 18 }) {
   )
 }
 
+/* ---------- Tech-stack stickers ----------
+   Generic line icons (24x24 grid), not official logos. To use real logos,
+   replace a glyph with the brand's SVG paths. */
+
+const ICON = {
+  react: (
+    <>
+      <ellipse cx="12" cy="12" rx="10" ry="4" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+      <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+      <circle cx="12" cy="12" r="1.6" fill="#fff" />
+    </>
+  ),
+  bolt: <path d="M13 2L5 14h6l-1 8 8-12h-6z" />,
+  braces: (
+    <path d="M9 4c-2 0-3 1-3 3v2c0 1-1 3-2 3 1 0 2 2 2 3v2c0 2 1 3 3 3M15 4c2 0 3 1 3 3v2c0 1 1 3 2 3-1 0-2 2-2 3v2c0 2-1 3-3 3" />
+  ),
+  search: (
+    <>
+      <circle cx="11" cy="11" r="6" />
+      <path d="M16 16l5 5" />
+    </>
+  ),
+  bars: <path d="M4 14v6M8 8v12M12 11v9M16 4v16M20 9v11" />,
+  pine: <path d="M12 2l6 8h-3l5 7H4l5-7H6zM12 17v5" />,
+  sort: <path d="M7 4v16M7 4L4 7M7 4l3 3M17 20V4M17 20l-3-3M17 20l3-3" />,
+  shield: (
+    <>
+      <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" />
+      <path d="M8.5 12l2.5 2.5L16 9.5" />
+    </>
+  ),
+  leaf: <path d="M12 2c4 4 6 8 6 12a6 6 0 01-12 0c0-4 2-8 6-12zM12 14v8" />,
+  layers: <path d="M12 3l9 5-9 5-9-5zM3 12.5l9 5 9-5M3 17l9 5 9-5" />,
+  spark: <path d="M12 2c1 5 5 9 10 10-5 1-9 5-10 10-1-5-5-9-10-10 5-1 9-5 10-10z" />,
+  link: <path d="M10 14l4-4M8 12l-2 2a3.5 3.5 0 005 5l2-2M16 12l2-2a3.5 3.5 0 00-5-5l-2 2" />,
+  send: <path d="M21 3L3 11l7 3 3 7zM10 14L21 3" />,
+  server: (
+    <>
+      <rect x="3" y="4" width="18" height="6" rx="2" />
+      <rect x="3" y="14" width="18" height="6" rx="2" />
+      <path d="M7 7h.01M7 17h.01" />
+    </>
+  ),
+  table: (
+    <>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 10h18M3 15h18M9 4v16" />
+    </>
+  ),
+  ban: (
+    <>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M5.6 5.6l12.8 12.8" />
+    </>
+  ),
+}
+
+const BLUE = '#3d6fb5'
+// Which tech sticker sits on which diagram node
+const TECH = {
+  fe: { label: 'React', color: '#0e9ec2', icon: 'react' },
+  api: { label: 'FastAPI', color: '#059488', icon: 'bolt' },
+  parser: { label: 'Python regex', color: BLUE, icon: 'braces' },
+  lookup: { label: 'Python', color: BLUE, icon: 'search' },
+  embed: { label: 'Sentence-BERT', color: '#c9701f', icon: 'bars' },
+  pine: { label: 'Pinecone', color: '#2b6fe0', icon: 'pine' },
+  csv: { label: 'CSV · offline', color: '#6b7280', icon: 'table' },
+  rerank: { label: 'Python', color: BLUE, icon: 'sort' },
+  check: { label: 'Python', color: BLUE, icon: 'shield' },
+  mongo: { label: 'MongoDB Atlas', color: '#13a04b', icon: 'leaf' },
+  ctx: { label: 'Python', color: BLUE, icon: 'layers' },
+  llm: { label: 'Gemini API', color: '#6b5ce7', icon: 'spark' },
+  repair: { label: 'Python', color: BLUE, icon: 'link' },
+  resp: { label: 'React', color: '#0e9ec2', icon: 'send' },
+  nocat: { label: 'Abstain', color: '#d64545', icon: 'ban' },
+}
+
+function TechIcon({ id, size = 22 }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="#fff"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      {ICON[TECH[id].icon]}
+    </svg>
+  )
+}
+
 /* ---------- Diagram geometry ---------- */
 
-const W = 150
-const H = 70
+const W = 160
+const H = 80
 
 const NODES = {
-  fe: { n: 1, x: 60, y: 40, title: 'React frontend', sub: 'user query' },
-  api: { n: 2, x: 245, y: 40, title: 'FastAPI', sub: 'POST /chat/' },
-  parser: { n: 3, x: 430, y: 40, title: 'Query parser', sub: 'query_parser.py' },
-  lookup: { n: 4, x: 615, y: 40, title: 'Name lookup', sub: 'retriever.py' },
-  embed: { n: 5, x: 800, y: 40, title: 'Embed query', sub: 'Sentence Transformer' },
-  rerank: { n: 7, x: 985, y: 40, title: 'Budget re-rank', sub: 'retriever.py' },
-  pine: { n: 6, x: 870, y: 215, h: 80, kind: 'db', title: 'Pinecone', sub: 'vector search' },
-  csv: { x: 615, y: 215, h: 80, kind: 'db', offline: true, title: 'Catalog CSV', sub: '2,554 products' },
-  check: { n: 8, x: 985, y: 400, title: 'Abstain check', sub: 'score ≥ 0.35 ?' },
-  mongo: { n: 9, x: 800, y: 395, h: 80, kind: 'db', title: 'MongoDB Atlas', sub: 'product records' },
-  ctx: { n: 10, x: 615, y: 400, title: 'Build context', sub: 'top 5 products' },
-  llm: { n: 11, x: 430, y: 400, title: 'Gemini', sub: 'llm.py' },
-  repair: { n: 12, x: 245, y: 400, title: 'Repair IDs', sub: 'rag_pipeline.py' },
-  resp: { n: 13, x: 60, y: 400, title: 'Respond', sub: 'answer + cards' },
-  nocat: { n: '!', x: 985, y: 570, h: 50, title: 'Not in catalog', sub: 'abstain' },
+  fe: { n: 1, x: 40, y: 50, title: 'React frontend', sub: 'user query' },
+  api: { n: 2, x: 240, y: 50, title: 'FastAPI', sub: 'POST /chat/' },
+  parser: { n: 3, x: 440, y: 50, title: 'Query parser', sub: 'query_parser.py' },
+  lookup: { n: 4, x: 640, y: 50, title: 'Name lookup', sub: 'retriever.py' },
+  embed: { n: 5, x: 840, y: 50, title: 'Embed query', sub: 'embeddings.py' },
+  rerank: { n: 7, x: 1040, y: 50, title: 'Budget re-rank', sub: 'retriever.py' },
+  pine: { n: 6, x: 840, y: 215, h: 96, kind: 'db', title: 'Pinecone', sub: 'vector search' },
+  csv: { x: 640, y: 215, h: 96, kind: 'db', offline: true, title: 'Catalog CSV', sub: 'source of truth' },
+  check: { n: 8, x: 1040, y: 420, title: 'Abstain check', sub: 'score ≥ 0.35 ?' },
+  mongo: { n: 9, x: 840, y: 412, h: 96, kind: 'db', title: 'MongoDB', sub: 'product records' },
+  ctx: { n: 10, x: 640, y: 420, title: 'Build context', sub: 'top 5 products' },
+  llm: { n: 11, x: 440, y: 420, title: 'Gemini', sub: 'llm.py' },
+  repair: { n: 12, x: 240, y: 420, title: 'Repair IDs', sub: 'rag_pipeline.py' },
+  resp: { n: 13, x: 40, y: 420, title: 'Respond', sub: 'answer + cards' },
+  nocat: { n: '!', x: 1040, y: 590, h: 56, title: 'Not in catalog', sub: 'abstain' },
 }
 
 const geo = (id) => ({ x: NODES[id].x, y: NODES[id].y, w: W, h: NODES[id].h || H })
@@ -96,9 +222,9 @@ const EDGES = {
   'lookup-embed': line(pt('lookup', 'right'), pt('embed', 'left')),
   // bypass over “Name lookup” for budget queries
   'parser-embed': line(pt('parser', 'top'), [pt('parser', 'top')[0], 18], [pt('embed', 'top')[0], 18], pt('embed', 'top')),
-  'embed-pine': line(pt('embed', 'bottom', 25), pt('pine', 'top', -45)),
+  'embed-pine': line(pt('embed', 'bottom'), pt('pine', 'top')),
   'pine-rerank': elbow(pt('pine', 'right'), pt('rerank', 'bottom', -20)),
-  'rerank-check': line(pt('rerank', 'bottom', 50), pt('check', 'top', 50)),
+  'rerank-check': line(pt('rerank', 'bottom', 30), pt('check', 'top', 30)),
   'check-mongo': line(pt('check', 'left'), pt('mongo', 'right')),
   'mongo-ctx': line(pt('mongo', 'left'), pt('ctx', 'right')),
   'ctx-llm': line(pt('ctx', 'left'), pt('llm', 'right')),
@@ -108,7 +234,7 @@ const EDGES = {
   'nocat-resp': elbow(pt('nocat', 'left'), pt('resp', 'bottom')),
   // built offline, not part of a query
   'csv-pine': line(pt('csv', 'right'), pt('pine', 'left')),
-  'csv-mongo': line(pt('csv', 'bottom'), [pt('csv', 'bottom')[0], 350], [pt('mongo', 'top')[0], 350], pt('mongo', 'top')),
+  'csv-mongo': line(pt('csv', 'bottom', 50), [pt('csv', 'bottom', 50)[0], 380], [pt('mongo', 'top')[0], 380], pt('mongo', 'top')),
 }
 const OFFLINE = new Set(['csv-pine', 'csv-mongo'])
 
@@ -131,6 +257,18 @@ const PAYLOAD = {
   'nocat-resp': '“Not in our catalog”',
 }
 
+/* ---------- Pipeline stages (the big picture) ---------- */
+
+const PHASES = [
+  { key: 'request', label: 'Request', ids: ['fe', 'api'], what: 'Carry the shopper’s words from the browser to the server.' },
+  { key: 'understand', label: 'Understand', ids: ['parser', 'lookup'], what: 'Turn free text (English or Hinglish) into structured filters and spot named products.' },
+  { key: 'retrieve', label: 'Retrieve', ids: ['embed', 'pine'], what: 'Find the products whose meaning is closest to the query, inside the filters.' },
+  { key: 'rank', label: 'Rank & verify', ids: ['rerank', 'check'], what: 'Re-order by budget fit, then decide whether the evidence is strong enough to answer.' },
+  { key: 'generate', label: 'Fetch & generate', ids: ['mongo', 'ctx', 'llm', 'repair'], what: 'Pull full records, build the prompt context and let Gemini write a grounded answer.' },
+  { key: 'respond', label: 'Respond', ids: ['resp', 'nocat'], what: 'Send the answer and product cards back, or an honest “not in our catalog”.' },
+]
+const phaseOf = (id) => PHASES.find((p) => p.ids.includes(id))
+
 /* ---------- Step explanations ---------- */
 
 const INFO = {
@@ -138,71 +276,189 @@ const INFO = {
     title: 'User query',
     where: 'React frontend',
     text: 'The shopper types or speaks a query in English or Hinglish. The frontend sends it to the backend as POST /chat/ with { message }.',
+    use: 'Starts every request. Nothing is understood yet; the raw words are just sent on.',
   },
   api: {
     title: 'API request',
     where: 'FastAPI · main.py',
     text: 'FastAPI receives POST /chat/ and hands the message to the RAG pipeline (answer_query in rag_pipeline.py).',
+    use: 'The single door into the backend, so the browser never talks to Pinecone, MongoDB or Gemini directly.',
   },
   parser: {
     title: 'Parse the query',
     where: 'query_parser.py',
     text: 'Extracts category, brand, min/max price, RAM and storage. Understands Hinglish numbers (hazaar, lakh) and phrases (ke andar, tak, se upar). Durations such as “upto 21 days” are not read as budgets.',
+    use: 'Hard rules like price, brand and category work far better as exact filters than as fuzzy text.',
   },
   lookup: {
     title: 'Look up named products',
     where: 'retriever.py',
     text: 'If the query names a product (full or partial), those catalog entries are placed first. Skipped for budget queries. A model number the product lacks rules the match out.',
+    use: 'A product the shopper names must come first, even if its embedding is not the closest.',
   },
   embed: {
     title: 'Embed the query',
     where: 'embeddings.py · Sentence Transformer',
     text: 'The query text is turned into an embedding vector. Queries with similar meaning land near each other, which is what makes semantic search work.',
+    use: 'Lets the system search by meaning: “sasta phone” and “budget phone” end up close together.',
   },
   pine: {
     title: 'Vector search + hard filters',
     where: 'vector_services.py · Pinecone',
     text: 'Pinecone compares the query vector with the stored product vectors. The parsed filters are applied as metadata filters, so products that break a rule never get scored. It returns product IDs with similarity scores; the retriever asks for 4× more candidates than needed.',
+    use: `Finds the best matches among ${fmt(CATALOG.pineconeCount)} products without reading every record, and enforces the hard filters.`,
   },
   rerank: {
     title: 'Budget-aware re-rank',
     where: 'retriever.py',
     text: 'When there is a budget, products closer to the ceiling get a +0.15 style bonus so “phone under 50k” is not answered only with the cheapest phones. Skipped for “cheap” / “sasta” queries.',
+    use: 'Similarity alone favours cheap items; the bonus surfaces products that actually use the budget.',
   },
   check: {
     title: 'Abstain check',
     where: 'rag_pipeline.py',
     text: 'If nothing was found, or the best similarity score is below 0.35, the system abstains with “Not in our catalog” instead of guessing.',
+    use: 'Stops the bot from guessing when nothing in the catalog is a real match.',
   },
   mongo: {
     title: 'Fetch product records',
     where: 'MongoDB Atlas',
     text: 'MongoDB Atlas stores the structured product records. The top 5 IDs are looked up to get price, RAM, storage, screen, battery and description.',
+    use: 'Pinecone only holds vectors and light metadata; MongoDB holds the full, authoritative product details.',
   },
   ctx: {
     title: 'Build context',
     where: 'rag_pipeline.py',
     text: 'Each of the top 5 products becomes a text block. Laptop prices converted from EUR are marked as estimates.',
+    use: 'Gives Gemini only the facts it is allowed to use.',
   },
   llm: {
     title: 'Generate answer',
     where: 'llm.py · Gemini',
     text: 'Gemini writes the recommendation and explanation using only the retrieved context.',
+    use: 'Turns raw product data into a natural, conversational recommendation.',
   },
   repair: {
     title: 'Repair product IDs',
     where: 'rag_pipeline.py',
     text: 'Any product ID in the answer that was not retrieved is mapped back to the closest retrieved ID.',
+    use: 'Guards against a made-up product ID ever reaching the product cards.',
   },
   resp: {
     title: 'Respond',
     where: 'React frontend',
     text: 'The frontend shows the answer text and the matched products as cards you can open, wishlist or add to the cart.',
+    use: 'The shopper reads the answer and can act on the cards.',
   },
   nocat: {
     title: 'Abstain',
     where: 'llm.py · abstain message',
     text: 'The LLM is not called. The user gets “Not in our catalog” instead of an invented product.',
+    use: 'Honesty over invention: no real match means no made-up product.',
+  },
+}
+
+/* ---------- Algorithms shown at each stage ----------
+   Simplified illustrations of the logic. Check the backend files for the exact code. */
+
+const ALGO = {
+  fe: {
+    name: 'HTTP request',
+    inp: 'typed or spoken text',
+    out: 'JSON { message }',
+    code: `fetch('/chat/', {\n  method: 'POST',\n  body: JSON.stringify({ message })\n})`,
+    cost: 'O(1)',
+  },
+  api: {
+    name: 'Routing + request validation',
+    inp: '{ message }',
+    out: 'call to answer_query()',
+    code: `@app.post("/chat/")\nasync def chat(req: ChatRequest):\n    return answer_query(req.message)`,
+    cost: 'O(1)',
+  },
+  parser: {
+    name: 'Rule-based extraction (regex + keyword maps)',
+    inp: 'raw message',
+    out: 'filters { category, brand, price, RAM, storage }',
+    code: `text = normalise(msg)      # hazaar → 1000, lakh → 100000\nprice = PRICE_RE.search(text)  # "ke andar"/"tak" → max\n                               # "se upar" → min\nbrand = first_match(BRANDS, text)\ncategory = first_match(CATEGORIES, text)`,
+    cost: 'O(length of query)',
+  },
+  lookup: {
+    name: 'Name matching (token overlap)',
+    inp: 'filters + query',
+    out: 'pinned products',
+    code: `for p in catalog:\n    if all(tok in p.name for tok in query_tokens) \\\n       and model_number_ok(p):\n        pinned.append(p)`,
+    cost: `O(N × tokens), N = ${fmt(CATALOG.csvRows)}`,
+  },
+  embed: {
+    name: 'Transformer sentence encoder',
+    inp: 'query text',
+    out: `vector of ${CATALOG.dim} numbers`,
+    code: `h = transformer(tokenize(text))  # one vector per token\nv = mean_pool(h)                 # average into one vector\nv = v / norm(v)                  # unit length`,
+    cost: 'one forward pass of the model',
+  },
+  pine: {
+    name: `Approximate nearest-neighbour search (${CATALOG.metric}) + metadata filter`,
+    inp: 'vector + filters',
+    out: `${CATALOG.candidates} product IDs with scores`,
+    code: `score(q, p) = q · p             # unit vectors = ${CATALOG.metric}\nkeep p where matches(p.metadata, filters)\nreturn best ${CATALOG.candidates} by score        # 4 × TOP_K`,
+    cost: 'sub-linear: an index is used, not a full scan',
+  },
+  rerank: {
+    name: 'Linear score boost',
+    inp: 'IDs + similarity scores',
+    out: 'ranked list',
+    code: `final = sim + ${BONUS} × min(price ÷ budget, 1)\nsort candidates by final, highest first`,
+    cost: `O(k log k), k = ${CATALOG.candidates}`,
+  },
+  check: {
+    name: 'Threshold test',
+    inp: 'ranked list',
+    out: 'continue or abstain',
+    code: `if not hits or max(sim) < ${THRESHOLD}:\n    return NOT_IN_CATALOG\ncontinue`,
+    cost: 'O(1)',
+  },
+  mongo: {
+    name: 'Indexed lookup by _id',
+    inp: 'top 5 product IDs',
+    out: '5 full product records',
+    code: `db.products.find({\n  _id: { $in: top5_ids }\n})`,
+    cost: 'O(5 · log N) using the _id index',
+  },
+  ctx: {
+    name: 'Template formatting',
+    inp: '5 product records',
+    out: '5 text blocks',
+    code: `for p in top5:\n    blocks.append(format_block(p))\n    # [id] category · brand · name, price, specs`,
+    cost: 'O(5)',
+  },
+  llm: {
+    name: 'LLM text generation (grounded prompt)',
+    inp: 'rules + context blocks + question',
+    out: 'answer text',
+    code: `prompt = RULES + context_blocks + question\nanswer = gemini.generate(prompt)\n# instruction: use only the given context`,
+    cost: 'the slowest step: one model call',
+  },
+  repair: {
+    name: 'Closest-ID mapping',
+    inp: 'answer text + retrieved IDs',
+    out: 'answer with valid IDs only',
+    code: `for pid in ids_in(answer):\n    if pid not in retrieved_ids:\n        pid = closest(pid, retrieved_ids)`,
+    cost: 'O(IDs × 5)',
+  },
+  resp: {
+    name: 'UI render',
+    inp: 'answer + matched IDs',
+    out: 'chat bubble + product cards',
+    code: `setMessages(m => [...m, {\n  text: response,\n  products: matches\n}])`,
+    cost: 'O(1)',
+  },
+  nocat: {
+    name: 'Fallback response',
+    inp: 'abstain signal',
+    out: '“Not in our catalog”',
+    code: `return {\n  response: "Not in our catalog",\n  matches: []\n}`,
+    cost: 'O(1), the LLM is never called',
   },
 }
 
@@ -423,6 +679,20 @@ function Typewriter({ text }) {
   )
 }
 
+// Small rounded label hanging under a database node (live counts / status)
+function Pill({ cx, y, text, tone = '', dot = false }) {
+  const w = text.length * 6.2 + 20 + (dot ? 12 : 0)
+  return (
+    <g className={`pf-pill ${tone}`}>
+      <rect x={cx - w / 2} y={y} width={w} height="22" rx="11" />
+      {dot && <circle cx={cx - w / 2 + 12} cy={y + 11} r="3.5" className="pf-livedot" />}
+      <text x={cx + (dot ? 6 : 0)} y={y + 15} textAnchor="middle">
+        {text}
+      </text>
+    </g>
+  )
+}
+
 function StepVisual({ id, sc, data, top, best }) {
   const rows = data.surv
   switch (id) {
@@ -435,8 +705,8 @@ function StepVisual({ id, sc, data, top, best }) {
     case 'parser':
       return (
         <div className="pf-maps">
-          {sc.parse.map(([tok, field, val]) => (
-            <div key={field} className="pf-map">
+          {sc.parse.map(([tok, field, val], i) => (
+            <div key={`${field}-${i}`} className="pf-map">
               <code>{tok}</code>
               <span>→</span>
               <b>{field}</b> = {val}
@@ -454,7 +724,9 @@ function StepVisual({ id, sc, data, top, best }) {
               <i key={i} style={{ height: 4 + v * 40 }} />
             ))}
           </div>
-          <p className="pf-note">Query → vector of numbers (values shown are illustrative).</p>
+          <p className="pf-note">
+            Query → vector of {CATALOG.dim} numbers (28 illustrative values drawn).
+          </p>
         </>
       )
     case 'pine': {
@@ -485,7 +757,7 @@ function StepVisual({ id, sc, data, top, best }) {
             </li>
           </ul>
           <p className="pf-note">
-            In the real system Pinecone applies these filters across the full catalog (2,554 products). The lane
+            In the real system Pinecone searches all {fmt(CATALOG.pineconeCount)} vectors with these filters. The lane
             below shows {n} sample products.
           </p>
         </>
@@ -580,6 +852,105 @@ function StepVisual({ id, sc, data, top, best }) {
     default:
       return null
   }
+}
+
+/* ---------- Data stores: how Pinecone and MongoDB connect ---------- */
+
+function StoreIcon({ id }) {
+  return (
+    <span className="pf-ds-ico" style={{ background: TECH[id].color }}>
+      <TechIcon id={id} size={22} />
+    </span>
+  )
+}
+
+function DataStores({ pc, mc, data, top, st, best }) {
+  const ex = top[0] || data.all[0]
+  const synced = CATALOG.pineconeCount === CATALOG.mongoCount
+  const sample = vector(ex.id)
+    .slice(0, 3)
+    .map((v) => v.toFixed(2))
+    .join(', ')
+
+  const pineLive =
+    st.pine === 'on'
+      ? `Scanning ${fmt(CATALOG.pineconeCount)} vectors with the filters → ${CATALOG.candidates} nearest candidates`
+      : st.pine === 'done'
+        ? `Returned ${CATALOG.candidates} candidates · best sample similarity ${best.toFixed(2)}`
+        : 'Waiting for the embedded query'
+  const mongoLive =
+    st.mongo === 'skip'
+      ? 'Not called: the query abstained before this step'
+      : st.mongo === 'on'
+        ? `Fetching ${top.length} full records by _id`
+        : st.mongo === 'done'
+          ? `Fetched ${top.length} records for the LLM context`
+          : 'Waiting for the top IDs'
+
+  const link = [
+    ['Pinecone returns the best IDs', st.pine],
+    [`Top ${TOP_K} IDs go to MongoDB`, st.mongo],
+    ['Records become LLM context', st.ctx],
+  ]
+
+  return (
+    <section className="pf-stores">
+      <div className="pf-jhead">
+        <h4>Data stores</h4>
+        <span>How the two databases hold the same products and how a query moves between them</span>
+      </div>
+      <div className="pf-stores-grid">
+        <div className={`pf-ds ${st.pine === 'on' ? 'active' : ''}`}>
+          <div className="pf-ds-head">
+            <StoreIcon id="pine" />
+            <div>
+              <b>Pinecone</b>
+              <div className="pf-ds-stat">vector database · finds by meaning</div>
+            </div>
+          </div>
+          <div className="pf-ds-count">
+            {fmt(pc)} <small>vectors</small>
+          </div>
+          <div className="pf-ds-stat">
+            {CATALOG.dim} dimensions · {CATALOG.metric} similarity
+          </div>
+          <pre className="pf-code">{`{ id: "${ex.id}",\n  values: [${sample}, … ${CATALOG.dim}],\n  metadata: { category: "${ex.category}",\n    brand: "${ex.brand}", price: ${ex.price} } }`}</pre>
+          <p className="pf-ds-live">{pineLive}</p>
+        </div>
+
+        <div className="pf-link" aria-label="Connection between Pinecone and MongoDB">
+          <span className="pf-link-key">product_id</span>
+          <div className={`pf-link-line ${st.mongo === 'on' ? 'run' : ''}`} />
+          <span className={`pf-sync ${synced ? 'ok' : 'bad'}`}>
+            {synced ? `✓ same ${fmt(CATALOG.pineconeCount)} IDs in both` : '⚠ counts differ, re-sync the index'}
+          </span>
+          <ol className="pf-link-steps">
+            {link.map(([label, s]) => (
+              <li key={label} className={s === 'on' ? 'on' : s === 'done' ? 'done' : s === 'skip' ? 'skip' : ''}>
+                {label}
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        <div className={`pf-ds ${st.mongo === 'on' ? 'active' : ''}`}>
+          <div className="pf-ds-head">
+            <StoreIcon id="mongo" />
+            <div>
+              <b>MongoDB Atlas</b>
+              <div className="pf-ds-stat">document database · stores the details</div>
+            </div>
+          </div>
+          <div className="pf-ds-count">
+            {fmt(mc)} <small>documents</small>
+          </div>
+          <div className="pf-ds-stat">_id = product_id · looked up by index</div>
+          <pre className="pf-code">{`{ _id: "${ex.id}",\n  name: "${ex.name}",\n  price: ${ex.price},\n  ram, storage, screen, battery,\n  description … }`}</pre>
+          <p className="pf-ds-live">{mongoLive}</p>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 /* ---------- Product journey lane ---------- */
@@ -755,12 +1126,19 @@ export default function PipelineFlow({ onClose, onTry }) {
   const closeRef = useRef(onClose)
   closeRef.current = onClose
 
+  // Live database totals (count up when the dialog opens)
+  const pc = useCountUp(CATALOG.pineconeCount)
+  const mc = useCountUp(CATALOG.mongoCount)
+  const cc = useCountUp(CATALOG.csvRows)
+
   const sc = SCENARIOS[scKey]
   const data = useMemo(() => evaluate(sc), [sc])
   const path = sc.steps
   const last = path.length - 1
   const currentId = path[idx]
   const info = INFO[currentId]
+  const algo = ALGO[currentId]
+  const phase = phaseOf(currentId)
   const pathEdges = path.slice(0, -1).map((a, i) => `${a}-${path[i + 1]}`)
   const reached = (id) => {
     const i = path.indexOf(id)
@@ -778,6 +1156,41 @@ export default function PipelineFlow({ onClose, onTry }) {
   const dwell = DWELL / speed
   const travel = TRAVEL / speed
 
+  // 'skip' = not on this query's path, 'on' = current, 'done' = passed, '' = still ahead
+  const stOf = (id) => (path.indexOf(id) === -1 ? 'skip' : id === currentId ? 'on' : reached(id) ? 'done' : '')
+  const st = { pine: stOf('pine'), mongo: stOf('mongo'), ctx: stOf('ctx') }
+
+  // Status pills under the database nodes in the diagram
+  const dbLive = {
+    pine:
+      st.pine === 'on'
+        ? ['scanning…', 'live']
+        : st.pine === 'done'
+          ? [`${CATALOG.candidates} IDs returned`, 'ok']
+          : null,
+    mongo:
+      st.mongo === 'on'
+        ? [`fetching ${top.length} by _id`, 'live']
+        : st.mongo === 'done'
+          ? [`${top.length} records fetched`, 'ok']
+          : st.mongo === 'skip'
+            ? ['not called', 'off']
+            : null,
+  }
+  const dbCount = {
+    pine: `${fmt(pc)} vectors`,
+    mongo: `${fmt(mc)} documents`,
+    csv: `${fmt(cc)} rows`,
+  }
+
+  // Stage tracker
+  const phases = PHASES.map((p) => {
+    const ix = p.ids.map((i) => path.indexOf(i)).filter((i) => i >= 0)
+    if (!ix.length) return { ...p, state: 'skip' }
+    if (ix.includes(idx)) return { ...p, state: 'cur' }
+    return { ...p, state: Math.max(...ix) < idx ? 'done' : 'todo' }
+  })
+
   // The moving dot turns into the best product's device once it has been retrieved
   const carry = idx > path.indexOf('pine') && !(sc.kind === 'abstain' && idx >= path.indexOf('check'))
 
@@ -785,11 +1198,19 @@ export default function PipelineFlow({ onClose, onTry }) {
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && closeRef.current()
     document.addEventListener('keydown', onKey)
-    const prev = document.body.style.overflow
+    const previousOverflow = document.body.style.overflow
+    const previousPaddingRight = document.body.style.paddingRight
+    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+
     document.body.style.overflow = 'hidden'
+    if (scrollbarWidth > 0) {
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    }
+
     return () => {
       document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = prev
+      document.body.style.overflow = previousOverflow
+      document.body.style.paddingRight = previousPaddingRight
     }
   }, [])
 
@@ -860,7 +1281,21 @@ export default function PipelineFlow({ onClose, onTry }) {
 
   return (
     <div className="pf-overlay" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="pf-sheet" role="dialog" aria-modal="true" aria-label="How ConvoShop works">
+      <div
+        className="pf-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-label="How ConvoShop works"
+        style={{
+          width: 'min(1180px, calc(100vw - 36px))',
+          height: 'min(900px, calc(100dvh - 36px))',
+          maxHeight: 'calc(100dvh - 36px)',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: 0,
+          overflow: 'hidden',
+        }}
+      >
         <header className="pf-head">
           <div>
             <h3>How ConvoShop works</h3>
@@ -873,7 +1308,20 @@ export default function PipelineFlow({ onClose, onTry }) {
           </button>
         </header>
 
-        <div className="pf-body">
+        <div
+          className="pf-body"
+          style={{
+            flex: '1 1 auto',
+            minHeight: 0,
+            height: 0,
+            overflowY: 'auto',
+            overflowX: 'hidden',
+            overscrollBehaviorY: 'contain',
+            WebkitOverflowScrolling: 'touch',
+            touchAction: 'pan-y',
+            scrollbarGutter: 'stable',
+          }}
+        >
           <div className="pf-tabs" role="tablist">
             {Object.entries(SCENARIOS).map(([key, s]) => (
               <button
@@ -893,8 +1341,24 @@ export default function PipelineFlow({ onClose, onTry }) {
             <code>{sc.query}</code>
           </div>
 
+          <ol className="pf-phases" aria-label="Pipeline stages">
+            {phases.map((p) => (
+              <li key={p.key} className={`pf-ph ${p.state}`} title={p.what}>
+                {p.label}
+              </li>
+            ))}
+          </ol>
+
+          <div className="pf-now" aria-live="polite">
+            <span className="pf-now-stage">{phase.label}</span>
+            <b>
+              {NODES[currentId].n}. {info.title}
+            </b>
+            <span>{info.use}</span>
+          </div>
+
           <div className="pf-scroll">
-            <svg className="pf-svg" viewBox="0 0 1180 650" role="img" aria-label="System architecture flow diagram">
+            <svg className="pf-svg" viewBox="0 0 1280 680" role="img" aria-label="System architecture flow diagram">
               <defs>
                 <marker id="pf-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
                   <path d="M0 0L10 5L0 10z" className="pf-arrow" />
@@ -919,19 +1383,20 @@ export default function PipelineFlow({ onClose, onTry }) {
                 return <path key={key} id={`pf-edge-${key}`} d={d} className={`pf-edge ${state}`} />
               })}
 
-              <text x="690" y="12" textAnchor="middle" className="pf-edge-label">
+              <text x="720" y="12" textAnchor="middle" className="pf-edge-label">
                 budget query → skip name lookup
               </text>
-              <text x="906" y="185" className="pf-edge-label">vector + filters</text>
-              <text x="1034" y="150" textAnchor="end" className="pf-edge-label">IDs + scores</text>
-              <text x="1118" y="260" className="pf-edge-label">re-ranked</text>
-              <text x="1068" y="525" className="pf-edge-label">score &lt; 0.35</text>
-              <text x="810" y="247" textAnchor="middle" className="pf-edge-label">built offline</text>
+              <text x="930" y="190" className="pf-edge-label">vector + filters</text>
+              <text x="1092" y="200" textAnchor="end" className="pf-edge-label">IDs + scores</text>
+              <text x="1160" y="320" className="pf-edge-label">re-ranked</text>
+              <text x="1130" y="555" className="pf-edge-label">score &lt; 0.35</text>
+              <text x="845" y="372" textAnchor="middle" className="pf-edge-label">built offline</text>
 
               {/* nodes */}
               {Object.keys(NODES).map((id) => {
                 const g = geo(id)
                 const nd = NODES[id]
+                const tk = TECH[id]
                 const pi = path.indexOf(id)
                 const state = nd.offline
                   ? 'offline'
@@ -945,6 +1410,12 @@ export default function PipelineFlow({ onClose, onTry }) {
                 const clickable = pi !== -1
                 const sub = state === 'skipped' ? (id === 'nocat' ? 'not taken' : 'skipped for this query') : nd.sub
                 const isDb = nd.kind === 'db'
+                const titleY = isDb ? 38 : g.h >= 80 ? 26 : 24
+                const subY = isDb ? 54 : g.h >= 80 ? 46 : 42
+                const badgeY = isDb ? 70 : g.h - 18
+                const chipY = isDb ? 62 : 54
+                const chipW = tk.label.length * 6 + 16
+                const live = dbLive[id]
                 return (
                   <g
                     key={id}
@@ -968,31 +1439,63 @@ export default function PipelineFlow({ onClose, onTry }) {
                           d={`M0 12 L0 ${g.h - 12} A${W / 2} 12 0 0 0 ${W} ${g.h - 12} L${W} 12 Z`}
                         />
                         <ellipse className="pf-shape" cx={W / 2} cy="12" rx={W / 2} ry="12" />
-                        <text x={W / 2} y={g.h / 2 + 4} textAnchor="middle" className="pf-title">
-                          {nd.n ? `${nd.n} · ` : ''}
-                          {nd.title}
-                        </text>
-                        <text x={W / 2} y={g.h / 2 + 20} textAnchor="middle" className="pf-file">
-                          {sub}
-                        </text>
                       </>
                     ) : (
-                      <>
-                        <rect className="pf-shape" width={g.w} height={g.h} rx="14" />
-                        <circle cx="20" cy="20" r="11" className="pf-badge" />
-                        <text x="20" y="24" className="pf-badge-t">{nd.n}</text>
-                        <text x="38" y="25" className="pf-title">{nd.title}</text>
-                        <text x="14" y={g.h - 14} className={state === 'skipped' ? 'pf-skip' : 'pf-file'}>
-                          {sub}
+                      <rect className="pf-shape" width={g.w} height={g.h} rx="14" />
+                    )}
+
+                    <text x="32" y={titleY} className="pf-title">{nd.title}</text>
+                    <text x="14" y={subY} className={state === 'skipped' ? 'pf-skip' : 'pf-file'}>
+                      {sub}
+                    </text>
+
+                    {g.h >= 80 && (
+                      <g className="pf-chip-g">
+                        <rect
+                          x="14"
+                          y={chipY}
+                          width={chipW}
+                          height="17"
+                          rx="8.5"
+                          fill={tk.color}
+                          fillOpacity="0.16"
+                          stroke={tk.color}
+                          strokeOpacity="0.7"
+                        />
+                        <text x={14 + chipW / 2} y={chipY + 12} textAnchor="middle" className="pf-chip-t">
+                          {tk.label}
                         </text>
+                      </g>
+                    )}
+
+                    {nd.n != null && (
+                      <>
+                        <circle cx={g.w - 16} cy={badgeY} r="10" className="pf-badge" />
+                        <text x={g.w - 16} y={badgeY + 4} className="pf-badge-t">{nd.n}</text>
                       </>
                     )}
+
+                    {/* the tech sticker, slapped on the top-left corner */}
+                    <g transform="translate(-12 -12) rotate(-6 18 18)">
+                      <g className="pf-stk">
+                        <rect width="36" height="36" rx="10" fill={tk.color} className="pf-stk-bg" />
+                        <g transform="translate(7 7) scale(0.92)" fill="none" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                          {ICON[tk.icon]}
+                        </g>
+                      </g>
+                    </g>
+
+                    {/* live database numbers */}
+                    {isDb && dbCount[id] && (
+                      <Pill cx={g.w / 2} y={g.h + 6} text={dbCount[id]} tone="count" dot />
+                    )}
+                    {isDb && live && <Pill cx={g.w / 2} y={g.h + 32} text={live[0]} tone={live[1]} />}
                   </g>
                 )
               })}
 
               {/* legend */}
-              <g className="pf-legend" transform="translate(220 560)">
+              <g className="pf-legend" transform="translate(260 585)">
                 <circle cx="6" cy="6" r="5" className="pf-packet" />
                 <text x="18" y="10">query / data moving</text>
                 <line x1="170" y1="6" x2="200" y2="6" className="pf-edge off" />
@@ -1054,6 +1557,8 @@ export default function PipelineFlow({ onClose, onTry }) {
             </span>
           </div>
 
+          <DataStores pc={pc} mc={mc} data={data} top={top} st={st} best={best} />
+
           <section className="pf-journey">
             <div className="pf-jhead">
               <h4>Product journey</h4>
@@ -1077,6 +1582,17 @@ export default function PipelineFlow({ onClose, onTry }) {
               </div>
               <p>{info.text}</p>
               <StepVisual id={currentId} sc={sc} data={data} top={top} best={best} />
+
+              <div className="pf-algo">
+                <h5>Algorithm</h5>
+                <div className="pf-algo-name">{algo.name}</div>
+                <pre className="pf-code">{algo.code}</pre>
+                <div className="pf-io">
+                  <span>In: {algo.inp}</span>
+                  <span>Out: {algo.out}</span>
+                </div>
+                <p className="pf-cost">Cost: {algo.cost}</p>
+              </div>
             </section>
 
             <section className="pf-calc">
@@ -1088,8 +1604,10 @@ export default function PipelineFlow({ onClose, onTry }) {
           <p className="pf-foot">
             Products, prices and similarity scores are made-up samples, not real catalog rows
             {sc.kind === 'abstain' ? ', and the parsed filters for this query are an assumption' : ''}. Which products
-            are removed, and why, is computed from the parsed filters. The re-rank formula assumes bonus = {BONUS} ×
-            price ÷ budget; check retriever.py for the exact one.
+            are removed, and why, is computed from the parsed filters. Database totals come from CATALOG at the top of
+            this file; the embedding size ({CATALOG.dim}) and {CATALOG.metric} metric are assumptions. Algorithm
+            snippets are simplified, and the re-rank formula assumes bonus = {BONUS} × price ÷ budget; check the backend
+            files for the exact logic.
           </p>
 
           <button
