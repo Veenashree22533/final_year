@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import PipelineFlow from './PipelineFlow'
 import Papa from 'papaparse'
 import './App.css'
 
@@ -133,6 +134,18 @@ const ICONS = {
   plus: <path d="M12 5v14M5 12h14" />,
   minus: <path d="M5 12h14" />,
   arrowUp: <path d="M12 19V5M5 12l7-7 7 7" />,
+  gear: (
+    <>
+      <circle cx="12" cy="12" r="3" />
+      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
+    </>
+  ),
+  layers: (
+    <>
+      <path d="M12 2L2 7l10 5 10-5-10-5z" />
+      <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
+    </>
+  ),
 }
 
 function Icon({ name, size = 20, fill = false }) {
@@ -1382,6 +1395,7 @@ function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
   const [aiOpen, setAiOpen] = useState(false)
   const [aiSeed, setAiSeed] = useState(null)
   const [settingsOpen, setSettingsOpen] = useState(false)
+  const [pipelineOpen, setPipelineOpen] = useState(false)
   const [selectedProduct, setSelectedProduct] = useState(null)
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [orderPlacedData, setOrderPlacedData] = useState(null)
@@ -1619,6 +1633,9 @@ function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
               <Icon name="bag" />
               {count > 0 && <span className="badge">{count}</span>}
             </button>
+            <button className="icon-btn" onClick={() => setPipelineOpen(true)} aria-label="How it works">
+              <Icon name="gear" />
+            </button>
             <button className="icon-btn" onClick={() => setSettingsOpen(true)} aria-label="Account and settings">
               <Icon name="user" />
             </button>
@@ -1812,6 +1829,13 @@ function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
           totalAmount={total}
           onClose={() => setCheckoutOpen(false)}
           onSuccess={handleFinalizeOrder}
+        />
+      )}
+
+      {pipelineOpen && (
+        <PipelineFlow
+          onClose={() => setPipelineOpen(false)}
+          onTry={openAdvisor}
         />
       )}
 
