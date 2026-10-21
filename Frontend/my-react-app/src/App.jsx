@@ -1937,6 +1937,7 @@ function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
           onClose={() => setPipelineOpen(false)}
           onTry={handleRAGSearch}
           query={searchQuery || aiRecommendation?.query || ''}
+          catalog={rows}
         />
       )}
 

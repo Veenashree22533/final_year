@@ -10,7 +10,8 @@ router = APIRouter()
 def chat(request: ChatRequest):
     """
     Process a user's message through the RAG pipeline and return
-    the generated answer, parsed filters, and matching products.
+    the generated answer, parsed filters, matching products,
+    and similarity scores when available.
     """
 
     # Validate the query
@@ -46,10 +47,10 @@ def chat(request: ChatRequest):
                 "storage_gb": meta.get("storage_gb"),
                 "screen_in": meta.get("screen_in"),
                 "image": meta.get("image_url") or "",
-                "description": meta.get("description")
+                "description": meta.get("description"),
+                "score": match.get("score")
             })
 
-        # Return the structure expected by the frontend
         return {
             "query": message,
             "response": response_text,
@@ -61,7 +62,7 @@ def chat(request: ChatRequest):
         raise
 
     except Exception as exc:
-        # Keep the server error in its logs for debugging
+        # Log the actual error in the FastAPI terminal
         print(f"Chat endpoint error: {exc}")
 
         raise HTTPException(

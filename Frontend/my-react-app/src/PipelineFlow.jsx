@@ -544,6 +544,126 @@ const SCENARIOS = {
   },
 }
 
+/* ---------- Live scenario built from real backend + catalog data ---------- */
+
+const catKey = (c = '') =>
+  /laptop|notebook/i.test(String(c)) ? 'laptop' : /watch|band|wear/i.test(String(c)) ? 'smartwatch' : 'phone'
+
+const escapeRe = (value) => String(value).replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+
+const detectCategory = (q) =>
+  /laptop|notebook|ultrabook/.test(q)
+    ? 'laptop'
+    : /watch|wearable|band/.test(q)
+      ? 'smartwatch'
+      : /phone|mobile|handset/.test(q)
+        ? 'phone'
+        : null
+
+function parseBudget(q) {
+  if (!/(under|below|upto|up to|within|max|budget|andar|tak|₹|rs\b|inr)/i.test(q)) return null
+  const normalized = String(q).replace(/(\d),(?=\d)/g, '$1')
+  const m = normalized.match(/(\d+(?:\.\d+)?)\s*(k|hazaa?r|thousand|lakhs?|lacs?)?/i)
+  if (!m) return null
+  let value = Number(m[1])
+  const unit = (m[2] || '').toLowerCase()
+  if (unit === 'k' || /^hazaa?r$|^thousand$/.test(unit)) value *= 1000
+  else if (unit) value *= 100000
+  else if (value < 1000) return null
+  return value > 0 ? value : null
+}
+
+function buildLiveScenario(run, catalog = []) {
+  const matches = Array.isArray(run.matches) ? run.matches : []
+  if (!matches.length) return null
+
+  const query = String(run.query || '')
+  const lowerQuery = query.toLowerCase()
+  const filters = run.filters || {}
+  const category = filters.category ? catKey(filters.category) : detectCategory(lowerQuery)
+  const products = Array.isArray(catalog) ? catalog : []
+  const brands = [...new Set(products.map((p) => p.brand).filter(Boolean))]
+  const brand =
+    filters.brand ||
+    brands.find((b) => new RegExp(`\\b${escapeRe(String(b).toLowerCase())}\\b`, 'i').test(lowerQuery)) ||
+    null
+  const maxPrice =
+    Number(filters.max_price ?? filters.price_max ?? filters.max_price_inr ?? filters.budget) ||
+    parseBudget(lowerQuery)
+
+  const live = matches.slice(0, TOP_K).map((product, index) => ({
+    id: String(product.id || product.product_id || `live_${index}`),
+    name: product.title || product.name || 'Untitled product',
+    brand: product.brand || '',
+    category: catKey(product.category || category || ''),
+    price: Number(product.price ?? product.price_inr ?? product.priceINR) || 0,
+    sim: product.score != null && Number.isFinite(Number(product.score)) ? Number(product.score) : 0,
+    live: true,
+  }))
+
+  const ids = new Set(live.map((p) => p.id))
+  const rules = rulesFor({ category, brand, maxPrice })
+  const fails = (product) => rules.some((rule) => rule.fail(product))
+  const buckets = ['phone', 'laptop', 'smartwatch'].map((cat) =>
+    products
+      .filter((product) => {
+        const id = String(product.id ?? product.product_id ?? '')
+        const price = Number(product.price ?? product.price_inr ?? product.priceINR) || 0
+        const productCategory = catKey(product.category || product.type || '')
+        return !ids.has(id) && productCategory === cat && price > 0
+      })
+      .map((product) => ({
+        id: String(product.id ?? product.product_id ?? ''),
+        name: product.title || product.name || 'Untitled product',
+        brand: product.brand || '',
+        category: catKey(product.category || product.type || ''),
+        price: Number(product.price ?? product.price_inr ?? product.priceINR) || 0,
+        sim: 0,
+        live: false,
+      }))
+      .filter(fails)
+  )
+
+  const desiredExtras = Math.max(0, 10 - live.length)
+  const extra = []
+  for (let i = 0; extra.length < desiredExtras && i < 200; i++) {
+    for (const bucket of buckets) {
+      if (bucket[i] && extra.length < desiredExtras) extra.push(bucket[i])
+    }
+  }
+  const pool = []
+  for (let i = 0; i < Math.max(live.length, extra.length); i++) {
+    if (live[i]) pool.push(live[i])
+    if (extra[i]) pool.push(extra[i])
+  }
+
+  const parse = []
+  if (category) parse.push([category, 'category', category])
+  if (brand) parse.push([brand, 'brand', brand])
+  if (maxPrice) parse.push(['budget', 'max_price', String(maxPrice)])
+  if (!parse.length) parse.push([query, 'filters', 'none detected'])
+
+  const core = ['fe', 'api', 'parser']
+  const tail = ['embed', 'pine', 'rerank', 'check', 'mongo', 'ctx', 'llm', 'repair', 'resp']
+  return {
+    kind: 'live',
+    live: true,
+    label: 'Live query',
+    query,
+    response: run.response || '',
+    category,
+    brand,
+    maxPrice,
+    steps: maxPrice ? [...core, ...tail] : [...core, 'lookup', ...tail],
+    parse,
+    lookupNote: maxPrice
+      ? 'Skipped: budget queries are shopping queries, not name lookups.'
+      : 'Name lookup ran on the live query.',
+    pool,
+    liveOrder: live.map((product) => product.id),
+  }
+}
+
 /* ---------- Filtering + scoring (the live calculation) ---------- */
 
 // Hard filters from the parsed query, applied in this order. A product is
@@ -580,29 +700,36 @@ function evaluate(sc) {
   const all = sc.pool.map((p, slot) => {
     let removedBy = null
     let reason = null
-    for (const r of rules) {
-      const why = r.fail(p)
-      if (why) {
-        removedBy = r.key
-        reason = why
-        break
+    if (!p.live) {
+      for (const rule of rules) {
+        const why = rule.fail(p)
+        if (why) {
+          removedBy = rule.key
+          reason = why
+          break
+        }
       }
     }
-    const bonus = !removedBy && sc.maxPrice ? +(BONUS * Math.min(p.price / sc.maxPrice, 1)).toFixed(3) : 0
+    const bonus =
+      !removedBy && sc.maxPrice && !sc.live
+        ? +(BONUS * Math.min(p.price / sc.maxPrice, 1)).toFixed(3)
+        : 0
     return { ...p, slot, removedBy, reason, bonus, final: +(p.sim + bonus).toFixed(3) }
   })
   const surv = all.filter((p) => !p.removedBy)
-  const order = (key) => [...surv].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b[key] - a[key])
+  const order = (key) =>
+    [...surv].sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || b[key] - a[key])
   const bySim = order('sim')
   const byFinal = order('final')
   surv.forEach((p) => {
     p.simRank = bySim.indexOf(p)
-    p.finalRank = byFinal.indexOf(p)
+    p.finalRank = sc.liveOrder ? sc.liveOrder.indexOf(p.id) : byFinal.indexOf(p)
   })
   return { all, surv, rules }
 }
 
 function answerText(sc, top) {
+  if (sc.live) return sc.response || ''
   if (sc.kind === 'named') {
     const more = top.slice(1, 3).map((r) => r.name)
     return `${top[0].name} is listed at ${money(top[0].price)}.${more.length ? ` Similar options: ${more.join(', ')}.` : ''}`
@@ -630,6 +757,7 @@ function journeyNote(id, sc, data, best, top) {
     case 'pine':
       return `Pinecone applied ${data.rules.map((r) => r.label).join(' and ')}: ${removed} of ${n} sample products removed, ${data.surv.length} left to rank.`
     case 'rerank': {
+      if (sc.live) return 'Final order as returned by the backend.'
       if (!sc.maxPrice) return 'No budget in the query, so no bonus is added: the order stays by similarity.'
       const ent = data.surv.filter((p) => p.finalRank < TOP_K && p.simRank >= TOP_K)
       const drp = data.surv.filter((p) => p.finalRank >= TOP_K && p.simRank < TOP_K)
@@ -764,6 +892,7 @@ function StepVisual({ id, sc, data, top, best }) {
       )
     }
     case 'rerank': {
+      if (sc.live) return <p className="pf-note">Final order is exactly what the backend returned. The API does not expose the budget bonus.</p>
       if (!sc.maxPrice) {
         return <p className="pf-note">No budget in the query, so no bonus is added. Order = similarity.</p>
       }
@@ -1100,7 +1229,7 @@ function Candidates({ rows, f, sc }) {
                   </span>
                   <em>{r.sim.toFixed(2)}</em>
                 </span>
-                <span>{f.bonus ? (sc.maxPrice ? '+' + r.bonus.toFixed(3) : '0') : '–'}</span>
+                <span>{f.bonus ? (sc.maxPrice && !sc.live ? '+' + r.bonus.toFixed(3) : '0') : '–'}</span>
                 <span>
                   <b>{f.bonus ? r.final.toFixed(3) : '–'}</b>
                 </span>
@@ -1116,10 +1245,11 @@ function Candidates({ rows, f, sc }) {
 
 /* ---------- Main component ---------- */
 
-export default function PipelineFlow({ onClose, onTry, query = '' }) {
+export default function PipelineFlow({ onClose, onTry, query = '', catalog = [] }) {
   const liveQuery = typeof query === 'string' ? query.trim() : ''
   const [queryInput, setQueryInput] = useState(liveQuery)
-  const [liveRun, setLiveRun] = useState({ status: 'idle', query: '', response: '', matches: [], error: '' })
+  const EMPTY_RUN = { status: 'idle', query: '', response: '', matches: [], filters: {}, error: '' }
+  const [liveRun, setLiveRun] = useState(EMPTY_RUN)
   useEffect(() => {
     setQueryInput(liveQuery)
   }, [liveQuery])
@@ -1137,7 +1267,13 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
   const mc = useCountUp(CATALOG.mongoCount)
   const cc = useCountUp(CATALOG.csvRows)
 
-  const sc = SCENARIOS[scKey]
+  const baseSc = SCENARIOS[scKey]
+  const liveSc = useMemo(
+    () => (liveRun.status === 'success' ? buildLiveScenario(liveRun, catalog) : null),
+    [liveRun, catalog]
+  )
+  const sc = liveSc || baseSc
+  const isLive = !!liveSc
   const data = useMemo(() => evaluate(sc), [sc])
   const path = sc.steps
   const last = path.length - 1
@@ -1157,7 +1293,7 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
     cut: reached('mongo') || reached('nocat'),
     resp: reached('resp'),
   }
-  const best = Math.max(...data.surv.map((r) => r.sim))
+  const best = data.surv.length ? Math.max(...data.surv.map((r) => r.sim)) : 0
   const top = [...data.surv].sort((a, b) => a.finalRank - b.finalRank).slice(0, TOP_K)
   const dwell = DWELL / speed
   const travel = TRAVEL / speed
@@ -1273,6 +1409,7 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
 
   const pick = (key) => {
     setScKey(key)
+    setLiveRun(EMPTY_RUN)
     setIdx(0)
     setPlaying(true)
   }
@@ -1357,8 +1494,8 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
                 setQueryInput(nextQuery)
                 const normalized = nextQuery.toLowerCase()
                 const looksLikeNamedProduct =
-                  /\\b(compare|versus|vs\\.?|price of|details of|specs of)\\b/.test(normalized) ||
-                  /\\b(iphone|galaxy|forerunner|venu|pixel|thinkpad|macbook|vivobook|legion)\\b/.test(normalized)
+                  /\b(compare|versus|vs\.?|price of|details of|specs of)\b/.test(normalized) ||
+                  /\b(iphone|galaxy|forerunner|venu|pixel|thinkpad|macbook|vivobook|legion)\b/.test(normalized)
                 setScKey(looksLikeNamedProduct ? 'named' : 'budget')
                 setIdx(0)
                 setPlaying(true)
@@ -1374,7 +1511,7 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
             disabled={liveRun.status === 'loading' || !(queryInput.trim() || sc.query)}
             onClick={async () => {
               const submittedQuery = (queryInput.trim() || sc.query).trim()
-              setLiveRun({ status: 'loading', query: submittedQuery, response: '', matches: [], error: '' })
+              setLiveRun({ ...EMPTY_RUN, status: 'loading', query: submittedQuery })
               setIdx(0)
               setPlaying(true)
               try {
@@ -1388,6 +1525,7 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
                   query: result.data.query || submittedQuery,
                   response: result.data.response || 'The backend returned no text answer.',
                   matches: Array.isArray(result.data.matches) ? result.data.matches : [],
+                  filters: result.data.filters || {},
                   error: '',
                 })
                 // Replay the entire illustrative path after the real API response arrives.
@@ -1396,7 +1534,7 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
                 setIdx(0)
                 setPlaying(true)
               } catch (error) {
-                setLiveRun({ status: 'error', query: submittedQuery, response: '', matches: [], error: error.message || 'Request failed.' })
+                setLiveRun({ ...EMPTY_RUN, status: 'error', query: submittedQuery, error: error.message || 'Request failed.' })
               }
             }}
           >
@@ -1412,6 +1550,7 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
               <p><strong>Status:</strong> Backend responded successfully. <strong>Query:</strong> <code>{liveRun.query}</code></p>
               <p style={{ whiteSpace: 'pre-wrap' }}>{liveRun.response}</p>
               <p><strong>Products returned by backend:</strong> {liveRun.matches.length}</p>
+              {Object.keys(liveRun.filters || {}).length > 0 && <p><strong>Parsed filters:</strong> <code>{JSON.stringify(liveRun.filters)}</code></p>}
               {liveRun.matches.length > 0 ? <ul style={{ paddingLeft: 20 }}>
                 {liveRun.matches.slice(0, 5).map((product, index) => <li key={product.product_id || product.id || `${product.title || 'product'}-${index}`} style={{ marginBottom: 8 }}>
                   <strong>{product.title || product.name || 'Untitled product'}</strong>
@@ -1641,46 +1780,29 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
             </span>
           </div>
 
-          {liveRun.status !== 'success' && (
-            <DataStores pc={pc} mc={mc} data={data} top={top} st={st} best={best} />
-          )}
+          <DataStores pc={pc} mc={mc} data={data} top={top} st={st} best={best} />
 
           <section className="pf-journey">
             <div className="pf-jhead">
-              <h4>{liveRun.status === 'success' ? 'Live backend product journey' : 'Product journey'}</h4>
-              <span>{liveRun.status === 'success' ? `Actual products returned by FastAPI for “${liveRun.query}”` : 'Illustrative walkthrough — run a live query above to replace sample products with actual backend results.'}</span>
-              {liveRun.status !== 'success' && <span className="pf-key">
+              <h4>{isLive ? 'Live product journey' : 'Product journey'}</h4>
+              <span>
+                {isLive
+                  ? `Real catalog products and the backend's actual top picks for “${liveRun.query}”`
+                  : 'Illustrative walkthrough. Run a live query above to replace the samples with real products.'}
+              </span>
+              <span className="pf-key">
                 <i className="k-kept" /> kept <i className="k-removed" /> removed <i className="k-out" /> shown
-              </span>}
+              </span>
             </div>
-            {liveRun.status === 'success' ? (
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: 10, padding: '12px 0' }}>
-                {liveRun.matches.length ? liveRun.matches.slice(0, 10).map((product, index) => {
-                  const price = product.price ?? product.price_inr ?? product.priceINR
-                  return <article key={product.product_id || product.id || `${product.title || product.name || 'product'}-${index}`} style={{ border: '1px solid #cfe7dc', background: '#f4fbf7', borderRadius: 10, padding: 12, minWidth: 0 }}>
-                    <div style={{ fontSize: 11, color: '#087f5b', fontWeight: 700, marginBottom: 6 }}>LIVE RESULT {index + 1}</div>
-                    <strong style={{ display: 'block', overflowWrap: 'anywhere' }}>{product.title || product.name || 'Untitled product'}</strong>
-                    <div style={{ fontSize: 13, color: '#667085', marginTop: 4 }}>{[product.brand, product.category].filter(Boolean).join(' · ')}</div>
-                    {price != null && <div style={{ fontWeight: 700, marginTop: 8 }}>{money(Number(price))}</div>}
-                    {product.description && <p style={{ fontSize: 12, marginBottom: 0, color: '#475467' }}>{String(product.description).slice(0, 180)}</p>}
-                  </article>
-                }) : <p>The backend completed successfully but returned no matching products.</p>}
-              </div>
-            ) : <>
-              <Journey data={data} f={f} sc={sc} />
-              <p className="pf-jnote" aria-live="polite">
-                {journeyNote(currentId, sc, data, best, top)}
-              </p>
-            </>}
+            <Journey data={data} f={f} sc={sc} />
+            <p className="pf-jnote" aria-live="polite">
+              {journeyNote(currentId, sc, data, best, top)}
+            </p>
           </section>
 
-          {liveRun.status === 'success' && <section className="pf-info" aria-live="polite" style={{ marginTop: 12 }}>
-            <div className="pf-info-head"><span className="pf-no">LIVE</span><h4>Actual backend answer</h4><span className="pf-tag">FastAPI · /chat/</span></div>
-            <p style={{ whiteSpace: 'pre-wrap' }}>{liveRun.response || 'The backend returned no answer text.'}</p>
-            <p style={{ fontSize: 12, opacity: 0.75 }}>These products and answer came from the successful API response. Similarity scores, timings, and intermediate stage counts are not available from this endpoint.</p>
-          </section>}
 
-          {liveRun.status !== 'success' && <div className="pf-panels">
+
+          <div className="pf-panels">
             <section className="pf-info" aria-live="polite">
               <div className="pf-info-head">
                 <span className="pf-no">{NODES[currentId].n}</span>
@@ -1706,12 +1828,12 @@ export default function PipelineFlow({ onClose, onTry, query = '' }) {
               <h4>How the remaining products are scored</h4>
               <Candidates rows={data.surv} f={f} sc={sc} />
             </section>
-          </div>}
+          </div>
 
           <p className="pf-foot">
-            {liveRun.status === 'success'
-              ? 'Live result cards and the answer above are real data returned by FastAPI. The animated architecture, intermediate product journey when no live result is loaded, similarity scores, timings, and algorithm examples remain illustrative because the current API does not expose those execution details.'
-              : `This is an illustrative architecture walkthrough, not a live trace. Products, prices, similarity scores, stage timings, and database counts shown in the sample panels are not produced by your query. Run a live query to view the actual FastAPI answer and products. The current API does not expose per-stage execution events.`}
+            {isLive
+              ? 'Products, prices, filters, and the answer are from the backend response or supplied catalog. Similarity scores and stage timings are not available from this API; those details remain illustrative.'
+              : 'This is an illustrative architecture walkthrough using sample products. Run a live query to see real backend products and the answer.'}
           </p>
 
 
