@@ -1116,7 +1116,13 @@ function Candidates({ rows, f, sc }) {
 
 /* ---------- Main component ---------- */
 
-export default function PipelineFlow({ onClose, onTry }) {
+export default function PipelineFlow({ onClose, onTry, query = '' }) {
+  const liveQuery = typeof query === 'string' ? query.trim() : ''
+  const [queryInput, setQueryInput] = useState(liveQuery)
+  const [liveRun, setLiveRun] = useState({ status: 'idle', query: '', response: '', matches: [], error: '' })
+  useEffect(() => {
+    setQueryInput(liveQuery)
+  }, [liveQuery])
   const [scKey, setScKey] = useState('budget')
   const [idx, setIdx] = useState(0)
   const [playing, setPlaying] = useState(true)
@@ -1193,6 +1199,10 @@ export default function PipelineFlow({ onClose, onTry }) {
 
   // The moving dot turns into the best product's device once it has been retrieved
   const carry = idx > path.indexOf('pine') && !(sc.kind === 'abstain' && idx >= path.indexOf('check'))
+  const liveCategory = String(liveRun.matches?.[0]?.category || '').toLowerCase()
+  const packetCategory = liveRun.status === 'success'
+    ? (liveCategory.includes('watch') ? 'smartwatch' : liveCategory.includes('laptop') ? 'laptop' : liveCategory.includes('phone') ? 'phone' : top[0]?.category)
+    : top[0]?.category
 
   // Escape to close + lock page scroll
   useEffect(() => {
@@ -1299,7 +1309,7 @@ export default function PipelineFlow({ onClose, onTry }) {
         <header className="pf-head">
           <div>
             <h3>How ConvoShop works</h3>
-            <p>Live view of one query moving through the RAG system</p>
+            <p>Architecture walkthrough is illustrative; live backend status and results appear below</p>
           </div>
           <button className="pf-x" onClick={onClose} aria-label="Close">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
@@ -1337,9 +1347,83 @@ export default function PipelineFlow({ onClose, onTry }) {
           </div>
 
           <div className="pf-query">
-            <span>Query</span>
-            <code>{sc.query}</code>
+            <label htmlFor="pf-live-query">Query</label>
+            <input
+              id="pf-live-query"
+              type="text"
+              value={queryInput}
+              onChange={(event) => {
+                const nextQuery = event.target.value
+                setQueryInput(nextQuery)
+                const normalized = nextQuery.toLowerCase()
+                const looksLikeNamedProduct =
+                  /\\b(compare|versus|vs\\.?|price of|details of|specs of)\\b/.test(normalized) ||
+                  /\\b(iphone|galaxy|forerunner|venu|pixel|thinkpad|macbook|vivobook|legion)\\b/.test(normalized)
+                setScKey(looksLikeNamedProduct ? 'named' : 'budget')
+                setIdx(0)
+                setPlaying(true)
+              }}
+              placeholder={sc.query}
+              aria-label="Edit query to send to the backend"
+              style={{ flex: 1, minWidth: 0, border: 'none', outline: 'none', background: 'transparent', color: 'inherit', font: 'inherit' }}
+            />
           </div>
+
+          <button
+            className="pf-btn primary pf-wide"
+            disabled={liveRun.status === 'loading' || !(queryInput.trim() || sc.query)}
+            onClick={async () => {
+              const submittedQuery = (queryInput.trim() || sc.query).trim()
+              setLiveRun({ status: 'loading', query: submittedQuery, response: '', matches: [], error: '' })
+              setIdx(0)
+              setPlaying(true)
+              try {
+                if (typeof onTry !== 'function') throw new Error('Live search handler is not connected.')
+                const result = await onTry(submittedQuery)
+                if (!result || result.success !== true || !result.data) {
+                  throw new Error(result?.error || 'The backend did not return a successful response.')
+                }
+                setLiveRun({
+                  status: 'success',
+                  query: result.data.query || submittedQuery,
+                  response: result.data.response || 'The backend returned no text answer.',
+                  matches: Array.isArray(result.data.matches) ? result.data.matches : [],
+                  error: '',
+                })
+                // Replay the entire illustrative path after the real API response arrives.
+                // Do not jump directly to the final node: doing so hides the moving packet
+                // and makes it look as if the flow stopped at a database.
+                setIdx(0)
+                setPlaying(true)
+              } catch (error) {
+                setLiveRun({ status: 'error', query: submittedQuery, response: '', matches: [], error: error.message || 'Request failed.' })
+              }
+            }}
+          >
+            {liveRun.status === 'loading' ? 'Running backend…' : 'Run live query'}
+          </button>
+
+          <section className="pf-info" aria-live="polite" style={{ marginTop: 16, padding: 16, border: '1px solid var(--pf-border, #d8deeb)', borderRadius: 12 }}>
+            <h4 style={{ marginTop: 0 }}>Live FastAPI result</h4>
+            {liveRun.status === 'idle' && <p>Enter a query above and click <strong>Run live query</strong>. The modal stays open while the real backend request runs.</p>}
+            {liveRun.status === 'loading' && <p>Sending <code>{liveRun.query}</code> to <code>POST {`/chat/`}</code>. Waiting for FastAPI and the RAG pipeline…</p>}
+            {liveRun.status === 'error' && <p role="alert" style={{ color: '#b42318' }}>Request failed: {liveRun.error}. Check the browser console, FastAPI logs, backend URL, and CORS settings.</p>}
+            {liveRun.status === 'success' && <>
+              <p><strong>Status:</strong> Backend responded successfully. <strong>Query:</strong> <code>{liveRun.query}</code></p>
+              <p style={{ whiteSpace: 'pre-wrap' }}>{liveRun.response}</p>
+              <p><strong>Products returned by backend:</strong> {liveRun.matches.length}</p>
+              {liveRun.matches.length > 0 ? <ul style={{ paddingLeft: 20 }}>
+                {liveRun.matches.slice(0, 5).map((product, index) => <li key={product.product_id || product.id || `${product.title || 'product'}-${index}`} style={{ marginBottom: 8 }}>
+                  <strong>{product.title || product.name || 'Untitled product'}</strong>
+                  {product.brand ? ` · ${product.brand}` : ''}
+                  {product.price != null ? ` · ${money(Number(product.price))}` : ''}
+                  {product.ram_gb != null ? ` · ${product.ram_gb} GB RAM` : ''}
+                  {product.storage_gb != null ? ` · ${product.storage_gb} GB storage` : ''}
+                </li>)}
+              </ul> : <p>No product matches were returned by the backend for this query.</p>}
+              <p style={{ fontSize: 12, opacity: 0.75 }}>This status confirms the HTTP response and returned data only. Internal stage timings and similarity scores are not supplied by the current chat API, so they are not fabricated here.</p>
+            </>}
+          </section>
 
           <ol className="pf-phases" aria-label="Pipeline stages">
             {phases.map((p) => (
@@ -1522,7 +1606,7 @@ export default function PipelineFlow({ onClose, onTry }) {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     >
-                      {GLYPH[top[0].category]}
+                      {GLYPH[packetCategory] || GLYPH.phone}
                     </svg>
                   </>
                 ) : (
@@ -1557,23 +1641,46 @@ export default function PipelineFlow({ onClose, onTry }) {
             </span>
           </div>
 
-          <DataStores pc={pc} mc={mc} data={data} top={top} st={st} best={best} />
+          {liveRun.status !== 'success' && (
+            <DataStores pc={pc} mc={mc} data={data} top={top} st={st} best={best} />
+          )}
 
           <section className="pf-journey">
             <div className="pf-jhead">
-              <h4>Product journey</h4>
-              <span>Which products are removed, why, and which ones reach the output</span>
-              <span className="pf-key">
+              <h4>{liveRun.status === 'success' ? 'Live backend product journey' : 'Product journey'}</h4>
+              <span>{liveRun.status === 'success' ? `Actual products returned by FastAPI for “${liveRun.query}”` : 'Illustrative walkthrough — run a live query above to replace sample products with actual backend results.'}</span>
+              {liveRun.status !== 'success' && <span className="pf-key">
                 <i className="k-kept" /> kept <i className="k-removed" /> removed <i className="k-out" /> shown
-              </span>
+              </span>}
             </div>
-            <Journey data={data} f={f} sc={sc} />
-            <p className="pf-jnote" aria-live="polite">
-              {journeyNote(currentId, sc, data, best, top)}
-            </p>
+            {liveRun.status === 'success' ? (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))', gap: 10, padding: '12px 0' }}>
+                {liveRun.matches.length ? liveRun.matches.slice(0, 10).map((product, index) => {
+                  const price = product.price ?? product.price_inr ?? product.priceINR
+                  return <article key={product.product_id || product.id || `${product.title || product.name || 'product'}-${index}`} style={{ border: '1px solid #cfe7dc', background: '#f4fbf7', borderRadius: 10, padding: 12, minWidth: 0 }}>
+                    <div style={{ fontSize: 11, color: '#087f5b', fontWeight: 700, marginBottom: 6 }}>LIVE RESULT {index + 1}</div>
+                    <strong style={{ display: 'block', overflowWrap: 'anywhere' }}>{product.title || product.name || 'Untitled product'}</strong>
+                    <div style={{ fontSize: 13, color: '#667085', marginTop: 4 }}>{[product.brand, product.category].filter(Boolean).join(' · ')}</div>
+                    {price != null && <div style={{ fontWeight: 700, marginTop: 8 }}>{money(Number(price))}</div>}
+                    {product.description && <p style={{ fontSize: 12, marginBottom: 0, color: '#475467' }}>{String(product.description).slice(0, 180)}</p>}
+                  </article>
+                }) : <p>The backend completed successfully but returned no matching products.</p>}
+              </div>
+            ) : <>
+              <Journey data={data} f={f} sc={sc} />
+              <p className="pf-jnote" aria-live="polite">
+                {journeyNote(currentId, sc, data, best, top)}
+              </p>
+            </>}
           </section>
 
-          <div className="pf-panels">
+          {liveRun.status === 'success' && <section className="pf-info" aria-live="polite" style={{ marginTop: 12 }}>
+            <div className="pf-info-head"><span className="pf-no">LIVE</span><h4>Actual backend answer</h4><span className="pf-tag">FastAPI · /chat/</span></div>
+            <p style={{ whiteSpace: 'pre-wrap' }}>{liveRun.response || 'The backend returned no answer text.'}</p>
+            <p style={{ fontSize: 12, opacity: 0.75 }}>These products and answer came from the successful API response. Similarity scores, timings, and intermediate stage counts are not available from this endpoint.</p>
+          </section>}
+
+          {liveRun.status !== 'success' && <div className="pf-panels">
             <section className="pf-info" aria-live="polite">
               <div className="pf-info-head">
                 <span className="pf-no">{NODES[currentId].n}</span>
@@ -1599,26 +1706,15 @@ export default function PipelineFlow({ onClose, onTry }) {
               <h4>How the remaining products are scored</h4>
               <Candidates rows={data.surv} f={f} sc={sc} />
             </section>
-          </div>
+          </div>}
 
           <p className="pf-foot">
-            Products, prices and similarity scores are made-up samples, not real catalog rows
-            {sc.kind === 'abstain' ? ', and the parsed filters for this query are an assumption' : ''}. Which products
-            are removed, and why, is computed from the parsed filters. Database totals come from CATALOG at the top of
-            this file; the embedding size ({CATALOG.dim}) and {CATALOG.metric} metric are assumptions. Algorithm
-            snippets are simplified, and the re-rank formula assumes bonus = {BONUS} × price ÷ budget; check the backend
-            files for the exact logic.
+            {liveRun.status === 'success'
+              ? 'Live result cards and the answer above are real data returned by FastAPI. The animated architecture, intermediate product journey when no live result is loaded, similarity scores, timings, and algorithm examples remain illustrative because the current API does not expose those execution details.'
+              : `This is an illustrative architecture walkthrough, not a live trace. Products, prices, similarity scores, stage timings, and database counts shown in the sample panels are not produced by your query. Run a live query to view the actual FastAPI answer and products. The current API does not expose per-stage execution events.`}
           </p>
 
-          <button
-            className="pf-btn primary pf-wide"
-            onClick={() => {
-              onClose()
-              onTry?.(sc.query)
-            }}
-          >
-            Try this query live
-          </button>
+
         </div>
       </div>
     </div>

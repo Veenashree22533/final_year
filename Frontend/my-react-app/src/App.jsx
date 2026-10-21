@@ -37,47 +37,115 @@ function toNumber(value) {
 /* ---------- Query parsing (price + keywords) ---------- */
 
 const PRICE_RE =
-  /(?:\b(?:under|below|less than|within|max|upto|up to|rs\.?|inr)|₹)\s*(\d+(?:\.\d+)?)\s*(k|thousand|lakhs?|lacs?)?\b/i
+  /(?:\b(?:under|below|less than|within|max|upto|up to|underneath|budget(?: of)?|rs\.?|inr)\s*|₹\s*|(\d+(?:\.\d+)?)\s*(?:k|thousand|lakhs?|lacs?)\b)/i
 
 const STOP = new Set([
   'a', 'an', 'the', 'and', 'or', 'for', 'with', 'of', 'in', 'on', 'to', 'me', 'my', 'i', 'is', 'are',
   'show', 'find', 'get', 'give', 'want', 'need', 'looking', 'best', 'top', 'good', 'great', 'cheap',
   'which', 'what', 'that', 'has', 'have', 'under', 'below', 'over', 'than', 'less', 'within', 'max',
-  'upto', 'up', 'budget', 'please', 'can', 'you', 'some', 'any', 'one',
+  'upto', 'up', 'budget', 'please', 'can', 'you', 'some', 'any', 'one', 'recommend', 'suggest',
+  'something', 'around', 'about', 'rupees', 'rs', 'inr', 'for', 'me', 'buy', 'purchase',
 ])
 
+const CATEGORY_SYNONYMS = [
+  { canonical: 'phone', words: ['phone', 'phones', 'mobile', 'mobiles', 'smartphone', 'smartphones', 'handset', 'handsets'] },
+  { canonical: 'laptop', words: ['laptop', 'laptops', 'notebook', 'notebooks', 'ultrabook', 'ultrabooks'] },
+  { canonical: 'smartwatch', words: ['watch', 'watches', 'smartwatch', 'smartwatches', 'wearable', 'wearables', 'fitnessband', 'fitnessbands', 'band'] },
+  { canonical: 'headphone', words: ['headphone', 'headphones', 'earphone', 'earphones', 'earbud', 'earbuds', 'airpods', 'headset', 'headsets'] },
+  { canonical: 'tablet', words: ['tablet', 'tablets', 'ipad', 'ipads'] },
+  { canonical: 'camera', words: ['camera', 'cameras', 'dslr', 'mirrorless'] },
+]
+
 function parseQuery(raw) {
-  const q = String(raw).toLowerCase().replace(/(\d),(?=\d)/g, '$1')
+  const q = String(raw || '').toLowerCase().replace(/(\d),(?=\d)/g, '$1')
   let maxPrice = null
-  const m = q.match(PRICE_RE)
-  if (m) {
-    let v = parseFloat(m[1])
-    const unit = m[2] || ''
-    if (/^(k|thousand)$/.test(unit)) v *= 1000
-    else if (/^(lakhs?|lacs?)$/.test(unit)) v *= 100000
-    else if (v < 1000) v *= 1000
-    maxPrice = v
+
+  // Handles "under 30k", "below ₹30,000", "budget 30000", "under 1.2 lakh".
+  const pricePatterns = [
+    /(?:under|below|less than|within|max|upto|up to|budget(?: of)?|not more than)\s*(?:₹|rs\.?|inr)?\s*(\d+(?:\.\d+)?)\s*(k|thousand|lakhs?|lacs?)?/i,
+    /(?:₹|rs\.?|inr)\s*(\d+(?:\.\d+)?)\s*(k|thousand|lakhs?|lacs?)?/i,
+    /\b(\d+(?:\.\d+)?)\s*(k|thousand|lakhs?|lacs?)\b/i,
+  ]
+  for (const pattern of pricePatterns) {
+    const match = q.match(pattern)
+    if (!match) continue
+    let value = Number(match[1])
+    const unit = (match[2] || '').toLowerCase()
+    if (unit === 'k' || unit === 'thousand') value *= 1000
+    else if (/^(lakh|lakhs|lac|lacs)$/.test(unit)) value *= 100000
+    else if (value > 0 && value < 1000 && /(?:under|below|budget|₹|rs\.?|inr)/i.test(q)) value *= 1000
+    if (Number.isFinite(value) && value > 0) {
+      maxPrice = value
+      break
+    }
   }
-  const words = q
-    .replace(new RegExp(PRICE_RE.source, 'gi'), ' ')
-    .replace(/mobiles?/g, 'phone')
-    .replace(/notebooks?/g, 'laptop')
+
+  let cleaned = q
+    .replace(/(?:under|below|less than|within|max|upto|up to|budget(?: of)?|not more than)\s*(?:₹|rs\.?|inr)?\s*\d+(?:\.\d+)?\s*(?:k|thousand|lakhs?|lacs?)?/gi, ' ')
+    .replace(/(?:₹|rs\.?|inr)\s*\d+(?:,\d{3})*(?:\.\d+)?\s*(?:k|thousand|lakhs?|lacs?)?/gi, ' ')
+    .replace(/\b\d+(?:\.\d+)?\s*(?:k|thousand|lakhs?|lacs?)\b/gi, ' ')
+    .replace(/\b(?:mobiles?|smartphones?|handsets?)\b/g, ' phone ')
+    .replace(/\b(?:notebooks?|ultrabooks?)\b/g, ' laptop ')
+    .replace(/\b(?:watches|smartwatches|wearables|fitness bands?)\b/g, ' smartwatch ')
+    .replace(/\b(?:earphones|earbuds|airpods|headsets?)\b/g, ' headphone ')
+
+  const words = cleaned
     .split(/\s+/)
-    .map((w) => w.replace(/[^a-z0-9+]/g, ''))
-    .filter((w) => w.length > 1 && !STOP.has(w))
+    .map((word) => word.replace(/[^a-z0-9+]/g, ''))
+    .filter((word) => word.length > 1 && !STOP.has(word))
+
   return { maxPrice, words }
+}
+
+function getCategoryGroup(value = '') {
+  const text = String(value).toLowerCase().replace(/[^a-z0-9]/g, '')
+  return CATEGORY_SYNONYMS.find((group) =>
+    group.words.some((word) => text.includes(word.replace(/[^a-z0-9]/g, '')))
+  )?.canonical || ''
 }
 
 function matchProducts(products, raw, { any = false, category = 'all' } = {}) {
   const { maxPrice, words } = parseQuery(raw)
-  return products.filter((p) => {
-    if (category !== 'all' && p.category !== category) return false
-    if (maxPrice && !(p.price != null && p.price > 0 && p.price <= maxPrice)) return false
-    if (!words.length) return true
-    const hay = `${p.brand || ''} ${p.title || ''} ${p.category || ''}`.toLowerCase()
-    const hit = (w) => hay.includes(w) || w.includes(p.category) || p.category.includes(w)
-    return any ? words.some(hit) : words.every(hit)
+  const queryCategory = getCategoryGroup(words.join(' '))
+  const requestedCategory = category !== 'all' ? getCategoryGroup(category) || category : queryCategory
+
+  const candidates = products.filter((product) => {
+    const productCategory = getCategoryGroup(product.category) || String(product.category || '').toLowerCase()
+    if (requestedCategory && requestedCategory !== 'all' && productCategory !== requestedCategory) return false
+    if (maxPrice != null && !(product.price != null && product.price > 0 && product.price <= maxPrice)) return false
+    return true
   })
+
+  if (!words.length) return candidates
+
+  const scored = candidates.map((product) => {
+    const title = String(product.title || '').toLowerCase()
+    const brand = String(product.brand || '').toLowerCase()
+    const productCategory = String(product.category || '').toLowerCase()
+    const haystack = `${brand} ${title} ${productCategory}`.replace(/[^a-z0-9+]+/g, ' ')
+    const tokens = new Set(haystack.split(/\s+/).filter(Boolean))
+    let hits = 0
+    let score = 0
+
+    for (const word of words) {
+      const group = getCategoryGroup(word)
+      const categoryHit = group && group === (getCategoryGroup(product.category) || '')
+      const exactHit = tokens.has(word)
+      const partialHit = !exactHit && haystack.includes(word)
+      if (categoryHit || exactHit || partialHit) {
+        hits += 1
+        score += categoryHit ? 3 : exactHit ? 2 : 1
+      }
+    }
+
+    // Requiring every descriptive word caused natural-language searches to return nothing.
+    const threshold = words.length <= 2 ? 1 : Math.max(1, Math.ceil(words.length * 0.45))
+    return { product, hits, score, threshold }
+  }).filter((item) => any ? item.hits > 0 : item.hits >= item.threshold)
+
+  return scored
+    .sort((a, b) => b.score - a.score || (a.product.price || Infinity) - (b.product.price || Infinity))
+    .map((item) => item.product)
 }
 
 /* ---------- Icons (rounded line icons) ---------- */
@@ -1461,23 +1529,39 @@ function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
     setAiLoading(true)
     setAiRecommendation(null)
 
+    const controller = new AbortController()
+    const requestTimeout = setTimeout(() => controller.abort(), 45000)
+
     try {
       const res = await fetch(`${BACKEND_URL}/chat/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: text }),
+        signal: controller.signal,
       })
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      if (!res.ok) {
+        const detail = await res.text().catch(() => '')
+        throw new Error(`HTTP ${res.status}${detail ? `: ${detail.slice(0, 240)}` : ''}`)
+      }
       const data = await res.json()
-      setAiRecommendation({
-        query: text,
+      const recommendation = {
+        query: data.query || text,
         response: data.response || '',
         matches: (data.matches || []).map((m) => normalizeMatch(m, byId)),
-      })
+      }
+      setAiRecommendation(recommendation)
+      return { success: true, data: { ...data, query: data.query || text, response: data.response || '', matches: data.matches || [] } }
     } catch (err) {
+      const message = err?.name === 'AbortError'
+        ? 'The backend did not respond within 45 seconds. Check the FastAPI terminal to see which RAG step is hanging.'
+        : err instanceof TypeError
+          ? `Cannot reach ${BACKEND_URL}/chat/. Is uvicorn running on port 8000, and is CORS enabled for ${window.location.origin}?`
+          : (err.message || 'Could not connect to the backend.')
       console.error('RAG Search Error:', err)
-      setAiRecommendation({ query: text, response: '', matches: [], offline: true })
+      setAiRecommendation({ query: text, response: '', matches: [], offline: true, error: message })
+      return { success: false, error: message }
     } finally {
+      clearTimeout(requestTimeout)
       setAiLoading(false)
     }
   }
@@ -1496,15 +1580,31 @@ function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
   const hasRatings = useMemo(() => rows.some((r) => r.rating != null), [rows])
 
   const filtered = useMemo(() => {
-    // When the AI returned matches, show exactly those in the grid.
-    if (aiRecommendation?.matches?.length) {
-      const ids = new Set(aiRecommendation.matches.map((m) => m.id))
-      const matched = rows.filter((r) => ids.has(r.id))
-      if (matched.length) return matched
-    }
-    return matchProducts(rows, searchQuery.trim(), { category }).filter(
-      (r) => !topRatedOnly || (r.rating != null && r.rating >= 4.0)
+    const text = searchQuery.trim()
+    const localMatches = matchProducts(rows, text, { category }).filter(
+      (product) => !topRatedOnly || (product.rating != null && product.rating >= 4.0)
     )
+
+    // The backend is authoritative for the answer, but its retrieved candidates
+    // must still respect the user's explicit category and budget in the UI.
+    if (
+      aiRecommendation &&
+      !aiRecommendation.offline &&
+      Array.isArray(aiRecommendation.matches) &&
+      aiRecommendation.matches.length
+    ) {
+      const backendMatches = matchProducts(aiRecommendation.matches, text, { category }).filter(
+        (product) => !topRatedOnly || (product.rating != null && product.rating >= 4.0)
+      )
+
+      // If backend candidates conflict with explicit query constraints (for example,
+      // laptops for "watch under 30k"), show relevant local catalog matches instead.
+      if (backendMatches.length) return backendMatches
+      if (localMatches.length) return localMatches
+      return []
+    }
+
+    return localMatches
   }, [rows, category, topRatedOnly, searchQuery, aiRecommendation])
 
   const sorted = useMemo(() => {
@@ -1835,7 +1935,8 @@ function Store({ user, onLogout, onUpdateUser, darkMode, setDarkMode }) {
       {pipelineOpen && (
         <PipelineFlow
           onClose={() => setPipelineOpen(false)}
-          onTry={openAdvisor}
+          onTry={handleRAGSearch}
+          query={searchQuery || aiRecommendation?.query || ''}
         />
       )}
 
